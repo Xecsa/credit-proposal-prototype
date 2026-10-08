@@ -81,7 +81,7 @@ Back</button>
 {(v.shShowRole) ? (<><div role="row" style={{ borderTop: "1px solid #d7dae5", boxSizing: "border-box", padding: "15px 0 16px", display: "flex", gap: "16px", justifyContent: "space-between", alignItems: "flex-start", lineHeight: "16px" }}><span role="rowheader" style={{ color: "#575757" }}>Role</span>
 <span role="cell" style={{ textAlign: "right", minWidth: "0", overflowWrap: "anywhere", color: "#000000" }}>{v.shV.role}</span></div>
 {' '}
-<div role="row" style={{ borderTop: "1px solid #d7dae5", boxSizing: "border-box", padding: "15px 0 16px", display: "flex", gap: "16px", justifyContent: "space-between", alignItems: "flex-start", lineHeight: "16px" }}><span role="rowheader" style={{ color: "#575757" }}>Ownership of {'{'}Company_name{'}'}</span>
+<div role="row" style={{ borderTop: "1px solid #d7dae5", boxSizing: "border-box", padding: "15px 0 16px", display: "flex", gap: "16px", justifyContent: "space-between", alignItems: "flex-start", lineHeight: "16px" }}><span role="rowheader" style={{ color: "#575757" }}>Ownership of Orient Insurance</span>
 <span role="cell" style={{ textAlign: "right", minWidth: "0", overflowWrap: "anywhere", color: "#000000" }}>50%</span></div></>) : null}
 {' '}
 <div role="row" style={{ borderTop: "1px solid #d7dae5", boxSizing: "border-box", padding: "15px 0 16px", display: "flex", gap: "16px", justifyContent: "space-between", alignItems: "flex-start", lineHeight: "16px" }}><span role="rowheader" style={{ color: "#575757" }}>Nationality</span>

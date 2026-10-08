@@ -9,7 +9,7 @@ Back</button>
 <p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#6c7a89", opacity: "0.9" }}>Select the Emirates NBD accounts to include and add any external UAE bank accounts</p></div></div>
 {' '}
 <div style={{ boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "24px", display: "flex", flexDirection: "column", gap: "40px" }}>{' '}
-<h2 style={{ margin: "0", fontSize: "20px", lineHeight: "28px", fontWeight: "500", color: "#072447" }}>{'{'}Main-borrower{'}'}’s bank accounts</h2>
+<h2 style={{ margin: "0", fontSize: "20px", lineHeight: "28px", fontWeight: "500", color: "#072447" }}>Orient Insurance’s bank accounts</h2>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><h3 style={{ margin: "0", fontSize: "16px", lineHeight: "24px", fontWeight: "500", color: "#072447" }}>Existing accounts</h3>
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><div style={{ padding: "12px 16px", display: "flex", gap: "16px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", width: "40px", height: "40px", boxSizing: "border-box", border: "1px solid #ccd1e0", borderRadius: "8px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}><svg aria-hidden="true" width="40" height="40" viewBox="436 492 40 40" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M465.538 525.2H446.398V498.8H465.538V525.2ZM463.834 523.484H448.103V500.516H463.834V523.484Z" fill="#072447"></path>
@@ -56,7 +56,7 @@ Add external account</button>
 {' '}</div>
 {' '}
 <div style={{ boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "24px", display: "flex", flexDirection: "column", gap: "40px" }}>{' '}
-<h2 style={{ margin: "0", fontSize: "20px", lineHeight: "28px", fontWeight: "500", color: "#072447" }}>{'{'}Co-borrower{'}'}’s bank accounts</h2>
+<h2 style={{ margin: "0", fontSize: "20px", lineHeight: "28px", fontWeight: "500", color: "#072447" }}>{v.bankCoTitle}</h2>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><h3 style={{ margin: "0", fontSize: "16px", lineHeight: "24px", fontWeight: "500", color: "#072447" }}>Existing accounts</h3>
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><div style={{ padding: "12px 16px", display: "flex", gap: "16px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", width: "40px", height: "40px", boxSizing: "border-box", border: "1px solid #ccd1e0", borderRadius: "8px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}><svg aria-hidden="true" width="40" height="40" viewBox="436 492 40 40" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M465.538 525.2H446.398V498.8H465.538V525.2ZM463.834 523.484H448.103V500.516H463.834V523.484Z" fill="#072447"></path>

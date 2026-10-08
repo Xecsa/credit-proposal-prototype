@@ -505,7 +505,7 @@ set({ phase: 'selfOwn', shMode: '', shEdit: '', shDrop: '', ownExtra: s.ownExtra
 cons: cons, cob: cob, bank: bank,
 cobPicked: s.ownExtra.filter((x) => s.cob['x' + x.id]),
 consExtra: s.ownExtra.map((x) => { const k = 'x' + x.id; const on = s.consent === k; return { initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder - Authorized signatory', on: on ? 'true' : 'false', ring: on ? '#182f7c' : '#575757', dot: on ? '#182f7c' : 'transparent', pick: () => set({ consent: k }) }; }),
-cobExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of {Company_name} - Individual', label: 'Select ' + x.name + ' as co-borrower' }, box(s.cob['x' + x.id], flipIn('cob', 'x' + x.id)))),
+cobExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as co-borrower' }, box(s.cob['x' + x.id], flipIn('cob', 'x' + x.id)))),
 goSelfCp: goSelf('selfCp'), showSelfCp: s.phase === 'selfCp' || s.phase === 'selfCpForm', showSelfCpForm: s.phase === 'selfCpForm',
 cpHas: s.cpList.length > 0, cpSug: cpSug, cpF: cpF, cpSet: cpSet,
 cpRows: s.cpList.map((r) => { const open = s.cpMenu === r.id; const parts = r.name.trim().split(/ +/); return {
@@ -823,6 +823,51 @@ gdpSwitchView: () => { if (s.gdpView === 'date') set({ gdpView: 'month' }); else
 gdpCancel: () => set({ gdp: '' }),
 gdpApply: () => { const f = GF[s.gdp]; if (f && s.gdpPick) { const q = s.gdpPick.split('-'); const h = gget(f[1]); if (h) h({ target: { value: q[2] + '/' + q[1] + '/' + q[0] } }); } set({ gdp: '' }); }
 });
+{
+const co = 'Orient Insurance';
+const ahN = (s.shF.first + ' ' + s.shF.last).trim() || 'Ahmed Al-Hassan';
+const ini2 = (n) => { const p = n.trim().split(/ +/); return (((p[0] || '')[0] || '') + (p.length > 1 ? p[p.length - 1][0] : '')).toUpperCase(); };
+const P = {
+  ah: { name: ahN, email: s.shF.email.trim() || 'ahmed@email.com', mobile: s.shF.mobile.trim() ? '+971 ' + s.shF.mobile.trim() : '050 123 4567' },
+  fa: { name: 'Fatima Ahmed Ali', email: 'fatima@email.com', mobile: '050 234 5678' },
+  mh: { name: 'Mostafa Hamed', email: 'mostafa@email.com', mobile: '052 678 1255' },
+  km: { name: 'Khalid Al-Mansoori', email: 'khalid@email.com', mobile: '055 345 6789' }
+};
+const per = (o, extra) => Object.assign({ initials: ini2(o.name), ind: true, ent: false, hasSub: true }, o, extra || {});
+const ent = (name, sub) => ({ name: name, sub: sub, ind: false, ent: true, hasSub: true, initials: '' });
+const rvOwn = (s.ownGone ? [] : [per(P.ah, { sub: '50%  Shareholder - Individual' })]).concat([ent('GETAX Agrifert DMCC', '50% Shareholder - Entity')])
+  .concat(s.ownExtra.map((x) => per({ name: x.name, initials: x.initials }, { sub: x.body })));
+const cmap = { a: P.ah, b: P.fa, c: P.mh };
+const cx = s.consent && s.consent[0] === 'x' ? s.ownExtra.find((x) => 'x' + x.id === s.consent) : null;
+const cPick = cmap[s.consent] || cx;
+const rvConsent = cPick ? [{ name: cPick.name, email: cPick.email, bt: '0' }] : [];
+const cobMap = { a: P.ah, b: P.fa, c: P.km };
+const rvCob = ['a', 'b', 'c'].filter((k) => s.cob[k]).map((k) => per(cobMap[k], { sub: cobMap[k].email }))
+  .concat(s.ownExtra.filter((x) => s.cob['x' + x.id]).map((x) => per({ name: x.name, initials: x.initials }, { sub: x.email })));
+const kmSugs = { a: per(P.ah, { sub: '50%  Shareholder of ' + co + ' - Individual' }), b: ent('Gulf Star Investments LLC', '50%  Shareholder of ' + co + ' - Company'),
+  c: per(P.fa, { sub: '50%  Shareholder of ' + co + ' - Individual' }), d: ent('Al Noor Trading LLC', '50%  Shareholder of ' + co + ' - Company'),
+  e: per(P.mh, { sub: '50%  Shareholder of ' + co + ' - Individual' }), f: ent('Orient Holdings Ltd', '50%  Shareholder of ' + co + ' - Company') };
+const rvKm = s.kmList.map((r) => per({ name: ((r.title ? r.title + ' ' : '') + r.first + ' ' + r.last).trim(), initials: ((r.first.trim()[0] || '') + (r.last.trim()[0] || '')).toUpperCase() }, { sub: r.role || '-' }))
+  .concat(['a', 'b', 'c', 'd', 'e', 'f'].filter((k) => s.kmSel[k]).map((k) => kmSugs[k]));
+const enbd = { 1: '1044560850002', 2: '1024560850002' };
+const banks = (w) => [1, 2].filter((n) => s.bankSel[w + n]).map((n) => ({ name: 'Emirates NBD', num: enbd[n], kind: 'Current Account', hasKind: true, enbd: true, ext: false }))
+  .concat(s.bankExt[w].map((r) => ({ name: r.name, num: r.iban, kind: '', hasKind: false, enbd: false, ext: true })));
+const cobFirst = rvCob[0];
+const cpSugs = { a: P.ah, b: P.fa, c: P.mh };
+const rvCp = s.cpList.map((r) => per({ name: r.name.trim(), initials: ini2(r.name) }, { sub: r.rel, mobile: r.mobile.trim() ? '+971 ' + r.mobile.trim() : '-', email: r.email.trim() || '-' }))
+  .concat(['a', 'b', 'c'].filter((k) => s.cpSel[k]).map((k) => per(cpSugs[k], { sub: '50%  Shareholder of ' + co + ' - Individual' })));
+Object.assign(__v, {
+  rvOwn: rvOwn, rvNoOwn: rvOwn.length === 0,
+  rvConsent: rvConsent, rvNoConsent: rvConsent.length === 0,
+  rvCob: rvCob, rvNoCob: rvCob.length === 0,
+  rvKmNarr: s.kmNarr.trim() || '-', rvKm: rvKm, rvNoKm: rvKm.length === 0,
+  rvBankMTitle: co + '’s bank accounts', rvBankM: banks('m'), rvNoBankM: banks('m').length === 0,
+  rvBankCTitle: (cobFirst ? cobFirst.name : 'Co-borrower') + '’s bank accounts', rvBankC: banks('c'), rvNoBankC: banks('c').length === 0,
+  rvBankCShow: !!cobFirst || banks('c').length > 0,
+  bankCoTitle: (cobFirst ? cobFirst.name : 'Co-borrower') + '’s bank accounts',
+  rvCp: rvCp, rvNoCp: rvCp.length === 0
+});
+}
 return __v;
 }
 }

@@ -50,7 +50,7 @@ export default function ShEditIsDetails({ v }) {
 {' '}</>) : null}</div>
 {' '}</div>
 {' '}
-<div style={{ display: "flex", flexDirection: "column" }}><label htmlFor="shm-pct" style={{ paddingBottom: "8px", lineHeight: "20px", color: "#575757" }}>What percentage of {'{'}Company_name{'}'} is owned by the shareholder?</label>
+<div style={{ display: "flex", flexDirection: "column" }}><label htmlFor="shm-pct" style={{ paddingBottom: "8px", lineHeight: "20px", color: "#575757" }}>What percentage of Orient Insurance is owned by the shareholder?</label>
 {' '}
 <div style={{ height: "48px", boxSizing: "border-box", border: "1px solid #d7dae5", borderRadius: "8px", background: "#ffffff", display: "flex", alignItems: "center" }}><input id="shm-pct" className="bare" type="text" value="50" disabled={true} style={{ font: "inherit", lineHeight: "20px", flex: "1", minWidth: "0", height: "24px", padding: "0", border: "0", outline: "none", background: "transparent", color: "#000000", marginLeft: "16px", color: "#575757" }} />
 <span style={{ flex: "none", alignSelf: "stretch", margin: "1px", borderRadius: "0 7px 7px 0", background: "#f4f7fe", color: "#182f7c", fontWeight: "500", display: "flex", alignItems: "center", justifyContent: "center", width: "64px" }}>%</span></div></div>
