@@ -40,6 +40,69 @@ export default class App extends ProtoLogic {
     return (
 <div style={{ height: "100vh", minHeight: "720px", display: "flex", flexDirection: "column", background: "#f1f4f7", color: "#072447", fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif", fontSize: "14px", lineHeight: "20px", fontFeatureSettings: "'liga' 0" }}>
 {' '}
+{(v.gdpShow) ? (<><button aria-label="Close calendar" tabIndex="-1" onClick={v.gdpCancel} style={{ position: "fixed", inset: "0", zIndex: "70", border: "0", padding: "0", background: "transparent", cursor: "default" }}></button>
+{' '}
+<div role="dialog" aria-label={v.gdpDialog} style={{ position: "fixed", top: `${v.gdpTop}`, left: `${v.gdpLeft}`, zIndex: "71", marginBottom: "32px", scrollMargin: "32px", width: "304px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "8px 0 16px", boxShadow: "0 4px 7px rgba(0,0,0,0.05), 0 16px 24px rgba(0,0,0,0.08)", display: "flex", flexDirection: "column", alignItems: "center" }}>{' '}
+<div style={{ width: "100%", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>{' '}
+<button onClick={v.gdpPrev} aria-label={v.gdpPrevLabel} style={{ width: "40px", height: "40px", padding: "0", border: "0", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>{' '}
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1b48b5" strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round"><path d="M10.500 3L5.500 8l5 5"></path></svg>
+{' '}</button>
+{' '}
+<button onClick={v.gdpSwitchView} aria-label={v.gdpTitleLabel} style={{ font: "inherit", fontSize: "16px", lineHeight: "24px", height: "40px", padding: "0 8px", border: "0", background: "transparent", color: "#072447", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}>{' '}{v.gdpTitle}{' '}
+{(v.gdpHasChevron) ? (<>{' '}
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1b48b5" strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round"><path d="M3 5.500l5 5 5-5"></path></svg>
+{' '}</>) : null}
+{' '}</button>
+{' '}
+<button onClick={v.gdpNext} aria-label={v.gdpNextLabel} style={{ width: "40px", height: "40px", padding: "0", border: "0", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>{' '}
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1b48b5" strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round"><path d="M5.500 3l5 5-5 5"></path></svg>
+{' '}</button>
+{' '}</div>
+{' '}
+{(v.gdpIsDate) ? (<>{' '}
+<div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>{' '}
+<div aria-hidden="true" style={{ width: "280px", padding: "20px 0 8px", display: "flex", fontSize: "16px", lineHeight: "24px", color: "#50647c", textAlign: "center" }}>{' '}
+<span style={{ width: "40px" }}>S</span>
+<span style={{ width: "40px" }}>M</span>
+<span style={{ width: "40px" }}>T</span>
+<span style={{ width: "40px" }}>W</span>
+<span style={{ width: "40px" }}>T</span>
+<span style={{ width: "40px" }}>F</span>
+<span style={{ width: "40px" }}>S</span>
+{' '}</div>
+{' '}
+<div style={{ width: "280px", padding: "12px 0 24px", display: "flex", flexDirection: "column" }}>{' '}
+{(v.gdpWeeks || []).map((wk, wk__i) => (<React.Fragment key={wk__i}>{' '}
+<div style={{ display: "flex", height: "40px" }}>{' '}
+{(wk.days || []).map((c, c__i) => (<React.Fragment key={c__i}>{' '}
+<span style={{ width: "40px", height: "40px", display: "flex" }}>{' '}
+{(c.isDay) ? (<>{' '}
+<button onClick={c.pick} aria-label={c.aria} aria-pressed={c.pressed} style={{ font: "inherit", fontSize: "16px", lineHeight: "24px", width: "40px", height: "40px", padding: "0", border: "0", borderRadius: "20px", cursor: "pointer", background: `${c.bg}`, color: `${c.fg}`, boxShadow: `${c.ring}` }}>{c.label}</button>
+{' '}</>) : null}
+{' '}</span>
+{' '}</React.Fragment>))}
+{' '}</div>
+{' '}</React.Fragment>))}
+{' '}</div>
+{' '}
+<div style={{ width: "100%", boxSizing: "border-box", padding: "8px 16px", display: "flex", justifyContent: "flex-end", gap: "8px" }}>{' '}
+<button onClick={v.gdpCancel} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", cursor: "pointer", border: "0", background: "transparent", color: "#182f7c" }}>Cancel</button>
+{' '}
+<button onClick={v.gdpApply} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", cursor: "pointer", border: "0", color: "#ffffff", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)" }}>Apply</button>
+{' '}</div>
+{' '}</div>
+{' '}</>) : null}
+{' '}
+{(v.gdpIsGrid) ? (<>{' '}
+<div style={{ width: "280px", padding: "52px 0 44px", display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", rowGap: "4px" }}>{' '}
+{(v.gdpGrid || []).map((mo, mo__i) => (<React.Fragment key={mo__i}>{' '}
+<button onClick={mo.pick} aria-label={mo.aria} style={{ font: "inherit", fontSize: "16px", lineHeight: "24px", height: "40px", padding: "0", border: "0", borderRadius: "20px", cursor: "pointer", background: "#ffffff", color: "#072447", boxShadow: `${mo.ring}` }}>{mo.label}</button>
+{' '}</React.Fragment>))}
+{' '}</div>
+{' '}</>) : null}
+{' '}</div>
+{' '}</>) : null}
+{' '}
 {(v.showOverlay) ? (<><div aria-hidden="true" style={{ position: "fixed", inset: "0", zIndex: "30", background: "rgba(0,0,0,0.32)" }}></div></>) : null}
 {' '}
 {(v.ovLoading) ? (<><div role="status" aria-label="Loading" style={{ position: "fixed", zIndex: "31", top: "73px", left: "8px", right: "8px", bottom: "8px", borderRadius: "0 0 8px 8px", zIndex: "32", background: "#f1f3f7", overflow: "hidden", padding: "40px 24px", boxSizing: "border-box", display: "flex", justifyContent: "center" }}><div style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "24px", display: "flex", flexDirection: "column", alignSelf: "flex-start" }}><div className="shim" style={{ width: "55%", height: "40px", marginTop: "0px", background: "linear-gradient(90deg, #eceef3 25%, #f7f8fb 37%, #eceef3 63%)", backgroundSize: "400% 100%", borderRadius: "8px" }}></div>

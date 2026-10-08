@@ -7,7 +7,7 @@ name: '', desc: '', cifText: '', client: '',
 date: new Date().toISOString().slice(0, 10), start: '', end: '', topic: '', location: '',
 participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
-fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
+fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
 selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [
@@ -451,7 +451,7 @@ this.setState({ draft: '', messages: s.messages.concat([this.msg('me', 'text', s
 this.respond();
 };
 
-return {
+const __v = {
 headerTitle: s.phase === 'start' ? 'New credit proposal' : inChat && s.name.trim() ? s.name.trim() : 'Capture a meeting',
 showStart: s.phase === 'start', showMain: s.phase === 'form' || inChat, showClose: s.phase !== 'start',
 showTakeoverHeader: !inSelf, showAppHeader: inSelf, showOverlay: inFacForm || inModalPhase, ovUnder: (inFacForm || inModalPhase) ? 'true' : 'false', ovLoading: (inFacForm || inModalPhase) && !!s.ovLoad, showAppCrumb: inSelf && s.phase !== 'selfList',
@@ -467,7 +467,7 @@ ownDone: s.ownDone, ownTodo: !s.ownDone, ownBg: btnBg(s.ownDone || s.ownGone), o
 ownDelShow: s.ownDel && s.phase === 'selfOwn', ownDelOpen: () => set({ ownDel: true }), ownDelCancel: () => set({ ownDel: false }), ownDelYes: () => set({ ownDel: false, ownGone: true }),
 ownOpen: () => set({ phase: 'selfSh', shMode: '', shStep: 'docs', shMenu: '', shDrop: '', shEdit: '' }),
 ownAdd: () => set({ phase: 'selfSh', shMode: 'add', shStep: 'docs', shMenu: '', shDrop: '', shEdit: '', addType: '', addDocs: '',
-addF: { title: '', first: 'Abdullah', last: 'Rahim', role: 'Director', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
+addF: Object.assign({ title: '', role: 'Director', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' }, [{ first: 'Abdullah', last: 'Rahim' }, { first: 'Sara', last: 'Al-Nuaimi', gender: 'Female' }, { first: 'Omar', last: 'Khalifa' }, { first: 'Layla', last: 'Haddad', gender: 'Female' }, { first: 'Yousef', last: 'Al-Marri' }][s.ownExtra.length % 5]),
 addT: { uae: true, ruling: false, sign: false, borrow: false } }),
 ownExtra: s.ownExtra,
 shWho: !adding ? 'Ahmed Al-Hassan' : s.addType === 'sh' ? 'Add new shareholder' : 'Add new stakeholder',
@@ -788,5 +788,41 @@ this.setState({ recording: false, messages: s.messages.concat([this.msg('me', 'a
 this.respond();
 }
 };
+const GF = {"tl-incDate": ["tlF.incDate", "tlSet.incDate", "Date of incorporation"], "tl-expiry": ["tlF.expiry", "tlSet.expiry", "Expiry date"], "tl-issue": ["tlF.issue", "tlSet.issue", "Issue date"], "eid-issue": ["mf.eidIssue", "mfSet.eidIssue", "Issue date"], "eid-exp": ["mf.eidExpiry", "mfSet.eidExpiry", "Expiry date"], "pp-dob": ["mf.ppDob", "mfSet.ppDob", "Date of birth"], "pp-exp": ["mf.ppExpiry", "mfSet.ppExpiry", "Expiry date"], "pp-issue": ["mf.ppIssue", "mfSet.ppIssue", "Issue date"]};
+const gget = (path) => path.split('.').reduce((o, k) => (o == null ? o : o[k]), __v);
+const gParse = (v) => { const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec((v || '').trim()); return m ? { y: Number(m[3]), mo: Number(m[2]) - 1, d: Number(m[1]) } : null; };
+Object.keys(GF).forEach((id) => {
+__v['gdpT_' + id.replace(/-/g, '_')] = (e) => {
+if (s.gdp === id) { set({ gdp: '' }); return; }
+const r = e && e.currentTarget && e.currentTarget.getBoundingClientRect ? e.currentTarget.getBoundingClientRect() : { bottom: 200, right: 600 };
+const W = 304, H = 420, vw = window.innerWidth || 1440, vh = window.innerHeight || 900;
+let left = Math.min(Math.max(8, r.right + 8 - W), vw - W - 8); let top = r.bottom + 12; if (top + H > vh - 8) top = Math.max(8, r.top - H - 12);
+const cur = gParse(gget(GF[id][0])); const base = cur ? new Date(cur.y, cur.mo, 1) : new Date();
+set({ gdp: id, gdpView: 'date', gdpPick: cur ? iso(cur.y, cur.mo, cur.d) : '', gdpYear: base.getFullYear(), gdpMonth: base.getMonth(), gdpTop: top + 'px', gdpLeft: left + 'px' });
+};
+});
+const gCells = []; { const fd = new Date(s.gdpYear, s.gdpMonth, 1).getDay(); const fn = new Date(s.gdpYear, s.gdpMonth + 1, 0).getDate();
+for (let i = 0; i < fd; i++) gCells.push({ isDay: false });
+for (let d = 1; d <= fn; d++) { const id = iso(s.gdpYear, s.gdpMonth, d); const sel = id === s.gdpPick;
+gCells.push({ isDay: true, label: String(d), aria: d + ' ' + fullMonths[s.gdpMonth] + ' ' + s.gdpYear, pressed: sel ? 'true' : 'false', bg: sel ? '#1b48b5' : '#ffffff', fg: sel ? '#ffffff' : '#072447', ring: id === todayIso && !sel ? RING : 'none', pick: () => set({ gdpPick: id }) }); }
+while (gCells.length % 7) gCells.push({ isDay: false }); }
+const gWeeks = []; for (let i = 0; i < gCells.length; i += 7) gWeeks.push({ days: gCells.slice(i, i + 7) });
+const gMonths = shortMonths.map((m, i) => ({ label: m.toUpperCase(), aria: fullMonths[i] + ' ' + s.gdpYear, ring: i === s.gdpMonth ? RING : 'none', pick: () => set({ gdpMonth: i, gdpView: 'date' }) }));
+const gYears = []; for (let i = 0; i < 12; i++) { const y = s.gdpYearStart + i; gYears.push({ label: String(y), aria: String(y), ring: y === s.gdpYear ? RING : 'none', pick: () => set({ gdpYear: y, gdpView: 'month' }) }); }
+const gShift = (by) => { const d = new Date(s.gdpYear, s.gdpMonth + by, 1); set({ gdpYear: d.getFullYear(), gdpMonth: d.getMonth() }); };
+Object.assign(__v, {
+gdpShow: !!GF[s.gdp], gdpTop: s.gdpTop, gdpLeft: s.gdpLeft, gdpDialog: GF[s.gdp] ? 'Choose ' + GF[s.gdp][2].toLowerCase() : 'Choose date',
+gdpIsDate: s.gdpView === 'date', gdpIsGrid: s.gdpView !== 'date', gdpHasChevron: s.gdpView !== 'year', gdpGrid: s.gdpView === 'year' ? gYears : gMonths, gdpWeeks: gWeeks,
+gdpTitle: s.gdpView === 'date' ? shortMonths[s.gdpMonth] + ' ' + s.gdpYear : s.gdpView === 'month' ? String(s.gdpYear) : s.gdpYearStart + ' - ' + (s.gdpYearStart + 11),
+gdpTitleLabel: s.gdpView === 'date' ? 'Choose month' : s.gdpView === 'month' ? 'Choose year' : 'Back to months',
+gdpPrevLabel: s.gdpView === 'date' ? 'Previous month' : s.gdpView === 'month' ? 'Previous year' : 'Previous 12 years',
+gdpNextLabel: s.gdpView === 'date' ? 'Next month' : s.gdpView === 'month' ? 'Next year' : 'Next 12 years',
+gdpPrev: () => { if (s.gdpView === 'date') gShift(-1); else if (s.gdpView === 'month') set({ gdpYear: s.gdpYear - 1 }); else set({ gdpYearStart: s.gdpYearStart - 12 }); },
+gdpNext: () => { if (s.gdpView === 'date') gShift(1); else if (s.gdpView === 'month') set({ gdpYear: s.gdpYear + 1 }); else set({ gdpYearStart: s.gdpYearStart + 12 }); },
+gdpSwitchView: () => { if (s.gdpView === 'date') set({ gdpView: 'month' }); else if (s.gdpView === 'month') set({ gdpView: 'year', gdpYearStart: s.gdpYear - 10 }); else set({ gdpView: 'month' }); },
+gdpCancel: () => set({ gdp: '' }),
+gdpApply: () => { const f = GF[s.gdp]; if (f && s.gdpPick) { const q = s.gdpPick.split('-'); const h = gget(f[1]); if (h) h({ target: { value: q[2] + '/' + q[1] + '/' + q[0] } }); } set({ gdp: '' }); }
+});
+return __v;
 }
 }
