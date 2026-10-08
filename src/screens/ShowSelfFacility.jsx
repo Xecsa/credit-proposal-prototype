@@ -78,14 +78,6 @@ Back</button>
 <div style={{ fontSize: "24px", lineHeight: "32px", fontWeight: "500", color: "#000000" }}>Orient Insurance</div>
 {' '}
 <div style={{ marginTop: "12px", lineHeight: "16px", color: "#575757" }}>CIF: 102938859</div>
-{' '}
-<div style={{ marginTop: "16px", display: "flex", flexWrap: "wrap", gap: "16px" }}>{' '}
-<span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#f3e6e6", color: "#9d0000", display: "inline-flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10.25 1.75L1.75 10.25M1.75 1.75L10.25 10.25" stroke="#9d0000" strokeLinecap="round"></path></svg>
-CIF Suspended</span>
-{' '}
-<span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#f3e6e6", color: "#9d0000", display: "inline-flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M9.70 2.64L2.64 9.70M11 6C11 8.76 8.76 11 6 11C3.23 11 1 8.76 1 6C1 3.23 3.23 1 6 1C8.76 1 11 3.23 11 6Z" stroke="#9d0000"></path></svg>
-Blacklisted</span>
-{' '}</div>
 {' '}</div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
