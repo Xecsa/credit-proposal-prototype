@@ -15,7 +15,7 @@ facilities: [
 { id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
 ],
 facSeq: 2, facMenu: 0, facDelete: 0, facEdit: 0, fType: '', fProduct: '', fLimit: '', fPurpose: '', fOpen: '',
-facLoading: false, docsUp: {}, docStage: '', docMenu: '', docDelete: '',
+facLoading: false, docsUp: { tl: true, moa: true }, docsAuto: { tl: true, moa: true }, docStage: '', docMenu: '', docDelete: '',
 tlOpen: '', tlDrop: '', tlSaved: null, tlForm: null, tlCtMobile: '', tlCtSaved: '',
 ownDone: false, shStep: 'docs', shDocs: '', shMenu: '', shDrop: '', shEdit: '',
 shF: { title: '', first: 'Ahmed', last: 'Al-Hassan', role: '', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
@@ -230,7 +230,7 @@ const docRows = docDefs.map((d) => {
 const up = !!s.docsUp[d[0]];
 const open = s.docMenu === d[0];
 return {
-title: d[1], desc: d[2], uploaded: up, showRequired: d[3] && !up,
+title: d[1], desc: d[2], uploaded: up, showRequired: d[3] && !up, autoFetched: up && !!s.docsAuto[d[0]],
 menuLabel: 'Actions for ' + d[1], expanded: open ? 'true' : 'false', menuUploaded: open && up, menuEmpty: open && !up,
 toggleMenu: () => set({ docMenu: open ? '' : d[0] }),
 upload: () => set({ docMenu: '', docStage: 'picker' }),
@@ -622,7 +622,7 @@ docContinueDisabled: !docsReady, docContinueCursor: docsReady ? 'pointer' : 'not
 docContinueBg: docsReady ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)',
 docDeleteOpen: !!docDeleting, docDeleteName: docDeleting ? docDeleting[4] : '',
 docDeleteCancel: () => set({ docDelete: '' }),
-docDeleteYes: () => { const next = Object.assign({}, s.docsUp); next[s.docDelete] = false; set({ docDelete: '', docsUp: next }); },
+docDeleteYes: () => { const next = Object.assign({}, s.docsUp); next[s.docDelete] = false; const au = Object.assign({}, s.docsAuto); au[s.docDelete] = false; set({ docDelete: '', docsUp: next, docsAuto: au }); },
 facRows: facRows, facAdd: () => set({ phase: 'selfFacForm', facEdit: 0, facMenu: 0, fType: '', fProduct: '', fLimit: '', fPurpose: '', fOpen: '' }),
 facDeleteOpen: !!facDeleting, facDeleteTitle: facDeleting ? facTitle(facDeleting) : '',
 facDeleteCancel: () => set({ facDelete: 0 }),

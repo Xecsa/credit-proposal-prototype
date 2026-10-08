@@ -90,6 +90,10 @@ Back</button>
 {(dr.showRequired) ? (<>{' '}
 <span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "8px", background: "#f3e6e6", color: "#9d0000" }}>Required</span>
 {' '}</>) : null}
+{' '}
+{(dr.autoFetched) ? (<>{' '}
+<span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "8px", background: "#eaeaea", color: "#575757" }}>Auto-fetched</span>
+{' '}</>) : null}
 {' '}</div>
 {' '}
 <button onClick={dr.toggleMenu} aria-label={dr.menuLabel} aria-haspopup="menu" aria-expanded={dr.expanded} style={{ flex: "none", width: "24px", height: "40px", padding: "8px 0", border: "0", borderRadius: "8px", background: "transparent", cursor: "pointer", display: "flex", alignItems: "flex-start", justifyContent: "center" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13.5 4C13.5 4.82 12.82 5.5 12 5.5C11.17 5.5 10.5 4.82 10.5 4C10.5 3.17 11.17 2.5 12 2.5C12.82 2.5 13.5 3.17 13.5 4ZM13.5 12C13.5 12.82 12.82 13.5 12 13.5C11.17 13.5 10.5 12.82 10.5 12C10.5 11.17 11.17 10.5 12 10.5C12.82 10.5 13.5 11.17 13.5 12ZM13.5 20C13.5 20.82 12.82 21.5 12 21.5C11.17 21.5 10.5 20.82 10.5 20C10.5 19.17 11.17 18.5 12 18.5C12.82 18.5 13.5 19.17 13.5 20Z" fill="#182f7c" stroke="#182f7c"></path></svg></button>
