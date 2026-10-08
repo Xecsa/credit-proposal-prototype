@@ -169,7 +169,7 @@ Back</button>
 {' '}</div>
 {' '}
 {(v.selfHasResult) ? (<>{' '}
-<button onClick={v.goSelfSummary} style={{ font: "inherit", textAlign: "left", width: "100%", boxSizing: "border-box", padding: "16px", border: "1px solid transparent", borderRadius: "8px", background: "#ffffff", cursor: "pointer", display: "flex", gap: "16px", alignItems: "flex-start", color: "#072447" }}>{' '}
+<button onClick={v.goMeeting} style={{ font: "inherit", textAlign: "left", width: "100%", boxSizing: "border-box", padding: "16px", border: "1px solid transparent", borderRadius: "8px", background: "#ffffff", cursor: "pointer", display: "flex", gap: "16px", alignItems: "flex-start", color: "#072447" }}>{' '}
 <span style={{ flex: "none", width: "40px", height: "40px", borderRadius: "20px", background: "#f4f7fe", display: "flex", alignItems: "center", justifyContent: "center" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13.16 11.24C15.36 12.82 16.25 14.60 16.25 17.91H3.75C3.75 14.60 4.63 12.82 6.83 11.24M13.75 6.66C13.75 8.73 12.07 10.41 10 10.41C7.92 10.41 6.25 8.73 6.25 6.66C6.25 4.59 7.92 2.91 10 2.91C12.07 2.91 13.75 4.59 13.75 6.66Z" stroke="#1b48b5" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"></path></svg></span>
 {' '}
 <span style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>{' '}
@@ -764,7 +764,7 @@ Perfios output</span></div></div>
 <div style={{ flex: "1", minWidth: "0", overflowY: "auto", background: "#f1f3f7", padding: "40px 24px 80px", display: "flex", flexDirection: "column", alignItems: "center" }}>{' '}
 <div style={{ width: "100%", maxWidth: "648px", display: "flex", flexDirection: "column", gap: "40px" }}>{' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
-<button onClick={v.goSelfSummary} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "24px", padding: "0", border: "0", background: "transparent", color: "#1b48b5", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px", alignSelf: "flex-start" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#1b48b5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+<button onClick={v.hubBack} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "24px", padding: "0", border: "0", background: "transparent", color: "#1b48b5", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px", alignSelf: "flex-start" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#1b48b5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
 Back</button>
 {' '}
 <h1 style={{ margin: "0", fontSize: "40px", lineHeight: "48px", fontWeight: "300", color: "#072447", overflowWrap: "anywhere" }}>Facility Application</h1>

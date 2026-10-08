@@ -132,7 +132,7 @@ isMeText: m.from === 'me' && m.kind === 'text',
 isAudio: m.kind === 'audio', isTyping: m.kind === 'typing',
 isSummary: m.kind === 'summary', isActions: m.kind === 'actions',
 open: !s.choice,
-startFacility: () => this.choose('Start Facility application', 'Starting a facility application for ' + s.client + '. The next screens are not part of this prototype yet.'),
+startFacility: () => set({ phase: 'selfHub', selfNote: '' }),
 followUp: () => this.choose('Schedule follow-up', 'Scheduling a follow-up is not part of this prototype yet.'),
 closeLead: () => this.choose('Close lead', 'Closing the lead is not part of this prototype yet.')
 }));
@@ -641,6 +641,7 @@ if (s.facEdit) set({ phase: 'selfFacility', fOpen: '', facilities: s.facilities.
 else set({ phase: 'selfFacility', fOpen: '', facSeq: s.facSeq + 1, facilities: s.facilities.concat([Object.assign({ id: s.facSeq + 1, seed: false }, data)]) });
 },
 showSelfList: s.phase === 'selfList', showSelfSearch: s.phase === 'selfSearch', showSelfSummary: s.phase === 'selfSummary', showSelfHub: s.phase === 'selfHub',
+goMeeting: () => set({ phase: s.created ? 'chat' : 'form', name: s.name || 'Working capital requirements', selfNote: '', listOpen: '' }), hubBack: () => set({ phase: s.created ? 'chat' : 'selfSearch' }),
 goSelfList: goSelf('selfList'), goSelfSearch: goSelf('selfSearch'), goSelfSummary: goSelf('selfSummary'), goSelfHub: goSelf('selfHub'),
 listSearch: s.listSearch, setListSearch: (e) => set({ listSearch: e.target.value }),
 listFilters: listFilters, listRows: listRows, listEmpty: listRows.length === 0,
@@ -759,7 +760,7 @@ saveDraft: () => set({ draftSaved: true }),
 createMeeting: () => {
 if (!canCreate) return;
 const first = s.messages.length ? [] : [this.msg('bot', 'text', 'What was said during the meeting?')];
-set({ phase: 'chat', created: true, collapsed: false, draftSaved: false, dpOpen: false, tpOpen: '', topicOpen: false, messages: s.messages.concat(first) });
+set({ phase: 'chat', created: true, collapsed: false, draftSaved: false, dpOpen: false, tpOpen: '', topicOpen: false, messages: s.messages.concat(first), draft: s.messages.length ? s.draft : "Meeting with Mr. Satish Shetty was arranged on 30/09/2024 at 3PM at Client's office in U Bora Tower, Business Bay Dubai to discuss the current requirement.\n\nOrient Insurance Ltd was incorporated on 22-Apr-2021 with registered number 4663 at DIFC, Dubai.\n\nOrient Insurance LLC is a Limited Liability established in Dec'2016 registered under DED Dubai. The company is a part of Hayel Saeed Anam (HSA) Group of Companies.\n\nThe Group: Hayel Saeed Anam Group - Wikipedia HSA Group is a multi-Billion US conglomerate started operations from Yemen. The HSA Group is globally recognised for a well-balanced investment portfolio, efficient manufacturing systems and a range of market leading products that enrich the lives of customers.\n\nCurrent Request: A New term loan facility is proposed for the client. Client had purchased an office in DIFC area in last year for captive usage. The company and corporate Guarantor are cash rich and maintains average balances of AED 18 MN- AED 55 MN in company accounts with us. Entire cash flow routing is done through ENBD accounts. The borrower is a part HSA Group which is a multi-Billion USD conglomerate, having operations in more than 10 countries.\n\nPurpose of the current loan: The client is looking for the equity release on the property which is bought by them in the last year. Client is looking for equity release of the funds for reinvestment in the business." });
 },
 editMeeting: () => set({ phase: 'form' }),
 deleteMeeting: () => {
@@ -771,7 +772,7 @@ start: '', end: '', topic: '', location: '', participants: [''], files: [], draf
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: ''
 });
 },
-closeTakeover: () => set({ phase: 'start', dpOpen: false, tpOpen: '', topicOpen: false }),
+closeTakeover: () => set({ phase: 'selfSearch', dpOpen: false, tpOpen: '', topicOpen: false }),
 togglePanel: () => set({ collapsed: !s.collapsed }),
 setDraft: (e) => set({ draft: e.target.value }),
 draftKey: (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } },
