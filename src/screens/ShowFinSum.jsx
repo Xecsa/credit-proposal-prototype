@@ -70,102 +70,267 @@ Continue to entity selection</button>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500" }}>2025</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Method</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c1.view) ? (<><button type="button" className="feb" aria-label="Edit Method 2023" onClick={v.fe.c1.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c1.val}</span></>) : null}
+{(v.fe.c1.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Method 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Method 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c2.view) ? (<><button type="button" className="feb" aria-label="Edit Method 2024" onClick={v.fe.c2.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c2.val}</span></>) : null}
+{(v.fe.c2.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Method 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Method 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c3.view) ? (<><button type="button" className="feb" aria-label="Edit Method 2025" onClick={v.fe.c3.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c3.val}</span></>) : null}
+{(v.fe.c3.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Method 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Method 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Accountant</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,012,148</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,725,402</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>55,593,804</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c4.view) ? (<><button type="button" className="feb" aria-label="Edit Accountant 2023" onClick={v.fe.c4.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c4.val}</span></>) : null}
+{(v.fe.c4.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accountant 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accountant 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c5.view) ? (<><button type="button" className="feb" aria-label="Edit Accountant 2024" onClick={v.fe.c5.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c5.val}</span></>) : null}
+{(v.fe.c5.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accountant 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accountant 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c6.view) ? (<><button type="button" className="feb" aria-label="Edit Accountant 2025" onClick={v.fe.c6.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c6.val}</span></>) : null}
+{(v.fe.c6.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accountant 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accountant 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Analyst</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>27,633,232</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>58,200,003</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>40,468,814</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c7.view) ? (<><button type="button" className="feb" aria-label="Edit Analyst 2023" onClick={v.fe.c7.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c7.val}</span></>) : null}
+{(v.fe.c7.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Analyst 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Analyst 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c8.view) ? (<><button type="button" className="feb" aria-label="Edit Analyst 2024" onClick={v.fe.c8.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c8.val}</span></>) : null}
+{(v.fe.c8.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Analyst 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Analyst 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c9.view) ? (<><button type="button" className="feb" aria-label="Edit Analyst 2025" onClick={v.fe.c9.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c9.val}</span></>) : null}
+{(v.fe.c9.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Analyst 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Analyst 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Statement type</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64,253,647</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>48,367,488</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>48,140,857</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c10.view) ? (<><button type="button" className="feb" aria-label="Edit Statement type 2023" onClick={v.fe.c10.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c10.val}</span></>) : null}
+{(v.fe.c10.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Statement type 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Statement type 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c11.view) ? (<><button type="button" className="feb" aria-label="Edit Statement type 2024" onClick={v.fe.c11.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c11.val}</span></>) : null}
+{(v.fe.c11.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Statement type 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Statement type 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c12.view) ? (<><button type="button" className="feb" aria-label="Edit Statement type 2025" onClick={v.fe.c12.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c12.val}</span></>) : null}
+{(v.fe.c12.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Statement type 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Statement type 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Accounting stnadard</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>79,582,434</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>74,501,918</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>32,799,574</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c13.view) ? (<><button type="button" className="feb" aria-label="Edit Accounting stnadard 2023" onClick={v.fe.c13.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c13.val}</span></>) : null}
+{(v.fe.c13.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounting stnadard 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounting stnadard 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c14.view) ? (<><button type="button" className="feb" aria-label="Edit Accounting stnadard 2024" onClick={v.fe.c14.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c14.val}</span></>) : null}
+{(v.fe.c14.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounting stnadard 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounting stnadard 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c15.view) ? (<><button type="button" className="feb" aria-label="Edit Accounting stnadard 2025" onClick={v.fe.c15.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c15.val}</span></>) : null}
+{(v.fe.c15.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounting stnadard 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounting stnadard 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Status</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>56,515,233</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>53,611,098</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>67,117,049</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c16.view) ? (<><button type="button" className="feb" aria-label="Edit Status 2023" onClick={v.fe.c16.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c16.val}</span></>) : null}
+{(v.fe.c16.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Status 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Status 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c17.view) ? (<><button type="button" className="feb" aria-label="Edit Status 2024" onClick={v.fe.c17.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c17.val}</span></>) : null}
+{(v.fe.c17.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Status 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Status 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c18.view) ? (<><button type="button" className="feb" aria-label="Edit Status 2025" onClick={v.fe.c18.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c18.val}</span></>) : null}
+{(v.fe.c18.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Status 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Status 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Consolidation</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>88,454,530</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>29,199,751</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>88,645,477</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c19.view) ? (<><button type="button" className="feb" aria-label="Edit Consolidation 2023" onClick={v.fe.c19.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c19.val}</span></>) : null}
+{(v.fe.c19.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Consolidation 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Consolidation 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c20.view) ? (<><button type="button" className="feb" aria-label="Edit Consolidation 2024" onClick={v.fe.c20.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c20.val}</span></>) : null}
+{(v.fe.c20.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Consolidation 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Consolidation 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c21.view) ? (<><button type="button" className="feb" aria-label="Edit Consolidation 2025" onClick={v.fe.c21.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c21.val}</span></>) : null}
+{(v.fe.c21.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Consolidation 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Consolidation 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Currency</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>99,344,533</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>38,951,971</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>60,340,585</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c22.view) ? (<><button type="button" className="feb" aria-label="Edit Currency 2023" onClick={v.fe.c22.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c22.val}</span></>) : null}
+{(v.fe.c22.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Currency 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Currency 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c23.view) ? (<><button type="button" className="feb" aria-label="Edit Currency 2024" onClick={v.fe.c23.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c23.val}</span></>) : null}
+{(v.fe.c23.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Currency 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Currency 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c24.view) ? (<><button type="button" className="feb" aria-label="Edit Currency 2025" onClick={v.fe.c24.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c24.val}</span></>) : null}
+{(v.fe.c24.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Currency 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Currency 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Restated</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>82,667,659</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>84,236,023</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>55,557,773</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c25.view) ? (<><button type="button" className="feb" aria-label="Edit Restated 2023" onClick={v.fe.c25.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c25.val}</span></>) : null}
+{(v.fe.c25.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Restated 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Restated 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c26.view) ? (<><button type="button" className="feb" aria-label="Edit Restated 2024" onClick={v.fe.c26.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c26.val}</span></>) : null}
+{(v.fe.c26.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Restated 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Restated 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c27.view) ? (<><button type="button" className="feb" aria-label="Edit Restated 2025" onClick={v.fe.c27.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c27.val}</span></>) : null}
+{(v.fe.c27.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Restated 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Restated 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Auditor Grade</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>67,052,342</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64,810,583</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>43,431,685</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c28.view) ? (<><button type="button" className="feb" aria-label="Edit Auditor Grade 2023" onClick={v.fe.c28.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c28.val}</span></>) : null}
+{(v.fe.c28.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Auditor Grade 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Auditor Grade 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c29.view) ? (<><button type="button" className="feb" aria-label="Edit Auditor Grade 2024" onClick={v.fe.c29.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c29.val}</span></>) : null}
+{(v.fe.c29.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Auditor Grade 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Auditor Grade 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c30.view) ? (<><button type="button" className="feb" aria-label="Edit Auditor Grade 2025" onClick={v.fe.c30.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c30.val}</span></>) : null}
+{(v.fe.c30.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Auditor Grade 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Auditor Grade 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Reconcile to</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>87,801,782</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>99,109,702</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>84,553,630</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c31.view) ? (<><button type="button" className="feb" aria-label="Edit Reconcile to 2023" onClick={v.fe.c31.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c31.val}</span></>) : null}
+{(v.fe.c31.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Reconcile to 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Reconcile to 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c32.view) ? (<><button type="button" className="feb" aria-label="Edit Reconcile to 2024" onClick={v.fe.c32.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c32.val}</span></>) : null}
+{(v.fe.c32.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Reconcile to 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Reconcile to 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c33.view) ? (<><button type="button" className="feb" aria-label="Edit Reconcile to 2025" onClick={v.fe.c33.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c33.val}</span></>) : null}
+{(v.fe.c33.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Reconcile to 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Reconcile to 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 799fr" }}><div role="cell" style={{ height: "32px", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", padding: "0 8px", borderRight: "1px solid #e5e5e5", display: "flex", alignItems: "center" }}>Document</div>
 <div role="cell"></div></div>
@@ -183,201 +348,531 @@ Continue to entity selection</button>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500" }}>2025</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Cash in hand &amp; banks</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c34.view) ? (<><button type="button" className="feb" aria-label="Edit Cash in hand & banks 2023" onClick={v.fe.c34.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c34.val}</span></>) : null}
+{(v.fe.c34.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Cash in hand & banks 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Cash in hand & banks 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c35.view) ? (<><button type="button" className="feb" aria-label="Edit Cash in hand & banks 2024" onClick={v.fe.c35.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c35.val}</span></>) : null}
+{(v.fe.c35.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Cash in hand & banks 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Cash in hand & banks 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c36.view) ? (<><button type="button" className="feb" aria-label="Edit Cash in hand & banks 2025" onClick={v.fe.c36.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c36.val}</span></>) : null}
+{(v.fe.c36.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Cash in hand & banks 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Cash in hand & banks 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Time/margin/call Deposits</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,012,148</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,725,402</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>55,593,804</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c37.view) ? (<><button type="button" className="feb" aria-label="Edit Time/margin/call Deposits 2023" onClick={v.fe.c37.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c37.val}</span></>) : null}
+{(v.fe.c37.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Time/margin/call Deposits 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Time/margin/call Deposits 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c38.view) ? (<><button type="button" className="feb" aria-label="Edit Time/margin/call Deposits 2024" onClick={v.fe.c38.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c38.val}</span></>) : null}
+{(v.fe.c38.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Time/margin/call Deposits 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Time/margin/call Deposits 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c39.view) ? (<><button type="button" className="feb" aria-label="Edit Time/margin/call Deposits 2025" onClick={v.fe.c39.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c39.val}</span></>) : null}
+{(v.fe.c39.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Time/margin/call Deposits 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Time/margin/call Deposits 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Cash held in Escrows</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>27,633,232</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>58,200,003</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>40,468,814</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c40.view) ? (<><button type="button" className="feb" aria-label="Edit Cash held in Escrows 2023" onClick={v.fe.c40.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c40.val}</span></>) : null}
+{(v.fe.c40.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Cash held in Escrows 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Cash held in Escrows 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c41.view) ? (<><button type="button" className="feb" aria-label="Edit Cash held in Escrows 2024" onClick={v.fe.c41.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c41.val}</span></>) : null}
+{(v.fe.c41.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Cash held in Escrows 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Cash held in Escrows 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c42.view) ? (<><button type="button" className="feb" aria-label="Edit Cash held in Escrows 2025" onClick={v.fe.c42.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c42.val}</span></>) : null}
+{(v.fe.c42.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Cash held in Escrows 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Cash held in Escrows 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Encumbered cash</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64,253,647</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>48,367,488</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>48,140,857</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c43.view) ? (<><button type="button" className="feb" aria-label="Edit Encumbered cash 2023" onClick={v.fe.c43.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c43.val}</span></>) : null}
+{(v.fe.c43.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Encumbered cash 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Encumbered cash 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c44.view) ? (<><button type="button" className="feb" aria-label="Edit Encumbered cash 2024" onClick={v.fe.c44.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c44.val}</span></>) : null}
+{(v.fe.c44.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Encumbered cash 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Encumbered cash 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c45.view) ? (<><button type="button" className="feb" aria-label="Edit Encumbered cash 2025" onClick={v.fe.c45.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c45.val}</span></>) : null}
+{(v.fe.c45.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Encumbered cash 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Encumbered cash 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Marketable Securities (shares/bonds)-AFS</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>79,582,434</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>74,501,918</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>32,799,574</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c46.view) ? (<><button type="button" className="feb" aria-label="Edit Marketable Securities (shares/bonds)-AFS 2023" onClick={v.fe.c46.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c46.val}</span></>) : null}
+{(v.fe.c46.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Marketable Securities (shares/bonds)-AFS 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Marketable Securities (shares/bonds)-AFS 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c47.view) ? (<><button type="button" className="feb" aria-label="Edit Marketable Securities (shares/bonds)-AFS 2024" onClick={v.fe.c47.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c47.val}</span></>) : null}
+{(v.fe.c47.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Marketable Securities (shares/bonds)-AFS 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Marketable Securities (shares/bonds)-AFS 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c48.view) ? (<><button type="button" className="feb" aria-label="Edit Marketable Securities (shares/bonds)-AFS 2025" onClick={v.fe.c48.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c48.val}</span></>) : null}
+{(v.fe.c48.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Marketable Securities (shares/bonds)-AFS 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Marketable Securities (shares/bonds)-AFS 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Accounts/Bills/Notes Receivable - Trade</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>56,515,233</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>53,611,098</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>67,117,049</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c49.view) ? (<><button type="button" className="feb" aria-label="Edit Accounts/Bills/Notes Receivable - Trade 2023" onClick={v.fe.c49.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c49.val}</span></>) : null}
+{(v.fe.c49.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounts/Bills/Notes Receivable - Trade 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounts/Bills/Notes Receivable - Trade 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c50.view) ? (<><button type="button" className="feb" aria-label="Edit Accounts/Bills/Notes Receivable - Trade 2024" onClick={v.fe.c50.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c50.val}</span></>) : null}
+{(v.fe.c50.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounts/Bills/Notes Receivable - Trade 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounts/Bills/Notes Receivable - Trade 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c51.view) ? (<><button type="button" className="feb" aria-label="Edit Accounts/Bills/Notes Receivable - Trade 2025" onClick={v.fe.c51.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c51.val}</span></>) : null}
+{(v.fe.c51.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounts/Bills/Notes Receivable - Trade 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounts/Bills/Notes Receivable - Trade 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Retentions Receivable (less than 1 year)</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>88,454,530</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>29,199,751</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>88,645,477</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c52.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (less than 1 year) 2023" onClick={v.fe.c52.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c52.val}</span></>) : null}
+{(v.fe.c52.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (less than 1 year) 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (less than 1 year) 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c53.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (less than 1 year) 2024" onClick={v.fe.c53.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c53.val}</span></>) : null}
+{(v.fe.c53.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (less than 1 year) 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (less than 1 year) 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c54.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (less than 1 year) 2025" onClick={v.fe.c54.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c54.val}</span></>) : null}
+{(v.fe.c54.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (less than 1 year) 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (less than 1 year) 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Post Dated Cheques</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>99,344,533</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>38,951,971</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>60,340,585</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c55.view) ? (<><button type="button" className="feb" aria-label="Edit Post Dated Cheques 2023" onClick={v.fe.c55.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c55.val}</span></>) : null}
+{(v.fe.c55.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Post Dated Cheques 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Post Dated Cheques 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c56.view) ? (<><button type="button" className="feb" aria-label="Edit Post Dated Cheques 2024" onClick={v.fe.c56.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c56.val}</span></>) : null}
+{(v.fe.c56.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Post Dated Cheques 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Post Dated Cheques 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c57.view) ? (<><button type="button" className="feb" aria-label="Edit Post Dated Cheques 2025" onClick={v.fe.c57.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c57.val}</span></>) : null}
+{(v.fe.c57.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Post Dated Cheques 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Post Dated Cheques 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Advance to Suppliers/Prepayments</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>82,667,659</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>84,236,023</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>55,557,773</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c58.view) ? (<><button type="button" className="feb" aria-label="Edit Advance to Suppliers/Prepayments 2023" onClick={v.fe.c58.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c58.val}</span></>) : null}
+{(v.fe.c58.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Advance to Suppliers/Prepayments 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Advance to Suppliers/Prepayments 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c59.view) ? (<><button type="button" className="feb" aria-label="Edit Advance to Suppliers/Prepayments 2024" onClick={v.fe.c59.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c59.val}</span></>) : null}
+{(v.fe.c59.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Advance to Suppliers/Prepayments 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Advance to Suppliers/Prepayments 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c60.view) ? (<><button type="button" className="feb" aria-label="Edit Advance to Suppliers/Prepayments 2025" onClick={v.fe.c60.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c60.val}</span></>) : null}
+{(v.fe.c60.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Advance to Suppliers/Prepayments 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Advance to Suppliers/Prepayments 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Loans to Affiliates - Current Portion</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>67,052,342</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64,810,583</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>43,431,685</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c61.view) ? (<><button type="button" className="feb" aria-label="Edit Loans to Affiliates - Current Portion 2023" onClick={v.fe.c61.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c61.val}</span></>) : null}
+{(v.fe.c61.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Loans to Affiliates - Current Portion 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Loans to Affiliates - Current Portion 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c62.view) ? (<><button type="button" className="feb" aria-label="Edit Loans to Affiliates - Current Portion 2024" onClick={v.fe.c62.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c62.val}</span></>) : null}
+{(v.fe.c62.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Loans to Affiliates - Current Portion 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Loans to Affiliates - Current Portion 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c63.view) ? (<><button type="button" className="feb" aria-label="Edit Loans to Affiliates - Current Portion 2025" onClick={v.fe.c63.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c63.val}</span></>) : null}
+{(v.fe.c63.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Loans to Affiliates - Current Portion 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Loans to Affiliates - Current Portion 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Due from Affiliates - Current Portion</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>87,801,782</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>99,109,702</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>84,553,630</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c64.view) ? (<><button type="button" className="feb" aria-label="Edit Due from Affiliates - Current Portion 2023" onClick={v.fe.c64.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c64.val}</span></>) : null}
+{(v.fe.c64.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Due from Affiliates - Current Portion 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Due from Affiliates - Current Portion 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c65.view) ? (<><button type="button" className="feb" aria-label="Edit Due from Affiliates - Current Portion 2024" onClick={v.fe.c65.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c65.val}</span></>) : null}
+{(v.fe.c65.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Due from Affiliates - Current Portion 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Due from Affiliates - Current Portion 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c66.view) ? (<><button type="button" className="feb" aria-label="Edit Due from Affiliates - Current Portion 2025" onClick={v.fe.c66.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c66.val}</span></>) : null}
+{(v.fe.c66.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Due from Affiliates - Current Portion 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Due from Affiliates - Current Portion 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Accounts Receivable - Non Trade</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>72,358,325</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>44,682,614</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>75,446,197</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c67.view) ? (<><button type="button" className="feb" aria-label="Edit Accounts Receivable - Non Trade 2023" onClick={v.fe.c67.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c67.val}</span></>) : null}
+{(v.fe.c67.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounts Receivable - Non Trade 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounts Receivable - Non Trade 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c68.view) ? (<><button type="button" className="feb" aria-label="Edit Accounts Receivable - Non Trade 2024" onClick={v.fe.c68.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c68.val}</span></>) : null}
+{(v.fe.c68.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounts Receivable - Non Trade 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounts Receivable - Non Trade 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c69.view) ? (<><button type="button" className="feb" aria-label="Edit Accounts Receivable - Non Trade 2025" onClick={v.fe.c69.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c69.val}</span></>) : null}
+{(v.fe.c69.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accounts Receivable - Non Trade 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accounts Receivable - Non Trade 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Bad Debt Reserve (-)</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>47,274,721</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>59,051,577</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>37,586,179</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c70.view) ? (<><button type="button" className="feb" aria-label="Edit Bad Debt Reserve (-) 2023" onClick={v.fe.c70.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c70.val}</span></>) : null}
+{(v.fe.c70.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Bad Debt Reserve (-) 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Bad Debt Reserve (-) 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c71.view) ? (<><button type="button" className="feb" aria-label="Edit Bad Debt Reserve (-) 2024" onClick={v.fe.c71.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c71.val}</span></>) : null}
+{(v.fe.c71.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Bad Debt Reserve (-) 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Bad Debt Reserve (-) 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c72.view) ? (<><button type="button" className="feb" aria-label="Edit Bad Debt Reserve (-) 2025" onClick={v.fe.c72.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c72.val}</span></>) : null}
+{(v.fe.c72.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Bad Debt Reserve (-) 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Bad Debt Reserve (-) 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Other provis.-Impair.,slow mov.items etc</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>89,799,814</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>93,371,635</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>19,622,239</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c73.view) ? (<><button type="button" className="feb" aria-label="Edit Other provis.-Impair.,slow mov.items etc 2023" onClick={v.fe.c73.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c73.val}</span></>) : null}
+{(v.fe.c73.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other provis.-Impair.,slow mov.items etc 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other provis.-Impair.,slow mov.items etc 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c74.view) ? (<><button type="button" className="feb" aria-label="Edit Other provis.-Impair.,slow mov.items etc 2024" onClick={v.fe.c74.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c74.val}</span></>) : null}
+{(v.fe.c74.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other provis.-Impair.,slow mov.items etc 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other provis.-Impair.,slow mov.items etc 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c75.view) ? (<><button type="button" className="feb" aria-label="Edit Other provis.-Impair.,slow mov.items etc 2025" onClick={v.fe.c75.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c75.val}</span></>) : null}
+{(v.fe.c75.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other provis.-Impair.,slow mov.items etc 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other provis.-Impair.,slow mov.items etc 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Other Operating Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>95,074,543</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>18,381,207</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>10,756,078</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c76.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Current Assets 2023" onClick={v.fe.c76.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c76.val}</span></>) : null}
+{(v.fe.c76.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c77.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Current Assets 2024" onClick={v.fe.c77.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c77.val}</span></>) : null}
+{(v.fe.c77.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c78.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Current Assets 2025" onClick={v.fe.c78.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c78.val}</span></>) : null}
+{(v.fe.c78.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Costs in Excess of Billings</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>94,311,413</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>35,158,845</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>54,050,999</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c79.view) ? (<><button type="button" className="feb" aria-label="Edit Costs in Excess of Billings 2023" onClick={v.fe.c79.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c79.val}</span></>) : null}
+{(v.fe.c79.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Costs in Excess of Billings 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Costs in Excess of Billings 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c80.view) ? (<><button type="button" className="feb" aria-label="Edit Costs in Excess of Billings 2024" onClick={v.fe.c80.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c80.val}</span></>) : null}
+{(v.fe.c80.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Costs in Excess of Billings 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Costs in Excess of Billings 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c81.view) ? (<><button type="button" className="feb" aria-label="Edit Costs in Excess of Billings 2025" onClick={v.fe.c81.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c81.val}</span></>) : null}
+{(v.fe.c81.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Costs in Excess of Billings 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Costs in Excess of Billings 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Income Tax Receivable</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>83,268,220</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>73,462,302</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>34,535,457</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c82.view) ? (<><button type="button" className="feb" aria-label="Edit Income Tax Receivable 2023" onClick={v.fe.c82.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c82.val}</span></>) : null}
+{(v.fe.c82.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Income Tax Receivable 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Income Tax Receivable 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c83.view) ? (<><button type="button" className="feb" aria-label="Edit Income Tax Receivable 2024" onClick={v.fe.c83.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c83.val}</span></>) : null}
+{(v.fe.c83.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Income Tax Receivable 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Income Tax Receivable 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c84.view) ? (<><button type="button" className="feb" aria-label="Edit Income Tax Receivable 2025" onClick={v.fe.c84.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c84.val}</span></>) : null}
+{(v.fe.c84.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Income Tax Receivable 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Income Tax Receivable 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Deferred Inc Tax Recv – Current Portion</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>67,730,305</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>45,152,708</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>9,303,472</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c85.view) ? (<><button type="button" className="feb" aria-label="Edit Deferred Inc Tax Recv \u2013 Current Portion 2023" onClick={v.fe.c85.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c85.val}</span></>) : null}
+{(v.fe.c85.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Deferred Inc Tax Recv \u2013 Current Portion 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Deferred Inc Tax Recv \u2013 Current Portion 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c86.view) ? (<><button type="button" className="feb" aria-label="Edit Deferred Inc Tax Recv \u2013 Current Portion 2024" onClick={v.fe.c86.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c86.val}</span></>) : null}
+{(v.fe.c86.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Deferred Inc Tax Recv \u2013 Current Portion 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Deferred Inc Tax Recv \u2013 Current Portion 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c87.view) ? (<><button type="button" className="feb" aria-label="Edit Deferred Inc Tax Recv \u2013 Current Portion 2025" onClick={v.fe.c87.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c87.val}</span></>) : null}
+{(v.fe.c87.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Deferred Inc Tax Recv \u2013 Current Portion 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Deferred Inc Tax Recv \u2013 Current Portion 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Prepaid Exp/Deferred Inc-Accruals-CP</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>10,341,584</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>79,011,866</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>76,746,704</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c88.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc-Accruals-CP 2023" onClick={v.fe.c88.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c88.val}</span></>) : null}
+{(v.fe.c88.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc-Accruals-CP 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc-Accruals-CP 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c89.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc-Accruals-CP 2024" onClick={v.fe.c89.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c89.val}</span></>) : null}
+{(v.fe.c89.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc-Accruals-CP 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc-Accruals-CP 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c90.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc-Accruals-CP 2025" onClick={v.fe.c90.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c90.val}</span></>) : null}
+{(v.fe.c90.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc-Accruals-CP 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc-Accruals-CP 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Operating Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>75,648,757</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>54,012,110</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>83,856,173</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c91.view) ? (<><button type="button" className="feb" aria-label="Edit Operating Current Assets 2023" onClick={v.fe.c91.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c91.val}</span></>) : null}
+{(v.fe.c91.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Operating Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Operating Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c92.view) ? (<><button type="button" className="feb" aria-label="Edit Operating Current Assets 2024" onClick={v.fe.c92.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c92.val}</span></>) : null}
+{(v.fe.c92.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Operating Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Operating Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c93.view) ? (<><button type="button" className="feb" aria-label="Edit Operating Current Assets 2025" onClick={v.fe.c93.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c93.val}</span></>) : null}
+{(v.fe.c93.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Operating Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Operating Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Derivative Assets - CP</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>63,746,197</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>40,308,692</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>75,405,130</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c94.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - CP 2023" onClick={v.fe.c94.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c94.val}</span></>) : null}
+{(v.fe.c94.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - CP 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - CP 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c95.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - CP 2024" onClick={v.fe.c95.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c95.val}</span></>) : null}
+{(v.fe.c95.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - CP 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - CP 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c96.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - CP 2025" onClick={v.fe.c96.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c96.val}</span></>) : null}
+{(v.fe.c96.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - CP 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - CP 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Non Operating Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>42,253,392</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>59,194,977</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>69,422,004</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c97.view) ? (<><button type="button" className="feb" aria-label="Edit Non Operating Current Assets 2023" onClick={v.fe.c97.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c97.val}</span></>) : null}
+{(v.fe.c97.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Non Operating Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Non Operating Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c98.view) ? (<><button type="button" className="feb" aria-label="Edit Non Operating Current Assets 2024" onClick={v.fe.c98.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c98.val}</span></>) : null}
+{(v.fe.c98.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Non Operating Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Non Operating Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c99.view) ? (<><button type="button" className="feb" aria-label="Edit Non Operating Current Assets 2025" onClick={v.fe.c99.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c99.val}</span></>) : null}
+{(v.fe.c99.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Non Operating Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Non Operating Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}><svg aria-hidden="true" width="20" height="20" viewBox="246.1 1658.8 17.1 17.1" fill="none"><defs><clipPath id="ifchevdclip0_11890_43994"><rect width="1440" height="4810" fill="white" transform="scale(0.851559)"></rect></clipPath>
 <clipPath id="ifchevdclip16_11890_43994"><path d="M240.991 987.809C240.991 986.868 241.754 986.106 242.694 986.106H1174.3C1175.24 986.106 1176 986.868 1176 987.809V1979.02C1176 1979.96 1175.24 1980.73 1174.3 1980.73H242.694C241.754 1980.73 240.991 1979.96 240.991 1979.02V987.809Z" fill="white"></path></clipPath>
@@ -385,12 +880,27 @@ Continue to entity selection</button>
 <mask id="ifchevdmask1_11890_43994" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="246" y="1658" width="18" height="18"><g><g><path d="M248.23 1664.51L254.616 1670.9L261.003 1664.51" stroke="#182F7C" strokeWidth="0.851559" strokeLinecap="round" strokeLinejoin="round"></path></g></g></mask></defs>
 <g clipPath="url(#ifchevdclip0_11890_43994)"><g clipPath="url(#ifchevdclip16_11890_43994)"><g clipPath="url(#ifchevdclip22_11890_43994)"><g mask="url(#ifchevdmask1_11890_43994)"><rect x="246.101" y="1658.84" width="17.0312" height="17.0312" fill="#182F7C"></rect></g></g></g></g></svg></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Total Inventory¹</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>83,179,370</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>48,612,848</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>7,179,735</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c100.view) ? (<><button type="button" className="feb" aria-label="Edit Total Inventory\u00b9 2023" onClick={v.fe.c100.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c100.val}</span></>) : null}
+{(v.fe.c100.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Inventory\u00b9 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Inventory\u00b9 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c101.view) ? (<><button type="button" className="feb" aria-label="Edit Total Inventory\u00b9 2024" onClick={v.fe.c101.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c101.val}</span></>) : null}
+{(v.fe.c101.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Inventory\u00b9 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Inventory\u00b9 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c102.view) ? (<><button type="button" className="feb" aria-label="Edit Total Inventory\u00b9 2025" onClick={v.fe.c102.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c102.val}</span></>) : null}
+{(v.fe.c102.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Inventory\u00b9 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Inventory\u00b9 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div aria-hidden="true" style={{ display: "grid", gridTemplateColumns: "299fr 799fr" }}><div style={{ boxSizing: "border-box", borderBottom: "0", height: "32px", borderRight: "1px solid #e5e5e5" }}></div>
 <div></div></div>
 <div style={{ boxSizing: "border-box", padding: "16px 16px 24px 24px", background: "#f9fafb" }}>{' '}
@@ -407,52 +917,142 @@ Total Inventory¹</div>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500", borderRight: "1px solid #e5e5e5" }}>2024</div>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500" }}>2023</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Raw Materials</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>142,857</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>167,432</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>95,340</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c103.view) ? (<><button type="button" className="feb" aria-label="Edit Raw Materials 2025" onClick={v.fe.c103.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c103.val}</span></>) : null}
+{(v.fe.c103.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Raw Materials 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Raw Materials 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c104.view) ? (<><button type="button" className="feb" aria-label="Edit Raw Materials 2024" onClick={v.fe.c104.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c104.val}</span></>) : null}
+{(v.fe.c104.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Raw Materials 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Raw Materials 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c105.view) ? (<><button type="button" className="feb" aria-label="Edit Raw Materials 2023" onClick={v.fe.c105.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c105.val}</span></>) : null}
+{(v.fe.c105.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Raw Materials 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Raw Materials 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Work in Process</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>58,320</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>89,150</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>21,567</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c106.view) ? (<><button type="button" className="feb" aria-label="Edit Work in Process 2025" onClick={v.fe.c106.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c106.val}</span></>) : null}
+{(v.fe.c106.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Work in Process 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Work in Process 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c107.view) ? (<><button type="button" className="feb" aria-label="Edit Work in Process 2024" onClick={v.fe.c107.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c107.val}</span></>) : null}
+{(v.fe.c107.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Work in Process 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Work in Process 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c108.view) ? (<><button type="button" className="feb" aria-label="Edit Work in Process 2023" onClick={v.fe.c108.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c108.val}</span></>) : null}
+{(v.fe.c108.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Work in Process 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Work in Process 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Finished Goods</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>191,204</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>12,784</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>154,893</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c109.view) ? (<><button type="button" className="feb" aria-label="Edit Finished Goods 2025" onClick={v.fe.c109.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c109.val}</span></>) : null}
+{(v.fe.c109.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Finished Goods 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Finished Goods 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c110.view) ? (<><button type="button" className="feb" aria-label="Edit Finished Goods 2024" onClick={v.fe.c110.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c110.val}</span></>) : null}
+{(v.fe.c110.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Finished Goods 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Finished Goods 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c111.view) ? (<><button type="button" className="feb" aria-label="Edit Finished Goods 2023" onClick={v.fe.c111.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c111.val}</span></>) : null}
+{(v.fe.c111.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Finished Goods 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Finished Goods 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Goods in transit</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>73,615</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>105,623</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>67,812</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c112.view) ? (<><button type="button" className="feb" aria-label="Edit Goods in transit 2025" onClick={v.fe.c112.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c112.val}</span></>) : null}
+{(v.fe.c112.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Goods in transit 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Goods in transit 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c113.view) ? (<><button type="button" className="feb" aria-label="Edit Goods in transit 2024" onClick={v.fe.c113.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c113.val}</span></>) : null}
+{(v.fe.c113.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Goods in transit 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Goods in transit 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c114.view) ? (<><button type="button" className="feb" aria-label="Edit Goods in transit 2023" onClick={v.fe.c114.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c114.val}</span></>) : null}
+{(v.fe.c114.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Goods in transit 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Goods in transit 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Other Inventory/store &amp; spares</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>126,498</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>48,209</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>118,045</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c115.view) ? (<><button type="button" className="feb" aria-label="Edit Other Inventory/store & spares 2025" onClick={v.fe.c115.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c115.val}</span></>) : null}
+{(v.fe.c115.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Inventory/store & spares 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Inventory/store & spares 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c116.view) ? (<><button type="button" className="feb" aria-label="Edit Other Inventory/store & spares 2024" onClick={v.fe.c116.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c116.val}</span></>) : null}
+{(v.fe.c116.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Inventory/store & spares 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Inventory/store & spares 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c117.view) ? (<><button type="button" className="feb" aria-label="Edit Other Inventory/store & spares 2023" onClick={v.fe.c117.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c117.val}</span></>) : null}
+{(v.fe.c117.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Inventory/store & spares 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Inventory/store & spares 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Supplies &amp; consummables</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>34,971</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>183,076</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>39,726</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c118.view) ? (<><button type="button" className="feb" aria-label="Edit Supplies & consummables 2025" onClick={v.fe.c118.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c118.val}</span></>) : null}
+{(v.fe.c118.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Supplies & consummables 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Supplies & consummables 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c119.view) ? (<><button type="button" className="feb" aria-label="Edit Supplies & consummables 2024" onClick={v.fe.c119.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c119.val}</span></>) : null}
+{(v.fe.c119.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Supplies & consummables 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Supplies & consummables 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c120.view) ? (<><button type="button" className="feb" aria-label="Edit Supplies & consummables 2023" onClick={v.fe.c120.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c120.val}</span></>) : null}
+{(v.fe.c120.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Supplies & consummables 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Supplies & consummables 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}</div>
 {' '}</div>
 {' '}</div></div>
@@ -473,12 +1073,27 @@ Total Inventory¹</div>
 <mask id="ifchevdmask1_11890_43994" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="246" y="1658" width="18" height="18"><g><g><path d="M248.23 1664.51L254.616 1670.9L261.003 1664.51" stroke="#182F7C" strokeWidth="0.851559" strokeLinecap="round" strokeLinejoin="round"></path></g></g></mask></defs>
 <g clipPath="url(#ifchevdclip0_11890_43994)"><g clipPath="url(#ifchevdclip16_11890_43994)"><g clipPath="url(#ifchevdclip22_11890_43994)"><g mask="url(#ifchevdmask1_11890_43994)"><rect x="246.101" y="1658.84" width="17.0312" height="17.0312" fill="#182F7C"></rect></g></g></g></g></svg></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Total Fixed Assets - Net</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c121.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2023" onClick={v.fe.c121.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c121.val}</span></>) : null}
+{(v.fe.c121.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c122.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2024" onClick={v.fe.c122.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c122.val}</span></>) : null}
+{(v.fe.c122.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c123.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2025" onClick={v.fe.c123.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c123.val}</span></>) : null}
+{(v.fe.c123.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div style={{ boxSizing: "border-box", padding: "16px 16px 24px 24px", background: "#f9fafb" }}>{' '}
 <div style={{ height: "56px", display: "flex", alignItems: "center", gap: "4px", fontSize: "20px", lineHeight: "24px" }}><span aria-hidden="true" style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="261.4 1735.5 20.5 20.5" fill="none"><defs><clipPath id="ifarrowclip0_11890_43994"><rect width="1440" height="4810" fill="white" transform="scale(0.851559)"></rect></clipPath>
 <clipPath id="ifarrowclip16_11890_43994"><path d="M240.991 987.809C240.991 986.868 241.754 986.106 242.694 986.106H1174.3C1175.24 986.106 1176 986.868 1176 987.809V1979.02C1176 1979.96 1175.24 1980.73 1174.3 1980.73H242.694C241.754 1980.73 240.991 1979.96 240.991 1979.02V987.809Z" fill="white"></path></clipPath>
@@ -493,183 +1108,498 @@ Total Fixed Assets - Net</div>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500", borderRight: "1px solid #e5e5e5" }}>2024</div>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500" }}>2023</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Freehold Land (&amp; Bldg where inseparable)</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>142,857</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>167,432</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>95,340</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c124.view) ? (<><button type="button" className="feb" aria-label="Edit Freehold Land (& Bldg where inseparable) 2025" onClick={v.fe.c124.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c124.val}</span></>) : null}
+{(v.fe.c124.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Freehold Land (& Bldg where inseparable) 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Freehold Land (& Bldg where inseparable) 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c125.view) ? (<><button type="button" className="feb" aria-label="Edit Freehold Land (& Bldg where inseparable) 2024" onClick={v.fe.c125.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c125.val}</span></>) : null}
+{(v.fe.c125.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Freehold Land (& Bldg where inseparable) 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Freehold Land (& Bldg where inseparable) 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c126.view) ? (<><button type="button" className="feb" aria-label="Edit Freehold Land (& Bldg where inseparable) 2023" onClick={v.fe.c126.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c126.val}</span></>) : null}
+{(v.fe.c126.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Freehold Land (& Bldg where inseparable) 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Freehold Land (& Bldg where inseparable) 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Capital Work in Progress</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>58,320</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>89,150</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>21,567</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c127.view) ? (<><button type="button" className="feb" aria-label="Edit Capital Work in Progress 2025" onClick={v.fe.c127.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c127.val}</span></>) : null}
+{(v.fe.c127.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Capital Work in Progress 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Capital Work in Progress 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c128.view) ? (<><button type="button" className="feb" aria-label="Edit Capital Work in Progress 2024" onClick={v.fe.c128.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c128.val}</span></>) : null}
+{(v.fe.c128.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Capital Work in Progress 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Capital Work in Progress 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c129.view) ? (<><button type="button" className="feb" aria-label="Edit Capital Work in Progress 2023" onClick={v.fe.c129.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c129.val}</span></>) : null}
+{(v.fe.c129.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Capital Work in Progress 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Capital Work in Progress 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Buildings &amp; Improvements</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>191,204</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>12,784</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>154,893</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c130.view) ? (<><button type="button" className="feb" aria-label="Edit Buildings & Improvements 2025" onClick={v.fe.c130.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c130.val}</span></>) : null}
+{(v.fe.c130.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Buildings & Improvements 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Buildings & Improvements 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c131.view) ? (<><button type="button" className="feb" aria-label="Edit Buildings & Improvements 2024" onClick={v.fe.c131.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c131.val}</span></>) : null}
+{(v.fe.c131.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Buildings & Improvements 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Buildings & Improvements 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c132.view) ? (<><button type="button" className="feb" aria-label="Edit Buildings & Improvements 2023" onClick={v.fe.c132.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c132.val}</span></>) : null}
+{(v.fe.c132.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Buildings & Improvements 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Buildings & Improvements 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Plant, Machinery &amp; Equipment</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>73,615</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>105,623</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>67,812</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c133.view) ? (<><button type="button" className="feb" aria-label="Edit Plant, Machinery & Equipment 2025" onClick={v.fe.c133.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c133.val}</span></>) : null}
+{(v.fe.c133.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Plant, Machinery & Equipment 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Plant, Machinery & Equipment 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c134.view) ? (<><button type="button" className="feb" aria-label="Edit Plant, Machinery & Equipment 2024" onClick={v.fe.c134.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c134.val}</span></>) : null}
+{(v.fe.c134.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Plant, Machinery & Equipment 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Plant, Machinery & Equipment 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c135.view) ? (<><button type="button" className="feb" aria-label="Edit Plant, Machinery & Equipment 2023" onClick={v.fe.c135.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c135.val}</span></>) : null}
+{(v.fe.c135.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Plant, Machinery & Equipment 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Plant, Machinery & Equipment 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Furniture,Fixture and Office Equipment</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>126,498</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>48,209</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>118,045</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c136.view) ? (<><button type="button" className="feb" aria-label="Edit Furniture,Fixture and Office Equipment 2025" onClick={v.fe.c136.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c136.val}</span></>) : null}
+{(v.fe.c136.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Furniture,Fixture and Office Equipment 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Furniture,Fixture and Office Equipment 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c137.view) ? (<><button type="button" className="feb" aria-label="Edit Furniture,Fixture and Office Equipment 2024" onClick={v.fe.c137.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c137.val}</span></>) : null}
+{(v.fe.c137.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Furniture,Fixture and Office Equipment 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Furniture,Fixture and Office Equipment 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c138.view) ? (<><button type="button" className="feb" aria-label="Edit Furniture,Fixture and Office Equipment 2023" onClick={v.fe.c138.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c138.val}</span></>) : null}
+{(v.fe.c138.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Furniture,Fixture and Office Equipment 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Furniture,Fixture and Office Equipment 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Leasehold Improvements/Decoration</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>34,971</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>183,076</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>39,726</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c139.view) ? (<><button type="button" className="feb" aria-label="Edit Leasehold Improvements/Decoration 2025" onClick={v.fe.c139.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c139.val}</span></>) : null}
+{(v.fe.c139.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Leasehold Improvements/Decoration 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Leasehold Improvements/Decoration 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c140.view) ? (<><button type="button" className="feb" aria-label="Edit Leasehold Improvements/Decoration 2024" onClick={v.fe.c140.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c140.val}</span></>) : null}
+{(v.fe.c140.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Leasehold Improvements/Decoration 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Leasehold Improvements/Decoration 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c141.view) ? (<><button type="button" className="feb" aria-label="Edit Leasehold Improvements/Decoration 2023" onClick={v.fe.c141.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c141.val}</span></>) : null}
+{(v.fe.c141.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Leasehold Improvements/Decoration 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Leasehold Improvements/Decoration 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Vehicles</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64421</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>145630</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>111666</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c142.view) ? (<><button type="button" className="feb" aria-label="Edit Vehicles 2025" onClick={v.fe.c142.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c142.val}</span></>) : null}
+{(v.fe.c142.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Vehicles 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Vehicles 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c143.view) ? (<><button type="button" className="feb" aria-label="Edit Vehicles 2024" onClick={v.fe.c143.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c143.val}</span></>) : null}
+{(v.fe.c143.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Vehicles 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Vehicles 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c144.view) ? (<><button type="button" className="feb" aria-label="Edit Vehicles 2023" onClick={v.fe.c144.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c144.val}</span></>) : null}
+{(v.fe.c144.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Vehicles 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Vehicles 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Capital Leases</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>102840</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>83203</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>137289</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c145.view) ? (<><button type="button" className="feb" aria-label="Edit Capital Leases 2025" onClick={v.fe.c145.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c145.val}</span></>) : null}
+{(v.fe.c145.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Capital Leases 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Capital Leases 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c146.view) ? (<><button type="button" className="feb" aria-label="Edit Capital Leases 2024" onClick={v.fe.c146.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c146.val}</span></>) : null}
+{(v.fe.c146.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Capital Leases 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Capital Leases 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c147.view) ? (<><button type="button" className="feb" aria-label="Edit Capital Leases 2023" onClick={v.fe.c147.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c147.val}</span></>) : null}
+{(v.fe.c147.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Capital Leases 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Capital Leases 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Operating Leases</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>55011</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>61546</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>146231</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c148.view) ? (<><button type="button" className="feb" aria-label="Edit Operating Leases 2025" onClick={v.fe.c148.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c148.val}</span></>) : null}
+{(v.fe.c148.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Operating Leases 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Operating Leases 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c149.view) ? (<><button type="button" className="feb" aria-label="Edit Operating Leases 2024" onClick={v.fe.c149.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c149.val}</span></>) : null}
+{(v.fe.c149.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Operating Leases 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Operating Leases 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c150.view) ? (<><button type="button" className="feb" aria-label="Edit Operating Leases 2023" onClick={v.fe.c150.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c150.val}</span></>) : null}
+{(v.fe.c150.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Operating Leases 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Operating Leases 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "370fr 229fr 229fr 230fr" }}><div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>Accumulated Depreciation</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>140141</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>104826</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>149172</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c151.view) ? (<><button type="button" className="feb" aria-label="Edit Accumulated Depreciation 2025" onClick={v.fe.c151.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c151.val}</span></>) : null}
+{(v.fe.c151.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accumulated Depreciation 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accumulated Depreciation 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c152.view) ? (<><button type="button" className="feb" aria-label="Edit Accumulated Depreciation 2024" onClick={v.fe.c152.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c152.val}</span></>) : null}
+{(v.fe.c152.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accumulated Depreciation 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accumulated Depreciation 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "0", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c153.view) ? (<><button type="button" className="feb" aria-label="Edit Accumulated Depreciation 2023" onClick={v.fe.c153.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c153.val}</span></>) : null}
+{(v.fe.c153.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Accumulated Depreciation 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Accumulated Depreciation 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}</div>
 {' '}</div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Total Fixed Assets - Net</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c154.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2025" onClick={v.fe.c154.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c154.val}</span></>) : null}
+{(v.fe.c154.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c155.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2024" onClick={v.fe.c155.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c155.val}</span></>) : null}
+{(v.fe.c155.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c156.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2023" onClick={v.fe.c156.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c156.val}</span></>) : null}
+{(v.fe.c156.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Loans to Shareholders</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>973136</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>406431</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>664549</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c157.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c157.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c157.val}</span></>) : null}
+{(v.fe.c157.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c158.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c158.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c158.val}</span></>) : null}
+{(v.fe.c158.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c159.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c159.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c159.val}</span></>) : null}
+{(v.fe.c159.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Investment in Subsidiaries/Associates</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>686494</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>515259</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>934745</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c160.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2025" onClick={v.fe.c160.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c160.val}</span></>) : null}
+{(v.fe.c160.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c161.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2024" onClick={v.fe.c161.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c161.val}</span></>) : null}
+{(v.fe.c161.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c162.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2023" onClick={v.fe.c162.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c162.val}</span></>) : null}
+{(v.fe.c162.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Investments</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>982925</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>970239</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>710315</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c163.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2025" onClick={v.fe.c163.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c163.val}</span></>) : null}
+{(v.fe.c163.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c164.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2024" onClick={v.fe.c164.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c164.val}</span></>) : null}
+{(v.fe.c164.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c165.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2023" onClick={v.fe.c165.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c165.val}</span></>) : null}
+{(v.fe.c165.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Investment in land and property</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64823</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>561179</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>826809</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c166.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2025" onClick={v.fe.c166.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c166.val}</span></>) : null}
+{(v.fe.c166.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c167.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2024" onClick={v.fe.c167.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c167.val}</span></>) : null}
+{(v.fe.c167.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c168.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2023" onClick={v.fe.c168.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c168.val}</span></>) : null}
+{(v.fe.c168.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Prepaid Exp/Deferred Inc - Long Term</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>602102</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>68867</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>210624</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c169.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2025" onClick={v.fe.c169.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c169.val}</span></>) : null}
+{(v.fe.c169.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c170.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2024" onClick={v.fe.c170.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c170.val}</span></>) : null}
+{(v.fe.c170.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c171.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2023" onClick={v.fe.c171.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c171.val}</span></>) : null}
+{(v.fe.c171.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Retentions Receivable (&gt;1 year)</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>805386</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>560774</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>964247</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c172.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2025" onClick={v.fe.c172.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c172.val}</span></>) : null}
+{(v.fe.c172.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c173.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2024" onClick={v.fe.c173.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c173.val}</span></>) : null}
+{(v.fe.c173.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c174.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2023" onClick={v.fe.c174.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c174.val}</span></>) : null}
+{(v.fe.c174.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Def Inc Tax Receivable - Long Term</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>77805</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>374165</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>62868</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c175.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2025" onClick={v.fe.c175.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c175.val}</span></>) : null}
+{(v.fe.c175.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c176.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2024" onClick={v.fe.c176.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c176.val}</span></>) : null}
+{(v.fe.c176.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c177.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2023" onClick={v.fe.c177.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c177.val}</span></>) : null}
+{(v.fe.c177.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Derivative Assets - LTP</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>171359</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>194622</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>517987</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c178.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2025" onClick={v.fe.c178.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c178.val}</span></>) : null}
+{(v.fe.c178.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c179.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2024" onClick={v.fe.c179.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c179.val}</span></>) : null}
+{(v.fe.c179.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c180.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2023" onClick={v.fe.c180.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c180.val}</span></>) : null}
+{(v.fe.c180.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Non Operating Non Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>210000</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>614065</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>594176</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c181.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2025" onClick={v.fe.c181.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c181.val}</span></>) : null}
+{(v.fe.c181.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c182.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2024" onClick={v.fe.c182.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c182.val}</span></>) : null}
+{(v.fe.c182.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c183.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2023" onClick={v.fe.c183.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c183.val}</span></>) : null}
+{(v.fe.c183.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Operating Non Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>317383</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>593598</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>943490</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c184.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2025" onClick={v.fe.c184.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c184.val}</span></>) : null}
+{(v.fe.c184.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c185.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2024" onClick={v.fe.c185.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c185.val}</span></>) : null}
+{(v.fe.c185.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c186.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2023" onClick={v.fe.c186.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c186.val}</span></>) : null}
+{(v.fe.c186.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}><span style={{ display: "flex", transform: "rotate(-90deg)" }}><svg aria-hidden="true" width="20" height="20" viewBox="246.1 1658.8 17.1 17.1" fill="none"><defs><clipPath id="ifchevdclip0_11890_43994"><rect width="1440" height="4810" fill="white" transform="scale(0.851559)"></rect></clipPath>
 <clipPath id="ifchevdclip16_11890_43994"><path d="M240.991 987.809C240.991 986.868 241.754 986.106 242.694 986.106H1174.3C1175.24 986.106 1176 986.868 1176 987.809V1979.02C1176 1979.96 1175.24 1980.73 1174.3 1980.73H242.694C241.754 1980.73 240.991 1979.96 240.991 1979.02V987.809Z" fill="white"></path></clipPath>
@@ -677,12 +1607,27 @@ Total Fixed Assets - Net</div>
 <mask id="ifchevdmask1_11890_43994" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="246" y="1658" width="18" height="18"><g><g><path d="M248.23 1664.51L254.616 1670.9L261.003 1664.51" stroke="#182F7C" strokeWidth="0.851559" strokeLinecap="round" strokeLinejoin="round"></path></g></g></mask></defs>
 <g clipPath="url(#ifchevdclip0_11890_43994)"><g clipPath="url(#ifchevdclip16_11890_43994)"><g clipPath="url(#ifchevdclip22_11890_43994)"><g mask="url(#ifchevdmask1_11890_43994)"><rect x="246.101" y="1658.84" width="17.0312" height="17.0312" fill="#182F7C"></rect></g></g></g></g></svg></span></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Gross Intangibles</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>977980</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>869237</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>975627</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c187.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2025" onClick={v.fe.c187.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c187.val}</span></>) : null}
+{(v.fe.c187.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c188.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2024" onClick={v.fe.c188.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c188.val}</span></>) : null}
+{(v.fe.c188.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c189.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2023" onClick={v.fe.c189.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c189.val}</span></>) : null}
+{(v.fe.c189.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div aria-hidden="true" style={{ display: "grid", gridTemplateColumns: "299fr 799fr" }}><div style={{ height: "32px", borderRight: "1px solid #e5e5e5" }}></div>
 <div></div></div>
 {' '}</div></div>
@@ -699,118 +1644,313 @@ Total Fixed Assets - Net</div>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500" }}>2025</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Total Fixed Assets - Net</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c190.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2023" onClick={v.fe.c190.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c190.val}</span></>) : null}
+{(v.fe.c190.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c191.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2024" onClick={v.fe.c191.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c191.val}</span></>) : null}
+{(v.fe.c191.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c192.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2025" onClick={v.fe.c192.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c192.val}</span></>) : null}
+{(v.fe.c192.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Total Fixed Assets - Net</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c193.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c193.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c193.val}</span></>) : null}
+{(v.fe.c193.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c194.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c194.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c194.val}</span></>) : null}
+{(v.fe.c194.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c195.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c195.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c195.val}</span></>) : null}
+{(v.fe.c195.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Loans to Shareholders</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>973136</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>406431</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>664549</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c196.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c196.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c196.val}</span></>) : null}
+{(v.fe.c196.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c197.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c197.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c197.val}</span></>) : null}
+{(v.fe.c197.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c198.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c198.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c198.val}</span></>) : null}
+{(v.fe.c198.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Investment in Subsidiaries/Associates</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>686494</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>515259</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>934745</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c199.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2023" onClick={v.fe.c199.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c199.val}</span></>) : null}
+{(v.fe.c199.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c200.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2024" onClick={v.fe.c200.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c200.val}</span></>) : null}
+{(v.fe.c200.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c201.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2025" onClick={v.fe.c201.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c201.val}</span></>) : null}
+{(v.fe.c201.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Investments</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>982925</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>970239</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>710315</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c202.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2023" onClick={v.fe.c202.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c202.val}</span></>) : null}
+{(v.fe.c202.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c203.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2024" onClick={v.fe.c203.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c203.val}</span></>) : null}
+{(v.fe.c203.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c204.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2025" onClick={v.fe.c204.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c204.val}</span></>) : null}
+{(v.fe.c204.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Investment in land and property</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64823</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>561179</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>826809</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c205.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2023" onClick={v.fe.c205.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c205.val}</span></>) : null}
+{(v.fe.c205.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c206.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2024" onClick={v.fe.c206.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c206.val}</span></>) : null}
+{(v.fe.c206.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c207.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2025" onClick={v.fe.c207.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c207.val}</span></>) : null}
+{(v.fe.c207.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Prepaid Exp/Deferred Inc - Long Term</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>602102</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>68867</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>210624</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c208.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2023" onClick={v.fe.c208.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c208.val}</span></>) : null}
+{(v.fe.c208.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c209.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2024" onClick={v.fe.c209.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c209.val}</span></>) : null}
+{(v.fe.c209.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c210.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2025" onClick={v.fe.c210.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c210.val}</span></>) : null}
+{(v.fe.c210.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Retentions Receivable (&gt;1 year)</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>805386</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>560774</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>964247</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c211.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2023" onClick={v.fe.c211.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c211.val}</span></>) : null}
+{(v.fe.c211.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c212.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2024" onClick={v.fe.c212.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c212.val}</span></>) : null}
+{(v.fe.c212.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c213.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2025" onClick={v.fe.c213.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c213.val}</span></>) : null}
+{(v.fe.c213.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Def Inc Tax Receivable - Long Term</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>77805</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>374165</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>62868</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c214.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2023" onClick={v.fe.c214.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c214.val}</span></>) : null}
+{(v.fe.c214.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c215.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2024" onClick={v.fe.c215.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c215.val}</span></>) : null}
+{(v.fe.c215.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c216.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2025" onClick={v.fe.c216.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c216.val}</span></>) : null}
+{(v.fe.c216.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Derivative Assets - LTP</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>171359</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>194622</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>517987</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c217.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2023" onClick={v.fe.c217.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c217.val}</span></>) : null}
+{(v.fe.c217.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c218.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2024" onClick={v.fe.c218.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c218.val}</span></>) : null}
+{(v.fe.c218.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c219.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2025" onClick={v.fe.c219.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c219.val}</span></>) : null}
+{(v.fe.c219.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Non Operating Non Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>210000</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>614065</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>594176</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c220.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2023" onClick={v.fe.c220.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c220.val}</span></>) : null}
+{(v.fe.c220.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c221.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2024" onClick={v.fe.c221.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c221.val}</span></>) : null}
+{(v.fe.c221.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c222.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2025" onClick={v.fe.c222.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c222.val}</span></>) : null}
+{(v.fe.c222.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Operating Non Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>317383</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>593598</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>943490</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c223.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2023" onClick={v.fe.c223.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c223.val}</span></>) : null}
+{(v.fe.c223.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c224.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2024" onClick={v.fe.c224.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c224.val}</span></>) : null}
+{(v.fe.c224.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c225.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2025" onClick={v.fe.c225.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c225.val}</span></>) : null}
+{(v.fe.c225.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Gross Intangibles</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>977980</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>869237</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>975627</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c226.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2023" onClick={v.fe.c226.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c226.val}</span></>) : null}
+{(v.fe.c226.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c227.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2024" onClick={v.fe.c227.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c227.val}</span></>) : null}
+{(v.fe.c227.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c228.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2025" onClick={v.fe.c228.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c228.val}</span></>) : null}
+{(v.fe.c228.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div aria-hidden="true" style={{ display: "grid", gridTemplateColumns: "299fr 799fr" }}><div style={{ height: "32px", borderRight: "1px solid #e5e5e5" }}></div>
 <div></div></div>
 {' '}</div></div>
@@ -827,118 +1967,313 @@ Total Fixed Assets - Net</div>
 <div role="columnheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "6px", fontWeight: "500" }}>2025</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Total Fixed Assets - Net</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c229.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2023" onClick={v.fe.c229.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c229.val}</span></>) : null}
+{(v.fe.c229.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c230.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2024" onClick={v.fe.c230.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c230.val}</span></>) : null}
+{(v.fe.c230.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c231.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net 2025" onClick={v.fe.c231.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c231.val}</span></>) : null}
+{(v.fe.c231.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Total Fixed Assets - Net</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>1,330,526</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>81,614,736</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>4,106,184</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c232.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c232.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c232.val}</span></>) : null}
+{(v.fe.c232.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c233.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c233.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c233.val}</span></>) : null}
+{(v.fe.c233.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c234.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c234.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c234.val}</span></>) : null}
+{(v.fe.c234.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Loans to Shareholders</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>973136</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>406431</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>664549</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c235.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c235.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c235.val}</span></>) : null}
+{(v.fe.c235.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c236.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c236.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c236.val}</span></>) : null}
+{(v.fe.c236.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c237.view) ? (<><button type="button" className="feb" aria-label="Edit Total Fixed Assets - Net" onClick={v.fe.c237.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c237.val}</span></>) : null}
+{(v.fe.c237.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Total Fixed Assets - Net" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Total Fixed Assets - Net" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Investment in Subsidiaries/Associates</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>686494</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>515259</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>934745</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c238.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2023" onClick={v.fe.c238.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c238.val}</span></>) : null}
+{(v.fe.c238.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c239.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2024" onClick={v.fe.c239.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c239.val}</span></>) : null}
+{(v.fe.c239.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c240.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in Subsidiaries/Associates 2025" onClick={v.fe.c240.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c240.val}</span></>) : null}
+{(v.fe.c240.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in Subsidiaries/Associates 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in Subsidiaries/Associates 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Investments</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>982925</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>970239</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>710315</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c241.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2023" onClick={v.fe.c241.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c241.val}</span></>) : null}
+{(v.fe.c241.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c242.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2024" onClick={v.fe.c242.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c242.val}</span></>) : null}
+{(v.fe.c242.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c243.view) ? (<><button type="button" className="feb" aria-label="Edit Other Investments 2025" onClick={v.fe.c243.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c243.val}</span></>) : null}
+{(v.fe.c243.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Investments 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Investments 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Investment in land and property</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>64823</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>561179</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>826809</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c244.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2023" onClick={v.fe.c244.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c244.val}</span></>) : null}
+{(v.fe.c244.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c245.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2024" onClick={v.fe.c245.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c245.val}</span></>) : null}
+{(v.fe.c245.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c246.view) ? (<><button type="button" className="feb" aria-label="Edit Investment in land and property 2025" onClick={v.fe.c246.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c246.val}</span></>) : null}
+{(v.fe.c246.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Investment in land and property 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Investment in land and property 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Prepaid Exp/Deferred Inc - Long Term</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>602102</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>68867</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>210624</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c247.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2023" onClick={v.fe.c247.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c247.val}</span></>) : null}
+{(v.fe.c247.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c248.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2024" onClick={v.fe.c248.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c248.val}</span></>) : null}
+{(v.fe.c248.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c249.view) ? (<><button type="button" className="feb" aria-label="Edit Prepaid Exp/Deferred Inc - Long Term 2025" onClick={v.fe.c249.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c249.val}</span></>) : null}
+{(v.fe.c249.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Prepaid Exp/Deferred Inc - Long Term 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Prepaid Exp/Deferred Inc - Long Term 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Retentions Receivable (&gt;1 year)</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>805386</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>560774</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>964247</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c250.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2023" onClick={v.fe.c250.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c250.val}</span></>) : null}
+{(v.fe.c250.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c251.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2024" onClick={v.fe.c251.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c251.val}</span></>) : null}
+{(v.fe.c251.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c252.view) ? (<><button type="button" className="feb" aria-label="Edit Retentions Receivable (>1 year) 2025" onClick={v.fe.c252.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c252.val}</span></>) : null}
+{(v.fe.c252.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Retentions Receivable (>1 year) 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Retentions Receivable (>1 year) 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Def Inc Tax Receivable - Long Term</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>77805</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>374165</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>62868</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c253.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2023" onClick={v.fe.c253.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c253.val}</span></>) : null}
+{(v.fe.c253.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c254.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2024" onClick={v.fe.c254.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c254.val}</span></>) : null}
+{(v.fe.c254.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c255.view) ? (<><button type="button" className="feb" aria-label="Edit Def Inc Tax Receivable - Long Term 2025" onClick={v.fe.c255.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c255.val}</span></>) : null}
+{(v.fe.c255.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Def Inc Tax Receivable - Long Term 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Def Inc Tax Receivable - Long Term 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Derivative Assets - LTP</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>171359</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>194622</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>517987</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c256.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2023" onClick={v.fe.c256.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c256.val}</span></>) : null}
+{(v.fe.c256.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c257.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2024" onClick={v.fe.c257.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c257.val}</span></>) : null}
+{(v.fe.c257.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c258.view) ? (<><button type="button" className="feb" aria-label="Edit Derivative Assets - LTP 2025" onClick={v.fe.c258.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c258.val}</span></>) : null}
+{(v.fe.c258.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Derivative Assets - LTP 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Derivative Assets - LTP 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Non Operating Non Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>210000</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>614065</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>594176</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c259.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2023" onClick={v.fe.c259.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c259.val}</span></>) : null}
+{(v.fe.c259.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c260.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2024" onClick={v.fe.c260.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c260.val}</span></>) : null}
+{(v.fe.c260.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c261.view) ? (<><button type="button" className="feb" aria-label="Edit Other Non Operating Non Current Assets 2025" onClick={v.fe.c261.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c261.val}</span></>) : null}
+{(v.fe.c261.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Non Operating Non Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Non Operating Non Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Other Operating Non Current Assets</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>317383</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>593598</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>943490</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c262.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2023" onClick={v.fe.c262.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c262.val}</span></>) : null}
+{(v.fe.c262.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c263.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2024" onClick={v.fe.c263.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c263.val}</span></>) : null}
+{(v.fe.c263.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c264.view) ? (<><button type="button" className="feb" aria-label="Edit Other Operating Non Current Assets 2025" onClick={v.fe.c264.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c264.val}</span></>) : null}
+{(v.fe.c264.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Other Operating Non Current Assets 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Other Operating Non Current Assets 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 {' '}
 <div role="row" style={{ display: "grid", gridTemplateColumns: "32px 267fr 267fr 267fr 265fr" }}><div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #e5e5e5" }}></div>
 <div role="rowheader" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", borderRight: "1px solid #e5e5e5" }}><span style={{ minWidth: "0", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "clip" }}>Gross Intangibles</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>977980</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}><span aria-hidden="true" className="dh2"></span>
-<span>869237</span></div>
-<div role="cell" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}><span aria-hidden="true" className="dh2"></span>
-<span>975627</span></div></div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c265.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2023" onClick={v.fe.c265.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c265.val}</span></>) : null}
+{(v.fe.c265.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2023" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2023" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px", borderRight: "1px solid #e5e5e5" }}>{(v.fe.c266.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2024" onClick={v.fe.c266.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c266.val}</span></>) : null}
+{(v.fe.c266.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2024" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2024" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div>
+<div role="cell" className="fec" style={{ boxSizing: "border-box", height: "32px", minWidth: "0", borderBottom: "1px solid #e5e5e5", display: "flex", alignItems: "center", padding: "0 8px", justifyContent: "flex-end", gap: "10px" }}>{(v.fe.c267.view) ? (<><button type="button" className="feb" aria-label="Edit Gross Intangibles 2025" onClick={v.fe.c267.edit}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.6 2.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L6 12.8 2.5 13.5l.7-3.5 7.4-7.4Z" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path>
+<path d="M9.3 3.9l2.8 2.8" stroke="#182F7C" strokeLinecap="round"></path></svg></button>
+<span aria-hidden="true" className="dh2"></span>
+<span>{v.fe.c267.val}</span></>) : null}
+{(v.fe.c267.editing) ? (<><span aria-hidden="true" className="dh2"></span>
+<input id="finEditInput" className="fei" inputMode="decimal" aria-label="Gross Intangibles 2025" value={v.finDraft} onChange={v.finDraftSet} onKeyDown={v.finKey} />
+<button type="button" className="fes" aria-label="Save Gross Intangibles 2025" onClick={v.finSave}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path></svg></button></>) : null}</div></div>
 <div aria-hidden="true" style={{ display: "grid", gridTemplateColumns: "299fr 799fr" }}><div style={{ height: "32px", borderRight: "1px solid #e5e5e5" }}></div>
 <div></div></div>
 {' '}</div></div>

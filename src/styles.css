@@ -20,3 +20,4 @@ input::placeholder,textarea::placeholder{color:#50647c}
 @media (prefers-reduced-motion:reduce){.spin{animation:none}}
 .steps{position:sticky;top:40px}
 @media (max-width:960px){.steps{position:static}}
+.fec{position:relative}.fec:hover{box-shadow:inset 0 0 0 1px #2765ff}.feb{flex:none;width:24px;height:24px;margin-right:auto;padding:0;border:0;border-radius:4px;background:#edf2ff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;visibility:hidden}.fec:hover .feb,.feb:focus-visible{visibility:visible}.fei{flex:1;min-width:0;height:24px;box-sizing:border-box;padding:0 6px;border:1px solid #2765ff;border-radius:4px;font:inherit;text-align:right;color:#000;background:#fff;outline:none}.fes{flex:none;width:24px;height:24px;padding:0;border:0;border-radius:4px;background:linear-gradient(94.48deg,#395fc0,#081f5b);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
