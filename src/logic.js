@@ -25,7 +25,7 @@ consent: '', cob: {}, bankSel: {}, bankAdded: false, bankToast: false, bankExt: 
 acIban: '', acAge: '', acStage: '', acConfirm: true, acUae: true, clientDone: false,
 shMode: '', addType: '', addDocs: '', ownExtra: [], ownDel: false, ownGone: false,
 docsDone: false, finReady: false, finDone: false, finXls: false, dSeq: 10, dAoaErr: false, dCat: 0, dCatType: '', dSearch: '', finFrom: '', finTo: '',
-dKyc: { tl: [], moa: [], aoa: [], aoa2: [], br: [], org: [], other: [{ id: 1, name: 'other-document.pdf', st: 'warn' }] }, dKycConf: {},
+dKyc: { tl: [], moa: [], aoa: [], aoa2: [], br: [], org: [], other: [] }, dKycConf: {},
 dFin: { aud: [{ id: 2, name: 'max-financials.pdf', st: 'ok', year: '2026' }, { id: 3, name: 'max-financials.pdf', st: 'ok', year: '2025' }, { id: 4, name: 'max-financials.pdf', st: 'ok', year: 'Select year' }],
 inh: [{ id: 5, name: 'max-financials.pdf', st: 'ok', year: '2026' }, { id: 6, name: 'max-financials.pdf', st: 'ok', year: '2025' }, { id: 7, name: 'max-financials.pdf', st: 'ok', year: 'Select year' }],
 rec: [], bank: [], vat: [], cbrb: [], aecb: [] }, dFinConf: {},
@@ -261,10 +261,10 @@ title: d[1], desc: d[2], uploadLabel: 'Upload', uploadAria: 'Upload ' + d[1], ha
 files: files.map((f) => dView('dKyc', 'dKycConf', key, f)), showConfirm: key !== 'other' && files.length > 0, box: dBox('dKycConf', key),
 upload: () => {
 if (key === 'aoa2' && !s.dAoaErr) dAdd('dKyc', 'dKycConf', key, [{ name: 'AoA.jpeg', st: 'err', info: 'Document size exceeds 25MB limit' }], { dAoaErr: true });
-else dAdd('dKyc', 'dKycConf', key, [{ name: d[3], st: key === 'other' ? 'warn' : 'ok' }]);
+else dAdd('dKyc', 'dKycConf', key, [{ name: d[3], st: 'ok' }]);
 }
 }; });
-const dKycOk = kycDefs.some((d) => d[0] !== 'other' && s.dKyc[d[0]].some((f) => f.st === 'ok'));
+const dKycOk = true;
 const dCatFile = s.dKyc.other.find((f) => f.id === s.dCat);
 const finDefs = [
 ['aud', 'Audited financial statements', 'These are financial statements of the company that have been examined and verified by an independent auditor.', 'Upload'],
@@ -288,7 +288,7 @@ from: s.finFrom, to: s.finTo, setFrom: (e) => set({ finFrom: e.target.value }), 
 files: files.map((f) => dView('dFin', 'dFinConf', key, f)), showConfirm: files.length > 0, box: dBox('dFinConf', key),
 upload: () => dAdd('dFin', 'dFinConf', key, finNew(key), key === 'bank' && !s.finFrom && !s.finTo ? { finFrom: '12/01/2023', finTo: '12/02/2026' } : null)
 }; });
-const dFinOk = s.dFin.rec.length > 0 && finDefs.every((d) => !s.dFin[d[0]].length || !!s.dFinConf[d[0]]);
+const dFinOk = true;
 const stkPeople = [['Mostafa Hamed', 'Director'], ['Fatima Ahmed Ali', 'Director'], ['Mo Ahmed Ali', 'POA']];
 const dq = s.dSearch.trim().toLowerCase();
 const dStkGroups = stkPeople.filter((p) => !dq || p[0].toLowerCase().indexOf(dq) >= 0).map((p) => ({ title: p[0], desc: p[1],
