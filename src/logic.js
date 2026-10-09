@@ -2,7 +2,7 @@ import React from 'react';
 
 export class ProtoLogic extends React.Component {
 state = {
-phase: 'selfList', collapsed: false, created: false,
+phase: 'selfSearch', collapsed: false, created: false,
 name: '', desc: '', cifText: '', client: '',
 date: new Date().toISOString().slice(0, 10), start: '', end: '', topic: '', location: '',
 participants: [''], files: [], draftSaved: false,
@@ -643,7 +643,7 @@ else set({ phase: 'selfFacility', fOpen: '', facSeq: s.facSeq + 1, facilities: s
 },
 showSelfList: s.phase === 'selfList', showSelfSearch: s.phase === 'selfSearch', showSelfSummary: s.phase === 'selfSummary', showSelfHub: s.phase === 'selfHub',
 goMeeting: () => set({ phase: s.created ? 'chat' : 'form', name: s.name || 'Working capital requirements', selfNote: '', listOpen: '' }), hubBack: () => set({ phase: s.created ? 'chat' : 'selfSearch' }),
-goSelfList: goSelf('selfList'), goSelfSearch: goSelf('selfSearch'), goSelfSummary: goSelf('selfSummary'), goSelfHub: goSelf('selfHub'),
+goSelfList: goSelf('selfSearch'), goSelfSearch: goSelf('selfSearch'), goSelfSummary: goSelf('selfSummary'), goSelfHub: goSelf('selfHub'),
 listSearch: s.listSearch, setListSearch: (e) => set({ listSearch: e.target.value }),
 listFilters: listFilters, listRows: listRows, listEmpty: listRows.length === 0,
 listCount: listFiltered ? listRows.length + ' of 15' : '1-10 of 15',
@@ -662,9 +662,9 @@ const next = ['Borrowing_information.pdf', 'Updated_trade_license.pdf'].find((f)
 if (next) set({ selfUploads: s.selfUploads.concat([next]) });
 },
 selfUploadRows: s.selfUploads.map((name, i) => ({ name: name, remove: () => set({ selfUploads: s.selfUploads.filter((x, j) => j !== i) }) })),
-goStart: () => set({ phase: 'selfList', selfNote: '', listOpen: '' }),
+goStart: () => set({ phase: 'selfSearch', selfNote: '', listOpen: '' }),
 startCallReport: () => set({ phase: s.created ? 'chat' : 'form' }),
-startSelf: goSelf('selfList'),
+startSelf: goSelf('selfSearch'),
 showForm: s.phase === 'form', showChat: inChat,
 showDetails: inChat && !s.collapsed, showRail: inChat && s.collapsed,
 mainMargin: inChat && s.collapsed ? '0 auto' : '0 0 0 24px',

@@ -211,9 +211,6 @@ export default class App extends ProtoLogic {
 <div style={{ flex: "1", minWidth: "0", overflowY: "auto", padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center" }}>{' '}
 <div style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "24px", display: "flex", flexDirection: "column", gap: "40px" }}>{' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
-<button onClick={v.goSelfList} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "24px", padding: "0", border: "0", background: "transparent", color: "#1b48b5", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px", alignSelf: "flex-start" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#1b48b5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
-Back</button>
-{' '}
 <h1 style={{ margin: "0", fontSize: "40px", lineHeight: "48px", fontWeight: "300", color: "#072447", overflowWrap: "anywhere" }}>Who are you applying for?</h1>
 {' '}</div>
 {' '}
