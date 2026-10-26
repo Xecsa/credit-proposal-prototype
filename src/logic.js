@@ -1000,6 +1000,7 @@ Object.assign(__v, {
   hubSendBg: (s.docsDone && !s.sentToArm) ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)',
   hubSendCursor: (s.docsDone && !s.sentToArm) ? 'pointer' : 'not-allowed',
   hubSendClick: () => { if (s.docsDone && !s.sentToArm) set({ hubModal: 'toArm', hubModalText: '' }); },
+  showAppConfirmed: s.phase === 'selfAppConfirmed', showReturned: s.phase === 'selfReturned', endToDash: () => set({ phase: 'selfSearch', selfNote: '' }),
   showArmSent: s.phase === 'selfArmSent', armSentContinue: () => set({ phase: 'selfHub', selfNote: '' }), hubArm: !!s.finDone && s.hubRole === 'arm', hubRm: !!s.finDone && s.hubRole === 'rm' && !s.appConfirmed,
   appConfirmed: !!s.appConfirmed,
   hubCommentList: hubCm.map((c, k) => Object.assign({ line: k < hubCm.length - 1 }, c)),
@@ -1012,8 +1013,8 @@ Object.assign(__v, {
     if (!hmOk) return;
     if (hmK === 'toArm') { set({ phase: 'selfArmSent', hubModal: '', hubModalText: '', sentToArm: true, hubRole: 'arm', hubComments: [{ name: 'Jane Smith', role: 'RM', text: hmTxt }], selfNote: '' }); return; }
     if (hmK === 'arm') set({ hubModal: '', hubModalText: '', hubRole: 'rm', hubComments: addCm({ name: 'Omar Khan', role: 'ARM', text: hmTxt }), selfNote: '' });
-    else if (hmK === 'ret') set({ hubModal: '', hubModalText: '', hubRole: 'arm', hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: 'Application returned to ARM.' });
-    else set({ hubModal: '', hubModalText: '', appConfirmed: true, hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: '' });
+    else if (hmK === 'ret') set({ hubModal: '', hubModalText: '', hubRole: 'arm', hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), phase: 'selfReturned', selfNote: '' });
+    else set({ phase: 'selfAppConfirmed', hubModal: '', hubModalText: '', appConfirmed: true, hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: '' });
   }
 });
 return __v;

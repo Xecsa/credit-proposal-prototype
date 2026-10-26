@@ -95,8 +95,6 @@ Perfois analysis ongoing</div></>) : null}
 <span style={{ color: "#575757", overflowWrap: "anywhere" }}>{c.text}</span></span></li></React.Fragment>))}</ol></section>
 {' '}</>) : null}
 {' '}
-{(v.appConfirmed) ? (<><div role="status" style={{ background: "#eaf6ea", borderRadius: "8px", padding: "12px 16px", color: "#1f6b1d" }}>Application confirmed. It has moved to credit review.</div></>) : null}
-{' '}
 {(v.hubShowSend) ? (<>{' '}
 <div style={{ display: "flex", justifyContent: "flex-end" }}>{' '}
 <button disabled={v.hubSendBlocked} onClick={v.hubSendClick} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", width: "200px", minWidth: "88px", height: "48px", padding: "12px 16px", border: "0", borderRadius: "8px", color: "#ffffff", cursor: `${v.hubSendCursor}`, display: "inline-flex", alignItems: "center", justifyContent: "center", background: `${v.hubSendBg}` }}>{v.hubSendLabel}</button>
