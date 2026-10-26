@@ -870,7 +870,7 @@ Back</button>
 <span style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>{' '}
 <span style={{ fontSize: "16px", lineHeight: "22px", fontWeight: "500" }}>Client Information</span>
 {' '}
-<span style={{ color: "#50647c" }}>Provide supporting documents and references relevant to the application</span>
+<span style={{ color: "#50647c" }}>Provide the KYC information for the Company and Shareholders</span>
 {' '}
 <span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: `${v.hubClientTagBg}`, color: `${v.hubClientTagFg}` }}>{v.hubClientTag}</span>
 {' '}</span>
@@ -882,7 +882,7 @@ Back</button>
 <div style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>{' '}
 <div style={{ fontSize: "16px", lineHeight: "22px", fontWeight: "500", color: "#072447" }}>Documents and References</div>
 {' '}
-<div style={{ color: "#50647c" }}>Enter the details of any co-borrower associated with this application</div>
+<div style={{ color: "#50647c" }}>Provide supporting documents and references relevant to the application</div>
 {' '}
 {(v.hubDocsLocked) ? (<><div style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#d7d7d7", color: "#9f9f9f", display: "flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.75 3.75H3.25C2.14543 3.75 1.25 4.64543 1.25 5.75V8.25C1.25 9.35457 2.14543 10.25 3.25 10.25H8.75C9.85457 10.25 10.75 9.35457 10.75 8.25V5.75C10.75 4.64543 9.85457 3.75 8.75 3.75H8.25M3.75 3.75V3.5C3.75 2.25736 4.75736 1.25 6 1.25C7.24264 1.25 8.25 2.25736 8.25 3.5V3.75M3.75 3.75H8.25M7.25 7C7.25 7.69036 6.69036 8.25 6 8.25C5.30964 8.25 4.75 7.69036 4.75 7C4.75 6.30964 5.30964 5.75 6 5.75C6.69036 5.75 7.25 6.30964 7.25 7Z" stroke="#9f9f9f" strokeLinecap="round" strokeLinejoin="round"></path></svg>
 Locked</div></>) : null}
@@ -896,7 +896,7 @@ Locked</div></>) : null}
 <div style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>{' '}
 <div style={{ fontSize: "16px", lineHeight: "22px", fontWeight: "500", color: "#072447" }}>Financial Information</div>
 {' '}
-<div style={{ color: "#50647c" }}>Financial statements, cash flows, projections, and key financial ratios</div>
+<div style={{ color: "#50647c" }}>Financial statement analysis, risk ratings, cash flows, bureau analysis, bank and VAT analysis</div>
 {' '}
 {(v.finLocked) ? (<><div style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#d7d7d7", color: "#9f9f9f", display: "flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.75 3.75H3.25C2.14543 3.75 1.25 4.64543 1.25 5.75V8.25C1.25 9.35457 2.14543 10.25 3.25 10.25H8.75C9.85457 10.25 10.75 9.35457 10.75 8.25V5.75C10.75 4.64543 9.85457 3.75 8.75 3.75H8.25M3.75 3.75V3.5C3.75 2.25736 4.75736 1.25 6 1.25C7.24264 1.25 8.25 2.25736 8.25 3.5V3.75M3.75 3.75H8.25M7.25 7C7.25 7.69036 6.69036 8.25 6 8.25C5.30964 8.25 4.75 7.69036 4.75 7C4.75 6.30964 5.30964 5.75 6 5.75C6.69036 5.75 7.25 6.30964 7.25 7Z" stroke="#9f9f9f" strokeLinecap="round" strokeLinejoin="round"></path></svg>
 Locked</div></>) : null}
