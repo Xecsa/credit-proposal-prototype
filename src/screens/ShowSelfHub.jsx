@@ -85,7 +85,7 @@ Perfois analysis ongoing</div></>) : null}
 <div role="status" style={{ background: "#e7efff", borderRadius: "8px", padding: "12px 16px", color: "#072447" }}>{v.selfNote}</div>
 {' '}</>) : null}
 {' '}
-{(v.finDone) ? (<>{' '}
+{(v.hubShowComments) ? (<>{' '}
 <section aria-label="Comments" style={{ background: "#ffffff", borderRadius: "8px", padding: "24px 24px 16px", display: "flex", flexDirection: "column", gap: "4px" }}><h2 style={{ margin: "0", fontSize: "20px", lineHeight: "28px", fontWeight: "400", color: "#000000" }}>Comments</h2>
 <p style={{ margin: "0", lineHeight: "20px", color: "#575757" }}>Notes shared between RMs and ARMs</p>
 <ol style={{ listStyle: "none", margin: "12px 0 0", padding: "0", display: "flex", flexDirection: "column" }}>{(v.hubCommentList || []).map((c, c__i) => (<React.Fragment key={c__i}><li style={{ display: "flex", gap: "16px", paddingBottom: "12px" }}><span style={{ flex: "none", width: "40px", display: "flex", flexDirection: "column", alignItems: "center" }}><span aria-hidden="true" style={{ width: "40px", height: "40px", borderRadius: "20px", background: "#e7efff", display: "flex", alignItems: "center", justifyContent: "center" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3.5c-3.9 0-6.75 2.5-6.75 5.6 0 1.5.7 2.9 1.9 3.9l-.6 3 3.1-1.5c.75.2 1.55.3 2.35.3 3.9 0 6.75-2.5 6.75-5.7S13.9 3.5 10 3.5Z" stroke="#182f7c" strokeWidth="1.25" strokeLinejoin="round"></path></svg></span>
@@ -99,7 +99,7 @@ Perfois analysis ongoing</div></>) : null}
 {' '}
 {(v.hubShowSend) ? (<>{' '}
 <div style={{ display: "flex", justifyContent: "flex-end" }}>{' '}
-<button disabled={v.hubSendBlocked} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", width: "200px", minWidth: "88px", height: "48px", padding: "12px 16px", border: "0", borderRadius: "8px", color: "#ffffff", cursor: `${v.hubSendCursor}`, display: "inline-flex", alignItems: "center", justifyContent: "center", background: `${v.hubSendBg}` }}>{v.hubSendLabel}</button>
+<button disabled={v.hubSendBlocked} onClick={v.hubSendClick} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", width: "200px", minWidth: "88px", height: "48px", padding: "12px 16px", border: "0", borderRadius: "8px", color: "#ffffff", cursor: `${v.hubSendCursor}`, display: "inline-flex", alignItems: "center", justifyContent: "center", background: `${v.hubSendBg}` }}>{v.hubSendLabel}</button>
 {' '}</div>
 {' '}</>) : null}
 {' '}

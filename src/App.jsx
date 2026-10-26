@@ -578,6 +578,14 @@ Back</button>
 <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center" }}><button onClick={v.ejSentContinue} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", border: "0", color: "#ffffff", cursor: "pointer", minWidth: "200px", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)" }}>Continue</button></div></div></div>
 {' '}</>) : null}
 {' '}
+{(v.showArmSent) ? (<>{' '}
+<div style={{ flex: "1", minWidth: "0", overflowY: "auto", background: "#f1f3f7", color: "#000000", boxSizing: "border-box", padding: "160px 16px 80px", display: "flex", justifyContent: "center", alignItems: "flex-start" }}>{' '}
+<div style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center" }}><img src={img_0956f063e5} alt="" width="112" height="112" style={{ width: "112px", height: "112px" }} />
+<h1 style={{ margin: "0", fontSize: "40px", lineHeight: "48px", fontWeight: "300", color: "#072447" }}>Application submitted to ARM</h1>
+<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757", maxWidth: "560px" }}>Your application has been submitted successfully. You’ll be notified once there’s an update on its status.</p>
+<div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center" }}><button onClick={v.armSentContinue} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", border: "0", color: "#ffffff", cursor: "pointer", minWidth: "200px", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)" }}>Continue</button></div></div></div>
+{' '}</>) : null}
+{' '}
 {(v.showDFinLocked) ? (<>{' '}
 <div style={{ flex: "1", minWidth: "0", overflowY: "auto", background: "#f1f3f7", color: "#000000" }}>{' '}
 <div style={{ boxSizing: "border-box", padding: "38px 33px 80px", display: "flex", flexWrap: "wrap", gap: "32px", alignItems: "flex-start" }}>{' '}

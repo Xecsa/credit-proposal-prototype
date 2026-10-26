@@ -9,7 +9,7 @@ participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
-hubRole: 'rm', hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
+hubRole: 'rm', sentToArm: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [
 { id: 1, seed: true, title: 'Term loan', type: 'Cross-sell', product: 'LC Import', limit: '10,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' },
 { id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
@@ -987,13 +987,20 @@ Object.assign(__v, v1, v2, v3);
 const HM = {
   arm: { t: 'Add comment for RM', sub: 'Share a note the RM will see on this application.', l: 'Comment', ph: 'For example, please confirm the facility amount with the client', cta: 'Submit to RM', req: true },
   confirm: { t: 'Confirm application', sub: 'Once confirmed, the application moves to credit review. You can add a note for the reviewers if needed.', l: 'Comments (optional)', ph: 'Add any notes for the credit reviewers', cta: 'Confirm application', req: false },
+  toArm: { t: 'Add comment for ARM', sub: 'Share a note the ARM will see on this application.', l: 'Comment', ph: 'For example, please collect the signed board resolution', cta: 'Submit to ARM', req: true },
   ret: { t: 'Return application to ARM', sub: 'Tell the ARM what needs to change.', l: 'Reason for return', ph: 'For example, the audited financials for 2025 are missing', cta: 'Return to ARM', req: true }
 };
 const hmK = s.hubModal; const hm = HM[hmK] || HM.arm; const hmTxt = (s.hubModalText || '').trim(); const hmOk = !hm.req || !!hmTxt;
 const hubCm = s.hubComments || [{ name: 'Jane Smith', role: 'RM', text: 'Please collect the signed board resolution.' }];
 const addCm = (c) => hmTxt ? hubCm.concat([c]) : hubCm;
 Object.assign(__v, {
-  hubShowSend: !s.finDone, hubArm: !!s.finDone && s.hubRole === 'arm', hubRm: !!s.finDone && s.hubRole === 'rm' && !s.appConfirmed,
+  hubShowSend: !s.finDone, hubShowComments: !!s.finDone || !!s.sentToArm,
+  hubSendLabel: s.sentToArm ? 'Submit to RM' : s.docsDone ? 'Submit to ARM' : s.clientDone ? 'Submit' : 'Send to ARM',
+  hubSendBlocked: !(s.docsDone && !s.sentToArm),
+  hubSendBg: (s.docsDone && !s.sentToArm) ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)',
+  hubSendCursor: (s.docsDone && !s.sentToArm) ? 'pointer' : 'not-allowed',
+  hubSendClick: () => { if (s.docsDone && !s.sentToArm) set({ hubModal: 'toArm', hubModalText: '' }); },
+  showArmSent: s.phase === 'selfArmSent', armSentContinue: () => set({ phase: 'selfHub', selfNote: '' }), hubArm: !!s.finDone && s.hubRole === 'arm', hubRm: !!s.finDone && s.hubRole === 'rm' && !s.appConfirmed,
   appConfirmed: !!s.appConfirmed,
   hubCommentList: hubCm.map((c, k) => Object.assign({ line: k < hubCm.length - 1 }, c)),
   hubOpenArm: () => set({ hubModal: 'arm', hubModalText: '' }), hubOpenReturn: () => set({ hubModal: 'ret', hubModalText: '' }), hubOpenConfirm: () => set({ hubModal: 'confirm', hubModalText: '' }),
@@ -1003,6 +1010,7 @@ Object.assign(__v, {
   hubModalBlocked: hmOk ? 'false' : 'true', hubModalBg: hmOk ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)', hubModalCursor: hmOk ? 'pointer' : 'not-allowed',
   hubModalSubmit: () => {
     if (!hmOk) return;
+    if (hmK === 'toArm') { set({ phase: 'selfArmSent', hubModal: '', hubModalText: '', sentToArm: true, hubRole: 'arm', hubComments: [{ name: 'Jane Smith', role: 'RM', text: hmTxt }], selfNote: '' }); return; }
     if (hmK === 'arm') set({ hubModal: '', hubModalText: '', hubRole: 'rm', hubComments: addCm({ name: 'Omar Khan', role: 'ARM', text: hmTxt }), selfNote: '' });
     else if (hmK === 'ret') set({ hubModal: '', hubModalText: '', hubRole: 'arm', hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: 'Application returned to ARM.' });
     else set({ hubModal: '', hubModalText: '', appConfirmed: true, hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: '' });
