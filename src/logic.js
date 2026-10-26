@@ -885,7 +885,7 @@ Object.assign(__v, { fe: fe, finDraft: s.finDraft, finDraftSet: (e) => this.setS
 {
 const btnBgV = (ok) => ok ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)';
 // ---- Client information completed
-const v1 = { showSelfDone: s.phase === 'selfDone', doneBack: () => set({ phase: 'selfHub', selfNote: '' }), doneDocs: () => set({ phase: 'docsKyc', dCat: 0 }) };
+const v1 = { showSelfDone: s.phase === 'selfDone', doneBack: () => set({ phase: 'selfHub', selfNote: '' }), doneDocs: () => set({ phase: 'selfHub', selfNote: '' }) };
 // ---- Financial documents locked (Perfios ongoing)
 const FD = [['aud', 'Audited financial statements', 'These are financial statements of the company that have been examined and verified by an independent auditor.'], ['inh', 'In-house financial statements', 'Latest audited financials of the last 3 years'], ['rec', 'Account Receivables', 'A detailed accounts receivable report showing outstanding invoices, customer balances, due dates, and aging status.'], ['bank', 'Bank Statements (Past 12 months)', 'Complete bank statements for all business accounts covering the most recent 12 months.'], ['vat', 'VAT Reports', 'VAT filings or returns, if your company is VAT registered.'], ['cbrb', 'CBRB Report', 'A current CBRB report showing the company’s credit history, active facilities, and outstanding obligations.'], ['aecb', 'AECB Report', 'A current AECB report showing the company’s credit history, active facilities, and outstanding obligations.']];
 const dLockRows = [];
