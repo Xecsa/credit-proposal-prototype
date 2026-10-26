@@ -261,7 +261,7 @@ const kycDefs = [
 ];
 const dKycSecs = kycDefs.map((d) => { const key = d[0]; const files = s.dKyc[key]; return {
 title: d[1], desc: d[2], uploadLabel: 'Upload', uploadAria: 'Upload ' + d[1], hasDates: false,
-files: files.map((f) => dView('dKyc', 'dKycConf', key, f)), showConfirm: key !== 'other' && files.length > 0, box: dBox('dKycConf', key),
+files: files.map((f) => dView('dKyc', 'dKycConf', key, f)), showConfirm: false, box: dBox('dKycConf', key),
 upload: () => {
 if (key === 'aoa2' && !s.dAoaErr) dAdd('dKyc', 'dKycConf', key, [{ name: 'AoA.jpeg', st: 'err', info: 'Document size exceeds 25MB limit' }], { dAoaErr: true });
 else dAdd('dKyc', 'dKycConf', key, [{ name: d[3], st: 'ok' }]);
