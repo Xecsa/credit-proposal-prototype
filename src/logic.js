@@ -31,6 +31,8 @@ inh: [{ id: 5, name: 'max-financials.pdf', st: 'ok', year: '2026' }, { id: 6, na
 rec: [], bank: [], vat: [], cbrb: [], aecb: [] }, dFinConf: {},
 cpList: [], cpSeq: 0, cpMenu: 0, cpEdit: 0, cpDel: 0, cpSel: {}, cpF: { name: '', rel: 'Associate', mobile: '', email: '' },
 finVals: {}, finEditId: '', finDraft: '',
+dFinLocked: false, ejFiles: [], ejSeq: 0, ejBatches: 0, ejTab: 'all', ejQ: '', ejSel: {}, ejPage: 1, ejWidget: false, ejWidgetMin: false, ejBatchIds: [],
+ecF: { longName: '', type: '', bp: '', cp: '', risk: 'United Arab Emirates', alias: '', cif: '', edoc: '', rel: '', inc: '', prov: 'United Arab Emirates' }, ecDd: '', ecRows: [{ id: 1, code: '', pct: '' }], ecSeq: 1, ecOpenRow: 0, ecQ: '', ecExp: { F: true, F41: true, F42: true, G: true, G46: true }, ecErr: false,
 kmList: [], kmSeq: 0, kmMenu: 0, kmEdit: 0, kmDel: 0, kmDrop: '', kmSel: {}, kmNarr: '',
 kmF: { title: 'Ms', first: 'Maryam', last: 'Al-Mansoor', role: '', years: '', qual: '', summary: '', nat: 'United Arab Emirates', email: '', mobile: '' },
 addF: { title: '', first: 'Abdullah', last: 'Rahim', role: 'Director', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
@@ -221,11 +223,11 @@ const inSelf = s.phase.indexOf('self') === 0 || s.phase.indexOf('docs') === 0;
 const goSelf = (phase) => () => set({ phase: phase, selfNote: '', listOpen: '', facMenu: 0, facDelete: 0, docMenu: '', docDelete: '', docStage: '', tlOpen: '', tlDrop: '', shDrop: '', shEdit: '', shMenu: '', bankToast: false, kmMenu: 0, kmDrop: '', kmDel: 0, cpMenu: 0, cpDel: 0 });
 const inFacForm = s.phase === 'selfFacForm';
 const docDefs = [
-['tl', 'Trade license', 'An official government-issued permit authorising a business to operate and trade within the UAE.', true, 'TL2024.pdf'],
+['tl', 'Trade license', 'An official government-issued permit authorizing a business to operate and trade within the UAE.', true, 'TL2024.pdf'],
 ['moa', 'Memorandum of Association (MOA)', "A document that outlines a company's objectives, structure, and fundamental rules.", true, 'MOA.pdf'],
 ['aoa', 'Articles of Association (AOA)', "A document governing a company's internal rules — covering shareholder rights, director powers, and voting procedures.", false, 'AOA.pdf'],
-['br', 'Board Resolution(s)', "A formal record of a decision passed by the company's board, authorising specific actions such as signing agreements or appointing signatories.", false, 'Board resolution.pdf'],
-['ss', 'Shareholding Structure (Organogram)', "A document or diagram showing how ownership is distributed across a company's shareholders.", false, 'Organogram.pdf']
+['br', 'Board Resolution(s)', "A formal record of a decision passed by the company's board, authorizing specific actions such as signing agreements or appointing signatories.", false, 'Board resolution.pdf'],
+['ss', 'Shareholding Structure (organogram)', "A document or diagram showing how ownership is distributed across a company's shareholders.", false, 'Organogram.pdf']
 ];
 const docRows = docDefs.map((d) => {
 const up = !!s.docsUp[d[0]];
@@ -528,25 +530,25 @@ cpFormDelete: () => set({ phase: 'selfCp', cpDel: s.cpEdit }),
 cpDelOpen: !!cpDeleting, cpDelName: cpDeleting ? cpDeleting.name.trim() : '',
 cpDelCancel: () => set({ cpDel: 0 }),
 cpDelYes: () => set({ cpDel: 0, cpList: s.cpList.filter((r) => r.id !== s.cpDel) }),
-showDKyc: s.phase === 'docsKyc', showDStk: s.phase === 'docsStk', showDFin: s.phase === 'docsFin',
-goDKyc: goDocs('docsKyc'), goDStk: goDocs('docsStk'), goDFin: goDocs('docsFin'), goHubFromDocs: goSelf('selfHub'),
+showDKyc: s.phase === 'docsKyc', showDStk: s.phase === 'docsStk', showDFin: s.phase === 'docsFin', showDFinLocked: s.phase === 'docsFinLocked', showDEjari: s.phase === 'docsEjari',
+goDKyc: goDocs('docsKyc'), goDStk: goDocs('docsStk'), goDFin: () => set({ phase: s.dFinLocked ? 'docsFinLocked' : 'docsFin', dCat: 0 }), goHubFromDocs: goSelf('selfHub'),
 dKycSecs: dKycSecs, dKycBlocked: !dKycOk, dKycBg: btnBg(dKycOk), dKycCursor: btnCur(dKycOk), dKycContinue: () => { if (dKycOk) goDocs('docsStk')(); },
 dCatOpen: !!dCatFile, dCatName: dCatFile ? dCatFile.name : '', dCatType: s.dCatType, setDCatType: (e) => set({ dCatType: e.target.value }),
 dCatClose: () => set({ dCat: 0 }), dCatBlocked: !s.dCatType.trim(), dCatBg: btnBg(!!s.dCatType.trim()), dCatCursor: btnCur(!!s.dCatType.trim()),
 dCatSave: () => { if (!s.dCatType.trim()) return; const o = Object.assign({}, s.dKyc); o.other = o.other.map((f) => f.id === s.dCat ? Object.assign({}, f, { st: 'ok' }) : f); set({ dKyc: o, dCat: 0 }); },
 dSearch: s.dSearch, setDSearch: (e) => set({ dSearch: e.target.value }), dStkGroups: dStkGroups, dStkEmpty: dStkGroups.length === 0,
 dFinSecs: dFinSecs, dFinBlocked: !dFinOk, dFinBg: btnBg(dFinOk), dFinCursor: btnCur(dFinOk),
-dFinSend: () => { if (!dFinOk) return; set({ phase: 'selfHub', docsDone: true, selfNote: '' }); this.later(6000, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
+dFinSend: () => { if (!dFinOk) return; set({ phase: 'docsFinLocked', dFinLocked: true, selfNote: '' }); if (false) this.later(0, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
 docsDone: s.docsDone, finLocked: !s.docsDone,
 hubDocs: () => { if (s.clientDone) set({ phase: 'docsKyc', dCat: 0 }); },
 hubDocsAria: s.clientDone ? 'false' : 'true', hubDocsCursor: s.clientDone ? 'pointer' : 'default',
 hubDocsTag: s.docsDone ? 'Submitted' : 'Not started', hubDocsTagBg: s.docsDone ? '#eaf6ea' : '#eaeaea', hubDocsTagFg: s.docsDone ? '#54ac51' : '#575757',
 hubSendLabel: s.clientDone ? 'Submit' : 'Send to ARM',
-showFinSum: s.phase === 'selfFinSum', showFinEnt: s.phase === 'selfFinEnt', showFinLaunch: s.phase === 'selfFinLaunch', showFinCl: s.phase === 'selfFinCl',
+showFinSum: s.phase === 'selfFinSum', showFinEnt: s.phase === 'selfFinEnt', showFinCreate: s.phase === 'selfFinCreate', showFinLaunch: s.phase === 'selfFinLaunch', showFinCl: s.phase === 'selfFinCl',
 showFinRedir: s.phase === 'selfFinRedir', showFinRatios: s.phase === 'selfFinRatios', showFinRatings: s.phase === 'selfFinRatings',
 finOngoing: s.docsDone && !s.finReady, finReadyTag: s.finReady && !s.finDone, finDone: s.finDone,
 hubFin: () => { if (s.finReady) goSelf('selfFinSum')(); }, hubFinAria: s.finReady ? 'false' : 'true', hubFinCursor: s.finReady ? 'pointer' : 'default',
-finHub: goSelf('selfHub'), finBackSum: goSelf('selfFinSum'), finToEntity: goSelf('selfFinEnt'), finBackEnt: goSelf('selfFinEnt'), finBackRatios: goSelf('selfFinRatios'), finToRatings: goSelf('selfFinRatings'),
+finHub: goSelf('selfHub'), finBackSum: goSelf('selfFinSum'), finToEntity: goSelf('selfFinCreate'), finBackEnt: goSelf('selfFinCreate'), finBackRatios: goSelf('selfFinRatios'), finToRatings: goSelf('selfFinRatings'),
 finPick: () => { set({ phase: 'selfFinLaunch' }); this.later(2000, () => { if (this.state.phase === 'selfFinLaunch') this.setState({ phase: 'selfFinCl' }); }); },
 finClDone: () => { set({ phase: 'selfFinRedir' }); this.later(2000, () => { if (this.state.phase === 'selfFinRedir') this.setState({ phase: 'selfFinRatios' }); }); },
 showFinXls: s.phase === 'selfFinRatings' && s.finXls, finXlsOpen: () => set({ finXls: true }), finXlsClose: () => set({ finXls: false }),
@@ -591,7 +593,7 @@ const o = Object.assign({}, s.bankExt); const iban = s.acIban.trim().replace(/\s
 o[s.bankTarget] = o[s.bankTarget].concat([{ id: s.bankSeq + 1, name: 'Commercial Bank of Dubai', iban: /^AE/i.test(iban) ? iban : 'AE' + iban }]);
 set({ phase: 'selfBank', bankExt: o, bankSeq: s.bankSeq + 1, bankToast: true }); this.later(5000, () => this.setState({ bankToast: false })); },
 rvFacilities: s.facilities.map((f) => ({ type: f.title || f.type, amount: 'AED ' + f.limit, purpose: (f.purpose || '').trim() || '---' })),
-rvSend: () => set({ phase: 'selfHub', clientDone: true, selfNote: '' }),
+rvSend: () => set({ phase: 'selfDone', clientDone: true, selfNote: '' }),
 clientDone: s.clientDone, hubDocsLocked: !s.clientDone,
 hubClientTag: s.clientDone ? 'Submitted' : 'Not started', hubClientTagBg: s.clientDone ? '#eaf6ea' : '#eaeaea', hubClientTagFg: s.clientDone ? '#54ac51' : '#575757',
 hubSendBg: btnBg(s.finDone), hubSendCursor: s.finDone ? 'pointer' : 'not-allowed', hubSendBlocked: !s.finDone,
@@ -829,10 +831,9 @@ const co = 'Orient Insurance';
 const ahN = (s.shF.first + ' ' + s.shF.last).trim() || 'Ahmed Al-Hassan';
 const ini2 = (n) => { const p = n.trim().split(/ +/); return (((p[0] || '')[0] || '') + (p.length > 1 ? p[p.length - 1][0] : '')).toUpperCase(); };
 const P = {
-  ah: { name: ahN, email: s.shF.email.trim() || 'ahmed@email.com', mobile: s.shF.mobile.trim() ? '+971 ' + s.shF.mobile.trim() : '050 123 4567' },
-  fa: { name: 'Fatima Ahmed Ali', email: 'fatima@email.com', mobile: '050 234 5678' },
-  mh: { name: 'Mostafa Hamed', email: 'mostafa@email.com', mobile: '052 678 1255' },
-  km: { name: 'Khalid Al-Mansoori', email: 'khalid@email.com', mobile: '055 345 6789' }
+  ah: { name: ahN, email: s.shF.email.trim() || 'ahmed.alhassan@orientinsurance.com', mobile: s.shF.mobile.trim() ? '+971 ' + s.shF.mobile.trim() : '050 123 4567' },
+  fa: { name: 'Fatima Al-Mansoori', email: 'fatima.almansoori@orientinsurance.com', mobile: '050 234 5678' },
+  mh: { name: 'Omar Khalid', email: 'omar.khalid@orientinsurance.com', mobile: '055 509 1266' }
 };
 const per = (o, extra) => Object.assign({ initials: ini2(o.name), ind: true, ent: false, hasSub: true }, o, extra || {});
 const ent = (name, sub) => ({ name: name, sub: sub, ind: false, ent: true, hasSub: true, initials: '' });
@@ -842,12 +843,12 @@ const cmap = { a: P.ah, b: P.fa, c: P.mh };
 const cx = s.consent && s.consent[0] === 'x' ? s.ownExtra.find((x) => 'x' + x.id === s.consent) : null;
 const cPick = cmap[s.consent] || cx;
 const rvConsent = cPick ? [{ name: cPick.name, email: cPick.email, bt: '0' }] : [];
-const cobMap = { a: P.ah, b: P.fa, c: P.km };
+const cobMap = { a: P.ah, b: P.fa, c: P.mh };
 const rvCob = ['a', 'b', 'c'].filter((k) => s.cob[k]).map((k) => per(cobMap[k], { sub: cobMap[k].email }))
   .concat(s.ownExtra.filter((x) => s.cob['x' + x.id]).map((x) => per({ name: x.name, initials: x.initials }, { sub: x.email })));
-const kmSugs = { a: per(P.ah, { sub: '50%  Shareholder of ' + co + ' - Individual' }), b: ent('Gulf Star Investments LLC', '50%  Shareholder of ' + co + ' - Company'),
-  c: per(P.fa, { sub: '50%  Shareholder of ' + co + ' - Individual' }), d: ent('Al Noor Trading LLC', '50%  Shareholder of ' + co + ' - Company'),
-  e: per(P.mh, { sub: '50%  Shareholder of ' + co + ' - Individual' }), f: ent('Orient Holdings Ltd', '50%  Shareholder of ' + co + ' - Company') };
+const kmSugs = { a: per(P.ah, { sub: '50%  Shareholder of ' + co + ' - Individual' }), b: ent('Al Noor Holdings LLC', 'Parent company of ' + co + ' - Company'),
+  c: per(P.fa, { sub: '50%  Shareholder of ' + co + ' - Individual' }), d: ent('Gulf Crest Investments', 'Affiliate of ' + co + ' - Company'),
+  e: per(P.mh, { sub: 'Authorized borrower of ' + co + ' - Individual' }), f: ent('Desert Rose Trading LLC', 'Subsidiary of ' + co + ' - Company') };
 const rvKm = s.kmList.map((r) => per({ name: ((r.title ? r.title + ' ' : '') + r.first + ' ' + r.last).trim(), initials: ((r.first.trim()[0] || '') + (r.last.trim()[0] || '')).toUpperCase() }, { sub: r.role || '-' }))
   .concat(['a', 'b', 'c', 'd', 'e', 'f'].filter((k) => s.kmSel[k]).map((k) => kmSugs[k]));
 const enbd = { 1: '1044560850002', 2: '1024560850002' };
@@ -856,7 +857,7 @@ const banks = (w) => [1, 2].filter((n) => s.bankSel[w + n]).map((n) => ({ name: 
 const cobFirst = rvCob[0];
 const cpSugs = { a: P.ah, b: P.fa, c: P.mh };
 const rvCp = s.cpList.map((r) => per({ name: r.name.trim(), initials: ini2(r.name) }, { sub: r.rel, mobile: r.mobile.trim() ? '+971 ' + r.mobile.trim() : '-', email: r.email.trim() || '-' }))
-  .concat(['a', 'b', 'c'].filter((k) => s.cpSel[k]).map((k) => per(cpSugs[k], { sub: '50%  Shareholder of ' + co + ' - Individual' })));
+  .concat(['a', 'b', 'c'].filter((k) => s.cpSel[k]).map((k) => per(cpSugs[k], { sub: k === 'c' ? 'Authorized borrower of ' + co + ' - Individual' : '50%  Shareholder of ' + co + ' - Individual' })));
 Object.assign(__v, {
   rvOwn: rvOwn, rvNoOwn: rvOwn.length === 0,
   rvConsent: rvConsent, rvNoConsent: rvConsent.length === 0,
@@ -880,6 +881,107 @@ Object.keys(FE_DEF).forEach((k) => { const ed = s.finEditId === k; fe[k] = { val
   edit: () => { const o = Object.assign({}, s.finVals); if (s.finEditId) o[s.finEditId] = fmt(s.finDraft, cur(s.finEditId)); this.setState({ finVals: o, finEditId: k, finDraft: o[k] != null ? o[k] : FE_DEF[k] }); focusIn(); } }; });
 Object.assign(__v, { fe: fe, finDraft: s.finDraft, finDraftSet: (e) => this.setState({ finDraft: e.target.value }),
   finSave: () => commit(), finKey: (e) => { if (e.key === 'Enter') { e.preventDefault(); commit(); } else if (e.key === 'Escape') { this.setState({ finEditId: '', finDraft: '' }); } } });
+}
+{
+const btnBgV = (ok) => ok ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)';
+// ---- Client information completed
+const v1 = { showSelfDone: s.phase === 'selfDone', doneBack: () => set({ phase: 'selfHub', selfNote: '' }), doneDocs: () => set({ phase: 'docsKyc', dCat: 0 }) };
+// ---- Financial documents locked (Perfios ongoing)
+const FD = [['aud', 'Audited financial statements', 'These are financial statements of the company that have been examined and verified by an independent auditor.'], ['inh', 'In-house financial statements', 'Latest audited financials of the last 3 years'], ['rec', 'Account Receivables', 'A detailed accounts receivable report showing outstanding invoices, customer balances, due dates, and aging status.'], ['bank', 'Bank Statements (Past 12 months)', 'Complete bank statements for all business accounts covering the most recent 12 months.'], ['vat', 'VAT Reports', 'VAT filings or returns, if your company is VAT registered.'], ['cbrb', 'CBRB Report', 'A current CBRB report showing the company’s credit history, active facilities, and outstanding obligations.'], ['aecb', 'AECB Report', 'A current AECB report showing the company’s credit history, active facilities, and outstanding obligations.']];
+const dLockRows = [];
+FD.forEach((d) => { dLockRows.push({ head: true, file: false, none: false, title: d[1], desc: d[2], name: '' }); const fl = (s.dFin[d[0]] || []).filter((f) => f.st !== 'err'); if (fl.length) fl.forEach((f) => dLockRows.push({ head: false, file: true, none: false, name: f.name, title: '', desc: '' })); else dLockRows.push({ head: false, file: false, none: true, name: '', title: '', desc: '' }); });
+// ---- Ejari
+const EJN = ["marina-plaza-office-1204.pdf", "jlt-cluster-x-unit-305.pdf", "al-quoz-warehouse-17.pdf", "business-bay-tower-a-2201.pdf", "dip-unit-b14.pdf", "deira-shop-g08.jpg", "silicon-oasis-office-412.pdf", "jebel-ali-lob-09.pdf", "karama-showroom-3.png", "difc-gate-village-6.pdf", "motor-city-unit-88.pdf", "al-barsha-villa-3.pdf", "jlt-tower-b-1503.pdf", "dubai-south-logistics-21.pdf", "al-nahda-office-707.pdf", "mirdif-retail-12.jpg", "sports-city-unit-404.pdf", "international-city-k-09.png", "festival-city-office-1101.pdf", "tecom-building-2-310.pdf"];
+const ejAll = s.ejFiles;
+const nUp = ejAll.filter((f) => f.st === 'up').length, nBusy = ejAll.filter((f) => f.st === 'busy').length;
+const q = s.ejQ.trim().toLowerCase();
+let ejList = ejAll.filter((f) => s.ejTab === 'all' || (s.ejTab === 'up' && f.st === 'up') || (s.ejTab === 'fail' && f.st === 'fail'));
+if (q) ejList = ejList.filter((f) => f.name.toLowerCase().indexOf(q) >= 0);
+const pages = Math.max(1, Math.ceil(ejList.length / 10)); const pg = Math.min(s.ejPage, pages);
+const pageRows = ejList.slice((pg - 1) * 10, pg * 10);
+const selIds = Object.keys(s.ejSel).filter((k) => s.ejSel[k]);
+const flip = (id) => { const o = Object.assign({}, s.ejSel); o[id] = !o[id]; set({ ejSel: o }); };
+const allOn = pageRows.length > 0 && pageRows.every((f) => s.ejSel[f.id]);
+const tabs = [['all', 'All (' + ejAll.length + ')'], ['up', 'Uploaded (' + nUp + ')'], ['fail', 'Failed (0)']];
+let pageList = [];
+if (pages <= 7) { for (let i = 1; i <= pages; i++) pageList.push(i); } else { pageList = [1, 2, '...', pages - 1, pages]; }
+const ejUpload = () => {
+  const base = s.ejSeq; const batch = []; const files = s.ejFiles.slice();
+  for (let i = 0; i < 10; i++) { const n = base + i; const id = 'e' + (n + 1); const round = Math.floor(n / EJN.length); const nm = 'ejari-' + EJN[n % EJN.length].replace(/(\.\w+)$/, round ? '-' + (round + 1) + '$1' : '$1'); files.push({ id: id, name: nm, st: 'busy' }); batch.push(id); }
+  set({ ejFiles: files, ejSeq: base + 10, ejBatchIds: batch, ejWidget: true, ejWidgetMin: false, ejPage: 1 });
+  batch.forEach((id, i) => this.later(500 + i * 260, () => this.setState({ ejFiles: this.state.ejFiles.map((f) => f.id === id ? Object.assign({}, f, { st: 'up' }) : f) })));
+};
+const batchFiles = s.ejBatchIds.map((id) => ejAll.find((f) => f.id === id)).filter((f) => f);
+const bDone = batchFiles.filter((f) => f.st === 'up').length;
+const ejOk = nUp > 0 && nBusy === 0;
+const v2 = {
+  dLockRows: dLockRows, goDEjari: () => set({ phase: 'docsEjari' }), goDFinBack: () => set({ phase: s.dFinLocked ? 'docsFinLocked' : 'docsFin' }),
+  ejUpload: ejUpload, ejHas: ejAll.length > 0,
+  ejTabs: tabs.map((t) => ({ label: t[1], sel: s.ejTab === t[0] ? 'true' : 'false', line: s.ejTab === t[0] ? '#182f7c' : 'transparent', fg: s.ejTab === t[0] ? '#182f7c' : '#575757', pick: () => set({ ejTab: t[0], ejPage: 1 }) })),
+  ejQ: s.ejQ, ejSetQ: (e) => set({ ejQ: e.target.value, ejPage: 1 }), ejClearQ: () => set({ ejQ: '' }), ejQHas: !!q,
+  ejResultShow: !!q && ejList.length > 0, ejResultText: ejList.length + (ejList.length === 1 ? ' result' : ' results') + ' for “' + s.ejQ.trim() + '”',
+  ejNoResults: !!q && ejList.length === 0, ejNoText: 'No files match “' + s.ejQ.trim() + '”', ejTableShow: ejList.length > 0,
+  ejSelShow: selIds.length > 0, ejSelText: selIds.length + (selIds.length === 1 ? ' file selected' : ' files selected'),
+  ejDownload: () => {}, ejDelete: () => set({ ejFiles: s.ejFiles.filter((f) => !s.ejSel[f.id]), ejSel: {} }),
+  ejAllOn: allOn, ejAllOnOff: !allOn, ejAllOnAria: allOn ? 'true' : 'false',
+  ejToggleAll: () => { const o = Object.assign({}, s.ejSel); pageRows.forEach((f) => { o[f.id] = !allOn; }); set({ ejSel: o }); },
+  ejRows: pageRows.map((f) => { const on = !!s.ejSel[f.id]; const up = f.st === 'up'; return { name: f.name, on: on, onOff: !on, onAria: on ? 'true' : 'false', selLabel: 'Select ' + f.name, toggle: () => flip(f.id),
+    status: up ? 'Uploaded' : 'Uploading', tagBg: up ? '#eaf6ea' : '#edf2ff', tagFg: up ? '#2e7d32' : '#182f7c', tagLine: up ? '#b5dcb7' : '#c9d6f5' }; }),
+  ejPages: pageList.map((n) => ({ label: String(n), cur: n === pg ? 'page' : 'false', line: n === pg ? '#182f7c' : 'transparent', pick: () => { if (typeof n === 'number') set({ ejPage: n }); } })),
+  ejPrev: () => set({ ejPage: Math.max(1, pg - 1) }), ejNext: () => set({ ejPage: Math.min(pages, pg + 1) }),
+  ejConfirmLabel: nUp ? 'Confirm ' + nUp + (nUp === 1 ? ' document' : ' documents') : 'Confirm documents',
+  ejConfirmBlocked: ejOk ? 'false' : 'true', ejConfirmBg: btnBgV(ejOk), ejConfirmCursor: ejOk ? 'pointer' : 'not-allowed',
+  ejConfirm: () => { if (!ejOk) return; set({ phase: 'selfHub', docsDone: true, ejWidget: false, selfNote: '' }); this.later(5000, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
+  ejWidgetShow: s.ejWidget && s.phase === 'docsEjari', ejWidgetOpen: !s.ejWidgetMin, ejWidgetMin: s.ejWidgetMin,
+  ejWidgetToggle: () => set({ ejWidgetMin: !s.ejWidgetMin }), ejWidgetToggleLabel: s.ejWidgetMin ? 'Expand upload progress' : 'Collapse upload progress', ejWidgetClose: () => set({ ejWidget: false }),
+  ejWidgetDone: bDone === batchFiles.length, ejWidgetBusy: bDone < batchFiles.length, ejWidgetBg: bDone === batchFiles.length ? '#eaf6ea' : '#f4f7fe',
+  ejWidgetText: bDone === batchFiles.length ? bDone + ' of ' + batchFiles.length + ' documents uploaded' : 'Uploading ' + (batchFiles.length - bDone) + ' of ' + batchFiles.length + ' documents…',
+  ejBatch: batchFiles.map((f) => ({ name: f.name, done: f.st === 'up', busy: f.st !== 'up', status: f.st === 'up' ? 'Uploaded' : 'Uploading' }))
+};
+// ---- Entity Creation
+const IND = [["A", "Agriculture, forestry & fishing", [["A01", "Crop & animal production", [["A01.11", "Growing of cereals"], ["A01.41", "Raising of dairy cattle"]]]]], ["C", "Manufacturing", [["C10", "Manufacture of food products", [["C10.71", "Manufacture of bread & fresh pastry"], ["C10.82", "Manufacture of cocoa & confectionery"]]]]], ["F", "Construction", [["F41", "Construction of buildings", [["F41.00", "Construction of buildings"]]], ["F42", "Civil engineering", [["F42.11", "Construction of roads & motorways"], ["F42.12", "Construction of railways & underground railways"]]]]], ["G", "Wholesale & retail trade", [["G46", "Wholesale trade, except motor vehicles", [["G46.69", "Wholesale of other machinery & equipment"], ["G46.90", "Non-specialised wholesale trade"]]]]], ["H", "Transportation & storage", [["H49", "Land transport", [["H49.41", "Freight transport by road"]]], ["H52", "Warehousing & support activities", [["H52.10", "Warehousing & storage"]]]]], ["K", "Financial & insurance activities", [["K65", "Insurance", [["K65.12", "Non-life insurance"], ["K65.20", "Reinsurance"]]]]]];
+const DDO = { type: ['Corporate', 'Financial institution', 'Government related entity', 'Partnership'], bp: ['Corporate Banking', 'Commercial Banking', 'Business Banking'], cp: ['Large Corporate', 'Mid Corporate', 'SME'],
+  risk: ['United Arab Emirates', 'Saudi Arabia', 'Oman', 'Bahrain', 'Qatar', 'Kuwait'], rel: ['Borrower', 'Guarantor', 'Related party'], inc: ['United Arab Emirates', 'Saudi Arabia', 'Oman', 'Bahrain', 'Qatar', 'Kuwait'], prov: ['United Arab Emirates', 'Abu Dhabi', 'Dubai', 'Sharjah'] };
+const ecDD = {};
+Object.keys(DDO).forEach((k) => { const open = s.ecDd === k; const val = s.ecF[k]; ecDD[k] = { open: open, expanded: open ? 'true' : 'false', line: open ? '#2765ff' : '#d7dae5', text: val || 'Text', fg: val ? '#000000' : '#575757', flag: val === 'United Arab Emirates',
+  toggle: () => set({ ecDd: open ? '' : k, ecOpenRow: 0 }), options: DDO[k].map((o) => ({ label: o, selected: val === o ? 'true' : 'false', bg: val === o ? '#edf2ff' : '#ffffff', pick: () => { const f = Object.assign({}, s.ecF); f[k] = o; set({ ecF: f, ecDd: '' }); } })) }; });
+const ecSet = {}; ['longName', 'alias', 'cif', 'edoc'].forEach((k) => { ecSet[k] = (e) => { const f = Object.assign({}, s.ecF); f[k] = e.target.value; set({ ecF: f }); }; });
+const leafName = {}; IND.forEach((a) => a[2].forEach((b) => b[2].forEach((c) => { leafName[c[0]] = c[1]; })));
+const used = (rowId) => s.ecRows.filter((r) => r.id !== rowId && r.code).map((r) => r.code);
+const eq = s.ecQ.trim().toLowerCase();
+const tree = [];
+if (s.ecOpenRow) {
+  const taken = used(s.ecOpenRow);
+  const hit = (code, name) => !eq || code.toLowerCase().indexOf(eq) >= 0 || name.toLowerCase().indexOf(eq) >= 0;
+  IND.forEach((a) => {
+    const subs = a[2].map((b) => [b, b[2].filter((c) => taken.indexOf(c[0]) < 0 && (hit(c[0], c[1]) || hit(b[0], b[1]) || hit(a[0], a[1])))]).filter((x) => x[1].length);
+    if (!subs.length) return;
+    const aOpen = eq ? true : !!s.ecExp[a[0]];
+    tree.push({ role: 'treeitem', pad: '8px', code: a[0], name: a[1], codeW: '0', weight: '400', closed: !aOpen, opened: aOpen, exp: aOpen ? 'true' : 'false', act: () => { const x = Object.assign({}, s.ecExp); x[a[0]] = !x[a[0]]; set({ ecExp: x }); } });
+    if (!aOpen) return;
+    subs.forEach((x) => { const b = x[0]; const bOpen = eq ? true : !!s.ecExp[b[0]];
+      tree.push({ role: 'treeitem', pad: '26px', code: b[0], name: b[1], codeW: '0', weight: '400', closed: !bOpen, opened: bOpen, exp: bOpen ? 'true' : 'false', act: () => { const y = Object.assign({}, s.ecExp); y[b[0]] = !y[b[0]]; set({ ecExp: y }); } });
+      if (!bOpen) return;
+      x[1].forEach((c) => tree.push({ role: 'option', pad: '58px', code: c[0], name: c[1], codeW: '56px', weight: '500', closed: false, opened: false, exp: 'false',
+        act: () => set({ ecRows: s.ecRows.map((r) => r.id === s.ecOpenRow ? Object.assign({}, r, { code: c[0] }) : r), ecOpenRow: 0, ecQ: '', ecErr: false }) })); });
+  });
+}
+const total = s.ecRows.reduce((t, r) => t + (parseFloat(r.pct) || 0), 0);
+const missing = s.ecRows.some((r) => !r.code);
+const ecBad = missing || Math.abs(total - 100) > 0.001;
+const v3 = {
+  showFinCreate: s.phase === 'selfFinCreate', ecF: s.ecF, ecSet: ecSet, ecDD: ecDD, ecQ: s.ecQ, ecSetQ: (e) => set({ ecQ: e.target.value }), ecTree: tree, ecTreeEmpty: !!s.ecOpenRow && tree.length === 0,
+  ecRowsV: s.ecRows.map((r, i) => { const open = s.ecOpenRow === r.id; const err = s.ecErr && ecBad && !missing; return { open: open, expanded: open ? 'true' : 'false', line: open ? '#2765ff' : ((s.ecErr && !r.code) ? '#c8102e' : '#d7dae5'),
+    text: r.code ? r.code + ' · ' + leafName[r.code] : 'Select industry code', fg: r.code ? '#000000' : '#575757', aria: 'Industry code, row ' + (i + 1),
+    toggle: () => set({ ecOpenRow: open ? 0 : r.id, ecQ: '', ecDd: '' }), pct: r.pct, pctAria: 'Percentage, row ' + (i + 1), err: err, pctLine: err ? '#c8102e' : '#d7dae5',
+    setPct: (e) => set({ ecRows: s.ecRows.map((x) => x.id === r.id ? Object.assign({}, x, { pct: e.target.value.replace(/[^0-9.]/g, '') }) : x) }),
+    del: () => set({ ecRows: s.ecRows.length > 1 ? s.ecRows.filter((x) => x.id !== r.id) : [{ id: s.ecSeq + 1, code: '', pct: '' }], ecSeq: s.ecSeq + 1, ecOpenRow: 0 }), delAria: 'Delete row ' + (i + 1) }; }),
+  ecAddRow: () => set({ ecRows: s.ecRows.concat([{ id: s.ecSeq + 1, code: '', pct: '' }]), ecSeq: s.ecSeq + 1, ecOpenRow: 0 }),
+  ecErrShow: s.ecErr && ecBad, ecErrTitle: missing ? 'Select an industry code for every row' : 'Total allocation must equal 100%',
+  ecErrText: missing ? 'Choose an industry code in each row, or delete rows you don’t need.' : 'The industry code percentages currently add up to ' + (Math.round(total * 100) / 100) + '%. Adjust the values so the total is exactly 100% to continue.',
+  ecContinue: () => { if (ecBad) { set({ ecErr: true, ecOpenRow: 0, ecDd: '' }); return; } set({ ecErr: false }); __v.finPick(); }
+};
+Object.assign(__v, v1, v2, v3);
 }
 return __v;
 }

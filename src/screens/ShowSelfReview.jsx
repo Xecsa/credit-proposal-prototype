@@ -57,7 +57,7 @@ Back</button>
 <g clipPath="url(#ienbdbigclip0_12301_232125)"><path fillRule="evenodd" clipRule="evenodd" d="M434.158 206.989C434.405 200.174 438.043 194.14 443.513 190.219H439.879C435.451 194.105 432.474 199.563 432.351 205.629C432.25 210.443 433.169 214.093 435.691 217.781H436.618C434.645 214.387 434.019 210.827 434.158 206.989Z" fill="#072447"></path></g>
 <g clipPath="url(#ienbdbigclip0_12301_232125)"><path fillRule="evenodd" clipRule="evenodd" d="M434.746 217.781C432.536 215.439 429.87 211.019 429.555 206.246C429.174 200.409 431.095 194.722 434.989 190.219H438.003C433.24 194.947 430.829 201.207 431.382 207.427C431.735 211.402 433.298 214.339 435.693 217.781H434.746Z" fill="#072447"></path></g></svg></span>
 {' '}
-<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}><h1 style={{ margin: "0", fontSize: "24px", lineHeight: "32px", fontWeight: "500", color: "#000000" }}>Orient Insurance Marina LLC</h1>
+<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}><h1 style={{ margin: "0", fontSize: "24px", lineHeight: "32px", fontWeight: "500", color: "#000000" }}>Orient Insurance</h1>
 <div style={{ lineHeight: "16px", color: "#575757" }}>CIF: 102938859</div></div>
 {' '}</div>
 {' '}</div>
