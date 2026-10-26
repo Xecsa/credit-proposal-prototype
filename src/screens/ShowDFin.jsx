@@ -31,8 +31,7 @@ export default function ShowDFin({ v }) {
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><button onClick={v.goDStk} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "24px", padding: "0", border: "0", background: "transparent", color: "#182f7c", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px", alignSelf: "flex-start" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#182f7c" strokeLinecap="round" strokeLinejoin="round"></path></svg>
 Back</button>
 <h1 style={{ margin: "0", fontSize: "40px", lineHeight: "40px", fontWeight: "300", color: "#072447" }}>Financial documents</h1>
-<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757", opacity: "0.9" }}>Please upload the required documents to continue</p>
-<p style={{ margin: "0", lineHeight: "20px", color: "#6c7a89" }}>Upload up to 10 documents at a time. Each document can have up to 10 pages.</p></div>
+<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757", opacity: "0.9" }}>Please upload the required documents to continue</p></div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>{' '}
 {(v.dFinSecs || []).map((sec, sec__i) => (<React.Fragment key={sec__i}>{' '}

@@ -288,7 +288,7 @@ return [{ name: key + '-report.pdf', st: 'ok' }];
 const dFinSecs = finDefs.map((d) => { const key = d[0]; const files = s.dFin[key]; return {
 title: d[1], desc: d[2], uploadLabel: d[3], uploadAria: d[3] + ': ' + d[1], hasDates: key === 'bank',
 from: s.finFrom, to: s.finTo, setFrom: (e) => set({ finFrom: e.target.value }), setTo: (e) => set({ finTo: e.target.value }),
-files: files.map((f) => dView('dFin', 'dFinConf', key, f)), showConfirm: files.length > 0, box: dBox('dFinConf', key),
+files: files.map((f) => dView('dFin', 'dFinConf', key, f)), showConfirm: false, box: dBox('dFinConf', key),
 upload: () => dAdd('dFin', 'dFinConf', key, finNew(key), key === 'bank' && !s.finFrom && !s.finTo ? { finFrom: '12/01/2023', finTo: '12/02/2026' } : null)
 }; });
 const dFinOk = true;
@@ -538,7 +538,7 @@ dCatClose: () => set({ dCat: 0 }), dCatBlocked: !s.dCatType.trim(), dCatBg: btnB
 dCatSave: () => { if (!s.dCatType.trim()) return; const o = Object.assign({}, s.dKyc); o.other = o.other.map((f) => f.id === s.dCat ? Object.assign({}, f, { st: 'ok' }) : f); set({ dKyc: o, dCat: 0 }); },
 dSearch: s.dSearch, setDSearch: (e) => set({ dSearch: e.target.value }), dStkGroups: dStkGroups, dStkEmpty: dStkGroups.length === 0,
 dFinSecs: dFinSecs, dFinBlocked: !dFinOk, dFinBg: btnBg(dFinOk), dFinCursor: btnCur(dFinOk),
-dFinSend: () => { if (!dFinOk) return; set({ phase: 'docsFinLocked', dFinLocked: true, selfNote: '' }); if (false) this.later(0, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
+dFinSend: () => { if (!dFinOk) return; set({ phase: 'docsEjari', dFinLocked: true, selfNote: '' }); if (false) this.later(0, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
 docsDone: s.docsDone, finLocked: !s.docsDone,
 hubDocs: () => { if (s.clientDone) set({ phase: 'docsKyc', dCat: 0 }); },
 hubDocsAria: s.clientDone ? 'false' : 'true', hubDocsCursor: s.clientDone ? 'pointer' : 'default',
@@ -885,7 +885,7 @@ Object.assign(__v, { fe: fe, finDraft: s.finDraft, finDraftSet: (e) => this.setS
 {
 const btnBgV = (ok) => ok ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)';
 // ---- Client information completed
-const v1 = { showSelfDone: s.phase === 'selfDone', doneBack: () => set({ phase: 'selfHub', selfNote: '' }), doneDocs: () => set({ phase: 'selfHub', selfNote: '' }) };
+const v1 = { showEjSent: s.phase === 'docsEjSent', ejSentContinue: () => set({ phase: 'selfHub', selfNote: '' }), showSelfDone: s.phase === 'selfDone', doneBack: () => set({ phase: 'selfHub', selfNote: '' }), doneDocs: () => set({ phase: 'selfHub', selfNote: '' }) };
 // ---- Financial documents locked (Perfios ongoing)
 const FD = [['aud', 'Audited financial statements', 'These are financial statements of the company that have been examined and verified by an independent auditor.'], ['inh', 'In-house financial statements', 'Latest audited financials of the last 3 years'], ['rec', 'Account Receivables', 'A detailed accounts receivable report showing outstanding invoices, customer balances, due dates, and aging status.'], ['bank', 'Bank Statements (Past 12 months)', 'Complete bank statements for all business accounts covering the most recent 12 months.'], ['vat', 'VAT Reports', 'VAT filings or returns, if your company is VAT registered.'], ['cbrb', 'CBRB Report', 'A current CBRB report showing the company’s credit history, active facilities, and outstanding obligations.'], ['aecb', 'AECB Report', 'A current AECB report showing the company’s credit history, active facilities, and outstanding obligations.']];
 const dLockRows = [];
@@ -931,7 +931,7 @@ const v2 = {
   ejPrev: () => set({ ejPage: Math.max(1, pg - 1) }), ejNext: () => set({ ejPage: Math.min(pages, pg + 1) }),
   ejConfirmLabel: nUp ? 'Confirm ' + nUp + (nUp === 1 ? ' document' : ' documents') : 'Confirm documents',
   ejConfirmBlocked: ejOk ? 'false' : 'true', ejConfirmBg: btnBgV(ejOk), ejConfirmCursor: ejOk ? 'pointer' : 'not-allowed',
-  ejConfirm: () => { if (!ejOk) return; set({ phase: 'selfHub', docsDone: true, ejWidget: false, selfNote: '' }); this.later(5000, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
+  ejConfirm: () => { if (!ejOk) return; set({ phase: 'docsEjSent', docsDone: true, ejWidget: false, selfNote: '' }); this.later(5000, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
   ejWidgetShow: s.ejWidget && s.phase === 'docsEjari', ejWidgetOpen: !s.ejWidgetMin, ejWidgetMin: s.ejWidgetMin,
   ejWidgetToggle: () => set({ ejWidgetMin: !s.ejWidgetMin }), ejWidgetToggleLabel: s.ejWidgetMin ? 'Expand upload progress' : 'Collapse upload progress', ejWidgetClose: () => set({ ejWidget: false }),
   ejWidgetDone: bDone === batchFiles.length, ejWidgetBusy: bDone < batchFiles.length, ejWidgetBg: bDone === batchFiles.length ? '#eaf6ea' : '#f4f7fe',
