@@ -9,7 +9,7 @@ participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
-selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
+hubRole: 'rm', hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [
 { id: 1, seed: true, title: 'Term loan', type: 'Cross-sell', product: 'LC Import', limit: '10,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' },
 { id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
@@ -548,11 +548,11 @@ showFinSum: s.phase === 'selfFinSum', showFinEnt: s.phase === 'selfFinEnt', show
 showFinRedir: s.phase === 'selfFinRedir', showFinRatios: s.phase === 'selfFinRatios', showFinRatings: s.phase === 'selfFinRatings',
 finOngoing: s.docsDone && !s.finReady, finReadyTag: s.finReady && !s.finDone, finDone: s.finDone,
 hubFin: () => { if (s.finReady) goSelf('selfFinSum')(); }, hubFinAria: s.finReady ? 'false' : 'true', hubFinCursor: s.finReady ? 'pointer' : 'default',
-finHub: goSelf('selfHub'), finBackSum: goSelf('selfFinSum'), finToEntity: goSelf('selfFinCreate'), finBackEnt: goSelf('selfFinCreate'), finBackRatios: goSelf('selfFinRatios'), finToRatings: goSelf('selfFinRatings'),
+finHub: goSelf('selfHub'), finBackSum: goSelf('selfFinSum'), finToEntity: goSelf('selfFinEnt'), finBackEnt: goSelf('selfFinEnt'), finBackRatios: goSelf('selfFinRatios'), finToRatings: goSelf('selfFinRatings'),
 finPick: () => { set({ phase: 'selfFinLaunch' }); this.later(2000, () => { if (this.state.phase === 'selfFinLaunch') this.setState({ phase: 'selfFinCl' }); }); },
 finClDone: () => { set({ phase: 'selfFinRedir' }); this.later(2000, () => { if (this.state.phase === 'selfFinRedir') this.setState({ phase: 'selfFinRatios' }); }); },
 showFinXls: s.phase === 'selfFinRatings' && s.finXls, finXlsOpen: () => set({ finXls: true }), finXlsClose: () => set({ finXls: false }),
-finSubmit: () => set({ phase: 'selfHub', finDone: true, selfNote: '' }),
+finSubmit: () => set({ phase: 'selfHub', finDone: true, hubRole: 'arm', selfNote: '' }),
 goSelfKm: goSelf('selfKm'), showSelfKm: s.phase === 'selfKm' || s.phase === 'selfKmForm', showSelfKmForm: s.phase === 'selfKmForm',
 kmHas: s.kmList.length > 0, kmSug: kmSug, kmF: kmF, kmSet: kmSet, kmS: kmS,
 kmNarr: s.kmNarr, setKmNarr: (e) => set({ kmNarr: e.target.value }),
@@ -983,6 +983,31 @@ const v3 = {
 };
 Object.assign(__v, v1, v2, v3);
 }
+
+const HM = {
+  arm: { t: 'Add comment for RM', sub: 'Share a note the RM will see on this application.', l: 'Comment', ph: 'For example, please confirm the facility amount with the client', cta: 'Submit to RM', req: true },
+  confirm: { t: 'Confirm application', sub: 'Once confirmed, the application moves to credit review. You can add a note for the reviewers if needed.', l: 'Comments (optional)', ph: 'Add any notes for the credit reviewers', cta: 'Confirm application', req: false },
+  ret: { t: 'Return application to ARM', sub: 'Tell the ARM what needs to change.', l: 'Reason for return', ph: 'For example, the audited financials for 2025 are missing', cta: 'Return to ARM', req: true }
+};
+const hmK = s.hubModal; const hm = HM[hmK] || HM.arm; const hmTxt = (s.hubModalText || '').trim(); const hmOk = !hm.req || !!hmTxt;
+const hubCm = s.hubComments || [{ name: 'Jane Smith', role: 'RM', text: 'Please collect the signed board resolution.' }];
+const addCm = (c) => hmTxt ? hubCm.concat([c]) : hubCm;
+Object.assign(__v, {
+  hubShowSend: !s.finDone, hubArm: !!s.finDone && s.hubRole === 'arm', hubRm: !!s.finDone && s.hubRole === 'rm' && !s.appConfirmed,
+  appConfirmed: !!s.appConfirmed,
+  hubCommentList: hubCm.map((c, k) => Object.assign({ line: k < hubCm.length - 1 }, c)),
+  hubOpenArm: () => set({ hubModal: 'arm', hubModalText: '' }), hubOpenReturn: () => set({ hubModal: 'ret', hubModalText: '' }), hubOpenConfirm: () => set({ hubModal: 'confirm', hubModalText: '' }),
+  hubModalOpen: !!hmK && s.phase === 'selfHub', hubModalTitle: hm.t, hubModalSub: hm.sub, hubModalLabel: hm.l, hubModalPh: hm.ph, hubModalCta: hm.cta, hubModalText: s.hubModalText || '',
+  setHubModalText: (e) => this.setState({ hubModalText: e.target.value }),
+  hubModalClose: () => set({ hubModal: '', hubModalText: '' }),
+  hubModalBlocked: hmOk ? 'false' : 'true', hubModalBg: hmOk ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)', hubModalCursor: hmOk ? 'pointer' : 'not-allowed',
+  hubModalSubmit: () => {
+    if (!hmOk) return;
+    if (hmK === 'arm') set({ hubModal: '', hubModalText: '', hubRole: 'rm', hubComments: addCm({ name: 'Omar Khan', role: 'ARM', text: hmTxt }), selfNote: '' });
+    else if (hmK === 'ret') set({ hubModal: '', hubModalText: '', hubRole: 'arm', hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: 'Application returned to ARM.' });
+    else set({ hubModal: '', hubModalText: '', appConfirmed: true, hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: '' });
+  }
+});
 return __v;
 }
 }

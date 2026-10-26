@@ -78,6 +78,12 @@ Back</button>
 <div style={{ fontSize: "24px", lineHeight: "32px", fontWeight: "500", color: "#000000" }}>Orient Insurance</div>
 {' '}
 <div style={{ marginTop: "12px", lineHeight: "16px", color: "#575757" }}>CIF: 102938859</div>
+{' '}
+<div aria-label="Red flags" style={{ marginTop: "16px", display: "flex", flexWrap: "wrap", gap: "16px" }}><span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#f3e6e6", color: "#9d0000", display: "inline-flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3L9 9M9 3L3 9" stroke="#9d0000" strokeWidth="1.2" strokeLinecap="round"></path></svg>
+CIF Suspended</span>
+<span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#f3e6e6", color: "#9d0000", display: "inline-flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.6" stroke="#9d0000" strokeWidth="1.2"></circle>
+<path d="M2.8 9.2L9.2 2.8" stroke="#9d0000" strokeWidth="1.2" strokeLinecap="round"></path></svg>
+Blacklisted</span></div>
 {' '}</div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
