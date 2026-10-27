@@ -9,7 +9,7 @@ participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
-hubRole: 'rm', sentToArm: false, ownMenu: '', ownEditId: 0, entGone: false, entName: 'GETAX Agrifert DMCC', entPct: '50', entEdit: false, entDraftName: '', entDraftPct: '', pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
+hubRole: 'rm', sentToArm: false, corpModal: false, ownMenu: '', ownEditId: 0, entGone: false, entName: 'GETAX Agrifert DMCC', entPct: '50', entEdit: false, entDraftName: '', entDraftPct: '', pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [
 { id: 1, seed: true, title: 'Term loan', type: 'Cross-sell', product: 'LC Import', limit: '10,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' },
 { id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
@@ -1171,6 +1171,25 @@ Object.assign(__v, {
   entSetName: (e) => this.setState({ entDraftName: e.target.value }), entSetPct: (e) => this.setState({ entDraftPct: e.target.value.replace(/[^0-9.]/g, '') }),
   entEditCancel: () => this.setState({ entEdit: false }),
   entEditSave: () => set({ entEdit: false, entName: (s.entDraftName || '').trim() || s.entName, entPct: s.entDraftPct || s.entPct })
+});
+
+// ---- Ownership error states
+const owPct = (b) => { const m = /(\d+(?:\.\d+)?)%/.exec(b || ''); return m ? parseFloat(m[1]) : 0; };
+const owHolders = __v.ownList.filter((o) => owPct(o.body) > 0 || o.key === 'ent');
+const ownTotal = Math.round(__v.ownList.reduce((t, o) => t + owPct(o.body), 0) * 100) / 100;
+const own100 = ownTotal === 100;
+const ownReady = (s.ownDone || s.ownGone) && own100;
+Object.assign(__v, {
+  ownList: __v.ownList.map((o) => o.key !== 'ent' ? o : Object.assign({}, o, { cursor: 'pointer', aria: o.name + ', corporate shareholder', open: () => this.setState({ corpModal: true, ownMenu: '' }) })),
+  ownTotal: String(ownTotal), own100: own100,
+  ownErrNone: owHolders.length === 0, ownErrOver: ownTotal > 100, ownErrUnder: owHolders.length > 0 && ownTotal < 100,
+  ownBlocked: !ownReady, ownBg: ownReady ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)', ownCursor: ownReady ? 'pointer' : 'not-allowed',
+  ownContinue: () => { if (ownReady) set({ phase: 'selfConsent', selfNote: '' }); },
+  ownDelBody: s.ownDel === 'ent' ? 'This will delete all shareholders of “Orient Insurance” too.' : 'This will remove this shareholder from the application.',
+  corpShow: !!s.corpModal && s.phase === 'selfOwn',
+  corpBack: () => this.setState({ corpModal: false }),
+  corpClose: () => set({ corpModal: false, phase: 'selfTerminated' }),
+  showTerminated: s.phase === 'selfTerminated'
 });
 return __v;
 }

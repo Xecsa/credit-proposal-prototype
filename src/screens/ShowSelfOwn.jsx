@@ -62,11 +62,29 @@ Back</button>
 <h1 style={{ margin: "0", fontSize: "40px", lineHeight: "40px", fontWeight: "300", color: "#072447" }}>Ownership &amp; shareholders</h1>
 <p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#6c7a89", opacity: "0.9" }}>Review the company’s ownership and update shareholder information as needed</p></div>
 {' '}
-<div role="status" style={{ boxSizing: "border-box", padding: "15px", border: "1px solid #bae3b9", borderRadius: "8px", background: "#f3faf3", display: "flex", gap: "8px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="436 328 24 24" fill="none"><defs><mask id="ialertokmask1_12301_232125" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="436" y="328" width="24" height="24"><g><g><path d="M448 330C453.523 330 458 334.477 458 340C458 345.523 453.523 350 448 350C442.477 350 438 345.523 438 340C438 334.477 442.477 330 448 330ZM453.354 336.646C453.158 336.451 452.842 336.451 452.646 336.646L446.354 342.939C446.158 343.135 445.842 343.135 445.646 342.939L443.354 340.646C443.158 340.451 442.842 340.451 442.646 340.646C442.451 340.842 442.451 341.158 442.646 341.354L444.939 343.646C445.525 344.232 446.475 344.232 447.061 343.646L453.354 337.354C453.549 337.158 453.549 336.842 453.354 336.646Z" fill="#266300"></path></g></g></mask></defs>
+{(v.own100) ? (<><div role="status" style={{ boxSizing: "border-box", padding: "15px", border: "1px solid #bae3b9", borderRadius: "8px", background: "#f3faf3", display: "flex", gap: "8px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="436 328 24 24" fill="none"><defs><mask id="ialertokmask1_12301_232125" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="436" y="328" width="24" height="24"><g><g><path d="M448 330C453.523 330 458 334.477 458 340C458 345.523 453.523 350 448 350C442.477 350 438 345.523 438 340C438 334.477 442.477 330 448 330ZM453.354 336.646C453.158 336.451 452.842 336.451 452.646 336.646L446.354 342.939C446.158 343.135 445.842 343.135 445.646 342.939L443.354 340.646C443.158 340.451 442.842 340.451 442.646 340.646C442.451 340.842 442.451 341.158 442.646 341.354L444.939 343.646C445.525 344.232 446.475 344.232 447.061 343.646L453.354 337.354C453.549 337.158 453.549 336.842 453.354 336.646Z" fill="#266300"></path></g></g></mask></defs>
 <g mask="url(#ialertokmask1_12301_232125)"><rect x="436" y="328" width="24" height="24" fill="#1B5145"></rect></g></svg></span>
 <div style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "2px", lineHeight: "20px" }}><div style={{ fontWeight: "500", color: "#000000" }}>Total shareholding is 100%</div>
-<div style={{ color: "#575757" }}>All required shareholders declared. Ownership of 10%+ captured for each, totaling 100%.</div></div></div>
+<div style={{ color: "#575757" }}>All required shareholders declared. Ownership of 10%+ captured for each, totaling 100%.</div></div></div></>) : null}
 {' '}</>) : null}
+{' '}
+{(v.ownErrNone) ? (<><div role="alert" style={{ boxSizing: "border-box", padding: "15px", border: "1px solid #dbabab", borderRadius: "8px", background: "#f8f1f1", display: "flex", gap: "8px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", display: "flex", paddingTop: "0" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#b00000"></circle>
+<path d="M10 5.5v5.5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"></path>
+<circle cx="10" cy="14.2" r="1.1" fill="#fff"></circle></svg></span>
+<div style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "2px", lineHeight: "20px" }}><div style={{ fontWeight: "500", color: "#000000" }}>No records found</div>
+<div style={{ color: "#575757" }}>No bank records or documents were found. Enter the details manually.</div></div></div></>) : null}
+{' '}
+{(v.ownErrOver) ? (<><div role="alert" style={{ boxSizing: "border-box", padding: "15px", border: "1px solid #dbabab", borderRadius: "8px", background: "#f8f1f1", display: "flex", gap: "8px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", display: "flex", paddingTop: "0" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="#b00000"></circle>
+<path d="M10 5.5v5.5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"></path>
+<circle cx="10" cy="14.2" r="1.1" fill="#fff"></circle></svg></span>
+<div style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "2px", lineHeight: "20px" }}><div style={{ fontWeight: "500", color: "#000000" }}>Shareholding percentage is {v.ownTotal}%</div>
+<div style={{ color: "#575757" }}>Total shareholding percentage must not exceed 100%</div></div></div></>) : null}
+{' '}
+{(v.ownErrUnder) ? (<><div role="status" style={{ boxSizing: "border-box", padding: "15px", border: "1px solid #fcbf4e", borderRadius: "8px", background: "#fefbf3", display: "flex", gap: "8px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", display: "flex", paddingTop: "0" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2.2 19 17.8H1Z" fill="#e8a317" stroke="#e8a317" strokeWidth="1.2" strokeLinejoin="round"></path>
+<path d="M10 7.5v4.5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"></path>
+<circle cx="10" cy="14.6" r="1.05" fill="#fff"></circle></svg></span>
+<div style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "2px", lineHeight: "20px" }}><div style={{ fontWeight: "500", color: "#000000" }}>Shareholding percentage is {v.ownTotal}%</div>
+<div style={{ color: "#575757" }}>Total shareholding must add up to 100%. Make sure every shareholder is accounted for.</div></div></div></>) : null}
 {' '}
 <div role="table" aria-label="Company documents" style={{ border: "1px solid #d7dae5", borderRadius: "8px", background: "#ffffff", padding: "0 16px" }}>{' '}
 <div role="row" style={{ boxSizing: "border-box", padding: "15px 0 16px", display: "flex", gap: "16px", justifyContent: "space-between", alignItems: "flex-start", lineHeight: "16px" }}><span role="rowheader" style={{ color: "#575757" }}>Trade license</span>
@@ -129,6 +147,14 @@ Delete</button>
 <button onClick={v.entEditSave} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "120px", padding: "12px 16px", borderRadius: "8px", border: "0", color: "#ffffff", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)", cursor: "pointer" }}>Save</button></div></div></div>
 {' '}</>) : null}
 {' '}
+{(v.corpShow) ? (<>{' '}
+<div style={{ position: "fixed", inset: "0", zIndex: "10", background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}><div role="alertdialog" aria-modal="true" aria-labelledby="corp-title" aria-describedby="corp-body" style={{ width: "100%", maxWidth: "474px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "32px", display: "flex", flexDirection: "column", gap: "4px", textAlign: "center" }}><div style={{ display: "flex", justifyContent: "flex-end" }}><button onClick={v.corpBack} aria-label="Close" style={{ width: "24px", height: "24px", padding: "0", border: "0", background: "transparent", cursor: "pointer", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round"></path></svg></button></div>
+<div style={{ display: "flex", flexDirection: "column", gap: "24px" }}><div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><div id="corp-title" style={{ fontSize: "32px", lineHeight: "40px", fontWeight: "500", color: "#575757" }}>Application cannot proceed</div>
+<div id="corp-body" style={{ fontSize: "16px", lineHeight: "24px", color: "#575757" }}>A corporate shareholder was identified. Multi-layered clients are currently not supported.</div></div>
+<div style={{ display: "flex", flexWrap: "wrap", gap: "24px", justifyContent: "center" }}><button onClick={v.corpBack} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", width: "120px", border: "1px solid #d3d7e7", background: "#ffffff", color: "#182f7c", cursor: "pointer" }}>Go back</button>
+<button onClick={v.corpClose} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", minWidth: "150px", border: "0", background: "#d11f1b", color: "#ffffff", cursor: "pointer" }}>Close application</button></div></div></div></div>
+{' '}</>) : null}
+{' '}
 {(v.ownDelShow) ? (<>{' '}
 <div style={{ position: "fixed", inset: "0", zIndex: "10", background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>{' '}
 <div role="dialog" aria-modal="true" aria-labelledby="own-del-title" style={{ width: "100%", maxWidth: "442px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "32px", display: "flex", flexDirection: "column", gap: "4px", textAlign: "center" }}>{' '}
@@ -138,7 +164,7 @@ Delete</button>
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
 <div id="own-del-title" style={{ fontSize: "32px", lineHeight: "40px", fontWeight: "500", color: "#575757", overflowWrap: "anywhere" }}>Delete “{v.ownDelName}”?</div>
 {' '}
-<div style={{ fontSize: "16px", lineHeight: "24px", color: "#575757" }}>This will remove this shareholder from the application.</div>
+<div style={{ fontSize: "16px", lineHeight: "24px", color: "#575757" }}>{v.ownDelBody}</div>
 {' '}</div>
 {' '}
 <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", justifyContent: "center" }}>{' '}
