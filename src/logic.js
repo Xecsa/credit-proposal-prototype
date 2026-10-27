@@ -9,7 +9,7 @@ participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
-hubRole: 'rm', sentToArm: false, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
+hubRole: 'rm', sentToArm: false, pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [
 { id: 1, seed: true, title: 'Term loan', type: 'Cross-sell', product: 'LC Import', limit: '10,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' },
 { id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
@@ -1024,6 +1024,134 @@ Object.assign(__v, {
   hubClientTag: s.clientDone ? 'Submitted' : s.clientStarted ? 'In progress' : 'Not started',
   hubClientTagBg: s.clientDone ? '#eaf6ea' : s.clientStarted ? '#cad9ff' : '#eaeaea',
   hubClientTagFg: s.clientDone ? '#54ac51' : s.clientStarted ? '#002ea2' : '#575757'
+});
+
+// ---- Document preview (27 Oct): sample page generated for the document that was clicked
+const PV_CO = 'Orient Insurance';
+const pvKV = (head, pairs) => ({ head: head, isKv: true, isTable: false, isText: false, kv: pairs.map((p) => ({ k: p[0], v: p[1] })), cols: [], trs: [], paras: [] });
+const pvTB = (head, cols, rows) => ({ head: head, isKv: false, isTable: true, isText: false, kv: [], cols: cols.map((t) => ({ t: t })), trs: rows.map((r) => ({ cells: r.map((t) => ({ t: String(t) })) })), paras: [] });
+const pvTX = (head, paras) => ({ head: head, isKv: false, isTable: false, isText: true, kv: [], cols: [], trs: [], paras: paras.map((t) => ({ t: t })) });
+const pvCap = (w) => w ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+const pvYear = (y) => (/^\d{4}$/.test(y || '') ? y : '2025');
+const pvDoc = (kind, file, x) => {
+  x = x || {};
+  const person = x.person || 'Ahmed Al-Hassan';
+  const base = { issuer: PV_CO, issuerSub: 'Office 1204, Marina Plaza, Dubai Marina, Dubai, UAE', ref: 'CIF 102938859\nLicense 1234567789353', docTitle: '', docSub: '', sections: [], sig1: 'Authorized signatory', sig2: 'Date' };
+  const d = (o) => Object.assign({}, base, o);
+  const owners = pvTB('Owners / partners', ['Name', 'Type', 'Nationality / place', 'Share'], [['Ahmed Al-Hassan', 'Individual', 'UAE', '50%'], ['GETAX Agrifert DMCC', 'Entity', 'Dubai, UAE', '50%']]);
+  if (kind === 'tl') return d({ issuer: 'Licensing Authority', issuerSub: 'Government of Dubai (sample)', ref: 'License No. 1234567789353\nIssued 15/03/2015', docTitle: 'Commercial License', docSub: 'Trade name: ' + PV_CO, sections: [
+    pvKV('License details', [['License number', '1234567789353'], ['Trade name', PV_CO], ['Legal form', 'Limited Liability Company'], ['Issue date', '15/03/2015'], ['Expiry date', '14/03/2027'], ['Status', 'Active']]),
+    pvTX('Licensed activities', ['1. Non-life insurance (K65.12)', '2. Insurance agency and brokerage']),
+    pvKV('Registered address', [['Premises', 'Office 1204, Marina Plaza'], ['Area', 'Dubai Marina, Dubai, UAE'], ['Telephone', '+971 4 000 0000'], ['Email', 'info@orientinsurance.example']]),
+    owners], sig1: 'Registrar', sig2: 'Date of issue: 15/03/2015' });
+  if (kind === 'moa') return d({ docTitle: 'Memorandum of Association', docSub: PV_CO + ' L.L.C.', sections: [
+    pvKV('Company', [['Name', PV_CO + ' L.L.C.'], ['Legal form', 'Limited Liability Company'], ['Registered office', 'Dubai, United Arab Emirates'], ['Duration', '25 years, renewable']]),
+    pvTB('Capital and shares', ['Partner', 'Shares', 'Value (AED)', 'Share'], [['Ahmed Al-Hassan', '5,000', '5,000,000', '50%'], ['GETAX Agrifert DMCC', '5,000', '5,000,000', '50%'], ['Total', '10,000', '10,000,000', '100%']]),
+    pvTX('Objects of the company', ['The company is established to carry out non-life insurance business and insurance agency services within the UAE, and any activity related to these objects.']),
+    pvTX('Management', ['The company is managed by a manager appointed by the partners. Fatima Al-Mansoori is appointed as manager and authorized signatory.'])], sig1: 'Partner: Ahmed Al-Hassan', sig2: 'Partner: GETAX Agrifert DMCC' });
+  if (kind === 'aoa') return d({ docTitle: 'Articles of Association', docSub: PV_CO + ' L.L.C.', sections: [
+    pvTX('Article 1 – Name', ['The name of the company is ' + PV_CO + ' L.L.C.']),
+    pvTX('Article 5 – Capital', ['The share capital is AED 10,000,000, divided into 10,000 shares of AED 1,000 each, fully paid.']),
+    pvTX('Article 12 – Board and management', ['The company is managed by a board of up to three members appointed by the general assembly for a term of three years.']),
+    pvTX('Article 18 – Signatory powers', ['The manager may sign on behalf of the company for credit facilities up to AED 50,000,000. Amounts above this require a board resolution.']),
+    pvTX('Article 24 – Shareholder rights', ['Each share carries one vote. Transfers of shares require the consent of the other partners.'])], sig1: 'Partner: Ahmed Al-Hassan', sig2: 'Partner: GETAX Agrifert DMCC' });
+  if (kind === 'br') return d({ docTitle: 'Board Resolution', docSub: 'Resolution No. BR-2026-014', sections: [
+    pvKV('Meeting', [['Date', '12/10/2026'], ['Place', 'Head office, Dubai'], ['Chair', 'Ahmed Al-Hassan'], ['Quorum', 'Present (3 of 3 members)']]),
+    pvTX('Resolutions', ['1. To apply to Emirates NBD for a Term Loan of AED 10,000,000 and a Project-specific facility of AED 20,000,000.', '2. To authorize Fatima Al-Mansoori to negotiate, sign and execute all facility documents on behalf of the company.', '3. To provide the security and guarantees required by the bank.'])], sig1: 'Chair: Ahmed Al-Hassan', sig2: 'Secretary' });
+  if (kind === 'ss') return d({ docTitle: 'Shareholding Structure', docSub: 'Group organogram as at 30/09/2026', sections: [
+    pvTB('Direct shareholders of ' + PV_CO, ['Shareholder', 'Type', 'Share'], [['Ahmed Al-Hassan', 'Individual', '50%'], ['GETAX Agrifert DMCC', 'Entity', '50%']]),
+    pvTB('Related companies', ['Company', 'Relationship', 'Share'], [['Al Noor Holdings LLC', 'Parent', '–'], ['Gulf Crest Investments', 'Affiliate', '–'], ['Desert Rose Trading LLC', 'Subsidiary', '60%']])] });
+  if (kind === 'other') return d({ docTitle: 'Supporting Document', docSub: file, sections: [pvKV('Details', [['Company', PV_CO], ['Document', file], ['Received', '27/10/2026']]), pvTX('Notes', ['Additional document supplied by the client in support of the facility application.'])] });
+  if (kind === 'passport' || kind === 'eidf' || kind === 'eidb' || kind === 'poa') {
+    const parts = person.split(' '); const sur = parts.slice(1).join(' ') || person; const given = parts[0];
+    if (kind === 'passport') return d({ issuer: 'Passport (sample)', issuerSub: 'Personal data page', ref: 'Type P', docTitle: 'Passport', docSub: person, sections: [
+      pvKV('Holder', [['Surname', sur], ['Given names', given], ['Nationality', 'United Arab Emirates'], ['Date of birth', '14/06/1981'], ['Sex', 'M'], ['Place of birth', 'Dubai']]),
+      pvKV('Document', [['Passport number', 'P0000000 (sample)'], ['Date of issue', '02/05/2022'], ['Date of expiry', '01/05/2032'], ['Issuing authority', 'Sample authority']])], sig1: 'Holder signature', sig2: '' });
+    if (kind === 'poa') return d({ docTitle: 'Power of Attorney', docSub: 'Granted by ' + PV_CO, sections: [
+      pvKV('Parties', [['Principal', PV_CO + ' L.L.C.'], ['Attorney', person], ['Date', '20/09/2026'], ['Valid until', '19/09/2027']]),
+      pvTX('Powers granted', ['To represent the company before banks and financial institutions, to sign facility applications and related documents, and to receive correspondence on its behalf.'])], sig1: 'For the principal', sig2: 'Notary (sample)' });
+    return d({ issuer: 'Identity Card (sample)', issuerSub: kind === 'eidf' ? 'Front side' : 'Back side', ref: 'ID 784-0000-0000000-0', docTitle: 'Identity Card', docSub: person + (kind === 'eidf' ? ' – front' : ' – back'), sections: kind === 'eidf'
+      ? [pvKV('Card holder', [['Name', person], ['Nationality', 'United Arab Emirates'], ['Date of birth', '14/06/1981'], ['Sex', 'M']]), pvKV('Card', [['ID number', '784-0000-0000000-0 (sample)'], ['Issue date', '10/01/2024'], ['Expiry date', '09/01/2029']])]
+      : [pvKV('Card holder', [['Occupation', 'Company director'], ['Employer', PV_CO], ['Issuing place', 'Dubai']]), pvKV('Card', [['Card number', '000000000 (sample)'], ['Expiry date', '09/01/2029']])], sig1: 'Holder signature', sig2: '' });
+  }
+  if (kind === 'aud' || kind === 'inh') {
+    const y = pvYear(x.year); const aud = kind === 'aud';
+    return d({ issuer: aud ? 'Independent Auditors (sample)' : PV_CO, issuerSub: aud ? 'Chartered accountants' : 'Finance department', ref: 'Year ended 31/12/' + y, docTitle: aud ? 'Audited Financial Statements' : 'Management Accounts', docSub: PV_CO + ' – year ended 31 December ' + y, sections: [
+      pvTB('Statement of financial position (AED)', ['Item', y, String(+y - 1)], [['Total current assets', '1,134,665,799', '1,284,730,056'], ['Total non-current assets', '15,617,805', '168,957,908'], ['Total current liabilities', '15,617,805', '168,957,908'], ['Total non-current liabilities', '15,617,805', '168,957,908']]),
+      pvTB('Income statement (AED)', ['Item', y, String(+y - 1)], [['Revenue', '177,825', '182,292'], ['Gross profit', '136,992', '118,888'], ['EBITDA', '169,079', '45,627'], ['Net profit', '74,714', '41,718']]),
+      pvTX(aud ? 'Opinion' : 'Basis of preparation', [aud ? 'In our opinion, the financial statements present fairly, in all material respects, the financial position of the company as at 31 December ' + y + '.' : 'Prepared by management from the company\'s books. These accounts are unaudited.'])], sig1: aud ? 'Audit partner' : 'Chief financial officer', sig2: 'Date' });
+  }
+  if (kind === 'rec') return d({ docTitle: 'Accounts Receivable Ageing', docSub: 'As at 30/09/2026', sections: [
+    pvTB('Ageing by customer (AED)', ['Customer', '0–30', '31–60', '61–90', '90+'], [['Desert Rose Trading LLC', '420,000', '115,000', '0', '0'], ['Gulf Crest Investments', '310,500', '0', '42,000', '0'], ['Al Noor Holdings LLC', '96,200', '18,400', '0', '12,000'], ['Other customers', '1,204,300', '233,100', '61,000', '28,700'], ['Total', '2,031,000', '366,500', '103,000', '40,700']])] });
+  if (kind === 'bank') {
+    const q = (file.match(/q([1-4])/i) || [0, '1'])[1]; const P = { 1: ['01/01/2025', '31/03/2025'], 2: ['01/04/2025', '30/06/2025'], 3: ['01/07/2025', '30/09/2025'], 4: ['01/10/2025', '01/12/2025'] }[q];
+    return d({ issuer: 'Emirates NBD', issuerSub: 'Account statement (sample)', ref: 'Account AE07 0260 0010 1234 5678 901\nPeriod ' + P[0] + ' – ' + P[1], docTitle: 'Bank Statement', docSub: PV_CO + ' – current account (AED)', sections: [
+      pvKV('Summary', [['Opening balance', 'AED 18,402,115.20'], ['Total credits', 'AED 12,880,400.00'], ['Total debits', 'AED 10,215,760.45'], ['Closing balance', 'AED 21,066,754.75']]),
+      pvTB('Transactions', ['Date', 'Description', 'Debit', 'Credit'], [[P[0], 'Opening balance', '', ''], ['05/' + P[0].slice(3), 'Premium receipts', '', '4,210,000.00'], ['12/' + P[0].slice(3), 'Reinsurance payment', '2,840,500.00', ''], ['20/' + P[0].slice(3), 'Salaries', '1,915,260.45', ''], ['28/' + P[0].slice(3), 'Claims settlement', '3,460,000.00', '']])], sig1: '', sig2: '' });
+  }
+  if (kind === 'vat') return d({ issuer: 'VAT Return (sample)', issuerSub: 'Tax registration number 100000000000003', ref: 'Period Q3 2026', docTitle: 'VAT Return Summary', docSub: PV_CO, sections: [
+    pvTB('VAT on sales and outputs (AED)', ['Item', 'Amount', 'VAT'], [['Standard-rated supplies', '12,400,000', '620,000'], ['Exempt supplies', '3,150,000', '0']]),
+    pvTB('VAT on expenses and inputs (AED)', ['Item', 'Amount', 'VAT'], [['Standard-rated expenses', '4,820,000', '241,000']]),
+    pvKV('Net VAT due', [['Payable for the period', 'AED 379,000']])] });
+  if (kind === 'cbrb' || kind === 'aecb') {
+    const a = kind === 'aecb';
+    return d({ issuer: a ? 'Credit Bureau Report (AECB, sample)' : 'Commercial Bank Risk Bureau (sample)', issuerSub: 'Commercial credit report', ref: 'Report date 26/10/2026', docTitle: a ? 'AECB Company Credit Report' : 'CBRB Report', docSub: PV_CO, sections: [
+      pvKV('Summary', [['Credit score', a ? '742 (low risk)' : 'Grade B+'], ['Active facilities', '4'], ['Total limits', 'AED 46,500,000'], ['Overdue amount', 'AED 0']]),
+      pvTB('Facilities', ['Lender', 'Type', 'Limit (AED)', 'Status'], [['Bank A', 'Overdraft', '5,000,000', 'Current'], ['Bank B', 'Term loan', '20,000,000', 'Current'], ['Bank C', 'Guarantees', '15,000,000', 'Current'], ['Bank D', 'Credit card', '1,500,000', 'Current']])] });
+  }
+  if (kind === 'ejari') {
+    const prem = (x.src || file).replace(/^ejari-/, '').replace(/\.(pdf|jpe?g|png)$/i, '').split('-').map(pvCap).join(' ');
+    return d({ issuer: 'Tenancy Contract (sample)', issuerSub: 'Registered tenancy', ref: 'Contract No. 0123 4567 8901\nDate 28/12/2025', docTitle: 'Tenancy Contract', docSub: prem, sections: [
+      pvKV('Owner / lessor', [['Owner name', 'Marina Plaza Properties LLC'], ['Lessor name', 'Marina Plaza Properties LLC'], ['Email', 'leasing@example.ae']]),
+      pvKV('Tenant', [['Tenant name', PV_CO + ' LLC'], ['Email', 'admin@example.ae'], ['Phone', '+971 4 111 1111']]),
+      pvKV('Property', [['Premises', prem], ['Usage', 'Commercial'], ['Area', '145.00 sq m']]),
+      pvKV('Contract', [['Period', '01/01/2026 – 31/12/2026'], ['Annual rent', 'AED 185,000.00'], ['Security deposit', 'AED 9,250.00'], ['Payment', '4 cheques']])], sig1: 'Tenant signature', sig2: 'Lessor signature' });
+  }
+  return d({ docTitle: 'Document', docSub: file, sections: [pvKV('Details', [['File', file]])] });
+};
+const pvShow = (kind, title, file, x, extra) => this.setState(Object.assign({ pv: { kind: kind, title: title, file: file, x: x || {} }, pvZoom: 100 }, extra || {}));
+const pvFile = (t) => 'Orient_Insurance_' + t.replace(/\(.*?\)/g, '').trim().replace(/[^A-Za-z0-9]+/g, '_').replace(/_+$/, '') + '.pdf';
+const pvz = s.pvZoom || 100;
+const FD_TITLES = { aud: 'Audited financial statements', inh: 'In-house financial statements', rec: 'Account Receivables', bank: 'Bank statement', vat: 'VAT report', cbrb: 'CBRB report', aecb: 'AECB report' };
+const PV_DOC_KEYS = ['tl', 'moa', 'aoa', 'br', 'ss'];
+const PV_KYC_KEYS = ['tl', 'moa', 'aoa', 'aoa', 'br', 'ss', 'other'];
+const PV_FIN_KEYS = ['aud', 'inh', 'rec', 'bank', 'vat', 'cbrb', 'aecb'];
+const PV_SH = { front: ['eidf', 'Emirates ID front', 'Emirates_ID_front.pdf'], back: ['eidb', 'Emirates ID back', 'Emirates_ID_back.pdf'], pass: ['passport', 'Passport', 'Passport.pdf'], poa: ['poa', 'Power of Attorney (POA)', 'POA.pdf'] };
+const pvStk = (n) => /passport/i.test(n) ? 'passport' : /eid-2/i.test(n) ? 'eidb' : /eid/i.test(n) ? 'eidf' : 'other';
+let pvLockKey = '', pvLockIdx = -1;
+const shWhoName = (__v.shWho && __v.shWho.indexOf('Add new') !== 0) ? __v.shWho : 'Ahmed Al-Hassan';
+const shTick = {}, shAct = {};
+Object.keys(PV_SH).forEach((k) => {
+  shTick[k] = !!__v.shUploaded && !s.shDel[k];
+  shAct[k] = {
+    up: () => { const o = Object.assign({}, s.shDel); delete o[k]; this.setState({ shMenu: '', shDel: o }); },
+    view: () => pvShow(PV_SH[k][0], PV_SH[k][1], PV_SH[k][2], { person: shWhoName }, { shMenu: '' }),
+    del: () => { const o = Object.assign({}, s.shDel); o[k] = true; this.setState({ shMenu: '', shDel: o }); }
+  };
+});
+Object.assign(__v, {
+  pvOpen: !!s.pv,
+  pv: s.pv ? Object.assign({ title: s.pv.title, file: s.pv.file }, pvDoc(s.pv.kind, s.pv.file, s.pv.x)) : { title: '', file: '', issuer: '', issuerSub: '', ref: '', docTitle: '', docSub: '', sections: [], sig1: '', sig2: '' },
+  pvClose: () => this.setState({ pv: null }),
+  pvBackdrop: (e) => { if (e && e.target === e.currentTarget) this.setState({ pv: null }); },
+  pvStop: () => {},
+  pvZoomCss: String(pvz / 100), pvZoomLabel: pvz + '%',
+  pvZoomIn: () => this.setState({ pvZoom: Math.min(200, pvz + 25) }),
+  pvZoomOut: () => this.setState({ pvZoom: Math.max(50, pvz - 25) }),
+  shTick: shTick, shAct: shAct,
+  docRows: (__v.docRows || []).map((r, i) => Object.assign({}, r, {
+    menuUploaded: r.expanded === 'true', menuEmpty: false,
+    view: () => pvShow(PV_DOC_KEYS[i] || 'other', r.title, pvFile(r.title), {}, { docMenu: '' })
+  })),
+  dKycSecs: (__v.dKycSecs || []).map((sec, i) => Object.assign({}, sec, { files: sec.files.map((f) => Object.assign({}, f, { preview: () => pvShow(PV_KYC_KEYS[i] || 'other', sec.title, f.name) })) })),
+  dFinSecs: (__v.dFinSecs || []).map((sec, i) => Object.assign({}, sec, { files: sec.files.map((f) => Object.assign({}, f, { preview: () => pvShow(PV_FIN_KEYS[i] || 'other', sec.title, f.name, { year: f.year }) })) })),
+  dStkGroups: (__v.dStkGroups || []).map((g) => Object.assign({}, g, { files: g.files.filter((f) => !s.dStkDel[g.title + '|' + f.name]).map((f) => Object.assign({}, f, {
+    removable: true, removeLabel: 'Remove ' + f.name + ' for ' + g.title,
+    remove: () => { const o = Object.assign({}, s.dStkDel); o[g.title + '|' + f.name] = true; this.setState({ dStkDel: o }); },
+    preview: () => pvShow(pvStk(f.name), (pvStk(f.name) === 'passport' ? 'Passport' : pvStk(f.name) === 'eidb' ? 'Emirates ID back' : 'Emirates ID front') + ' – ' + g.title, f.name, { person: g.title })
+  })) })),
+  dLockRows: (__v.dLockRows || []).map((r) => { if (r.head) { pvLockIdx++; pvLockKey = PV_FIN_KEYS[pvLockIdx] || 'other'; return Object.assign({}, r, { preview: () => {} }); } const k = pvLockKey; return Object.assign({}, r, { preview: () => pvShow(k, (FD_TITLES[k] || 'Financial document'), r.name) }); }),
+  ejRows: (__v.ejRows || []).map((r) => Object.assign({}, r, { view: () => pvShow('ejari', r.name, 'Orient_Insurance_Ejari_' + r.name.replace(/^ejari-/, '').replace(/\.(pdf|jpe?g|png)$/i, '').split(/[^A-Za-z0-9]+/).map(pvCap).join('_') + '.pdf', { src: r.name }) }))
 });
 return __v;
 }
