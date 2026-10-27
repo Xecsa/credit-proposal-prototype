@@ -824,7 +824,7 @@ Back</button>
 <div onClick={v.pvBackdrop} style={{ position: "fixed", inset: "0", zIndex: "90", background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}><div role="dialog" aria-modal="true" aria-labelledby="pv-title" onClick={v.pvStop} style={{ position: "relative", width: "100%", maxWidth: "648px", maxHeight: "calc(100vh - 32px)", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", display: "flex", flexDirection: "column", overflow: "hidden", boxShadow: "0 4px 7px rgba(0,0,0,0.05), 0 16px 24px rgba(0,0,0,0.08)" }}><div style={{ flex: "none", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", padding: "24px 24px 20px", borderBottom: "1px solid #e8eaef" }}><h2 id="pv-title" style={{ margin: "0", fontSize: "24px", lineHeight: "32px", fontWeight: "400", color: "#000000", overflowWrap: "anywhere" }}>{v.pv.title}</h2>
 <button type="button" aria-label="Close preview" onClick={v.pvClose} style={{ flex: "none", width: "32px", height: "32px", padding: "0", border: "0", background: "transparent", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round"></path></svg></button></div>
 <div style={{ flex: "1", minHeight: "0", overflow: "auto", padding: "24px 24px 88px", position: "relative", background: "#ffffff" }}><div style={{ lineHeight: "20px", color: "#000000", marginBottom: "24px", overflowWrap: "anywhere" }}>{v.pv.file}</div>
-<div style={{ overflow: "auto", padding: "4px 4px 12px" }}><div className="pvpage" style={{ zoom: `${v.pvZoomCss}` }}><div aria-hidden="true" className="pvwm">SAMPLE</div>
+<div style={{ overflow: "auto", padding: "4px 4px 12px" }}>{(v.pvIsPage) ? (<><div className="pvpage" style={{ zoom: `${v.pvZoomCss}` }}><div aria-hidden="true" className="pvwm">SAMPLE</div>
 <div className="pvtop"><div><div className="pvissuer">{v.pv.issuer}</div>
 <div className="pvissub">{v.pv.issuerSub}</div></div>
 <div className="pvref">{v.pv.ref}</div></div>
@@ -838,7 +838,47 @@ Back</button>
 {(ps.isText) ? (<>{(ps.paras || []).map((pp, pp__i) => (<React.Fragment key={pp__i}><p className="pvp">{pp.t}</p></React.Fragment>))}</>) : null}</div></React.Fragment>))}
 <div className="pvsig"><div><span>{v.pv.sig1}</span></div>
 <div><span>{v.pv.sig2}</span></div></div>
-<div className="pvfoot">Sample document generated for this prototype. Not a real record.</div></div></div></div>
+<div className="pvfoot">Sample document generated for this prototype. Not a real record.</div></div></>) : null}
+{(v.pvIsCard) ? (<><div className="pvcardwrap" style={{ zoom: `${v.pvZoomCss}` }}><div className="pvcard" role="img" aria-label={v.pv.cardAria}><div aria-hidden="true" className="pvcwm">SPECIMEN</div>
+<div className="pvchead"><div><div className="pvctitle">IDENTITY CARD</div>
+<div className="pvcsub">Resident identity card · specimen</div></div>
+<div className="pvcbadge">SPECIMEN</div></div>
+{(v.pv.cardFront) ? (<><div className="pvcbody"><div className="pvcleft"><div className="pvcphoto"><svg aria-hidden="true" viewBox="0 0 90 110" width="100%" height="100%"><rect width="90" height="110" fill="#dfe4ea"></rect>
+<circle cx="45" cy="42" r="19" fill="#aeb7c2"></circle>
+<path d="M10 110c2-24 17-36 35-36s33 12 35 36Z" fill="#aeb7c2"></path></svg></div>
+<div className="pvcchip"><svg aria-hidden="true" width="46" height="36" viewBox="0 0 46 36"><rect x="0.5" y="0.5" width="45" height="35" rx="6" fill="#d9b768" stroke="#b8963f"></rect>
+<path d="M15 0.5v35M31 0.5v35M0.5 12h15M0.5 24h15M31 12h14.5M31 24h14.5M15 18h16" stroke="#b8963f" strokeWidth="1.2" fill="none"></path></svg></div></div>
+<div className="pvcfields"><div className="pvcf"><span className="pvcl">ID number</span>
+<b className="pvcv">{v.pv.cIdNo}</b></div>
+<div className="pvcf"><span className="pvcl">Name</span>
+<b className="pvcv">{v.pv.cName}</b></div>
+<div className="pvcrow"><div className="pvcf"><span className="pvcl">Date of birth</span>
+<b className="pvcv">{v.pv.cDob}</b></div>
+<div className="pvcf"><span className="pvcl">Sex</span>
+<b className="pvcv">{v.pv.cSex}</b></div></div>
+<div className="pvcf"><span className="pvcl">Nationality</span>
+<b className="pvcv">{v.pv.cNat}</b></div>
+<div className="pvcrow"><div className="pvcf"><span className="pvcl">Issue date</span>
+<b className="pvcv">{v.pv.cIssue}</b></div>
+<div className="pvcf"><span className="pvcl">Expiry date</span>
+<b className="pvcv">{v.pv.cExpiry}</b></div></div>
+<div className="pvcsig"><span className="pvcl">Signature</span>
+<i className="pvcs">{v.pv.cSig}</i></div></div></div></>) : null}
+{(v.pv.cardBack) ? (<><div className="pvcbody pvcback"><div className="pvcfields"><div className="pvcrow"><div className="pvcf"><span className="pvcl">Card number</span>
+<b className="pvcv">{v.pv.cCardNo}</b></div>
+<div className="pvcf"><span className="pvcl">Issuing place</span>
+<b className="pvcv">{v.pv.cPlace}</b></div></div>
+<div className="pvcf"><span className="pvcl">Occupation</span>
+<b className="pvcv">{v.pv.cOcc}</b></div>
+<div className="pvcf"><span className="pvcl">Employer</span>
+<b className="pvcv">{v.pv.cEmp}</b></div>
+<div className="pvcf"><span className="pvcl">ID number</span>
+<b className="pvcv">{v.pv.cIdNo}</b></div></div>
+<div className="pvcqr" aria-hidden="true"></div>
+<div className="pvcbars" aria-hidden="true"><i></i>
+<i></i>
+<i></i></div></div></>) : null}
+<div className="pvcfoot">Specimen for this prototype – not a valid identity document</div></div></div></>) : null}</div></div>
 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", pointerEvents: "none", display: "flex", justifyContent: "center", paddingBottom: "20px" }}><div role="toolbar" aria-label="Document controls" style={{ pointerEvents: "auto", display: "flex", alignItems: "center", gap: "8px", height: "40px", padding: "4px 12px", background: "#ffffff", border: "1px solid #e8eaef", borderRadius: "8px", boxShadow: "0 4px 7px rgba(0,0,0,0.05), 0 16px 24px rgba(0,0,0,0.08)" }}><button type="button" aria-label="Zoom out" onClick={v.pvZoomOut} style={{ width: "32px", height: "32px", padding: "0", border: "0", background: "transparent", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#182f7c" strokeWidth="1.5"></circle>
 <path d="M8 12h8" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round"></path></svg></button>
 <span aria-live="polite" style={{ minWidth: "48px", textAlign: "center", lineHeight: "20px", color: "#000000" }}>{v.pvZoomLabel}</span>

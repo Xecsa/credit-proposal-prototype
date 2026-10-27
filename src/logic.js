@@ -1070,6 +1070,7 @@ const pvDoc = (kind, file, x) => {
     if (kind === 'poa') return d({ docTitle: 'Power of Attorney', docSub: 'Granted by ' + PV_CO, sections: [
       pvKV('Parties', [['Principal', PV_CO + ' L.L.C.'], ['Attorney', person], ['Date', '20/09/2026'], ['Valid until', '19/09/2027']]),
       pvTX('Powers granted', ['To represent the company before banks and financial institutions, to sign facility applications and related documents, and to receive correspondence on its behalf.'])], sig1: 'For the principal', sig2: 'Notary (sample)' });
+    if (kind === 'eidf' || kind === 'eidb') return Object.assign(d({}), { isCard: true, cardFront: kind === 'eidf', cardBack: kind === 'eidb', cardAria: 'Specimen identity card, ' + (kind === 'eidf' ? 'front' : 'back') + ', ' + person, cName: person, cNat: 'United Arab Emirates', cDob: '14/06/1981', cSex: 'M', cIdNo: '784-0000-0000000-0', cIssue: '10/01/2024', cExpiry: '09/01/2029', cSig: person, cCardNo: '000000000', cPlace: 'Dubai', cOcc: 'Company director', cEmp: PV_CO });
     return d({ issuer: 'Identity Card (sample)', issuerSub: kind === 'eidf' ? 'Front side' : 'Back side', ref: 'ID 784-0000-0000000-0', docTitle: 'Identity Card', docSub: person + (kind === 'eidf' ? ' – front' : ' – back'), sections: kind === 'eidf'
       ? [pvKV('Card holder', [['Name', person], ['Nationality', 'United Arab Emirates'], ['Date of birth', '14/06/1981'], ['Sex', 'M']]), pvKV('Card', [['ID number', '784-0000-0000000-0 (sample)'], ['Issue date', '10/01/2024'], ['Expiry date', '09/01/2029']])]
       : [pvKV('Card holder', [['Occupation', 'Company director'], ['Employer', PV_CO], ['Issuing place', 'Dubai']]), pvKV('Card', [['Card number', '000000000 (sample)'], ['Expiry date', '09/01/2029']])], sig1: 'Holder signature', sig2: '' });
@@ -1132,6 +1133,7 @@ Object.keys(PV_SH).forEach((k) => {
 Object.assign(__v, {
   pvOpen: !!s.pv,
   pv: s.pv ? Object.assign({ title: s.pv.title, file: s.pv.file }, pvDoc(s.pv.kind, s.pv.file, s.pv.x)) : { title: '', file: '', issuer: '', issuerSub: '', ref: '', docTitle: '', docSub: '', sections: [], sig1: '', sig2: '' },
+  pvIsCard: !!(s.pv && (s.pv.kind === 'eidf' || s.pv.kind === 'eidb')), pvIsPage: !(s.pv && (s.pv.kind === 'eidf' || s.pv.kind === 'eidb')),
   pvClose: () => this.setState({ pv: null }),
   pvBackdrop: (e) => { if (e && e.target === e.currentTarget) this.setState({ pv: null }); },
   pvStop: () => {},
