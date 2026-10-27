@@ -9,7 +9,7 @@ participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
-hubRole: 'rm', sentToArm: false, pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
+hubRole: 'rm', sentToArm: false, ownMenu: '', ownEditId: 0, entGone: false, entName: 'GETAX Agrifert DMCC', entPct: '50', entEdit: false, entDraftName: '', entDraftPct: '', pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [
 { id: 1, seed: true, title: 'Term loan', type: 'Cross-sell', product: 'LC Import', limit: '10,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' },
 { id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
@@ -503,7 +503,7 @@ shSave: () => {
 if (!adding) { set({ phase: 'selfOwn', ownDone: true, shEdit: '', shDrop: '' }); return; }
 const nm = (shF.first + ' ' + shF.last).trim();
 const ini = ((shF.first.trim()[0] || '') + (shF.last.trim()[0] || '')).toUpperCase();
-set({ phase: 'selfOwn', shMode: '', shEdit: '', shDrop: '', ownExtra: s.ownExtra.concat([{ id: s.ownExtra.length + 1, initials: ini, name: nm, poa: isPoa, email: shF.email.trim() || 'email@email.com', body: isPoa ? 'Power of Attorney (POA)' : '50%  Shareholder - Individual' }]) });
+set({ phase: 'selfOwn', shMode: '', shEdit: '', shDrop: '', ownEditId: 0, ownExtra: ((rec) => s.ownEditId ? s.ownExtra.map((x) => x.id === s.ownEditId ? Object.assign(rec, { id: x.id }) : x) : s.ownExtra.concat([rec]))({ id: Date.now(), initials: ini, name: nm, poa: isPoa, email: shF.email.trim() || 'email@email.com', body: isPoa ? 'Power of Attorney (POA)' : '50%  Shareholder - Individual', f: Object.assign({}, shF), type: s.addType, docs: shDocState }) });
 },
 cons: cons, cob: cob, bank: bank,
 cobPicked: s.ownExtra.filter((x) => s.cob['x' + x.id]),
@@ -1119,7 +1119,7 @@ const PV_FIN_KEYS = ['aud', 'inh', 'rec', 'bank', 'vat', 'cbrb', 'aecb'];
 const PV_SH = { front: ['eidf', 'Emirates ID front', 'Emirates_ID_front.pdf'], back: ['eidb', 'Emirates ID back', 'Emirates_ID_back.pdf'], pass: ['passport', 'Passport', 'Passport.pdf'], poa: ['poa', 'Power of Attorney (POA)', 'POA.pdf'] };
 const pvStk = (n) => /passport/i.test(n) ? 'passport' : /eid-2/i.test(n) ? 'eidb' : /eid/i.test(n) ? 'eidf' : 'other';
 let pvLockKey = '', pvLockIdx = -1;
-const shWhoName = (__v.shWho && __v.shWho.indexOf('Add new') !== 0) ? __v.shWho : 'Ahmed Al-Hassan';
+const shWhoName = s.shMode === 'add' ? (((s.addF && s.addF.first) || '') + ' ' + ((s.addF && s.addF.last) || '')).trim() || 'New shareholder' : 'Ahmed Al-Hassan';
 const shTick = {}, shAct = {};
 Object.keys(PV_SH).forEach((k) => {
   shTick[k] = !!__v.shUploaded && !s.shDel[k];
@@ -1152,6 +1152,25 @@ Object.assign(__v, {
   })) })),
   dLockRows: (__v.dLockRows || []).map((r) => { if (r.head) { pvLockIdx++; pvLockKey = PV_FIN_KEYS[pvLockIdx] || 'other'; return Object.assign({}, r, { preview: () => {} }); } const k = pvLockKey; return Object.assign({}, r, { preview: () => pvShow(k, (FD_TITLES[k] || 'Financial document'), r.name) }); }),
   ejRows: (__v.ejRows || []).map((r) => Object.assign({}, r, { view: () => pvShow('ejari', r.name, 'Orient_Insurance_Ejari_' + r.name.replace(/^ejari-/, '').replace(/\.(pdf|jpe?g|png)$/i, '').split(/[^A-Za-z0-9]+/).map(pvCap).join('_') + '.pdf', { src: r.name }) }))
+});
+
+// ---- Ownership: Edit / Delete per shareholder
+const owBase = (key, extra) => { const open = s.ownMenu === key; return Object.assign({ key: key, menu: open, expanded: open ? 'true' : 'false', toggle: () => this.setState({ ownMenu: open ? '' : key }), menuLabel: 'Actions for ' + extra.name, del: () => this.setState({ ownMenu: '', ownDel: key }) }, extra); };
+const owOpenAh = () => set({ phase: 'selfSh', shMode: '', shStep: s.ownDone ? 'details' : 'docs', shMenu: '', shDrop: '', shEdit: '', ownMenu: '' });
+const ownList = [];
+if (!s.ownGone) ownList.push(owBase('ah', { name: 'Ahmed Al-Hassan', initials: 'AA', person: true, entity: false, body: '50%  Shareholder - Individual', todo: !s.ownDone, bg: !s.ownDone ? '#f4f7fe' : 'transparent', cursor: !s.ownDone ? 'pointer' : 'default', aria: !s.ownDone ? 'Ahmed Al-Hassan, additional information required. Add stakeholder information' : 'Ahmed Al-Hassan', open: !s.ownDone ? owOpenAh : () => {}, edit: owOpenAh }));
+if (!s.entGone) ownList.push(owBase('ent', { name: s.entName, initials: '', person: false, entity: true, body: s.entPct + '% Shareholder - Entity', todo: false, bg: 'transparent', cursor: 'default', aria: s.entName, open: () => {}, edit: () => this.setState({ ownMenu: '', entEdit: true, entDraftName: s.entName, entDraftPct: s.entPct }) }));
+s.ownExtra.forEach((x) => ownList.push(owBase('x' + x.id, { name: x.name, initials: x.initials, person: true, entity: false, body: x.body, todo: false, bg: 'transparent', cursor: 'default', aria: x.name, open: () => {},
+  edit: () => set({ phase: 'selfSh', shMode: 'add', shStep: 'details', addF: Object.assign({}, x.f || {}), addType: x.type || (x.poa ? 'poa' : 'sh'), addDocs: x.docs || 'done', ownEditId: x.id, shMenu: '', shDrop: '', shEdit: '', ownMenu: '' }) })));
+const owDelItem = ownList.find((o) => o.key === s.ownDel);
+Object.assign(__v, {
+  ownList: ownList,
+  ownDelName: owDelItem ? owDelItem.name : 'Ahmed Al-Hassan',
+  ownDelYes: () => { const k = s.ownDel; if (k === 'ah' || k === true) set({ ownDel: false, ownGone: true }); else if (k === 'ent') set({ ownDel: false, entGone: true }); else set({ ownDel: false, ownExtra: s.ownExtra.filter((x) => 'x' + x.id !== k) }); },
+  entEditShow: !!s.entEdit && s.phase === 'selfOwn', entEditName: s.entDraftName, entEditPct: s.entDraftPct,
+  entSetName: (e) => this.setState({ entDraftName: e.target.value }), entSetPct: (e) => this.setState({ entDraftPct: e.target.value.replace(/[^0-9.]/g, '') }),
+  entEditCancel: () => this.setState({ entEdit: false }),
+  entEditSave: () => set({ entEdit: false, entName: (s.entDraftName || '').trim() || s.entName, entPct: s.entDraftPct || s.entPct })
 });
 return __v;
 }
