@@ -17,6 +17,8 @@ input::placeholder,textarea::placeholder{color:#50647c}
 @media (prefers-reduced-motion:reduce){.shim{animation:none}}
 @keyframes dcspin{to{transform:rotate(360deg)}}
 .spin{animation:dcspin 1s linear infinite;transform-origin:center}
+.hubcard{border:1px solid transparent!important;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.hubcard img{transition:transform .18s ease}.hubcard:not([aria-disabled="true"]):hover{transform:translateY(-2px);border-color:#3e6ce5!important;box-shadow:0 4px 7px rgba(0,0,0,.05),0 16px 24px rgba(0,0,0,.08)}.hubcard:not([aria-disabled="true"]):hover img{transform:translateY(-4px)}.hubcard:not([aria-disabled="true"]):active{transform:translateY(0) scale(.985);box-shadow:0 2px 4px rgba(0,0,0,.06);transition-duration:.08s}.hubcard:focus-visible{outline:2px solid #2765ff;outline-offset:2px}@keyframes hubfade{from{opacity:0}to{opacity:1}}.hubfade{animation:hubfade .25s ease both}
+
 @media (prefers-reduced-motion:reduce){.spin{animation:none}}
 .steps{position:sticky;top:40px}
 @media (max-width:960px){.steps{position:static}}

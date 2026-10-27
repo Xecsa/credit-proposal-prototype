@@ -36,7 +36,7 @@ Back</button>
 {' '}</>) : null}
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
-<button onClick={v.hubClient} style={{ font: "inherit", textAlign: "left", width: "100%", boxSizing: "border-box", padding: "16px", border: "0", borderRadius: "8px", background: "#ffffff", cursor: "pointer", display: "flex", gap: "16px", alignItems: "center", color: "#072447" }}>{' '}
+<button className="hubcard" onClick={v.hubClient} style={{ font: "inherit", textAlign: "left", width: "100%", boxSizing: "border-box", padding: "16px", border: "0", borderRadius: "8px", background: "#ffffff", cursor: "pointer", display: "flex", gap: "16px", alignItems: "center", color: "#072447" }}>{' '}
 <span style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>{' '}
 <span style={{ fontSize: "16px", lineHeight: "22px", fontWeight: "500" }}>Client Information</span>
 {' '}
@@ -48,7 +48,7 @@ Back</button>
 <img alt="" src={img_48d1ac8305} style={{ flex: "none", width: "96px", height: "96px" }} />
 {' '}</button>
 {' '}
-<div role="button" tabIndex="0" aria-disabled={v.hubDocsAria} onClick={v.hubDocs} style={{ boxSizing: "border-box", padding: "16px", borderRadius: "8px", background: "#ffffff", display: "flex", gap: "16px", alignItems: "center", cursor: `${v.hubDocsCursor}` }}>{' '}
+<div className="hubcard" role="button" tabIndex="0" aria-disabled={v.hubDocsAria} onClick={v.hubDocs} style={{ boxSizing: "border-box", padding: "16px", borderRadius: "8px", background: "#ffffff", display: "flex", gap: "16px", alignItems: "center", cursor: `${v.hubDocsCursor}` }}>{' '}
 <div style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>{' '}
 <div style={{ fontSize: "16px", lineHeight: "22px", fontWeight: "500", color: "#072447" }}>Documents and References</div>
 {' '}
@@ -62,7 +62,7 @@ Locked</div></>) : null}
 <img alt="" src={img_7dbc59854d} style={{ flex: "none", width: "96px", height: "96px" }} />
 {' '}</div>
 {' '}
-<div role="button" tabIndex="0" aria-disabled={v.hubFinAria} onClick={v.hubFin} style={{ boxSizing: "border-box", padding: "16px", borderRadius: "8px", background: "#ffffff", display: "flex", gap: "16px", alignItems: "center", cursor: `${v.hubFinCursor}` }}>{' '}
+<div className="hubcard" role="button" tabIndex="0" aria-disabled={v.hubFinAria} onClick={v.hubFin} style={{ boxSizing: "border-box", padding: "16px", borderRadius: "8px", background: "#ffffff", display: "flex", gap: "16px", alignItems: "center", cursor: `${v.hubFinCursor}` }}>{' '}
 <div style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start" }}>{' '}
 <div style={{ fontSize: "16px", lineHeight: "22px", fontWeight: "500", color: "#072447" }}>Financial Information</div>
 {' '}

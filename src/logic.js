@@ -9,7 +9,7 @@ participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
-hubRole: 'rm', sentToArm: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
+hubRole: 'rm', sentToArm: false, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [
 { id: 1, seed: true, title: 'Term loan', type: 'Cross-sell', product: 'LC Import', limit: '10,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' },
 { id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
@@ -1016,6 +1016,14 @@ Object.assign(__v, {
     else if (hmK === 'ret') set({ hubModal: '', hubModalText: '', hubRole: 'arm', hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), phase: 'selfReturned', selfNote: '' });
     else set({ phase: 'selfAppConfirmed', hubModal: '', hubModalText: '', appConfirmed: true, hubComments: addCm({ name: 'Jane Smith', role: 'RM', text: hmTxt }), selfNote: '' });
   }
+});
+
+Object.assign(__v, {
+  showClientLoad: s.phase === 'selfClientLoad',
+  hubClient: () => { this.setState({ phase: 'selfClientLoad', clientStarted: true, selfNote: '' }); this.later(1200, () => { if (this.state.phase === 'selfClientLoad') this.setState({ phase: 'selfFacility' }); }); },
+  hubClientTag: s.clientDone ? 'Submitted' : s.clientStarted ? 'In progress' : 'Not started',
+  hubClientTagBg: s.clientDone ? '#eaf6ea' : s.clientStarted ? '#cad9ff' : '#eaeaea',
+  hubClientTagFg: s.clientDone ? '#54ac51' : s.clientStarted ? '#002ea2' : '#575757'
 });
 return __v;
 }

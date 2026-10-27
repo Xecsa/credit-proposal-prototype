@@ -831,6 +831,18 @@ Back</button>
 {' '}</div>
 {' '}</>) : null}
 {' '}
+{(v.showClientLoad) ? (<>{' '}
+<div className="hubfade" style={{ flex: "1", minWidth: "0", background: "#f1f3f7", display: "flex" }}>{' '}
+<div role="status" style={{ flex: "1", minWidth: "0", marginRight: "24px", borderTopRightRadius: "40px", background: "#ffffff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px", textAlign: "center" }}>{' '}
+<svg className="spin" aria-hidden="true" width="48" height="48" viewBox="0 0 48 48" fill="none"><circle className="fload" cx="24" cy="24" r="14.5" stroke="#141414" strokeWidth="3" strokeLinecap="round"></circle></svg>
+{' '}
+<div style={{ marginTop: "16px", fontSize: "20px", lineHeight: "24px", fontWeight: "500", color: "#000000" }}>Loading client information</div>
+{' '}
+<div style={{ marginTop: "16px", lineHeight: "20px", fontWeight: "500", color: "#9f9f9f" }}>Fetching data from Finacle and BusinessOne…</div>
+{' '}</div>
+{' '}</div>
+{' '}</>) : null}
+{' '}
 {(v.showFinCl) ? (<>{' '}
 <div style={{ flex: "1", minWidth: "0", overflowY: "auto", background: "#f1f3f7" }}>{' '}
 <button onClick={v.finClDone} aria-label="CreditLens risk grading. Continue to the application" style={{ display: "block", width: "100%", padding: "0", border: "0", background: "transparent", cursor: "pointer" }}><img src={img_fc4bf30d25} alt="" style={{ display: "block", width: "100%", height: "auto" }} /></button>
