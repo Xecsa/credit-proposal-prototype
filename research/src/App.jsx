@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { brand, welcome, participants, sessionStages, sessionNote } from './config.js';
+import { brand, welcome, participants, sessionsSection, sessionStages, sessionNote } from './config.js';
+import useReveal from './useReveal.js';
 import Header from './components/Header.jsx';
 import WelcomeVideo from './components/WelcomeVideo.jsx';
 import ParticipantCard from './components/ParticipantCard.jsx';
@@ -13,6 +14,8 @@ export default function App() {
   const [previewId, setPreviewId] = useState(null);
   const triggerRef = useRef(null);
   const selected = participants.find(p => p.id === previewId) || null;
+  const sessionsRef = useRef(null);
+  useReveal(sessionsRef, { full: 0.25 });
 
   const openPreview = (id, button) => { triggerRef.current = button; setPreviewId(id); };
   const closePreview = () => {
@@ -37,10 +40,10 @@ export default function App() {
         </section>
 
         <div className="r-main">
-          <section aria-labelledby="participants-title">
-            <div className="r-section-head">
-              <h2 id="participants-title" className="r-h2">Sessions</h2>
-              <p className="r-muted">{welcome.reassurance}</p>
+          <section ref={sessionsRef} className="r-sessions" aria-labelledby="participants-title">
+            <div className="r-sessions-head">
+              <h2 id="participants-title" className="r-h2 r-h2-lg">{sessionsSection.heading}</h2>
+              <p className="r-muted">{sessionsSection.text}</p>
             </div>
             <ul className="r-bento" role="list">
               {participants.map(p => (
@@ -55,7 +58,7 @@ export default function App() {
             <div>
               <h2 id="overview-title" className="r-h2">Session overview</h2>
               <SessionStages stages={sessionStages} />
-              <p className="r-note">{sessionNote}</p>
+              <p className="r-note">{welcome.reassurance} {sessionNote}</p>
             </div>
             <ProjectTeam />
           </section>

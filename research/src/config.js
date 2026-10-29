@@ -19,13 +19,21 @@ export const brand = {
     '--r-navy': '#072447',           // corporate-ui icon colour, project logo fill
     '--r-surface': '#F4F7FE',        // corporate-ui upload status background
     '--r-blue-light': '#5082FF',     // corporate-ui upload progressBar surface
-    '--r-canvas': '#F3F3F3',         // project page shell background
+    '--r-canvas': '#FFFFFF',         // white page below the hero (as requested)
     '--r-card': '#FFFFFF',           // corporate-ui widget background
     '--r-border': '#D7DAE5',         // project input and card border
     '--r-divider': '#E5E5E5',        // project divider
     '--r-tag-bg': '#EAEAEA',         // project neutral tag
     '--r-focus': '#2765FF',          // project focus ring
     '--r-radius': '8px',             // corporate-ui sys/border/radius/default
+    // Hero gradient: recreated by sampling the "ENBD Gradient Header" layer in the
+    // Egypt EBM IPP Accounts screen (Figma). It is an image-style fill there, so these
+    // are approximations, not design-system tokens.
+    '--r-hero-top': '#0A0F1E',
+    '--r-hero-deep': '#0B1D52',
+    '--r-hero-glow': '#1F4FB8',
+    '--r-hero-mid': '#4F7CC5',
+    '--r-hero-pale': '#C9D9EE',
     '--r-space': '16px'              // corporate-ui spacing/05
   }
 };
@@ -62,12 +70,19 @@ export const video = {
 };
 
 // Status values: 'not-started' only in this iteration. Opening a preview never changes it.
+// Illustrations: ENBD light/default renders from the ADS illustrations Figma library
+// (Document, Docs-Calculator, Docs-Gear, Phone-Chat). Decorative only.
 export const participants = [
-  { id: 'rm-01', code: 'RM 01', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started' },
-  { id: 'rm-02', code: 'RM 02', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started' },
-  { id: 'arm-01', code: 'ARM 01', role: 'ARM', roleKey: 'ARM', status: 'not-started' },
-  { id: 'arm-02', code: 'ARM 02', role: 'ARM', roleKey: 'ARM', status: 'not-started' }
+  { id: 'rm-01', code: 'RM 01', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', illustration: './media/illustrations/document.png' },
+  { id: 'rm-02', code: 'RM 02', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', illustration: './media/illustrations/docs-calculator.png' },
+  { id: 'arm-01', code: 'ARM 01', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', illustration: './media/illustrations/docs-gear.png' },
+  { id: 'arm-02', code: 'ARM 02', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', illustration: './media/illustrations/phone-chat.png' }
 ];
+
+export const sessionsSection = {
+  heading: 'Your session starts here.',
+  text: 'Choose your assigned participant space to begin.'
+};
 
 export const statusLabels = {
   'not-started': 'Not started'

@@ -46,3 +46,12 @@ issue type (usability / prototype limitation / workflow question), follow-up act
 Facts, interpretations and proposed fixes are kept in separate fields.
 Saving must show saved / saving / failed. Browser storage is per device and not secure shared storage,
 so a shared, access-controlled store is needed before real participant data is kept.
+
+## Assets added in the participant-section refinement
+
+- `public/research/media/illustrations/`: four ENBD light/default illustrations from the ADS illustrations Figma library
+  (Document, Docs-Calculator, Docs-Gear, Phone-Chat). They are 1x renders (about 200px) exported through Figma's
+  screenshot service, because the asset download host was blocked from this environment. Re-export them at 2x from
+  Figma for sharper display on high-density screens.
+- Hero gradient: recreated by sampling the "ENBD Gradient Header" in the Egypt EBM IPP Accounts screen. Values in
+  `config.js` (`--r-hero-*`) are approximations, not design-system tokens.

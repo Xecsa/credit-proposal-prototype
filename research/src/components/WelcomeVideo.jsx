@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { video } from '../config.js';
+import useReveal from '../useReveal.js';
 
 // Optional playback: no autoplay, no loop, never driven by scroll. Watching it is not required and is not consent.
 // Scrolling only fades the frame in and lifts it (24px, 94% → 100%). Reduced motion turns that off in CSS and here.
@@ -9,22 +10,7 @@ export default function WelcomeVideo() {
   const frameRef = useRef(null);
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    const el = frameRef.current;
-    if (!el || !('IntersectionObserver' in window)) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    el.classList.add('is-animated');
-    const steps = Array.from({ length: 21 }, (_, i) => i / 20);
-    const io = new IntersectionObserver(([entry]) => {
-      // Fully revealed once 60% of the frame is visible; never goes backwards.
-      const p = Math.min(1, entry.intersectionRatio / 0.6);
-      const prev = parseFloat(el.style.getPropertyValue('--reveal') || '0');
-      if (p > prev) el.style.setProperty('--reveal', p.toFixed(3));
-      if (p >= 1) io.disconnect();
-    }, { threshold: steps });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+  useReveal(frameRef);
 
   const play = () => {
     const v = videoRef.current;
