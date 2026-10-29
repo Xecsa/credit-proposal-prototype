@@ -36,7 +36,7 @@ import img_54ed698967 from './assets/54ed698967b05294cca56c56f3884d39.png';
 import img_0956f063e5 from './assets/0956f063e59a95257540e51432f704ce.png';
 import img_54e0b6371a from './assets/54e0b6371a984d52d4c9e3542ffdd26c.png';
 import img_962156342d from './assets/962156342de4b563feeef4ff8f6e8a9a.png';
-import img_6f050a78a9 from './assets/6f050a78a967f3c2793095d59a39be0e.png';
+import img_051ae1a051 from './assets/051ae1a051e43adbbd9dc7c6aaac305e.png';
 import img_fc4bf30d25 from './assets/fc4bf30d25fbca7ecb7268c9c31fb40c.png';
 import img_0bebde19f0 from './assets/0bebde19f05551d9ac61ea6737d339b0.jpg';
 import img_1ca50b068d from './assets/1ca50b068d67d72ed0779093e9c192fc.png';
@@ -694,10 +694,10 @@ Back</button>
 {' '}
 {(v.showAppConfirmed) ? (<>{' '}
 <div style={{ flex: "1", minWidth: "0", overflowY: "auto", background: "#f1f3f7", color: "#000000", boxSizing: "border-box", padding: "160px 16px 80px", display: "flex", justifyContent: "center", alignItems: "flex-start" }}>{' '}
-<div style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center" }}><img src={img_6f050a78a9} alt="" width="112" height="112" style={{ width: "112px", height: "112px" }} />
+<div style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center" }}><img src={img_051ae1a051} alt="" width="112" height="112" style={{ width: "112px", height: "112px" }} />
 <h1 style={{ margin: "0", fontSize: "40px", lineHeight: "48px", fontWeight: "300", color: "#072447" }}>Application confirmed</h1>
-<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757", maxWidth: "560px" }}>You’ve confirmed the facility application for Orient Insurance. It now moves to credit review, and you’ll be notified when there’s an update.</p>
-<div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center" }}><button onClick={v.endToDash} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", border: "0", color: "#ffffff", cursor: "pointer", minWidth: "200px", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)" }}>Back to dashboard</button></div></div></div>
+<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757", maxWidth: "560px" }}>You’ve confirmed the facility application for Orient Insurance Marina LLC. It now moves to credit review, and you’ll be notified when there’s an update.</p>
+<div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center" }}><button onClick={v.confToHub} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", border: "0", color: "#ffffff", cursor: "pointer", minWidth: "200px", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)" }}>Back to HUB</button></div></div></div>
 {' '}</>) : null}
 {' '}
 {(v.showReturned) ? (<>{' '}

@@ -997,7 +997,7 @@ Object.assign(__v, {
   hubSendCursor: (s.docsDone && !s.sentToArm) ? 'pointer' : 'not-allowed',
   hubSendClick: () => { if (s.docsDone && !s.sentToArm) set({ hubModal: 'toArm', hubModalText: '' }); },
   showAppConfirmed: s.phase === 'selfAppConfirmed', showReturned: s.phase === 'selfReturned', endToDash: () => set({ phase: 'leadsHome', selfNote: '' }),
-  showArmSent: s.phase === 'selfArmSent', armSentContinue: () => set({ phase: 'selfHub', selfNote: '' }), hubArm: !!s.finDone && s.hubRole === 'arm', hubRm: !!s.finDone && s.hubRole === 'rm' && !s.appConfirmed,
+  showArmSent: s.phase === 'selfArmSent', armSentContinue: () => set({ phase: 'selfHub', selfNote: '' }), hubArm: !!s.finDone && s.hubRole === 'arm', hubRm: !!s.finDone && s.hubRole === 'rm',
   appConfirmed: !!s.appConfirmed,
   hubCommentList: hubCm.map((c, k) => Object.assign({ line: k < hubCm.length - 1 }, c)),
   hubOpenArm: () => set({ hubModal: 'arm', hubModalText: '' }), hubOpenReturn: () => set({ hubModal: 'ret', hubModalText: '' }), hubOpenConfirm: () => set({ hubModal: 'confirm', hubModalText: '' }),
@@ -1300,6 +1300,8 @@ Object.assign(__v, {
 });
 
 Object.assign(__v, { dCatBlockedA: s.dCatType.trim() ? 'false' : 'true' });
+
+Object.assign(__v, { confToHub: () => set({ phase: 'selfHub', hubRole: 'rm', selfNote: '' }) });
 return __v;
 }
 }
