@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="r-footer">
       <div className="r-footer-in">
-        <span>Internal research workspace</span>
+        <span>Research workspace</span>
         {extras.length > 0 && <span>{extras.join(' · ')}</span>}
       </div>
     </footer>

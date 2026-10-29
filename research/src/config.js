@@ -109,9 +109,14 @@ export const journeys = [
   { id: 'review', title: 'ARM-to-RM review, comments, return and confirmation', roles: ['RM', 'ARM'] }
 ];
 
+// Project team. `avatar` is a path under public/research/media/team/, or null to show a
+// clearly labelled placeholder. Swap files in without touching the components.
+export const teamSection = {
+  heading: 'Meet the project team',
+  text: 'Working together to shape the credit proposal experience.'
+};
 export const team = [
-  { role: 'Product Designer', name: 'Saba Shaikh' },
-  { role: 'Business Analyst', name: null },
-  { role: 'Product Owner', name: null }
+  { id: 'viploave', name: 'Viploave', role: 'Product Owner', avatar: null },
+  { id: 'prashanti', name: 'Prashanti', role: 'Business Analyst', avatar: null },   // no photo supplied: keep as a generic placeholder
+  { id: 'saba', name: 'Saba', role: 'Senior Product Designer', avatar: null }
 ];
-export const missingName = 'Name to be confirmed';

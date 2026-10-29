@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { brand, welcome, participants, sessionsSection, sessionStages, sessionNote } from './config.js';
+import { brand, welcome, participants, sessionsSection } from './config.js';
 import useReveal from './useReveal.js';
 import Header from './components/Header.jsx';
 import WelcomeVideo from './components/WelcomeVideo.jsx';
 import ParticipantCard from './components/ParticipantCard.jsx';
 import SessionPreviewDialog from './components/SessionPreviewDialog.jsx';
-import SessionStages from './components/SessionStages.jsx';
-import ProjectTeam from './components/ProjectTeam.jsx';
+import TeamSection from './components/TeamSection.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
@@ -28,7 +27,7 @@ export default function App() {
       <a className="r-skip" href="#main">Skip to content</a>
       <Header />
       <main id="main">
-        {/* ENBD identity → project introduction → video → participant sessions */}
+        {/* ENBD identity → introduction → video → project team → participant sessions */}
         <section className="r-hero" aria-labelledby="welcome-title">
           <div className="r-hero-in">
             <h1 id="welcome-title" className="r-display">{welcome.title}</h1>
@@ -40,6 +39,8 @@ export default function App() {
         </section>
 
         <div className="r-main">
+          <TeamSection />
+
           <section ref={sessionsRef} className="r-sessions" aria-labelledby="participants-title">
             <div className="r-sessions-head">
               <h2 id="participants-title" className="r-h2 r-h2-lg">{sessionsSection.heading}</h2>
@@ -54,14 +55,6 @@ export default function App() {
             </ul>
           </section>
 
-          <section className="r-section r-split" aria-labelledby="overview-title">
-            <div>
-              <h2 id="overview-title" className="r-h2">Session overview</h2>
-              <SessionStages stages={sessionStages} />
-              <p className="r-note">{welcome.reassurance} {sessionNote}</p>
-            </div>
-            <ProjectTeam />
-          </section>
         </div>
       </main>
       <Footer />
