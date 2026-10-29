@@ -32,7 +32,7 @@ import ShowFinRatings from './screens/ShowFinRatings.jsx';
 import ShowSelfHub from './screens/ShowSelfHub.jsx';
 import ShowForm from './screens/ShowForm.jsx';
 import img_ac82201241 from './assets/ac82201241fa083b5c835e1c0d63652e.svg';
-import img_8ac1e3a103 from './assets/8ac1e3a10335e7ae3429d636608cf401.png';
+import img_54ed698967 from './assets/54ed698967b05294cca56c56f3884d39.png';
 import img_0956f063e5 from './assets/0956f063e59a95257540e51432f704ce.png';
 import img_962156342d from './assets/962156342de4b563feeef4ff8f6e8a9a.png';
 import img_6f050a78a9 from './assets/6f050a78a967f3c2793095d59a39be0e.png';
@@ -170,7 +170,7 @@ Add</button></div>
 <button type="button" className="lcdel" aria-label={pt.delAria} onClick={pt.del}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b00000" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 7h14M10 4h4M7 7l.8 12a1 1 0 0 0 1 .9h6.4a1 1 0 0 0 1-.9L17 7M10 10.5v6M14 10.5v6"></path></svg></button></div></React.Fragment>))}</div>
 <div style={{ flex: "1" }}></div>
 <div style={{ display: "flex", justifyContent: "flex-end", paddingTop: "24px" }}><button type="button" className="lcprimary" aria-disabled={v.lcNextBlocked} onClick={v.lcNext} style={{ background: `${v.lcNextBg}`, cursor: `${v.lcNextCursor}` }}>Next</button></div></div></section>
-<div className="lcempty"><img alt="" src={img_8ac1e3a103} width="200" height="200" style={{ width: "160px", height: "160px", mixBlendMode: "multiply" }} />
+<div className="lcempty"><img alt="" src={img_54ed698967} width="200" height="200" style={{ width: "160px", height: "160px" }} />
 <div style={{ fontSize: "24px", lineHeight: "32px", color: "#000000" }}>First, fill in the call details</div></div></div></div>
 {' '}</>) : null}
 {' '}
@@ -202,7 +202,7 @@ Add</button></div>
 {(mg.showGen) ? (<><button type="button" className="lnghost" onClick={v.lnGen}>Generate summary</button></>) : null}</React.Fragment>))}
 {(v.lnGenBusy) ? (<><div className="lnmsg" style={{ color: "#575757", display: "flex", gap: "8px", alignItems: "center" }}><svg className="spin" aria-hidden="true" width="16" height="16" viewBox="0 0 48 48" fill="none"><circle className="fload" cx="24" cy="24" r="14.5" stroke="#182f7c" strokeWidth="4" strokeLinecap="round"></circle></svg>
 Generating summary…</div></>) : null}</div>
-<div className="lninput"><textarea aria-label="Add to meeting notes" placeholder="Start typing, or tap the mic to record\u2026" value={v.lnDraft} onChange={v.lnSetDraft} onKeyDown={v.lnKey}></textarea>
+<div className="lninput"><textarea aria-label="Add to meeting notes" placeholder={"Start typing, or tap the mic to record\u2026"} value={v.lnDraft} onChange={v.lnSetDraft} onKeyDown={v.lnKey}></textarea>
 <div style={{ display: "flex", justifyContent: "flex-end", gap: "12px", alignItems: "center" }}><button type="button" className="ldicon" aria-label={v.lnMicLabel} aria-pressed={v.lnMicAria} onClick={v.lnMic} style={{ color: `${v.lnMicFg}` }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="3.5" width="6" height="11" rx="3"></rect>
 <path d="M6 11.5a6 6 0 0 0 12 0M12 17.5V20"></path></svg></button>
 <button type="button" className="lnsend" aria-label="Add note" onClick={v.lnSend} style={{ background: `${v.lnSendBg}` }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 12 20 4.5 15 20l-3-6.5Z"></path>
@@ -1216,7 +1216,7 @@ Back</button>
 <div style={{ flex: "none", padding: "0 24px 24px" }}>{' '}
 <div className="field" style={{ border: "1px solid #d0d5de", borderRadius: "8px", padding: "12px 8px 8px", display: "flex", flexDirection: "column", gap: "8px" }}>{' '}
 {(v.notRecording) ? (<>{' '}
-<textarea className="bare" aria-label="Message" rows="2" placeholder="Start typing, or tap the mic to record\u2026" value={v.draft} onChange={v.setDraft} onKeyDown={v.draftKey} style={{ font: "inherit", width: "100%", boxSizing: "border-box", height: "48px", padding: "2px 8px", border: "0", outline: "none", resize: "none", background: "transparent", color: "#072447" }}></textarea>
+<textarea className="bare" aria-label="Message" rows="2" placeholder={"Start typing, or tap the mic to record\u2026"} value={v.draft} onChange={v.setDraft} onKeyDown={v.draftKey} style={{ font: "inherit", width: "100%", boxSizing: "border-box", height: "48px", padding: "2px 8px", border: "0", outline: "none", resize: "none", background: "transparent", color: "#072447" }}></textarea>
 {' '}</>) : null}
 {' '}
 {(v.recording) ? (<>{' '}
