@@ -116,7 +116,7 @@ export const teamSection = {
   text: 'Working together to shape the credit proposal experience.'
 };
 export const team = [
-  { id: 'viploave', name: 'Viploave', role: 'Product Owner', avatar: null },
-  { id: 'prashanti', name: 'Prashanti', role: 'Business Analyst', avatar: null },   // no photo supplied: keep as a generic placeholder
-  { id: 'saba', name: 'Saba', role: 'Senior Product Designer', avatar: null }
+  { id: 'viploave', name: 'Viploave', role: 'Product Owner', avatar: './media/team/viploave.webp' },
+  { id: 'prashanti', name: 'Prashanti', role: 'Business Analyst', avatar: './media/team/prashanti-placeholder.webp', avatarIsPlaceholder: true },   // no photo supplied: generic figure, not a likeness. Swap the file to replace.
+  { id: 'saba', name: 'Saba', role: 'Senior Product Designer', avatar: './media/team/saba.webp' }
 ];

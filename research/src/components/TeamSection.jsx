@@ -6,7 +6,8 @@ import useReveal from '../useReveal.js';
 // A member without an avatar file gets a plainly labelled placeholder, never a drawn likeness.
 function Portrait({ member }) {
   if (member.avatar) {
-    return <img className="r-team-img" src={member.avatar} alt={`Avatar of ${member.name}`} />;
+    const alt = member.avatarIsPlaceholder ? `Placeholder avatar for ${member.name}` : `Illustrated avatar of ${member.name}`;
+    return <img className="r-team-img" src={member.avatar} alt={alt} width="128" height="128" loading="lazy" draggable="false" />;
   }
   return (
     <div className="r-team-ph" role="img" aria-label={`Placeholder avatar for ${member.name}`}>

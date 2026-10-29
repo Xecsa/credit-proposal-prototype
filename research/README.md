@@ -55,3 +55,11 @@ so a shared, access-controlled store is needed before real participant data is k
   Figma for sharper display on high-density screens.
 - Hero gradient: recreated by sampling the "ENBD Gradient Header" in the Egypt EBM IPP Accounts screen. Values in
   `config.js` (`--r-hero-*`) are approximations, not design-system tokens.
+
+### Team avatars
+
+`public/research/media/team/` holds three soft 3D avatars generated with Figma AI (draft file
+"Research site – team avatars (draft)"). Viploave's and Saba's were written from descriptions of their
+photos; the photos themselves were not uploaded. Prashanti's is a generic figure and is marked as a
+placeholder (`avatarIsPlaceholder` in `config.js`, which also sets its alt text). To replace any avatar,
+drop in a square image (320 px or larger) and update its `avatar` path.
