@@ -18,6 +18,7 @@ export const brand = {
     '--r-text-2': '#575757',         // corporate-ui sys/color/text/secondary
     '--r-navy': '#072447',           // corporate-ui icon colour, project logo fill
     '--r-surface': '#F4F7FE',        // corporate-ui upload status background
+    '--r-blue-light': '#5082FF',     // corporate-ui upload progressBar surface
     '--r-canvas': '#F3F3F3',         // project page shell background
     '--r-card': '#FFFFFF',           // corporate-ui widget background
     '--r-border': '#D7DAE5',         // project input and card border
@@ -40,9 +41,12 @@ export const project = {
 };
 
 export const welcome = {
-  headline: 'Help shape the credit proposal experience.',
-  body: 'Explore the prototype and share what works, what feels unclear, and what could better support your day-to-day work.',
-  reassurance: `Your session takes approximately ${project.sessionMinutes} minutes. We’re testing the design, not you.`
+  title: 'Credit Proposal',
+  intro: [
+    'Explore a digital journey for preparing and reviewing credit proposals.',
+    'Your feedback will help shape an experience that supports your work.'
+  ],
+  reassurance: `About ${project.sessionMinutes} minutes. We’re testing the design, not you.`
 };
 
 // Paths are relative to research/index.html. Files live in public/research/media/.
@@ -51,9 +55,10 @@ export const video = {
   poster: './media/walkthrough-poster.jpg',
   title: 'Credit Proposal walkthrough',
   duration: '4 min 28 s',
+  playLabel: 'Play introduction',
   // The video walks through the journey click by click, with sound and on-screen captions.
   // It also uses an earlier sample client (Zenith Co LLC), so some screens differ from today's prototype.
-  facilitatorNote: 'This video shows the journey step by step, including where to click. Play it after the tasks, or use it as onboarding for people who are not being tested. Showing it first would teach the answers. It also uses an earlier sample client, so some screens differ from the current prototype.'
+  facilitatorNote: 'Facilitators: the video shows each step, so play it after the tasks.'
 };
 
 // Status values: 'not-started' only in this iteration. Opening a preview never changes it.

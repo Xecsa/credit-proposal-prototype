@@ -7,11 +7,10 @@ export default function ParticipantCard({ participant, onOpen }) {
   return (
     <article className="r-pcard" aria-labelledby={titleId}>
       <div className="r-pcard-top">
-        <span className="r-pcard-role">{role}</span>
+        <h3 id={titleId} className="r-pcard-code">{code}</h3>
         <span className="r-tag">{statusLabels[status] || status}</span>
       </div>
-      <h3 id={titleId} className="r-pcard-code">{code}</h3>
-      <p className="r-muted">{project.sessionMinutes}-minute guided session</p>
+      <p className="r-muted">{role} · {project.sessionMinutes}-minute guided session</p>
       <div className="r-pcard-foot">
         <button
           type="button"
