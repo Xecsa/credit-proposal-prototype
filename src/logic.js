@@ -12,7 +12,7 @@ tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
 hubRole: 'rm', sentToArm: false, corpModal: false, ownMenu: '', ownEditId: 0, entGone: false, entName: 'GETAX Agrifert DMCC', entPct: '50', entEdit: false, entDraftName: '', entDraftPct: '', pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [],
 facSeq: 2, facMenu: 0, facDelete: 0, facEdit: 0, fType: '', fProduct: '', fLimit: '', fPurpose: '', fOpen: '',
-facLoading: false, docsUp: {}, docsAuto: {}, docCatOpen: false, docCatDrop: false, docCatType: '', docCatDone: false, docStage: '', docMenu: '', docDelete: '',
+facLoading: false, docsUp: { tl: true, moa: true }, docsAuto: { tl: true, moa: true }, docCatOpen: false, docCatDrop: false, docCatType: '', docCatDone: false, docStage: '', docMenu: '', docDelete: '',
 tlOpen: '', tlDrop: '', tlSaved: null, tlForm: null, tlCtMobile: '', tlCtSaved: '',
 ownDone: false, shStep: 'docs', shDocs: '', shMenu: '', shDrop: '', shEdit: '',
 shF: { title: '', first: 'Ahmed', last: 'Al-Hassan', role: '', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
@@ -616,7 +616,7 @@ docPickerOpen: s.docStage === 'picker', docUploading: s.docStage === 'uploading'
 docPickerCancel: () => set({ docStage: '' }),
 docPickerChoose: () => {
 set({ docStage: 'uploading' });
-this.later(2200, () => { if (this.state.docStage === 'uploading') this.setState({ docStage: 'review', docCatDone: false, docCatType: '', docsUp: Object.assign({}, this.state.docsUp, { moa: true }) }); });
+this.later(2200, () => { if (this.state.docStage === 'uploading') this.setState({ docStage: 'review', docCatDone: false, docCatType: '', docsUp: Object.assign({}, this.state.docsUp, { aoa: true }) }); });
 },
 docContinueDisabled: !docsReady, docContinueCursor: docsReady ? 'pointer' : 'not-allowed',
 docContinueBg: docsReady ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)',
