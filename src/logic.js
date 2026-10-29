@@ -10,12 +10,9 @@ messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: 
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
 hubRole: 'rm', sentToArm: false, corpModal: false, ownMenu: '', ownEditId: 0, entGone: false, entName: 'GETAX Agrifert DMCC', entPct: '50', entEdit: false, entDraftName: '', entDraftPct: '', pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
-facilities: [
-{ id: 1, seed: true, title: 'Term loan', type: 'Cross-sell', product: 'LC Import', limit: '10,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' },
-{ id: 2, seed: true, title: 'Project specific', type: 'Cross-sell', product: 'LC Import', limit: '20,000,000', purpose: 'To secure a line of credit for importing specialized equipment from Trillium Technologies, enhancing our manufacturing capabilities.' }
-],
+facilities: [],
 facSeq: 2, facMenu: 0, facDelete: 0, facEdit: 0, fType: '', fProduct: '', fLimit: '', fPurpose: '', fOpen: '',
-facLoading: false, docsUp: { tl: true, moa: true }, docsAuto: { tl: true, moa: true }, docStage: '', docMenu: '', docDelete: '',
+facLoading: false, docsUp: {}, docsAuto: {}, docCatOpen: false, docCatDrop: false, docCatType: '', docCatDone: false, docStage: '', docMenu: '', docDelete: '',
 tlOpen: '', tlDrop: '', tlSaved: null, tlForm: null, tlCtMobile: '', tlCtSaved: '',
 ownDone: false, shStep: 'docs', shDocs: '', shMenu: '', shDrop: '', shEdit: '',
 shF: { title: '', first: 'Ahmed', last: 'Al-Hassan', role: '', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
@@ -619,7 +616,7 @@ docPickerOpen: s.docStage === 'picker', docUploading: s.docStage === 'uploading'
 docPickerCancel: () => set({ docStage: '' }),
 docPickerChoose: () => {
 set({ docStage: 'uploading' });
-this.later(2200, () => { if (this.state.docStage === 'uploading') this.setState({ docStage: '', docsUp: Object.assign({}, this.state.docsUp, { tl: true, moa: true }) }); });
+this.later(2200, () => { if (this.state.docStage === 'uploading') this.setState({ docStage: 'review', docCatDone: false, docCatType: '', docsUp: Object.assign({}, this.state.docsUp, { moa: true }) }); });
 },
 docContinueDisabled: !docsReady, docContinueCursor: docsReady ? 'pointer' : 'not-allowed',
 docContinueBg: docsReady ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)',
@@ -1281,6 +1278,26 @@ Object.assign(__v, {
   lnFileCount: String(lnFiles0.length),
   lnFiles: lnFiles0.map((f, i) => ({ n: f.n, view: () => pvShow(f.k, f.title, f.n), del: () => this.setState({ lnFiles: lnFiles0.filter((_, j) => j !== i) }) })),
   lnAttach: () => this.setState({ lnFiles: lnFiles0.concat([{ n: 'Tradelicense.pdf', k: 'tl', title: 'Trade license' }]) })
+});
+
+// ---- 29 Oct: manual facilities, document categorization, co-borrowers Skip
+const facHas = s.facilities.length > 0;
+const DOC_TYPES = [['tl', 'Trade license'], ['moa', 'Memorandum of Association (MOA)'], ['aoa', 'Articles of Association (AOA)'], ['br', 'Board Resolution(s)'], ['ss', 'Shareholding Structure (organogram)']];
+const dcSel = DOC_TYPES.find((d) => d[1] === s.docCatType);
+Object.assign(__v, {
+  facContBlocked: facHas ? 'false' : 'true', facContBg: facHas ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)', facContCursor: facHas ? 'pointer' : 'not-allowed',
+  facContinue: facHas ? __v.facContinue : () => {},
+  docReview: s.docStage === 'review' && s.phase === 'selfDocs', docReviewClose: () => this.setState({ docStage: '' }),
+  docCatPending: !s.docCatDone, docCatDone: !!s.docCatDone, docCatType: s.docCatType,
+  docRevBg: s.docCatDone ? '#eaf6ea' : '#fdf3e2', docRevCount: s.docCatDone ? '2' : '1', docRevLabel: s.docCatDone ? 'documents uploaded' : 'document needs a type',
+  docCatStart: () => this.setState({ docCatOpen: true, docCatDrop: false, docCatType: '' }),
+  docCatShow: !!s.docCatOpen, docCatClose: () => this.setState({ docCatOpen: false, docCatDrop: false }),
+  docCatDrop: !!s.docCatDrop, docCatDropAria: s.docCatDrop ? 'true' : 'false', docCatToggle: () => this.setState({ docCatDrop: !s.docCatDrop }), docCatLine: s.docCatDrop ? '#2765ff' : '#d7dae5',
+  docCatText: s.docCatType || 'Select document type', docCatFg: s.docCatType ? '#000000' : '#575757',
+  docCatOpts: DOC_TYPES.map((d) => ({ t: d[1], sel: s.docCatType === d[1] ? 'true' : 'false', bg: s.docCatType === d[1] ? '#edf2ff' : '#ffffff', pick: () => this.setState({ docCatType: d[1], docCatDrop: false }) })),
+  docCatBlocked: dcSel ? 'false' : 'true', docCatBg: dcSel ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)', docCatCursor: dcSel ? 'pointer' : 'not-allowed',
+  docCatConfirm: () => { if (!dcSel) return; const up = Object.assign({}, s.docsUp); up[dcSel[0]] = true; this.setState({ docCatOpen: false, docCatDrop: false, docCatDone: true, docsUp: up }); },
+  cobSkip: () => { this.setState({ cob: {} }); __v.goSelfKm(); }
 });
 return __v;
 }

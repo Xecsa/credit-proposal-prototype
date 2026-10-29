@@ -53,7 +53,7 @@ export default function ShowSelfCob({ v }) {
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><button onClick={v.goSelfConsent} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "24px", padding: "0", border: "0", background: "transparent", color: "#182f7c", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px", alignSelf: "flex-start" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#182f7c" strokeLinecap="round" strokeLinejoin="round"></path></svg>
 Back</button>
 <h1 style={{ margin: "0", fontSize: "40px", lineHeight: "40px", fontWeight: "300", color: "#072447" }}>Co-borrowers</h1>
-<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#6c7a89", opacity: "0.9" }}>Select or add any co-borrowers the organization will use</p></div>
+<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#6c7a89", opacity: "0.9" }}>Select any co-borrowers the organization will use</p></div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
 <h2 style={{ margin: "0", fontSize: "16px", lineHeight: "24px", fontWeight: "500", color: "#072447" }}>Suggested</h2>
@@ -92,7 +92,8 @@ Back</button>
 {' '}</button></span></div></React.Fragment>))}</div>
 {' '}</div>
 {' '}
-<div style={{ paddingTop: "16px", display: "flex", flexWrap: "wrap", gap: "24px", justifyContent: "flex-end" }}><button onClick={v.goSelfKm} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", width: "200px", border: "0", color: "#ffffff", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)", cursor: "pointer" }}>Continue</button></div>
+<div style={{ paddingTop: "16px", display: "flex", flexWrap: "wrap", gap: "24px", justifyContent: "flex-end" }}><button onClick={v.cobSkip} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", width: "200px", border: "1px solid #d3d7e7", background: "#ffffff", color: "#182f7c", cursor: "pointer" }}>Skip</button>
+<button onClick={v.goSelfKm} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", width: "200px", border: "0", color: "#ffffff", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)", cursor: "pointer" }}>Continue</button></div>
 {' '}</div>
 {' '}</div>
 {' '}

@@ -156,11 +156,11 @@ Upload document</button>
 <path d="M12 0.5C13.89 0.50 15.75 0.96 17.42 1.85C19.08 2.74 20.51 4.03 21.56 5.61C22.61 7.18 23.25 8.99 23.44 10.87C23.63 12.75 23.34 14.65 22.62 16.40C21.90 18.14 20.75 19.68 19.29 20.88C17.83 22.08 16.09 22.91 14.24 23.27C12.38 23.64 10.47 23.55 8.66 23.00C6.85 22.45 5.20 21.46 3.86 20.13" stroke="#182f7c"></path></svg></span>
 {' '}
 <div style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "4px" }}>{' '}
-<div style={{ fontWeight: "500", lineHeight: "20px", color: "#000000" }}>TL.pdf</div>
+<div style={{ fontWeight: "500", lineHeight: "20px", color: "#000000" }}>TL-2026.pdf</div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>{' '}
 <div style={{ display: "flex", alignItems: "center", lineHeight: "16px", color: "#575757", whiteSpace: "nowrap", overflow: "hidden" }}><span>3.00 MB</span>
-<span style={{ overflow: "hidden", whiteSpace: "pre" }}>: An error has occured</span></div>
+<span style={{ overflow: "hidden", whiteSpace: "pre" }}>: Upload in progress</span></div>
 {' '}
 <div aria-hidden="true" style={{ height: "2px", background: "#ffffff" }}><div style={{ width: "25%", height: "2px", background: "#6284f2" }}></div></div>
 {' '}</div>
@@ -174,7 +174,7 @@ Upload document</button>
 <path d="M12 0.5C13.89 0.50 15.75 0.96 17.42 1.85C19.08 2.74 20.51 4.03 21.56 5.61C22.61 7.18 23.25 8.99 23.44 10.87C23.63 12.75 23.34 14.65 22.62 16.40C21.90 18.14 20.75 19.68 19.29 20.88C17.83 22.08 16.09 22.91 14.24 23.27C12.38 23.64 10.47 23.55 8.66 23.00C6.85 22.45 5.20 21.46 3.86 20.13" stroke="#182f7c"></path></svg></span>
 {' '}
 <div style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "4px" }}>{' '}
-<div style={{ fontWeight: "500", lineHeight: "20px", color: "#000000" }}>MOA.pdf</div>
+<div style={{ fontWeight: "500", lineHeight: "20px", color: "#000000" }}>MOA-2026.pdf</div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>{' '}
 <div style={{ display: "flex", alignItems: "center", lineHeight: "16px", color: "#575757", whiteSpace: "nowrap", overflow: "hidden" }}><span>32.00 MB</span>
@@ -188,6 +188,40 @@ Upload document</button>
 {' '}</div>
 {' '}</div>
 {' '}</div>
+{' '}</>) : null}
+{' '}
+{(v.docReview) ? (<>{' '}
+<div role="region" aria-label="Company documents" style={{ position: "fixed", right: "36px", bottom: "0", zIndex: "9", width: "312px", maxWidth: "calc(100% - 32px)", background: "#ffffff", boxShadow: "0 4px 7px rgba(0,0,0,0.05), 0 16px 24px rgba(0,0,0,0.08)" }}><div style={{ height: "48px", boxSizing: "border-box", padding: "16px", display: "flex", alignItems: "center", gap: "16px" }}><span style={{ flex: "1", fontWeight: "500", lineHeight: "16px", color: "#000000" }}>Company documents</span>
+<button type="button" aria-label="Close" onClick={v.docReviewClose} style={{ width: "24px", height: "24px", padding: "0", border: "0", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round"></path></svg></button></div>
+<div role="status" style={{ background: `${v.docRevBg}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: "8px", lineHeight: "16px" }}><span style={{ fontWeight: "500", color: "#000000" }}>{v.docRevCount}</span>
+<span style={{ color: "#575757" }}>{v.docRevLabel}</span></div>
+<div style={{ padding: "12px 16px", display: "flex", alignItems: "flex-start", gap: "12px" }}><span style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1b5145"></circle>
+<path d="m7.5 12.3 3 3 6-6" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"></path></svg></span>
+<div style={{ flex: "1", minWidth: "0", lineHeight: "20px" }}><div style={{ fontWeight: "500", color: "#000000" }}>MOA-2026.pdf</div>
+<div style={{ color: "#575757" }}>Uploaded · Memorandum of Association (MOA)</div></div></div>
+{(v.docCatPending) ? (<><div style={{ padding: "12px 16px", display: "flex", alignItems: "flex-start", gap: "12px" }}><span style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3 22 20H2Z" fill="#e8a317" stroke="#e8a317" strokeWidth="1.5" strokeLinejoin="round"></path>
+<path d="M12 9v5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round"></path>
+<circle cx="12" cy="17" r="1.2" fill="#ffffff"></circle></svg></span>
+<div style={{ flex: "1", minWidth: "0", lineHeight: "20px" }}><div style={{ fontWeight: "500", color: "#000000" }}>TL-2026.pdf</div>
+<div style={{ color: "#575757" }}>Document type not found</div>
+<button type="button" onClick={v.docCatStart} style={{ font: "inherit", padding: "0", border: "0", background: "transparent", color: "#182f7c", cursor: "pointer", textDecoration: "underline" }}>Specify document type</button></div></div></>) : null}
+{(v.docCatDone) ? (<><div style={{ padding: "12px 16px", display: "flex", alignItems: "flex-start", gap: "12px" }}><span style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1b5145"></circle>
+<path d="m7.5 12.3 3 3 6-6" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"></path></svg></span>
+<div style={{ flex: "1", minWidth: "0", lineHeight: "20px" }}><div style={{ fontWeight: "500", color: "#000000" }}>TL-2026.pdf</div>
+<div style={{ color: "#575757" }}>Uploaded · {v.docCatType}</div></div></div></>) : null}</div>
+{' '}</>) : null}
+{' '}
+{(v.docCatShow) ? (<>{' '}
+<div style={{ position: "fixed", inset: "0", zIndex: "12", background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}><div role="dialog" aria-modal="true" aria-labelledby="doc-cat-title" style={{ width: "100%", maxWidth: "494px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", display: "flex", flexDirection: "column" }}><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "24px", borderBottom: "1px solid #e8eaef" }}><h2 id="doc-cat-title" style={{ margin: "0", fontSize: "24px", lineHeight: "32px", fontWeight: "400", color: "#000000" }}>Categorize document type</h2>
+<button type="button" aria-label="Close" onClick={v.docCatClose} style={{ width: "32px", height: "32px", padding: "0", border: "0", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round"></path></svg></button></div>
+<div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "24px" }}><div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#000000" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10.5A.5.5 0 0 1 6.5 20V4a.5.5 0 0 1 .5-.5Z" stroke="#182f7c" strokeWidth="1.3"></path>
+<path d="M14 3.5V8h4M9.5 12h5M9.5 15h5" stroke="#182f7c" strokeWidth="1.3" strokeLinecap="round"></path></svg>
+TL-2026.pdf</div>
+<div style={{ display: "flex", flexDirection: "column", gap: "8px", position: "relative" }}><div id="doc-cat-l" style={{ color: "#575757", lineHeight: "20px" }}>What document is this?</div>
+<button type="button" aria-labelledby="doc-cat-l doc-cat-v" aria-haspopup="listbox" aria-expanded={v.docCatDropAria} onClick={v.docCatToggle} style={{ font: "inherit", height: "48px", boxSizing: "border-box", padding: "12px 16px", border: `1px solid ${v.docCatLine}`, borderRadius: "8px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", textAlign: "left" }}><span id="doc-cat-v" style={{ color: `${v.docCatFg}` }}>{v.docCatText}</span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg></button>
+{(v.docCatDrop) ? (<><div role="listbox" aria-label="Document type" style={{ position: "absolute", left: "0", right: "0", top: "calc(100% + 4px)", zIndex: "2", background: "#ffffff", borderRadius: "8px", padding: "8px", boxShadow: "0 4px 7px rgba(0,0,0,0.05), 0 16px 24px rgba(0,0,0,0.12)" }}>{(v.docCatOpts || []).map((o, o__i) => (<React.Fragment key={o__i}><button type="button" role="option" aria-selected={o.sel} onClick={o.pick} style={{ font: "inherit", width: "100%", textAlign: "left", height: "40px", padding: "0 12px", border: "0", borderRadius: "6px", background: `${o.bg}`, color: "#000000", cursor: "pointer" }}>{o.t}</button></React.Fragment>))}</div></>) : null}</div></div>
+<div style={{ display: "flex", justifyContent: "flex-end", padding: "24px", borderTop: "1px solid #e8eaef" }}><button type="button" aria-disabled={v.docCatBlocked} onClick={v.docCatConfirm} style={{ font: "inherit", fontWeight: "500", width: "200px", height: "48px", border: "0", borderRadius: "8px", color: "#ffffff", background: `${v.docCatBg}`, cursor: `${v.docCatCursor}` }}>Confirm</button></div></div></div>
 {' '}</>) : null}
 {' '}
 {(v.docDeleteOpen) ? (<>{' '}

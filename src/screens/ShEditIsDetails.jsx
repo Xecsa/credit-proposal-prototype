@@ -60,17 +60,10 @@ export default function ShEditIsDetails({ v }) {
 <div style={{ display: "flex" }}><div style={{ flex: "1 1 200px", minWidth: "0", position: "relative", display: "flex", flexDirection: "column" }}><div style={{ paddingBottom: "8px", lineHeight: "20px", color: "#575757" }}>Nationality</div>
 {' '}
 <button className="field" onClick={v.shS.nat.toggle} aria-label="Nationality" aria-haspopup="listbox" aria-expanded={v.shS.nat.expanded} style={{ font: "inherit", lineHeight: "20px", textAlign: "left", width: "100%", height: "48px", boxSizing: "border-box", padding: "12px 16px", border: `1px solid ${v.shS.nat.line}`, borderRadius: "8px", background: "#ffffff", color: `${v.shS.nat.fg}`, cursor: "pointer", display: "flex", alignItems: "center", gap: "12px" }}>{' '}
-<span style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="16" height="16" viewBox="436 632.5 16 16" fill="none"><defs><clipPath id="inatflagclip0_12301_232125"><rect width="1440" height="1121" rx="8" fill="white"></rect></clipPath>
-<mask id="inatflagmask4_12301_232125" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="436" y="632" width="16" height="17"><g><g><g><rect x="436" y="634.9" width="16" height="11.2" rx="2" fill="white"></rect>
-<mask id="inatflagmask5_12301_232125" style={{ maskType: "luminance" }} maskUnits="userSpaceOnUse" x="436" y="634" width="16" height="13"><rect x="436" y="634.9" width="16" height="11.2" rx="2" fill="white"></rect></mask>
-<g mask="url(#inatflagmask5_12301_232125)"><rect x="443.617" y="634.9" width="8.38095" height="11.2" fill="#1AB11F"></rect>
-<path fillRule="evenodd" clipRule="evenodd" d="M436 646.1H441.333V634.9H436V646.1Z" fill="#242424"></path>
-<path fillRule="evenodd" clipRule="evenodd" d="M441.332 646.1H446.665V634.9H441.332V646.1Z" fill="#DC0D18"></path>
-<path opacity="0.75" fillRule="evenodd" clipRule="evenodd" d="M442.247 639.7C442.384 639.7 442.495 639.857 442.495 640.051C442.495 640.643 442.726 641.164 443.075 641.445C443.194 641.541 443.235 641.755 443.168 641.923C443.1 642.091 442.949 642.15 442.83 642.054C442.336 641.656 442 640.91 442 640.051C442 639.857 442.111 639.7 442.247 639.7Z" fill="white"></path>
-<path opacity="0.75" fillRule="evenodd" clipRule="evenodd" d="M445.742 639.7C445.885 639.7 446.001 639.86 446.001 640.057C446.001 640.896 445.678 641.629 445.197 642.046C445.076 642.15 444.916 642.1 444.84 641.933C444.764 641.766 444.801 641.545 444.922 641.441C445.262 641.147 445.484 640.635 445.484 640.057C445.484 639.86 445.599 639.7 445.742 639.7Z" fill="white"></path>
-<path d="M445.201 639.701C445.201 640.584 444.664 641.301 444.001 641.301C443.338 641.301 442.801 640.584 442.801 639.701C442.801 638.817 443.338 638.101 444.001 638.101C444.664 638.101 445.201 638.817 445.201 639.701Z" fill="white" fillOpacity="0.5"></path></g></g></g></g></mask>
-<mask id="inatflagmask5_12301_232125" style={{ maskType: "luminance" }} maskUnits="userSpaceOnUse" x="436" y="634" width="16" height="13"><rect x="436" y="634.9" width="16" height="11.2" rx="2" fill="white"></rect></mask></defs>
-<g clipPath="url(#inatflagclip0_12301_232125)"><g mask="url(#inatflagmask4_12301_232125)"><rect x="436" y="632.5" width="16" height="16" fill="#182F7C"></rect></g></g></svg></span>
+<span style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style={{ borderRadius: "2px", boxShadow: "0 0 0 0.5px #d7dae5" }}><rect width="24" height="5.34" fill="#00843d"></rect>
+<rect y="5.33" width="24" height="5.34" fill="#ffffff"></rect>
+<rect y="10.66" width="24" height="5.34" fill="#000000"></rect>
+<rect width="6.5" height="16" fill="#ef3340"></rect></svg></span>
 <span style={{ flex: "1", minWidth: "0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{v.shS.nat.text}</span>
 <span style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 5.3335L8 11.3335L14 5.3335" stroke="#182f7c" strokeLinecap="round" strokeLinejoin="round"></path></svg></span></button>
 {' '}
@@ -99,7 +92,7 @@ export default function ShEditIsDetails({ v }) {
 +971
 <span aria-hidden="true" style={{ display: "flex" }}><svg aria-hidden="true" width="24" height="16" viewBox="826 732 24 16" fill="none"><defs><clipPath id="ichevsmclip0_12301_232125"><rect width="1440" height="1121" rx="8" fill="white"></rect></clipPath></defs>
 <g clipPath="url(#ichevsmclip0_12301_232125)"><path d="M832 737.833L838 743.833L844 737.833" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path></g></svg></span></span>
-<input id="shm-mobile" className="bare" type="text" inputMode="tel" autoComplete="off" placeholder="e.g. 050 000 000" value={v.shF.mobile} onChange={v.shSet.mobile} style={{ font: "inherit", lineHeight: "20px", flex: "1", minWidth: "0", height: "24px", padding: "0", border: "0", outline: "none", background: "transparent", color: "#000000", margin: "0 12px" }} /></div></div>
+<input id="shm-mobile" className="bare" type="text" inputMode="tel" autoComplete="off" placeholder="e.g. 50 0000000" value={v.shF.mobile} onChange={v.shSet.mobile} style={{ font: "inherit", lineHeight: "20px", flex: "1", minWidth: "0", height: "24px", padding: "0", border: "0", outline: "none", background: "transparent", color: "#000000", margin: "0 12px" }} /></div></div>
 {' '}</div>
 <div style={{ display: "flex", gap: "16px", alignItems: "flex-start", justifyContent: "space-between" }}><div style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "4px" }}><div style={{ fontWeight: "500", lineHeight: "16px", color: "#000000" }}>Is this shareholder a member of the ruling family?</div>
 <div style={{ lineHeight: "16px", color: "#575757" }}>By opting in, you are confirming that the shareholder is a royal family member</div></div>

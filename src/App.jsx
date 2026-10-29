@@ -259,9 +259,7 @@ Attach</button></div>
 {' '}</button>
 {' '}
 <div style={{ flex: "1", minWidth: "0", display: "flex", alignItems: "center" }}>{' '}
-{(v.showAppCrumb) ? (<>{' '}
-<button onClick={v.goSelfList} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", padding: "0 16px", border: "0", background: "transparent", color: "#a3accb", cursor: "pointer" }}>Assets dashboard</button>
-{' '}</>) : null}
+{(v.showAppCrumb) ? (<>{' '}</>) : null}
 {' '}</div>
 {' '}
 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>{' '}

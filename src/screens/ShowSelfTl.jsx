@@ -147,7 +147,7 @@ Back</button>
 +971
 <span aria-hidden="true" style={{ display: "flex" }}><svg aria-hidden="true" width="24" height="16" viewBox="826 732 24 16" fill="none"><defs><clipPath id="ictchevclip0_12301_232125"><rect width="1440" height="1121" rx="8" fill="white"></rect></clipPath></defs>
 <g clipPath="url(#ictchevclip0_12301_232125)"><path d="M832 737.833L838 743.833L844 737.833" stroke="#182F7C" strokeLinecap="round" strokeLinejoin="round"></path></g></svg></span></span>
-<input id="tl-ct-mobile" className="bare" type="text" inputMode="tel" autoComplete="off" placeholder="e.g. 050 000 000" value={v.tlCtMobile} onChange={v.setTlCtMobile} style={{ font: "inherit", lineHeight: "20px", flex: "1", minWidth: "0", height: "24px", padding: "0", border: "0", outline: "none", background: "transparent", color: "#000000", margin: "0 12px" }} /></div></div>
+<input id="tl-ct-mobile" className="bare" type="text" inputMode="tel" autoComplete="off" placeholder="e.g. 50 0000000" value={v.tlCtMobile} onChange={v.setTlCtMobile} style={{ font: "inherit", lineHeight: "20px", flex: "1", minWidth: "0", height: "24px", padding: "0", border: "0", outline: "none", background: "transparent", color: "#000000", margin: "0 12px" }} /></div></div>
 {' '}</div>
 {' '}
 <div style={{ flex: "none", padding: "23px 32px 24px", borderTop: "1px solid #d7dae5", display: "flex", justifyContent: "flex-end" }}>{' '}

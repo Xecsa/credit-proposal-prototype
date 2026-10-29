@@ -60,17 +60,7 @@ Back</button>
 {' '}
 <h1 style={{ margin: "0", fontSize: "40px", lineHeight: "40px", fontWeight: "300", color: "#182f7c" }}>Facility request</h1>
 {' '}
-<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757" }}>The following details have been captured from the call report and BusinessOne</p>
-{' '}
-<div style={{ background: "#efe6ff", border: "1px solid #820fd9", borderRadius: "8px", padding: "16px", display: "flex", gap: "8px", alignItems: "flex-start" }}>{' '}
-<span style={{ flex: "none", display: "flex" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15.91 12.71L13.89 15.97C13.78 16.14 13.63 16.21 13.42 16.18C13.21 16.16 13.08 16.04 13.04 15.84L12.26 12.67L4.9 20.06C4.80 20.15 4.69 20.20 4.55 20.21C4.42 20.22 4.30 20.17 4.19 20.06C4.08 19.95 4.03 19.83 4.03 19.70C4.03 19.57 4.08 19.46 4.19 19.35L11.57 11.96L8.42 11.18C8.22 11.14 8.10 11.01 8.07 10.81C8.04 10.61 8.11 10.45 8.28 10.35L11.53 8.34L11.25 4.51C11.23 4.31 11.31 4.16 11.49 4.06C11.67 3.96 11.84 3.98 12.00 4.12L14.93 6.59L18.47 5.14C18.66 5.06 18.83 5.09 18.98 5.24C19.13 5.39 19.17 5.56 19.08 5.75L17.65 9.29L20.13 12.22C20.27 12.38 20.29 12.55 20.20 12.74C20.10 12.92 19.96 13.01 19.75 12.99L15.91 12.71ZM4.13 6.22C4.04 6.13 4 6.04 4 5.93C4 5.82 4.04 5.72 4.13 5.64L4.83 4.93C4.92 4.85 5.01 4.80 5.12 4.80C5.23 4.80 5.33 4.85 5.41 4.93L6.12 5.64C6.21 5.72 6.25 5.82 6.25 5.93C6.25 6.04 6.21 6.13 6.12 6.22L5.41 6.93C5.33 7.01 5.23 7.06 5.12 7.06C5.01 7.06 4.92 7.01 4.83 6.93L4.13 6.22ZM13.71 14.35L15.37 11.67L18.52 11.90L16.48 9.47L17.67 6.55L14.75 7.74L12.32 5.70L12.55 8.85L9.88 10.52L12.94 11.28L13.71 14.35ZM18.02 20.12L17.32 19.41C17.23 19.33 17.19 19.23 17.19 19.12C17.19 19.01 17.23 18.92 17.32 18.83L18.02 18.13C18.11 18.04 18.21 17.99 18.31 17.99C18.42 17.99 18.52 18.04 18.61 18.13L19.31 18.83C19.40 18.92 19.44 19.01 19.44 19.12C19.44 19.23 19.40 19.33 19.31 19.41L18.61 20.12C18.52 20.21 18.42 20.25 18.31 20.25C18.21 20.25 18.11 20.21 18.02 20.12Z" fill="#820fd9"></path></svg></span>
-{' '}
-<div style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "4px" }}>{' '}
-<div style={{ fontWeight: "500", lineHeight: "16px", color: "#000000" }}>AI has pre-filled this form</div>
-{' '}
-<div style={{ color: "#575757" }}>This facility request was auto-generated from call reports. Review and update where needed.</div>
-{' '}</div>
-{' '}</div>
+<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757" }}>Add the facilities the client is requesting</p>
 {' '}</div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
@@ -78,12 +68,6 @@ Back</button>
 <div style={{ fontSize: "24px", lineHeight: "32px", fontWeight: "500", color: "#000000" }}>Orient Insurance</div>
 {' '}
 <div style={{ marginTop: "12px", lineHeight: "16px", color: "#575757" }}>CIF: 102938859</div>
-{' '}
-<div aria-label="Red flags" style={{ marginTop: "16px", display: "flex", flexWrap: "wrap", gap: "16px" }}><span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#f3e6e6", color: "#9d0000", display: "inline-flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3L9 9M9 3L3 9" stroke="#9d0000" strokeWidth="1.2" strokeLinecap="round"></path></svg>
-CIF Suspended</span>
-<span style={{ fontSize: "12px", lineHeight: "14px", fontWeight: "500", padding: "4px 8px", borderRadius: "4px", background: "#f3e6e6", color: "#9d0000", display: "inline-flex", alignItems: "center", gap: "8px" }}><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.6" stroke="#9d0000" strokeWidth="1.2"></circle>
-<path d="M2.8 9.2L9.2 2.8" stroke="#9d0000" strokeWidth="1.2" strokeLinecap="round"></path></svg>
-Blacklisted</span></div>
 {' '}</div>
 {' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>{' '}
@@ -121,7 +105,7 @@ Delete</button>
 {' '}</div>
 {' '}
 <div style={{ paddingTop: "16px", display: "flex", justifyContent: "flex-end" }}>{' '}
-<button style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", width: "200px", border: "0", color: "#ffffff", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)", cursor: "pointer" }} onClick={v.facContinue}>Continue</button>
+<button aria-disabled={v.facContBlocked} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", width: "200px", border: "0", color: "#ffffff", background: `${v.facContBg}`, cursor: `${v.facContCursor}` }} onClick={v.facContinue}>Continue</button>
 {' '}</div>
 {' '}</div>
 {' '}
