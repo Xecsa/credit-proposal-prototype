@@ -21,11 +21,11 @@ mf: { eidNo: '784-1990-1234567-1', eidIssue: '29/06/2026', eidExpiry: '30/06/202
 consent: '', cob: {}, bankSel: {}, bankAdded: false, bankToast: false, bankExt: { m: [], c: [] }, bankTarget: 'm', bankSeq: 0,
 acIban: '', acAge: '', acStage: '', acConfirm: true, acUae: true, clientDone: false,
 shMode: '', addType: '', addDocs: '', ownExtra: [], ownDel: false, ownGone: false,
-docsDone: false, finReady: false, finDone: false, finXls: false, dSeq: 10, dAoaErr: false, dCat: 0, dCatType: '', dSearch: '', finFrom: '', finTo: '',
-dKyc: { tl: [], moa: [], aoa: [], aoa2: [], br: [], org: [], other: [] }, dKycConf: {},
+docsDone: false, finReady: false, finDone: false, finXls: false, dSeq: 10, dAoaErr: false, dCat: 0, dCatType: '', dSearch: '', finFrom: '12/01/2023', finTo: '12/02/2026',
+dKyc: { tl: [{ id: 101, name: 'Trade-license.pdf', st: 'ok' }], moa: [{ id: 102, name: 'MOA.pdf', st: 'ok' }], aoa: [], aoa2: [], br: [], org: [], other: [] }, dKycConf: {},
 dFin: { aud: [{ id: 2, name: 'max-financials.pdf', st: 'ok', year: '2026' }, { id: 3, name: 'max-financials.pdf', st: 'ok', year: '2025' }, { id: 4, name: 'max-financials.pdf', st: 'ok', year: 'Select year' }],
 inh: [{ id: 5, name: 'max-financials.pdf', st: 'ok', year: '2026' }, { id: 6, name: 'max-financials.pdf', st: 'ok', year: '2025' }, { id: 7, name: 'max-financials.pdf', st: 'ok', year: 'Select year' }],
-rec: [], bank: [], vat: [], cbrb: [], aecb: [] }, dFinConf: {},
+rec: [], bank: [{ id: 103, name: 'max-q1.pdf', st: 'ok' }, { id: 104, name: 'max-q2.pdf', st: 'ok' }, { id: 105, name: 'max-q3.pdf', st: 'ok' }, { id: 106, name: 'max-q4.pdf', st: 'ok' }], vat: [], cbrb: [], aecb: [{ id: 107, name: 'aecb-report.pdf', st: 'ok' }] }, dFinConf: {},
 cpList: [], cpSeq: 0, cpMenu: 0, cpEdit: 0, cpDel: 0, cpSel: {}, cpF: { name: '', rel: 'Associate', mobile: '', email: '' },
 finVals: {}, finEditId: '', finDraft: '',
 dFinLocked: false, ejFiles: [], ejSeq: 0, ejBatches: 0, ejTab: 'all', ejQ: '', ejSel: {}, ejPage: 1, ejWidget: false, ejWidgetMin: false, ejBatchIds: [],
@@ -240,7 +240,7 @@ del: () => set({ docMenu: '', docDelete: d[0] })
 });
 const docsReady = !!(s.docsUp.tl && s.docsUp.moa);
 const dView = (group, confName, key, f) => ({
-name: f.name, info: f.info || '', ok: f.st === 'ok', err: f.st === 'err', warn: f.st === 'warn', hasYear: !!f.year, year: f.year || '', removable: true,
+name: f.name, info: f.info || '', tag: f.tag || '', hasTag: !!f.tag, noTag: !f.tag, ok: f.st === 'ok', err: f.st === 'err', warn: f.st === 'warn', hasYear: !!f.year, year: f.year || '', removable: true,
 removeLabel: 'Remove ' + f.name,
 remove: () => { const o = Object.assign({}, s[group]); o[key] = o[key].filter((x) => x.id !== f.id); const p = {}; p[group] = o; set(p); },
 categorize: () => set({ dCat: f.id, dCatType: '' })
@@ -261,10 +261,10 @@ title: d[1], desc: d[2], uploadLabel: 'Upload', uploadAria: 'Upload ' + d[1], ha
 files: files.map((f) => dView('dKyc', 'dKycConf', key, f)), showConfirm: false, box: dBox('dKycConf', key),
 upload: () => {
 if (key === 'aoa2' && !s.dAoaErr) dAdd('dKyc', 'dKycConf', key, [{ name: 'AoA.jpeg', st: 'err', info: 'Document size exceeds 25MB limit' }], { dAoaErr: true });
-else dAdd('dKyc', 'dKycConf', key, [{ name: d[3], st: 'ok' }]);
+else dAdd('dKyc', 'dKycConf', key, [{ name: d[3], st: key === 'other' ? 'warn' : 'ok' }]);
 }
 }; });
-const dKycOk = true;
+const dKycOk = !s.dKyc.other.some((f) => f.st === 'warn');
 const dCatFile = s.dKyc.other.find((f) => f.id === s.dCat);
 const finDefs = [
 ['aud', 'Audited financial statements', 'These are financial statements of the company that have been examined and verified by an independent auditor.', 'Upload'],
@@ -532,7 +532,7 @@ goDKyc: goDocs('docsKyc'), goDStk: goDocs('docsStk'), goDFin: () => set({ phase:
 dKycSecs: dKycSecs, dKycBlocked: !dKycOk, dKycBg: btnBg(dKycOk), dKycCursor: btnCur(dKycOk), dKycContinue: () => { if (dKycOk) goDocs('docsStk')(); },
 dCatOpen: !!dCatFile, dCatName: dCatFile ? dCatFile.name : '', dCatType: s.dCatType, setDCatType: (e) => set({ dCatType: e.target.value }),
 dCatClose: () => set({ dCat: 0 }), dCatBlocked: !s.dCatType.trim(), dCatBg: btnBg(!!s.dCatType.trim()), dCatCursor: btnCur(!!s.dCatType.trim()),
-dCatSave: () => { if (!s.dCatType.trim()) return; const o = Object.assign({}, s.dKyc); o.other = o.other.map((f) => f.id === s.dCat ? Object.assign({}, f, { st: 'ok' }) : f); set({ dKyc: o, dCat: 0 }); },
+dCatSave: () => { if (!s.dCatType.trim()) return; const o = Object.assign({}, s.dKyc); o.other = o.other.map((f) => f.id === s.dCat ? Object.assign({}, f, { st: 'ok', tag: s.dCatType.trim() }) : f); set({ dKyc: o, dCat: 0 }); },
 dSearch: s.dSearch, setDSearch: (e) => set({ dSearch: e.target.value }), dStkGroups: dStkGroups, dStkEmpty: dStkGroups.length === 0,
 dFinSecs: dFinSecs, dFinBlocked: !dFinOk, dFinBg: btnBg(dFinOk), dFinCursor: btnCur(dFinOk),
 dFinSend: () => { if (!dFinOk) return; set({ phase: 'docsEjari', dFinLocked: true, selfNote: '' }); if (false) this.later(0, () => { if (this.state.docsDone) this.setState({ finReady: true }); }); },
@@ -1299,6 +1299,8 @@ Object.assign(__v, {
   docCatConfirm: () => { if (!dcSel) return; const up = Object.assign({}, s.docsUp); up[dcSel[0]] = true; this.setState({ docCatOpen: false, docCatDrop: false, docCatDone: true, docsUp: up }); },
   cobSkip: () => { this.setState({ cob: {} }); __v.goSelfKm(); }
 });
+
+Object.assign(__v, { dCatBlockedA: s.dCatType.trim() ? 'false' : 'true' });
 return __v;
 }
 }

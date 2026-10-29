@@ -34,6 +34,7 @@ import ShowForm from './screens/ShowForm.jsx';
 import img_ac82201241 from './assets/ac82201241fa083b5c835e1c0d63652e.svg';
 import img_54ed698967 from './assets/54ed698967b05294cca56c56f3884d39.png';
 import img_0956f063e5 from './assets/0956f063e59a95257540e51432f704ce.png';
+import img_54e0b6371a from './assets/54e0b6371a984d52d4c9e3542ffdd26c.png';
 import img_962156342d from './assets/962156342de4b563feeef4ff8f6e8a9a.png';
 import img_6f050a78a9 from './assets/6f050a78a967f3c2793095d59a39be0e.png';
 import img_fc4bf30d25 from './assets/fc4bf30d25fbca7ecb7268c9c31fb40c.png';
@@ -669,9 +670,9 @@ Back</button>
 {' '}
 {(v.showEjSent) ? (<>{' '}
 <div style={{ flex: "1", minWidth: "0", overflowY: "auto", background: "#f1f3f7", color: "#000000", boxSizing: "border-box", padding: "160px 16px 80px", display: "flex", justifyContent: "center", alignItems: "flex-start" }}>{' '}
-<div style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center" }}><img src={img_0956f063e5} alt="" width="112" height="112" style={{ width: "112px", height: "112px" }} />
-<h1 style={{ margin: "0", fontSize: "40px", lineHeight: "48px", fontWeight: "300", color: "#072447" }}>Ejari documents sent</h1>
-<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757", maxWidth: "560px" }}>Ejari documents have been successfully sent to Perfios.</p>
+<div style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "40px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textAlign: "center" }}><img src={img_54e0b6371a} alt="" width="112" height="112" style={{ width: "112px", height: "112px" }} />
+<h1 style={{ margin: "0", fontSize: "40px", lineHeight: "48px", fontWeight: "300", color: "#072447" }}>Documents sent</h1>
+<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757", maxWidth: "560px" }}>Documents have been successfully sent to Perfios.</p>
 <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center" }}><button onClick={v.ejSentContinue} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", height: "48px", minWidth: "88px", padding: "12px 16px", borderRadius: "8px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", border: "0", color: "#ffffff", cursor: "pointer", minWidth: "200px", background: "linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)" }}>Continue</button></div></div></div>
 {' '}</>) : null}
 {' '}
@@ -905,13 +906,13 @@ Back</button>
 <ShowSelfHub v={v} />
 {' '}
 {(v.hubModalOpen) ? (<>{' '}
-<div style={{ position: "fixed", inset: "0", zIndex: "20", background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}><div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title" style={{ position: "relative", width: "100%", maxWidth: "560px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", padding: "40px 32px 32px", display: "flex", flexDirection: "column", gap: "8px", textAlign: "center" }}><button aria-label="Close" onClick={v.hubModalClose} style={{ position: "absolute", top: "24px", right: "24px", width: "32px", height: "32px", padding: "0", border: "0", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round"></path></svg></button>
-<h2 id="hub-modal-title" style={{ margin: "0", fontSize: "32px", lineHeight: "40px", fontWeight: "400", color: "#575757" }}>{v.hubModalTitle}</h2>
-<p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757" }}>{v.hubModalSub}</p>
-<label htmlFor="hub-modal-text" style={{ marginTop: "16px", textAlign: "left", lineHeight: "16px", color: "#000000" }}>{v.hubModalLabel}</label>
-<textarea id="hub-modal-text" placeholder={v.hubModalPh} value={v.hubModalText} onChange={v.setHubModalText} style={{ font: "inherit", lineHeight: "20px", width: "100%", height: "88px", boxSizing: "border-box", padding: "12px 16px", border: "1px solid #d7dae5", borderRadius: "8px", background: "#ffffff", color: "#000000", resize: "none" }}></textarea>
-<div style={{ marginTop: "16px", display: "flex", flexWrap: "wrap", gap: "24px", justifyContent: "flex-end" }}><button onClick={v.hubModalClose} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", minWidth: "160px", height: "48px", padding: "12px 16px", border: "1px solid #d3d7e7", borderRadius: "8px", color: "#182f7c", background: "#ffffff", cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>Cancel</button>
-<button aria-disabled={v.hubModalBlocked} onClick={v.hubModalSubmit} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", minWidth: "160px", height: "48px", padding: "12px 16px", border: "0", borderRadius: "8px", color: "#ffffff", cursor: `${v.hubModalCursor}`, display: "inline-flex", alignItems: "center", justifyContent: "center", background: `${v.hubModalBg}` }}>{v.hubModalCta}</button></div></div></div>
+<div style={{ position: "fixed", inset: "0", zIndex: "20", background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}><div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title" style={{ width: "100%", maxWidth: "648px", boxSizing: "border-box", background: "#ffffff", borderRadius: "8px", display: "flex", flexDirection: "column", boxShadow: "0 4px 7px rgba(0,0,0,0.05), 0 16px 24px rgba(0,0,0,0.08)" }}><div style={{ padding: "24px 32px 16px", borderBottom: "1px solid #e8eaef", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}><h2 id="hub-modal-title" style={{ margin: "0", fontSize: "24px", lineHeight: "32px", fontWeight: "400", color: "#000000" }}>{v.hubModalTitle}</h2>
+<button aria-label="Close" onClick={v.hubModalClose} style={{ flex: "none", width: "32px", height: "32px", padding: "0", border: "0", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round"></path></svg></button></div>
+<div style={{ padding: "32px", display: "flex", flexDirection: "column", gap: "24px" }}><p style={{ margin: "0", fontSize: "16px", lineHeight: "24px", color: "#575757" }}>{v.hubModalSub}</p>
+<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}><label htmlFor="hub-modal-text" style={{ lineHeight: "20px", color: "#575757" }}>{v.hubModalLabel}</label>
+<textarea id="hub-modal-text" placeholder={v.hubModalPh} value={v.hubModalText} onChange={v.setHubModalText} style={{ font: "inherit", lineHeight: "20px", width: "100%", height: "96px", boxSizing: "border-box", padding: "16px", border: "1px solid #d7dae5", borderRadius: "8px", background: "#ffffff", color: "#000000", resize: "none" }}></textarea></div></div>
+<div style={{ padding: "24px 32px", borderTop: "1px solid #e8eaef", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "flex-end" }}><button onClick={v.hubModalClose} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", width: "200px", height: "48px", padding: "12px 16px", border: "1px solid #d3d7e7", borderRadius: "8px", color: "#182f7c", background: "#ffffff", cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>Cancel</button>
+<button aria-disabled={v.hubModalBlocked} onClick={v.hubModalSubmit} style={{ font: "inherit", fontWeight: "500", lineHeight: "16px", width: "200px", height: "48px", padding: "12px 16px", border: "0", borderRadius: "8px", color: "#ffffff", cursor: `${v.hubModalCursor}`, display: "inline-flex", alignItems: "center", justifyContent: "center", background: `${v.hubModalBg}` }}>{v.hubModalCta}</button></div></div></div>
 {' '}</>) : null}
 {' '}
 {(v.pvOpen) ? (<>{' '}
