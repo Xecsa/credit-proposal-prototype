@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProtoLogic } from './logic.js';
 import './styles.css';
+import ShowLeadsHome from './screens/ShowLeadsHome.jsx';
 import ShowSelfList from './screens/ShowSelfList.jsx';
 import ShowSelfFacility from './screens/ShowSelfFacility.jsx';
 import ShowSelfDocs from './screens/ShowSelfDocs.jsx';
@@ -31,6 +32,7 @@ import ShowFinRatings from './screens/ShowFinRatings.jsx';
 import ShowSelfHub from './screens/ShowSelfHub.jsx';
 import ShowForm from './screens/ShowForm.jsx';
 import img_ac82201241 from './assets/ac82201241fa083b5c835e1c0d63652e.svg';
+import img_8ac1e3a103 from './assets/8ac1e3a10335e7ae3429d636608cf401.png';
 import img_0956f063e5 from './assets/0956f063e59a95257540e51432f704ce.png';
 import img_962156342d from './assets/962156342de4b563feeef4ff8f6e8a9a.png';
 import img_6f050a78a9 from './assets/6f050a78a967f3c2793095d59a39be0e.png';
@@ -121,6 +123,100 @@ export default class App extends ProtoLogic {
 <div className="shim" style={{ width: "30%", height: "16px", marginTop: "40px", background: "linear-gradient(90deg, #eceef3 25%, #f7f8fb 37%, #eceef3 63%)", backgroundSize: "400% 100%", borderRadius: "8px" }}></div>
 <div className="shim" style={{ width: "100%", height: "48px", marginTop: "8px", background: "linear-gradient(90deg, #eceef3 25%, #f7f8fb 37%, #eceef3 63%)", backgroundSize: "400% 100%", borderRadius: "8px" }}></div>
 <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "40px" }}><div className="shim" style={{ width: "200px", height: "48px", marginTop: "0px", background: "linear-gradient(90deg, #eceef3 25%, #f7f8fb 37%, #eceef3 63%)", backgroundSize: "400% 100%", borderRadius: "8px" }}></div></div></div></div></>) : null}
+{' '}
+<ShowLeadsHome v={v} />
+{' '}
+{(v.showLeadsCall) ? (<>{' '}
+<div className="ldshell"><header className="lchead"><h1 style={{ margin: "0", fontSize: "24px", lineHeight: "32px", fontWeight: "400", color: "#000000" }}>New Call Report</h1>
+<button type="button" className="ldlink" style={{ fontSize: "14px" }} onClick={v.lcCancel}>Cancel</button></header>
+<div className="lcbody"><section className="lcpanel" aria-labelledby="lc-title"><div className="lcpanel-h" id="lc-title">Call details</div>
+<div className="lcpanel-b"><div style={{ display: "flex", gap: "16px", alignItems: "center" }}><span className="lcav">OI</span>
+<div style={{ lineHeight: "24px" }}><div style={{ color: "#000000" }}>Orient Insurance</div>
+<div style={{ color: "#575757" }}>CIF: 123456789</div></div></div>
+<div className="lcf"><label className="lclabel" htmlFor="lc-date">Date</label>
+<div style={{ position: "relative" }}><button type="button" id="lc-date" className="lcinput lcbtn" onClick={v.lcCalToggle} aria-haspopup="dialog" aria-expanded={v.lcCalOpenAria}><span style={{ color: `${v.lcDateFg}` }}>{v.lcDateText}</span>
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#182f7c" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"></rect>
+<path d="M2.5 6.5h11M5.5 2v2.5M10.5 2v2.5M5 9h1M7.5 9h1M10 9h1M5 11h1M7.5 11h1"></path></svg></button>
+{(v.lcCalOpen) ? (<><button aria-label="Close calendar" tabIndex="-1" onClick={v.lcCalClose} style={{ position: "fixed", inset: "0", zIndex: "30", border: "0", padding: "0", background: "transparent", cursor: "default" }}></button>
+<div role="dialog" aria-label="Choose call date" className="lccal"><div className="lccal-h"><button type="button" className="ldicon" aria-label="Previous month" onClick={v.lcCalPrev}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6 9 12l6 6"></path></svg></button>
+<span style={{ fontWeight: "500" }}>{v.lcCalTitle}</span>
+<button type="button" className="ldicon" aria-label="Next month" onClick={v.lcCalNext} style={{ transform: "scaleX(-1)" }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6 9 12l6 6"></path></svg></button></div>
+<div className="lccal-g">{(v.lcCalHead || []).map((hd, hd__i) => (<React.Fragment key={hd__i}><span className="lccal-w">{hd.t}</span></React.Fragment>))}
+{(v.lcCalDays || []).map((dd, dd__i) => (<React.Fragment key={dd__i}><button type="button" className="lccal-d" disabled={dd.off} aria-label={dd.aria} aria-pressed={dd.sel} onClick={dd.pick} style={{ background: `${dd.bg}`, color: `${dd.fg}`, visibility: `${dd.vis}` }}>{dd.t}</button></React.Fragment>))}</div></div></>) : null}</div></div>
+<button type="button" role="switch" aria-checked={v.lcReachAria} onClick={v.lcReachToggle} className="lcswitch"><span className="lcswitch-t" style={{ background: `${v.lcReachTrack}` }}><span className="lcswitch-k" style={{ left: `${v.lcReachLeft}`, background: `${v.lcReachKnob}` }}></span></span>
+<span style={{ color: "#000000" }}>Client Reachable</span></button>
+<div className="lcf"><div className="lclabel" id="lc-type-l">Call type</div>
+<div style={{ position: "relative" }}><button type="button" className="lcinput lcbtn" aria-labelledby="lc-type-l lc-type-v" aria-haspopup="listbox" aria-expanded={v.lcTypeAria} onClick={v.lcTypeToggle}><span id="lc-type-v" style={{ color: "#000000" }}>{v.lcType}</span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+{(v.lcTypeOpen) ? (<><div role="listbox" aria-label="Call type" className="lcdrop">{(v.lcTypeOpts || []).map((o, o__i) => (<React.Fragment key={o__i}><button type="button" role="option" aria-selected={o.sel} className="lcopt" onClick={o.pick}>{o.t}</button></React.Fragment>))}</div></>) : null}</div></div>
+<div className="lcf"><div className="lclabel" id="lc-rel-l">Related leads</div>
+<div style={{ position: "relative" }}><button type="button" className="lcinput lcbtn" aria-labelledby="lc-rel-l lc-rel-v" aria-haspopup="dialog" aria-expanded={v.lcRelAria} onClick={v.lcRelToggle} style={{ borderColor: `${v.lcRelLine}` }}><span id="lc-rel-v" style={{ color: `${v.lcRelFg}`, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{v.lcRelText}</span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+{(v.lcRelOpen) ? (<><div role="dialog" aria-label="Related leads" className="lcdrop lcrel"><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "4px 8px 12px" }}><span style={{ fontSize: "16px", color: "#575757" }}>Related Leads</span>
+<button type="button" className="ldlink" onClick={v.lcRelClear}>Clear all</button></div>
+<button type="button" role="checkbox" aria-checked={v.lcRelAllAria} className="lccheck" onClick={v.lcRelAll}><span className="lcbox" style={{ background: `${v.lcRelAllBg}`, borderColor: `${v.lcRelAllLine}` }}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span>
+Select all</button>
+<div style={{ borderTop: "1px solid #e5e7ee", margin: "4px 0 0", padding: "12px 0 4px", fontSize: "12px", color: "#575757" }}>Active leads</div>
+{(v.lcRelOpts || []).map((o, o__i) => (<React.Fragment key={o__i}><button type="button" role="checkbox" aria-checked={o.on} className="lccheck" onClick={o.toggle}><span className="lcbox" style={{ background: `${o.bg}`, borderColor: `${o.line}` }}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span>
+{o.t}</button></React.Fragment>))}
+<div style={{ display: "flex", justifyContent: "flex-end", paddingTop: "8px" }}><button type="button" className="lcprimary" style={{ width: "88px", height: "40px" }} onClick={v.lcRelApply}>Apply</button></div></div></>) : null}</div></div>
+<div className="lcf"><div className="lclabel" id="lc-mode-l">Mode of communication</div>
+<div role="radiogroup" aria-labelledby="lc-mode-l" style={{ display: "flex", gap: "4px" }}>{(v.lcModes || []).map((m, m__i) => (<React.Fragment key={m__i}><button type="button" role="radio" aria-checked={m.sel} className="lcpill" onClick={m.pick} style={{ background: `${m.bg}`, color: `${m.fg}` }}>{m.t}</button></React.Fragment>))}</div></div>
+<div className="lcf"><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><div className="lclabel" style={{ color: "#000000", margin: "0" }}>Participants</div>
+<button type="button" className="ldlink" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "14px" }} onClick={v.lcPartAdd}><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8"></circle>
+<path d="M12 8.5v7M8.5 12h7"></path></svg>
+Add</button></div>
+{(v.lcParts || []).map((pt, pt__i) => (<React.Fragment key={pt__i}><div style={{ display: "flex", gap: "8px", marginTop: "8px" }}><input className="lcinput" aria-label={pt.aria} placeholder="Enter Participant name" value={pt.v} onChange={pt.set} style={{ flex: "1", minWidth: "0" }} />
+<button type="button" className="lcdel" aria-label={pt.delAria} onClick={pt.del}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b00000" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 7h14M10 4h4M7 7l.8 12a1 1 0 0 0 1 .9h6.4a1 1 0 0 0 1-.9L17 7M10 10.5v6M14 10.5v6"></path></svg></button></div></React.Fragment>))}</div>
+<div style={{ flex: "1" }}></div>
+<div style={{ display: "flex", justifyContent: "flex-end", paddingTop: "24px" }}><button type="button" className="lcprimary" aria-disabled={v.lcNextBlocked} onClick={v.lcNext} style={{ background: `${v.lcNextBg}`, cursor: `${v.lcNextCursor}` }}>Next</button></div></div></section>
+<div className="lcempty"><img alt="" src={img_8ac1e3a103} width="200" height="200" style={{ width: "160px", height: "160px", mixBlendMode: "multiply" }} />
+<div style={{ fontSize: "24px", lineHeight: "32px", color: "#000000" }}>First, fill in the call details</div></div></div></div>
+{' '}</>) : null}
+{' '}
+{(v.showLeadsNote) ? (<>{' '}
+<div className="ldshell"><header className="lchead"><h1 style={{ margin: "0", fontSize: "24px", lineHeight: "32px", fontWeight: "400", color: "#000000" }}>Lead</h1>
+<div style={{ display: "flex", gap: "24px", alignItems: "center" }}><button type="button" className="ldlink" style={{ fontSize: "14px" }} onClick={v.lnClose}>Close</button>
+<button type="button" className="lcprimary" style={{ width: "88px", height: "40px" }} onClick={v.lnSubmit}>Submit</button></div></header>
+<div className="lcbody ln3"><section className="lcpanel" aria-labelledby="ln-cd"><div className="lcpanel-h" style={{ height: "auto", padding: "24px" }}><div id="ln-cd">Call details</div>
+<div style={{ fontSize: "12px", lineHeight: "16px", color: "#ffffff", opacity: ".85", marginTop: "2px" }}>Created on {v.lnCreated}</div>
+<span className="lndraft">Draft</span></div>
+<div className="lcpanel-b" style={{ gap: "24px" }}><div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}><span className="lcav">OI</span>
+<div style={{ lineHeight: "20px" }}><div style={{ color: "#000000" }}>Orient Insurance</div>
+<div style={{ color: "#575757" }}>CIF: 123456789
+<br />
+{v.lnDateLong}</div>
+<span className="lnreach" style={{ background: `${v.lnReachBg}`, color: `${v.lnReachFg}` }}>{v.lnReach}</span></div></div>
+<div className="lnkv"><b>Mode of communication</b>
+<span>{v.lcMode}</span></div>
+<div className="lnkv"><b>Call type</b>
+<span>{v.lcType}</span></div>
+<div className="lnkv"><b>Related leads</b>
+<span>{v.lcRelText}</span></div>
+<div className="lnkv"><b>{v.lnPartLabel}</b>
+{(v.lnParts || []).map((pp, pp__i) => (<React.Fragment key={pp__i}><div style={{ display: "flex", gap: "16px", alignItems: "center", marginTop: "12px" }}><span className="lnini">{pp.ini}</span>
+<span style={{ color: "#000000" }}>{pp.n}</span></div></React.Fragment>))}</div></div></section>
+<section className="lcpanel" aria-labelledby="ln-mn" style={{ background: "#ffffff" }}><div id="ln-mn" style={{ padding: "24px", borderBottom: "1px solid #e5e7ee", fontSize: "16px", lineHeight: "24px", color: "#000000", fontWeight: "500" }}>Meeting notes</div>
+<div className="lnchat" aria-live="polite">{(v.lnMsgs || []).map((mg, mg__i) => (<React.Fragment key={mg__i}><div className="lnmsg"><span style={{ whiteSpace: "pre-line" }}>{mg.t}</span>
+<span className="lntime">{mg.time}</span></div>
+{(mg.showGen) ? (<><button type="button" className="lnghost" onClick={v.lnGen}>Generate summary</button></>) : null}</React.Fragment>))}
+{(v.lnGenBusy) ? (<><div className="lnmsg" style={{ color: "#575757", display: "flex", gap: "8px", alignItems: "center" }}><svg className="spin" aria-hidden="true" width="16" height="16" viewBox="0 0 48 48" fill="none"><circle className="fload" cx="24" cy="24" r="14.5" stroke="#182f7c" strokeWidth="4" strokeLinecap="round"></circle></svg>
+Generating summary…</div></>) : null}</div>
+<div className="lninput"><textarea aria-label="Add to meeting notes" placeholder="Start typing, or tap the mic to record\u2026" value={v.lnDraft} onChange={v.lnSetDraft} onKeyDown={v.lnKey}></textarea>
+<div style={{ display: "flex", justifyContent: "flex-end", gap: "12px", alignItems: "center" }}><button type="button" className="ldicon" aria-label={v.lnMicLabel} aria-pressed={v.lnMicAria} onClick={v.lnMic} style={{ color: `${v.lnMicFg}` }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="3.5" width="6" height="11" rx="3"></rect>
+<path d="M6 11.5a6 6 0 0 0 12 0M12 17.5V20"></path></svg></button>
+<button type="button" className="lnsend" aria-label="Add note" onClick={v.lnSend} style={{ background: `${v.lnSendBg}` }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 12 20 4.5 15 20l-3-6.5Z"></path>
+<path d="M12 13.5 20 4.5"></path></svg></button></div></div></section>
+<section className="lcpanel" aria-labelledby="ln-doc" style={{ background: "#ffffff" }}><div className="lcpanel-b" style={{ gap: "16px" }}><div id="ln-doc" style={{ fontSize: "16px", lineHeight: "24px", color: "#000000", fontWeight: "500" }}>Documents{' '}
+<span style={{ color: "#9f9f9f", fontWeight: "400" }}>(optional)</span></div>
+<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><span style={{ color: "#000000" }}>File attachments ({v.lnFileCount})</span>
+<button type="button" className="ldlink" style={{ display: "inline-flex", gap: "6px", alignItems: "center", fontSize: "14px" }} onClick={v.lnAttach}><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="m19 11.5-7 7a4.5 4.5 0 0 1-6.4-6.4l7.4-7.4a3 3 0 0 1 4.2 4.2l-7.3 7.4a1.5 1.5 0 0 1-2.1-2.1l6.7-6.7"></path></svg>
+Attach</button></div>
+{(v.lnFiles || []).map((lf, lf__i) => (<React.Fragment key={lf__i}><div className="lnfile"><button type="button" className="lnfile-n" onClick={lf.view} aria-label={`Preview ${lf.n}`}><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10.5A.5.5 0 0 1 6.5 20V4a.5.5 0 0 1 .5-.5Z"></path>
+<path d="M14 3.5V8h4M9.5 12h5M9.5 15h5"></path></svg>
+<span>{lf.n}</span></button>
+<button type="button" className="ldicon" aria-label={`Remove ${lf.n}`} onClick={lf.del}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></div></React.Fragment>))}</div></section></div></div>
+{' '}</>) : null}
 {' '}
 {(v.showTakeoverHeader) ? (<>{' '}
 <header style={{ flex: "none", background: "#ffffff", borderBottom: "1px solid #b5becd", padding: "16px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>{' '}

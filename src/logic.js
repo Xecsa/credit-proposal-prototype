@@ -2,7 +2,7 @@ import React from 'react';
 
 export class ProtoLogic extends React.Component {
 state = {
-phase: 'selfSearch', collapsed: false, created: false,
+phase: 'leadsHome', collapsed: false, ldTab: 'ov', ldClosed: false, ldToastOn: false, lcDate: '', lcCal: false, lcCalY: 2026, lcCalM: 9, lcReach: true, lcType: 'Lead', lcTypeOpen: false, lcRel: ['Trade import'], lcRelDraft: null, lcMode: 'Call', lcParts: [''], lnMsgs: null, lnGenBusy: false, lnDraft: '', lnMicOn: false, lnFiles: null, created: false,
 name: '', desc: '', cifText: '', client: '',
 date: new Date().toISOString().slice(0, 10), start: '', end: '', topic: '', location: '',
 participants: [''], files: [], draftSaved: false,
@@ -644,8 +644,8 @@ if (s.facEdit) set({ phase: 'selfFacility', fOpen: '', facilities: s.facilities.
 else set({ phase: 'selfFacility', fOpen: '', facSeq: s.facSeq + 1, facilities: s.facilities.concat([Object.assign({ id: s.facSeq + 1, seed: false }, data)]) });
 },
 showSelfList: s.phase === 'selfList', showSelfSearch: s.phase === 'selfSearch', showSelfSummary: s.phase === 'selfSummary', showSelfHub: s.phase === 'selfHub',
-goMeeting: () => set({ phase: s.created ? 'chat' : 'form', name: s.name || 'Working capital requirements', selfNote: '', listOpen: '' }), hubBack: () => set({ phase: s.created ? 'chat' : 'selfSearch' }),
-goSelfList: goSelf('selfSearch'), goSelfSearch: goSelf('selfSearch'), goSelfSummary: goSelf('selfSummary'), goSelfHub: goSelf('selfHub'),
+goMeeting: () => set({ phase: s.created ? 'chat' : 'form', name: s.name || 'Working capital requirements', selfNote: '', listOpen: '' }), hubBack: () => set({ phase: 'leadsHome' }),
+goSelfList: goSelf('leadsHome'), goSelfSearch: goSelf('selfSearch'), goSelfSummary: goSelf('selfSummary'), goSelfHub: goSelf('selfHub'),
 listSearch: s.listSearch, setListSearch: (e) => set({ listSearch: e.target.value }),
 listFilters: listFilters, listRows: listRows, listEmpty: listRows.length === 0,
 listCount: listFiltered ? listRows.length + ' of 15' : '1-10 of 15',
@@ -664,7 +664,7 @@ const next = ['Borrowing_information.pdf', 'Updated_trade_license.pdf'].find((f)
 if (next) set({ selfUploads: s.selfUploads.concat([next]) });
 },
 selfUploadRows: s.selfUploads.map((name, i) => ({ name: name, remove: () => set({ selfUploads: s.selfUploads.filter((x, j) => j !== i) }) })),
-goStart: () => set({ phase: 'selfSearch', selfNote: '', listOpen: '' }),
+goStart: () => set({ phase: 'leadsHome', selfNote: '', listOpen: '' }),
 startCallReport: () => set({ phase: s.created ? 'chat' : 'form' }),
 startSelf: goSelf('selfSearch'),
 showForm: s.phase === 'form', showChat: inChat,
@@ -1000,7 +1000,7 @@ Object.assign(__v, {
   hubSendBg: (s.docsDone && !s.sentToArm) ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg,#d7dae5,#a4a7af)',
   hubSendCursor: (s.docsDone && !s.sentToArm) ? 'pointer' : 'not-allowed',
   hubSendClick: () => { if (s.docsDone && !s.sentToArm) set({ hubModal: 'toArm', hubModalText: '' }); },
-  showAppConfirmed: s.phase === 'selfAppConfirmed', showReturned: s.phase === 'selfReturned', endToDash: () => set({ phase: 'selfSearch', selfNote: '' }),
+  showAppConfirmed: s.phase === 'selfAppConfirmed', showReturned: s.phase === 'selfReturned', endToDash: () => set({ phase: 'leadsHome', selfNote: '' }),
   showArmSent: s.phase === 'selfArmSent', armSentContinue: () => set({ phase: 'selfHub', selfNote: '' }), hubArm: !!s.finDone && s.hubRole === 'arm', hubRm: !!s.finDone && s.hubRole === 'rm' && !s.appConfirmed,
   appConfirmed: !!s.appConfirmed,
   hubCommentList: hubCm.map((c, k) => Object.assign({ line: k < hubCm.length - 1 }, c)),
@@ -1192,6 +1192,94 @@ Object.assign(__v, {
   corpBack: () => this.setState({ corpModal: false }),
   corpClose: () => set({ corpModal: false, phase: 'selfTerminated' }),
   showTerminated: s.phase === 'selfTerminated'
+});
+
+// ---- From Leads journey (29 Oct): Leads and insights -> New Call Report -> Lead -> back to Leads -> hub
+const LD_RAT1 = 'Client is expanding operations across the Asian supply chain and requires financing to support increased inventory volumes. They have demonstrated a strong payment track record with existing suppliers and are seeking to bridge cash flow gaps during high-demand cycles. This funding will support the next stage of growth.';
+const LD_RAT2 = 'Established textile manufacturer securing new European contracts worth $2.3M annually. Requires working capital to fulfil larger orders while maintaining domestic operations. Export receivables are expected to settle within 60 days.';
+const LD_M = { t: 'M', bg: '#5bc6f2' }, LD_A = { t: 'A', bg: '#e8607a' }, LD_N = { t: 'N', bg: '#5bc6f2' };
+const ldGray = ['#eaeaea', '#575757'], ldAmber = ['#fef3e6', '#d79c10'], ldGreen = ['#e8f4f0', '#2c836e'];
+const ldOpenCall = () => this.setState({ phase: 'leadsCall', lcDate: '', lcCal: false, lcTypeOpen: false, lcRelDraft: null, lcRel: ['Trade import'], lcMode: 'Call', lcParts: [''], lcReach: true, ldToastOn: false });
+const ldToHub = () => set({ phase: 'selfHub', selfNote: '', ldToastOn: false });
+const ldCard = (o) => Object.assign({ chips: [{ t: 'NTB' }, { t: 'NTP' }], follow: '', isText: true, isTxn: false, rat: LD_RAT1, avs: [LD_M], tags: [], view: () => {}, open: () => {}, call: () => {}, openLabel: o.title }, o);
+const ldTradeImport = s.ldClosed
+  ? ldCard({ title: 'Trade import', date: '16th Jan, 2024', status: 'Deal Executed / product activated', sBg: ldGreen[0], sFg: ldGreen[1], tags: [{ t: 'AA' }, { t: '2 closed' }], view: ldToHub, open: ldToHub, call: ldOpenCall, openLabel: 'Trade import, deal executed. Open the facility application' })
+  : ldCard({ title: 'Trade import', date: '16th Jan, 2024', status: 'Not started', sBg: ldGray[0], sFg: ldGray[1], tags: [{ t: 'AA' }, { t: '2 closed' }], view: ldOpenCall, open: ldOpenCall, call: ldOpenCall, openLabel: 'Trade import lead. Log a call' });
+const ldActive = s.ldClosed ? [ldTradeImport] : [ldTradeImport,
+  ldCard({ title: 'Trade export', date: '16th Jan, 2024', follow: '(Follow up on 8th Mar, 24)', status: 'Under negotiation', sBg: ldAmber[0], sFg: ldAmber[1], rat: LD_RAT2, avs: [LD_M, LD_A], tags: [{ t: 'CRM' }, { t: '2 closed' }] }),
+  ldCard({ title: 'FX ring fencing', date: '16th Jan, 2024', chips: [{ t: 'ETB' }, { t: 'ETP' }], status: 'Under negotiation', sBg: ldAmber[0], sFg: ldAmber[1], isText: false, isTxn: true, tags: [{ t: 'Self' }] })];
+const ldOthers = [
+  ldCard({ title: 'FX ring fencing', date: '16th Jan, 2024', follow: '(Follow up on 8th Mar, 24)', chips: [{ t: 'NTB' }], status: 'Under negotiation', sBg: ldAmber[0], sFg: ldAmber[1], avs: [LD_N, LD_M], tags: [{ t: 'AA' }] }),
+  ldCard({ title: 'FX upsell', date: '16th Jan, 2024', follow: '(Follow up on 8th Mar, 24)', status: 'Under negotiation', sBg: ldAmber[0], sFg: ldAmber[1], rat: LD_RAT2, avs: [LD_N, LD_M], tags: [{ t: 'AA' }] })];
+const LD_TABS = [['ov', 'Overview'], ['pm', 'Performance metrics'], ['ti', 'Transaction insights']];
+// call report
+const LC_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const lcY = s.lcCalY, lcMo = s.lcCalM;
+const lcFirst = new Date(lcY, lcMo, 1).getDay(); const lcLead = (lcFirst + 6) % 7; const lcDim = new Date(lcY, lcMo + 1, 0).getDate();
+const lcPad = (n) => (n < 10 ? '0' : '') + n;
+const lcCalDays = [];
+for (let i = 0; i < lcLead; i++) lcCalDays.push({ t: '', off: true, aria: '', sel: 'false', bg: 'transparent', fg: '#000000', vis: 'hidden', pick: () => {} });
+for (let d = 1; d <= lcDim; d++) { const v = lcPad(d) + '/' + lcPad(lcMo + 1) + '/' + lcY; const on = s.lcDate === v; lcCalDays.push({ t: String(d), off: false, aria: d + ' ' + LC_MONTHS[lcMo] + ' ' + lcY, sel: on ? 'true' : 'false', bg: on ? '#182f7c' : 'transparent', fg: on ? '#ffffff' : '#000000', vis: 'visible', pick: () => this.setState({ lcDate: v, lcCal: false }) }); }
+const LC_REL = ['Trade import', 'Buyer Credit Limit', 'Bb Fx Leakage', 'Fx Cross Sell'];
+const lcDraft = s.lcRelDraft || s.lcRel;
+const lcAll = LC_REL.every((x) => lcDraft.indexOf(x) >= 0);
+const lcParts = s.lcParts;
+const lcOk = !!s.lcDate && lcParts.some((x) => x.trim());
+const lcTime = '14:37';
+// lead screen
+const LN_NOTES = '- Khalid (CEO) + Fatima (CFO), DIFC office\n- Opening 2 new stores (Abu Dhabi, Sharjah) by year end\n- Need ~3.5M AED financing for fit-out + inventory\n- Cash flow tight - biggest customer paying net 90 not net 30\n- Fatima wants invoice discounting info + fees before board mtg (Tue)\n- FX exposure on USD supplier payments hurting margin, wants hedging options\n- Mobile app logging Khalid out randomly - annoying, flag to IT\n- Happy with branch service otherwise\n- Need KYC refresh expedited, overdue, could delay facility approval\n- 4yr client, no red flags, facilities within limits\n- Flag to credit team early - tight timeline (board Tue)';
+const LN_SUM = 'The client expressed strong interest in expanding their trade finance facility to support new European supplier relationships. Current credit utilisation stands at 78%, with Q3 revenue exceeding projections by 12%. A key concern was raised around FX exposure on EUR/AED settlements. The RM committed to coordinating with the FX desk and presenting a revised facility proposal within the week.';
+const lnMsgs0 = s.lnMsgs || [{ t: LN_NOTES, time: lcTime, kind: 'note' }];
+const lnHasSum = lnMsgs0.some((m) => m.kind === 'sum');
+const lnFiles0 = s.lnFiles || [{ n: 'Boardofresolution.png', k: 'br', title: 'Board Resolution(s)' }, { n: 'MOA.png', k: 'moa', title: 'Memorandum of Association (MOA)' }];
+const lnPartsList = lcParts.map((x) => x.trim()).filter(Boolean);
+const lnIni = (n) => n.replace(/\s*-.*$/, '').split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join('');
+const lnD = (() => { const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s.lcDate || ''); if (!m) return { short: '', long: '' }; const d = +m[1]; const suf = (d % 10 === 1 && d !== 11) ? 'st' : (d % 10 === 2 && d !== 12) ? 'nd' : (d % 10 === 3 && d !== 13) ? 'rd' : 'th'; return { short: d + ' ' + LC_MONTHS[+m[2] - 1].slice(0, 3) + ' ' + m[3], long: d + suf + ' ' + LC_MONTHS[+m[2] - 1].slice(0, 3) + ', ' + m[3] }; })();
+const lnAddNote = () => { const t = (s.lnDraft || '').trim(); if (!t) return; this.setState({ lnMsgs: lnMsgs0.concat([{ t: t, time: lcTime, kind: 'note' }]), lnDraft: '' }); };
+const inLeads = s.phase === 'leadsHome' || s.phase === 'leadsCall' || s.phase === 'leadsNote';
+Object.assign(__v, {
+  showTakeoverHeader: __v.showTakeoverHeader && !inLeads,
+  showLeadsHome: s.phase === 'leadsHome', showLeadsCall: s.phase === 'leadsCall', showLeadsNote: s.phase === 'leadsNote',
+  ldTabs: LD_TABS.map((t) => ({ t: t[1], sel: s.ldTab === t[0] ? 'true' : 'false', line: s.ldTab === t[0] ? '#182f7c' : 'transparent', fg: s.ldTab === t[0] ? '#182f7c' : '#575757', pick: () => this.setState({ ldTab: t[0] }) })),
+  ldTabOverview: s.ldTab === 'ov', ldTabMetrics: s.ldTab === 'pm', ldTabTx: s.ldTab === 'ti',
+  ldActiveTitle: s.ldClosed ? 'Closed leads' : 'Active leads', ldActive: ldActive, ldOthers: ldOthers,
+  ldToast: !!s.ldToastOn && s.phase === 'leadsHome', ldToastClose: () => this.setState({ ldToastOn: false }),
+  // call report
+  lcCancel: () => this.setState({ phase: 'leadsHome' }),
+  lcDateText: s.lcDate || 'DD MMMM YYYY', lcDateFg: s.lcDate ? '#000000' : '#575757',
+  lcCalOpen: !!s.lcCal, lcCalOpenAria: s.lcCal ? 'true' : 'false', lcCalToggle: () => this.setState({ lcCal: !s.lcCal, lcTypeOpen: false, lcRelDraft: null }), lcCalClose: () => this.setState({ lcCal: false }),
+  lcCalTitle: LC_MONTHS[lcMo] + ' ' + lcY, lcCalHead: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((t) => ({ t: t })), lcCalDays: lcCalDays,
+  lcCalPrev: () => this.setState(lcMo === 0 ? { lcCalM: 11, lcCalY: lcY - 1 } : { lcCalM: lcMo - 1 }), lcCalNext: () => this.setState(lcMo === 11 ? { lcCalM: 0, lcCalY: lcY + 1 } : { lcCalM: lcMo + 1 }),
+  lcReachAria: s.lcReach ? 'true' : 'false', lcReachToggle: () => this.setState({ lcReach: !s.lcReach }), lcReachTrack: s.lcReach ? '#d3d7e7' : '#e5e7ee', lcReachKnob: s.lcReach ? '#182f7c' : '#ffffff', lcReachLeft: s.lcReach ? '26px' : '2px',
+  lcType: s.lcType, lcTypeOpen: !!s.lcTypeOpen, lcTypeAria: s.lcTypeOpen ? 'true' : 'false', lcTypeToggle: () => this.setState({ lcTypeOpen: !s.lcTypeOpen, lcRelDraft: null, lcCal: false }),
+  lcTypeOpts: ['Lead', 'Service request', 'Courtesy call'].map((t) => ({ t: t, sel: s.lcType === t ? 'true' : 'false', pick: () => this.setState({ lcType: t, lcTypeOpen: false }) })),
+  lcRelOpen: !!s.lcRelDraft, lcRelAria: s.lcRelDraft ? 'true' : 'false', lcRelLine: s.lcRelDraft ? '#2765ff' : '#d7dae5',
+  lcRelToggle: () => this.setState({ lcRelDraft: s.lcRelDraft ? null : s.lcRel.slice(), lcTypeOpen: false, lcCal: false }),
+  lcRelText: s.lcRel.length ? s.lcRel.join(', ') : 'Select related leads', lcRelFg: s.lcRel.length ? '#000000' : '#575757',
+  lcRelClear: () => this.setState({ lcRelDraft: [] }),
+  lcRelAllAria: lcAll ? 'true' : 'false', lcRelAllBg: lcAll ? '#182f7c' : '#ffffff', lcRelAllLine: '#182f7c', lcRelAll: () => this.setState({ lcRelDraft: lcAll ? [] : LC_REL.slice() }),
+  lcRelOpts: LC_REL.map((t) => { const on = lcDraft.indexOf(t) >= 0; return { t: t, on: on ? 'true' : 'false', bg: on ? '#182f7c' : '#ffffff', line: '#182f7c', toggle: () => this.setState({ lcRelDraft: on ? lcDraft.filter((x) => x !== t) : lcDraft.concat([t]) }) }; }),
+  lcRelApply: () => this.setState({ lcRel: LC_REL.filter((x) => lcDraft.indexOf(x) >= 0), lcRelDraft: null }),
+  lcMode: s.lcMode, lcModes: ['Call', 'Email', 'Visit'].map((t) => ({ t: t, sel: s.lcMode === t ? 'true' : 'false', bg: s.lcMode === t ? '#182f7c' : '#ffffff', fg: s.lcMode === t ? '#ffffff' : '#182f7c', pick: () => this.setState({ lcMode: t }) })),
+  lcPartAdd: () => this.setState({ lcParts: lcParts.concat(['']) }),
+  lcParts: lcParts.map((v, i) => ({ v: v, aria: 'Participant ' + (i + 1), delAria: 'Remove participant ' + (i + 1), set: (e) => { const a = lcParts.slice(); a[i] = e.target.value; this.setState({ lcParts: a }); }, del: () => { const a = lcParts.filter((_, j) => j !== i); this.setState({ lcParts: a.length ? a : [''] }); } })),
+  lcNextBlocked: lcOk ? 'false' : 'true', lcNextBg: lcOk ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)', lcNextCursor: lcOk ? 'pointer' : 'not-allowed',
+  lcNext: () => { if (lcOk) this.setState({ phase: 'leadsNote', lcCal: false, lcTypeOpen: false, lcRelDraft: null, lnMsgs: null, lnFiles: null, lnDraft: '', lnGenBusy: false }); },
+  // lead screen
+  lnClose: () => this.setState({ phase: 'leadsHome' }),
+  lnSubmit: () => { this.setState({ phase: 'leadsHome', ldClosed: true, ldToastOn: true, ldTab: 'ov' }); this.later(6000, () => { if (this.state.ldToastOn) this.setState({ ldToastOn: false }); }); },
+  lnCreated: lnD.short, lnDateLong: lnD.long, lnReach: s.lcReach ? 'Reachable' : 'Not reachable', lnReachBg: s.lcReach ? '#e8f4f0' : '#eaeaea', lnReachFg: s.lcReach ? '#2c836e' : '#575757',
+  lnPartCount: String(lnPartsList.length), lnPartLabel: 'Participants (' + lnPartsList.length + ')', lnParts: lnPartsList.map((n) => ({ n: n, ini: lnIni(n) })),
+  lnMsgs: lnMsgs0.map((m, i) => ({ t: m.t, time: m.time, showGen: i === 0 && !lnHasSum && !s.lnGenBusy })),
+  lnGenBusy: !!s.lnGenBusy,
+  lnGen: () => { this.setState({ lnGenBusy: true }); this.later(1400, () => { const cur = this.state.lnMsgs || lnMsgs0; this.setState({ lnGenBusy: false, lnMsgs: cur.slice(0, 1).concat([{ t: LN_SUM, time: lcTime, kind: 'sum' }], cur.slice(1)) }); }); },
+  lnDraft: s.lnDraft || '', lnSetDraft: (e) => this.setState({ lnDraft: e.target.value }),
+  lnKey: (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); lnAddNote(); } },
+  lnSend: lnAddNote, lnSendBg: (s.lnDraft || '').trim() ? '#182f7c' : '#c4c8d6',
+  lnMic: () => this.setState({ lnMicOn: !s.lnMicOn }), lnMicAria: s.lnMicOn ? 'true' : 'false', lnMicLabel: s.lnMicOn ? 'Stop recording' : 'Record a voice note', lnMicFg: s.lnMicOn ? '#b00000' : '#575757',
+  lnFileCount: String(lnFiles0.length),
+  lnFiles: lnFiles0.map((f, i) => ({ n: f.n, view: () => pvShow(f.k, f.title, f.n), del: () => this.setState({ lnFiles: lnFiles0.filter((_, j) => j !== i) }) })),
+  lnAttach: () => this.setState({ lnFiles: lnFiles0.concat([{ n: 'Tradelicense.pdf', k: 'tl', title: 'Trade license' }]) })
 });
 return __v;
 }
