@@ -2,13 +2,22 @@ import React from 'react';
 import { project, statusLabels } from '../config.js';
 
 // The button is the only interactive element. Status comes from config/session data and is never
-// changed by opening the card. On hover only the surface, glow, illustration and arrow move.
+// changed by opening the card. On hover only the background layer (surface, glow, illustration) and
+// the arrow move; the text and button stay where they are.
 export default function ParticipantCard({ participant, onOpen }) {
   const { id, code, role, status, illustration, illustrationShadow, tone = 'white' } = participant;
   const titleId = `card-${id}`;
   return (
     <article className={`r-pcard tone-${tone}`} aria-labelledby={titleId}>
-      <span className="r-pcard-glow" aria-hidden="true" />
+      <div className="r-pcard-bg" aria-hidden="true">
+        <span className="r-pcard-glow" />
+        {illustration && (
+          <div className="r-pcard-art">
+            {illustrationShadow && <img className="r-art-shadow" src={illustrationShadow} alt="" loading="lazy" />}
+            <img className="r-art-main" src={illustration} alt="" loading="lazy" />
+          </div>
+        )}
+      </div>
       <div className="r-pcard-body">
         <p className="r-pcard-label">{project.sessionMinutes}-minute guided session</p>
         <h3 id={titleId} className="r-pcard-code">{code}</h3>
@@ -29,12 +38,6 @@ export default function ParticipantCard({ participant, onOpen }) {
           </button>
         </div>
       </div>
-      {illustration && (
-        <div className="r-pcard-art" aria-hidden="true">
-          {illustrationShadow && <img className="r-art-shadow" src={illustrationShadow} alt="" loading="lazy" />}
-          <img className="r-art-main" src={illustration} alt="" loading="lazy" />
-        </div>
-      )}
     </article>
   );
 }

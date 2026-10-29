@@ -49,8 +49,11 @@ export default function App() {
 
         <div className="r-main">
           <TeamSection />
+        </div>
 
-          <section id="sessions" className="r-sessions" aria-labelledby="participants-title">
+        {/* Pale blue band. On wide, tall screens the intro sits in a sticky left column beside the cards. */}
+        <section id="sessions" className="r-sessions-band" aria-labelledby="participants-title">
+          <div className="r-sessions">
             <div className="r-sessions-head">
               <h2 id="participants-title" className="r-h2 r-h2-lg">{sessionsSection.heading}</h2>
               <p className="r-muted">{sessionsSection.text}</p>
@@ -58,14 +61,13 @@ export default function App() {
             </div>
             <ul ref={bentoRef} className="r-bento r-stagger" role="list">
               {participants.map(p => (
-                <li key={p.id}>
+                <li key={p.id} className={`is-${p.size || 'narrow'}`}>
                   <ParticipantCard participant={p} onOpen={openPreview} />
                 </li>
               ))}
             </ul>
-          </section>
-
-        </div>
+          </div>
+        </section>
       </main>
       <Footer />
       <SessionPreviewDialog participant={selected} onClose={closePreview} />

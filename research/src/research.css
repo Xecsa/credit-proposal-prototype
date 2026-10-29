@@ -52,14 +52,16 @@ body{background:#F3F3F3}
 .r-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,rgba(255,255,255,0) 1px 3px);
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%)}
-.r-hero-glow{position:absolute;inset:-40px 0 30% 0;z-index:-1;pointer-events:none;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0)}
+.r-hero-glow{position:absolute;inset:-56px 0 30% 0;z-index:-1;pointer-events:none;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0)}
 .r-hero-in{position:relative;max-width:1040px;margin:0 auto;text-align:center}
 
 /* video */
 .r-video{margin:56px auto 0;max-width:960px;transform-origin:50% 0}
-/* scroll-linked: 0.92 → 1 and 24px → 0 as it nears the centre; untransformed when full, settled or playing */
-.r-video.is-linked{transform:translate3d(0,calc((1 - var(--vp,1)) * 24px),0) scale(calc(.92 + var(--vp,1) * .08))}
+/* scroll-linked: 0.88 → 1 and 32px → 0 as it scrolls up the viewport; untransformed when full, settled or playing */
+.r-video.is-linked{transform:translate3d(0,calc((1 - var(--vp,1)) * 32px),0) scale(calc(.88 + var(--vp,1) * .12))}
 .r-video.is-linked.is-full,.r-video.is-settled{transform:none}
+/* pressing play early settles the frame with a short ease rather than a jump */
+.r-video.is-settled{transition:transform .3s var(--ease)}
 /* max 960px: the source is 1280 × 720, so it is shown near its own size rather than stretched */
 .r-video-frame{position:relative;background:var(--r-card);border:1px solid rgba(7,36,71,.08);border-radius:var(--r-radius);overflow:hidden;box-shadow:0 1px 2px rgba(7,36,71,.06),0 16px 40px rgba(7,36,71,.10)}
 .r-video video{display:block;width:100%;height:100%;background:#fff;object-fit:contain;filter:none;transform:none}
@@ -75,53 +77,62 @@ body{background:#F3F3F3}
 .r-callout{margin:16px 0 0;padding:12px 16px;border-radius:var(--r-radius);background:var(--r-surface);color:var(--r-navy);font-size:13px;line-height:19px}
 .r-callout-info{background:var(--r-surface);color:var(--r-navy)}
 
-/* sessions bento */
-.r-sessions-head{text-align:center;margin-bottom:40px}
+/* sessions: a pale blue band. Cards use a larger 28px radius here only (homepage treatment);
+   buttons keep the corporate 8px radius. */
+.r-sessions-band{background:linear-gradient(180deg,#F4F7FE 0%,#EEF3FD 100%);padding:112px 32px 128px}
+.r-sessions{max-width:1240px;margin:0 auto}
+.r-sessions-head{text-align:center;margin-bottom:48px}
 .r-sessions-head .r-muted{margin-top:12px;font-size:16px}
 .r-h2-lg{font-size:36px;line-height:1.2;letter-spacing:-.02em}
 .r-dot{width:8px;height:8px;border-radius:50%;background:#B8BFCC}
 .r-sessions-note{margin:16px auto 0;font-size:13px;line-height:18px;color:var(--r-text-2)}
+/* sticky intro beside the cards: wide and tall enough screens only */
+@media (min-width:1180px) and (min-height:720px){
+  .r-sessions{display:grid;grid-template-columns:280px minmax(0,1fr);gap:56px;align-items:start}
+  .r-sessions-head{position:sticky;top:112px;text-align:left;margin:0;padding-top:8px}
+  .r-sessions-head .r-h2-lg{font-size:40px}
+  .r-sessions-note{margin-left:0}
+}
 
-/* Bento: 3 columns. RM 01 and ARM 02 span two, so the rows read wide/narrow then narrow/wide.
-   The card's surface (::before) and glow lift on hover; the text and button never move. */
-.r-bento{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:20px}
+/* bento: 3 columns; RM 01 and ARM 02 span two */
+.r-bento{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:440px;gap:24px}
 .r-bento > li{display:flex;min-width:0}
-.r-pcard{--lift:0px;--glow:.55;flex:1;position:relative;isolation:isolate;display:flex;gap:24px;padding:32px;border-radius:16px;-webkit-tap-highlight-color:transparent}
-.r-pcard::before{content:"";position:absolute;inset:0;z-index:-2;border-radius:inherit;background:var(--surface);border:1px solid var(--edge,#E3E8F5);box-shadow:0 1px 2px rgba(7,36,71,.04);transform:translateY(var(--lift));transition:transform var(--t-hover) var(--ease),box-shadow var(--t-hover) var(--ease),border-color var(--t-hover) var(--ease)}
-.r-pcard-glow{position:absolute;inset:0;z-index:-1;border-radius:inherit;overflow:hidden;pointer-events:none;transform:translateY(var(--lift));transition:transform var(--t-hover) var(--ease)}
-.r-pcard-glow::before{content:"";position:absolute;width:70%;aspect-ratio:1;right:-10%;top:-20%;border-radius:50%;background:radial-gradient(closest-side,rgba(80,130,255,.32),rgba(80,130,255,0));opacity:var(--glow);transition:opacity var(--t-hover) var(--ease)}
-/* surfaces: white, pale blue and two restrained ENBD-blue gradients */
-.r-pcard.tone-sky{--surface:linear-gradient(135deg,#DCE6FC 0%,#EEF3FD 55%,#F8FAFF 100%);--edge:#D3DEF6}
+.r-bento > li.is-wide{grid-column:span 2}
+.r-pcard{--lift:0px;--glow:0;flex:1;position:relative;isolation:isolate;border-radius:28px;-webkit-tap-highlight-color:transparent}
+/* background layer: surface, glow and illustration. It lifts and clips; the text above it does not move. */
+.r-pcard-bg{position:absolute;inset:0;z-index:-1;border-radius:inherit;overflow:hidden;background:var(--surface);
+  box-shadow:0 1px 2px rgba(7,36,71,.04),0 0 0 1px rgba(24,47,124,.05);transform:translate3d(0,var(--lift),0);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.r-pcard-glow{position:absolute;width:80%;aspect-ratio:1;right:-18%;bottom:-30%;border-radius:50%;background:radial-gradient(closest-side,rgba(80,130,255,.28),rgba(80,130,255,0));opacity:calc(.45 + var(--glow) * .55);transition:opacity .3s var(--ease)}
+.r-pcard.tone-sky{--surface:linear-gradient(140deg,#FFFFFF 0%,#F1F5FE 45%,#DCE6FC 100%)}
 .r-pcard.tone-white{--surface:#FFFFFF}
-.r-pcard.tone-pale{--surface:var(--r-surface);--edge:#E1E7F6}
-.r-pcard.tone-blue{--surface:linear-gradient(120deg,#F4F7FE 0%,#E3EBFC 45%,#C9D9EE 100%);--edge:#CBD8F1}
-.r-pcard-body{position:relative;flex:1;min-width:0;display:flex;flex-direction:column}
+/* illustration anchored lower right, allowed to crop at the rounded edge */
+.r-pcard-art{position:absolute;right:-28px;bottom:-40px;width:330px;aspect-ratio:1;pointer-events:none}
+.is-narrow .r-pcard-art{width:204px;right:-26px;bottom:-40px}
+.r-pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.r-art-shadow{opacity:.85}
+/* details top-left */
+.r-pcard-body{position:relative;padding:32px;display:flex;flex-direction:column;align-items:flex-start;max-width:340px}
 .r-pcard-label{margin:0 0 12px;font-size:12px;line-height:16px;color:var(--r-text-2)}
-.r-pcard-code{margin:0;font-size:32px;line-height:1.15;font-weight:500;letter-spacing:-.02em;color:var(--r-navy)}
-.r-pcard-role{margin:6px 0 0;color:var(--r-ink)}
+.r-pcard-code{margin:0;font-size:34px;line-height:1.1;font-weight:500;letter-spacing:-.02em;color:var(--r-navy)}
+.r-pcard-role{margin:8px 0 0;color:var(--r-ink)}
 .r-pcard-status{margin:12px 0 0;display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;color:var(--r-text-2)}
-.r-pcard-foot{margin-top:auto;padding-top:24px}
-.r-btn-arrow{margin-left:8px;display:inline-flex;transition:transform var(--t-hover) var(--ease)}
-/* illustration: the ADS asset's own two layers. The object rises more than its shadow, for a little depth. */
-.r-pcard-art{position:relative;flex:none;align-self:center;aspect-ratio:1;pointer-events:none}
-.r-pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .28s var(--ease),opacity .28s var(--ease)}
-.r-art-shadow{opacity:.9}
-.r-pcard{min-height:288px}
-.r-pcard-art{width:min(42%,220px)}
+.r-pcard-foot{margin-top:24px}
+.r-btn-arrow{margin-left:8px;display:inline-flex;transition:transform .3s var(--ease)}
 /* hover only where a real pointer can hover; touch keeps the static composition */
 @media (hover:hover) and (pointer:fine){
   .r-pcard:hover{--lift:-4px;--glow:1}
-  .r-pcard:hover::before{border-color:#B9C8EC;box-shadow:0 2px 4px rgba(7,36,71,.04),0 16px 32px -8px rgba(24,47,124,.16)}
-  .r-pcard:hover .r-art-main{transform:translateY(-6px) scale(1.03)}
-  .r-pcard:hover .r-art-shadow{transform:translateY(-2px) scale(.97);opacity:.7}
+  .r-pcard:hover .r-pcard-bg{box-shadow:0 2px 4px rgba(7,36,71,.04),0 0 0 1px rgba(24,47,124,.10),0 22px 44px -16px rgba(24,47,124,.28)}
+  .r-pcard:hover .r-art-main{transform:translate3d(0,-8px,0) scale(1.04)}
+  .r-pcard:hover .r-art-shadow{transform:translate3d(0,-2px,0) scale(.97);opacity:.6}
   .r-pcard:hover .r-btn-arrow{transform:translateX(3px)}
 }
-.r-pcard:focus-within::before{border-color:var(--r-primary)}
 .r-pcard:focus-within{--glow:1}
+.r-pcard:focus-within .r-pcard-bg{box-shadow:0 0 0 2px var(--r-primary)}
 .r-pcard .r-btn:active{transform:scale(.97)}
 
 /* project team: portrait + companion clusters on a faint dot grid, joined by thin curves */
-.r-team-sec{text-align:center;margin-bottom:144px;overflow-x:clip}
+.r-team-sec{text-align:center;margin-bottom:32px;overflow-x:clip}
 .r-team-head{position:relative;z-index:1}
 .r-team-head .r-muted{margin-top:12px;font-size:16px}
 .r-team-stage{position:relative;isolation:isolate;max-width:880px;margin:40px auto 0;padding:24px 0 8px}
@@ -210,8 +221,9 @@ body{background:#F3F3F3}
 @media (max-width:1024px){
   .r-display{font-size:52px}
   .r-hero{padding-top:88px}
-  .r-pcard{padding:24px;gap:12px}
-  .r-pcard-art{width:min(38%,168px)}
+  .r-bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r-bento > li.is-wide{grid-column:auto}
+  .r-pcard-art,.is-narrow .r-pcard-art{width:240px}
 }
 @media (max-width:720px){
   .r-main{padding:64px 16px 64px}
@@ -227,17 +239,18 @@ body{background:#F3F3F3}
   .r-h2{font-size:24px}
   .r-lead{font-size:16px}
   .r-bento{grid-template-columns:1fr}
-  .r-team-sec{margin-bottom:80px}
+  .r-team-sec{margin-bottom:16px}
   .r-team-stage{margin-top:24px}
   .r-team-lines{display:none}
   .r-team-list{grid-template-columns:1fr;gap:56px}
   .r-team-member:nth-child(n){margin-top:0}
   /* simplified connector: a short vertical stroke between stacked clusters */
   .r-team-member + .r-team-member::before{content:"";position:absolute;top:-48px;left:50%;width:1px;height:40px;background:linear-gradient(#5082FF00,#5082FF99,#5082FF00)}
-  .r-bento{grid-template-columns:1fr;gap:16px}
-  .r-pcard{padding:24px}
-  .r-pcard{min-height:0;flex-direction:column;gap:0;padding-top:12px}
-  .r-pcard-art{order:-1;width:136px;align-self:flex-start;margin-left:-8px}
+  .r-sessions-band{padding:64px 16px 80px}
+  .r-bento{grid-template-columns:1fr;grid-auto-rows:auto;gap:20px}
+  .r-pcard{min-height:372px;border-radius:24px}
+  .r-pcard-body{padding:28px 24px}
+  .r-pcard-art,.is-narrow .r-pcard-art{width:200px;right:-24px;bottom:-30px}
   .r-h2-lg{font-size:28px}
   .r-hero{padding:64px 16px 0}
   .r-stages{grid-template-columns:1fr}

@@ -79,9 +79,13 @@ the player is capped at 960 px wide; a sharper result needs a new 1080p (or larg
 
 ### Motion
 
-One easing (`--ease: cubic-bezier(.22,1,.36,1)`), 500ms entrances and 250ms hover feedback, no libraries.
-Scroll-linked (`useScrollMotion.js`, one passive rAF listener): the hero glow drifts up to 28px, and the video's
-outer frame scales 0.92 → 1 and rises 24px → 0 as it nears the centre; it is untransformed once centred, focused
-or playing. One-time entrances (`useReveal.js`): team clusters assemble from ≤16px and the connector lines draw
-once; session cards rise 12px in reading order, 70ms apart. Content is visible unless JS arms it, focus reveals
-instantly, and `prefers-reduced-motion` gives a fully static page. Only the research homepage uses any of this.
+No animation library is installed, and two scroll-linked values do not need one, so the page uses a single
+passive, rAF-throttled listener (`useScrollMotion.js`) rather than adding GSAP:
+- hero glow: decorative layer, moves up to 40px as the page scrolls (trails the content)
+- video frame: scales 0.88 → 1 and rises 32px → 0 from the first scroll position where it is in view until its
+  top sits below the sticky header; untransformed once full, focused or playing (no scrubbing, manual playback)
+Positions are read live each frame and recalculated after fonts, images and video metadata load.
+One-time entrances (`useReveal.js`): team clusters assemble and the connector lines draw once; session cards rise
+12px in reading order. Sticky participant intro: CSS `position: sticky` at ≥1180px wide and ≥720px tall.
+Hover motion only on fine pointers. Content is visible unless JS arms it; focus reveals instantly;
+`prefers-reduced-motion` gives a static page. Only the research homepage uses any of this.

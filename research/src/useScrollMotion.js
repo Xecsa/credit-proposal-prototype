@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 
-// Scroll-linked motion for two places only, driven by one passive, rAF-throttled scroll listener:
-//  - hero glow: a decorative layer that drifts down to 28px as the page scrolls (so it moves slower than content)
-//  - video frame: scales 0.92 → 1 and rises 24px → 0 as it approaches the viewport centre
+// Scroll-linked motion for the research homepage only, driven by one passive, rAF-throttled listener
+// (no library needed for two values):
+//  - hero glow: a decorative layer that moves down up to 40px as the page scrolls, so it trails the content
+//  - video frame: scales 0.88 → 1 and rises 32px → 0 from the first scroll position where it is in view until its
+//    top sits just below the sticky header. It is untransformed once full, focused or playing.
+// Positions are read live on every frame, and recalculated after fonts, images and video metadata load.
 // Native scrolling is untouched. Without JS, or with reduced motion, nothing here runs and the layout is static.
 export default function useScrollMotion(heroRef, videoRef) {
   useEffect(() => {
@@ -19,29 +22,36 @@ export default function useScrollMotion(heroRef, videoRef) {
       raf = 0;
       const vh = window.innerHeight;
       if (window.scrollY < hero.offsetHeight + vh) {
-        hero.style.setProperty('--glow-y', `${Math.min(28, window.scrollY * 0.12).toFixed(1)}px`);
+        hero.style.setProperty('--glow-y', `${Math.min(40, window.scrollY * 0.3).toFixed(1)}px`);
       }
-      // Once playback has started (or the player has focus), the frame stays settled and untransformed.
       if (fig.classList.contains('is-settled')) return;
-      const r = fig.getBoundingClientRect();
-      const start = vh;                          // frame top touches the bottom of the viewport
-      const end = vh / 2 - r.height / 2;         // frame centred in the viewport
-      const p = clamp((start - r.top) / Math.max(1, start - end), 0, 1);
+      // Progress runs from the first scroll position where the frame is in view (the top of the page, if it is
+      // visible on load) to the point where its top sits just below the sticky header.
+      const pageTop = fig.getBoundingClientRect().top + window.scrollY;
+      const startY = Math.max(0, pageTop - vh);
+      const endY = Math.max(startY + 1, pageTop - 96);
+      const p = clamp((window.scrollY - startY) / (endY - startY), 0, 1);
       fig.style.setProperty('--vp', p.toFixed(3));
       fig.classList.toggle('is-full', p >= 1);
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
     const settle = () => { fig.classList.add('is-settled'); fig.style.setProperty('--vp', '1'); };
+    const video = fig.querySelector('video');
 
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    window.addEventListener('load', onScroll);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(onScroll).catch(() => {});
+    if (video) video.addEventListener('loadedmetadata', onScroll);
     fig.addEventListener('focusin', settle);
     fig.addEventListener('play', settle, true);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      window.removeEventListener('load', onScroll);
+      if (video) video.removeEventListener('loadedmetadata', onScroll);
       fig.removeEventListener('focusin', settle);
       fig.removeEventListener('play', settle, true);
     };
