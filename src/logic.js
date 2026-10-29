@@ -23,8 +23,7 @@ acIban: '', acAge: '', acStage: '', acConfirm: true, acUae: true, clientDone: fa
 shMode: '', addType: '', addDocs: '', ownExtra: [], ownDel: false, ownGone: false,
 docsDone: false, finReady: false, finDone: false, finXls: false, dSeq: 10, dAoaErr: false, dCat: 0, dCatType: '', dSearch: '', finFrom: '12/01/2023', finTo: '12/02/2026',
 dKyc: { tl: [{ id: 101, name: 'Trade-license.pdf', st: 'ok' }], moa: [{ id: 102, name: 'MOA.pdf', st: 'ok' }], aoa: [], aoa2: [], br: [], org: [], other: [] }, dKycConf: {},
-dFin: { aud: [{ id: 2, name: 'max-financials.pdf', st: 'ok', year: '2026' }, { id: 3, name: 'max-financials.pdf', st: 'ok', year: '2025' }, { id: 4, name: 'max-financials.pdf', st: 'ok', year: 'Select year' }],
-inh: [{ id: 5, name: 'max-financials.pdf', st: 'ok', year: '2026' }, { id: 6, name: 'max-financials.pdf', st: 'ok', year: '2025' }, { id: 7, name: 'max-financials.pdf', st: 'ok', year: 'Select year' }],
+dFin: { aud: [], inh: [],
 rec: [], bank: [{ id: 103, name: 'max-q1.pdf', st: 'ok' }, { id: 104, name: 'max-q2.pdf', st: 'ok' }, { id: 105, name: 'max-q3.pdf', st: 'ok' }, { id: 106, name: 'max-q4.pdf', st: 'ok' }], vat: [], cbrb: [], aecb: [{ id: 107, name: 'aecb-report.pdf', st: 'ok' }] }, dFinConf: {},
 cpList: [], cpSeq: 0, cpMenu: 0, cpEdit: 0, cpDel: 0, cpSel: {}, cpF: { name: '', rel: 'Associate', mobile: '', email: '' },
 finVals: {}, finEditId: '', finDraft: '',
@@ -277,7 +276,7 @@ const finDefs = [
 ];
 const finNew = (key) => {
 const n = s.dFin[key].length;
-if (key === 'aud' || key === 'inh') return [{ name: 'max-financials.pdf', st: 'ok', year: 'Select year' }];
+if (key === 'aud' || key === 'inh') return n ? [{ name: 'max-financials.pdf', st: 'ok', year: 'Select year' }] : ['2026', '2025', 'Select year'].map((y) => ({ name: 'max-financials.pdf', st: 'ok', year: y }));
 if (key === 'rec') return [{ name: 'max-accounts.pdf', st: 'ok' }];
 if (key === 'bank') return n ? [{ name: 'max-q' + (n + 1) + '.pdf', st: 'ok' }] : [1, 2, 3, 4].map((q) => ({ name: 'max-q' + q + '.pdf', st: 'ok' }));
 return [{ name: key + '-report.pdf', st: 'ok' }];
@@ -288,7 +287,7 @@ from: s.finFrom, to: s.finTo, setFrom: (e) => set({ finFrom: e.target.value }), 
 files: files.map((f) => dView('dFin', 'dFinConf', key, f)), showConfirm: false, box: dBox('dFinConf', key),
 upload: () => dAdd('dFin', 'dFinConf', key, finNew(key), key === 'bank' && !s.finFrom && !s.finTo ? { finFrom: '12/01/2023', finTo: '12/02/2026' } : null)
 }; });
-const dFinOk = true;
+const dFinOk = s.dFin.aud.length > 0 && s.dFin.inh.length > 0;
 const stkPeople = [['Mostafa Hamed', 'Director'], ['Fatima Ahmed Ali', 'Director'], ['Mo Ahmed Ali', 'POA']];
 const dq = s.dSearch.trim().toLowerCase();
 const dStkGroups = stkPeople.filter((p) => !dq || p[0].toLowerCase().indexOf(dq) >= 0).map((p) => ({ title: p[0], desc: p[1],
