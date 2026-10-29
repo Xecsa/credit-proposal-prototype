@@ -4,7 +4,7 @@ import img_ac82201241 from '../assets/ac82201241fa083b5c835e1c0d63652e.svg';
 export default function ShowLeadsHome({ v }) {
   return (<>
 {(v.showLeadsHome) ? (<>{' '}
-<div className="ldshell"><header className="ldhead"><div style={{ display: "flex", alignItems: "center", gap: "24px" }}><button type="button" className="ldicon" aria-label="Menu"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+<div className="ldshell" onClick={v.ldShellClick} style={{ cursor: `${v.ldShellCursor}` }}><header className="ldhead"><div style={{ display: "flex", alignItems: "center", gap: "24px" }}><button type="button" className="ldicon" aria-label="Menu"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 <img alt="Emirates NBD" src={img_ac82201241} style={{ height: "36px", width: "auto", display: "block" }} /></div>
 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}><button type="button" className="ldicon" aria-label="Search"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#182f7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="6.5"></circle>
 <path d="m16 16 4.5 4.5"></path></svg></button>

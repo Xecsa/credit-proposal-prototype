@@ -2,7 +2,7 @@ import React from 'react';
 
 export class ProtoLogic extends React.Component {
 state = {
-phase: 'leadsHome', collapsed: false, ldTab: 'ov', ldClosed: false, ldToastOn: false, lcDate: '', lcCal: false, lcCalY: 2026, lcCalM: 9, lcReach: true, lcType: 'Lead', lcTypeOpen: false, lcRel: ['Trade import'], lcRelDraft: null, lcMode: 'Call', lcParts: [''], lnMsgs: null, lnGenBusy: false, lnDraft: '', lnMicOn: false, lnFiles: null, created: false,
+phase: 'leadsHome', collapsed: false, ldTab: 'ov', ldClosed: false, ldToastOn: false, ldAuto: false, lcDate: '', lcCal: false, lcCalY: 2026, lcCalM: 9, lcReach: true, lcType: 'Lead', lcTypeOpen: false, lcRel: ['Trade import'], lcRelDraft: null, lcMode: 'Call', lcParts: [''], lnMsgs: null, lnGenBusy: false, lnDraft: '', lnMicOn: false, lnFiles: null, created: false,
 name: '', desc: '', cifText: '', client: '',
 date: new Date().toISOString().slice(0, 10), start: '', end: '', topic: '', location: '',
 participants: [''], files: [], draftSaved: false,
@@ -1200,7 +1200,7 @@ const LD_RAT2 = 'Established textile manufacturer securing new European contract
 const LD_M = { t: 'M', bg: '#5bc6f2' }, LD_A = { t: 'A', bg: '#e8607a' }, LD_N = { t: 'N', bg: '#5bc6f2' };
 const ldGray = ['#eaeaea', '#575757'], ldAmber = ['#fef3e6', '#d79c10'], ldGreen = ['#e8f4f0', '#2c836e'];
 const ldOpenCall = () => this.setState({ phase: 'leadsCall', lcDate: '', lcCal: false, lcTypeOpen: false, lcRelDraft: null, lcRel: ['Trade import'], lcMode: 'Call', lcParts: [''], lcReach: true, ldToastOn: false });
-const ldToHub = () => set({ phase: 'selfHub', selfNote: '', ldToastOn: false });
+const ldToHub = () => set({ phase: 'selfHub', selfNote: '', ldToastOn: false, ldAuto: false });
 const ldCard = (o) => Object.assign({ chips: [{ t: 'NTB' }, { t: 'NTP' }], follow: '', isText: true, isTxn: false, rat: LD_RAT1, avs: [LD_M], tags: [], view: () => {}, open: () => {}, call: () => {}, openLabel: o.title }, o);
 const ldTradeImport = s.ldClosed
   ? ldCard({ title: 'Trade import', date: '16th Jan, 2024', status: 'Deal Executed / product activated', sBg: ldGreen[0], sFg: ldGreen[1], tags: [{ t: 'AA' }, { t: '2 closed' }], view: ldToHub, open: ldToHub, call: ldOpenCall, openLabel: 'Trade import, deal executed. Open the facility application' })
@@ -1267,7 +1267,8 @@ Object.assign(__v, {
   lcNext: () => { if (lcOk) this.setState({ phase: 'leadsNote', lcCal: false, lcTypeOpen: false, lcRelDraft: null, lnMsgs: null, lnFiles: null, lnDraft: '', lnGenBusy: false }); },
   // lead screen
   lnClose: () => this.setState({ phase: 'leadsHome' }),
-  lnSubmit: () => { this.setState({ phase: 'leadsHome', ldClosed: true, ldToastOn: true, ldTab: 'ov' }); this.later(6000, () => { if (this.state.ldToastOn) this.setState({ ldToastOn: false }); }); },
+  lnSubmit: () => { this.setState({ phase: 'leadsHome', ldClosed: true, ldToastOn: true, ldTab: 'ov', ldAuto: true }); this.later(2500, () => { if (this.state.ldAuto && this.state.phase === 'leadsHome') set({ phase: 'selfHub', selfNote: '', ldToastOn: false, ldAuto: false }); }); },
+  ldShellClick: () => { if (s.ldAuto) set({ phase: 'selfHub', selfNote: '', ldToastOn: false, ldAuto: false }); }, ldShellCursor: s.ldAuto ? 'pointer' : 'auto',
   lnCreated: lnD.short, lnDateLong: lnD.long, lnReach: s.lcReach ? 'Reachable' : 'Not reachable', lnReachBg: s.lcReach ? '#e8f4f0' : '#eaeaea', lnReachFg: s.lcReach ? '#2c836e' : '#575757',
   lnPartCount: String(lnPartsList.length), lnPartLabel: 'Participants (' + lnPartsList.length + ')', lnParts: lnPartsList.map((n) => ({ n: n, ini: lnIni(n) })),
   lnMsgs: lnMsgs0.map((m, i) => ({ t: m.t, time: m.time, showGen: i === 0 && !lnHasSum && !s.lnGenBusy })),
