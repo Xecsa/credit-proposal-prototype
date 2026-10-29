@@ -65,7 +65,9 @@ under `research-home-assets/`. To replace a portrait, drop in a square image (32
 
 ### Session illustrations
 
-ADS illustrations (ENBD, light, default) exported at 3x from the library as their own two layers, the object and
+ADS metallic illustrations (ENBD, light, type=metallic: Document-Declaration, Docs-Calculator, Document-Search,
+Phone-Chat) exported at 3x. The metallic Docs-Gear variant is empty in the library, so Document-Search stands in.
+Each is from the library as their own two layers, the object and
 its shadow, so the hover can move them at slightly different rates without altering the artwork.
 
 ### Walkthrough video
