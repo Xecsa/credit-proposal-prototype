@@ -3,14 +3,15 @@ import { video } from '../config.js';
 import useReveal from '../useReveal.js';
 
 // Optional playback: no autoplay, no loop, never driven by scroll. Watching it is not required and is not consent.
-// Scrolling only fades the frame in and lifts it (24px, 94% → 100%). Reduced motion turns that off in CSS and here.
+// Only the outer <figure> moves on entrance (16px lift, once). The frame and <video> are never transformed or
+// filtered, so playback renders at its final size. The frame reserves the source's aspect ratio before loading.
 export default function WelcomeVideo() {
   const [failed, setFailed] = useState(false);
   const [started, setStarted] = useState(false);
-  const frameRef = useRef(null);
+  const figRef = useRef(null);
   const videoRef = useRef(null);
 
-  useReveal(frameRef);
+  useReveal(figRef);
 
   const play = () => {
     const v = videoRef.current;
@@ -22,8 +23,8 @@ export default function WelcomeVideo() {
   };
 
   return (
-    <figure className="r-video">
-      <div ref={frameRef} className="r-video-frame">
+    <figure ref={figRef} className="r-video">
+      <div className="r-video-frame" style={{ aspectRatio: `${video.width} / ${video.height}` }}>
         {failed ? (
           <div className="r-video-fallback" role="status">
             <p className="r-video-fallback-title">The video can’t be played here.</p>
@@ -36,6 +37,8 @@ export default function WelcomeVideo() {
               controls={started}
               preload="metadata"
               playsInline
+              width={video.width}
+              height={video.height}
               poster={video.poster}
               tabIndex={started ? 0 : -1}
               aria-label={`${video.title}, ${video.duration}`}

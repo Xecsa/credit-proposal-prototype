@@ -1,22 +1,38 @@
 import { useEffect } from 'react';
 
-// One-time scroll reveal. Sets --reveal (0 → 1) on the element as it enters the viewport and
-// never goes backwards. Does nothing when reduced motion is preferred or IntersectionObserver
-// is missing, so content is always visible without it.
-export default function useReveal(ref, { full = 0.6 } = {}) {
+// One-time entrance. Content is visible by default: the hidden start state (.is-armed) is only
+// added once the observer is set up, and .is-in is added when ~12% of the element is on screen
+// (or a screen's worth of a tall element), on focus, or straight away with `immediate`.
+// Nothing hides again on scroll back. Reduced motion or no IntersectionObserver: no-op.
+export default function useReveal(ref, { immediate = false } = {}) {
   useEffect(() => {
     const el = ref.current;
     if (!el || !('IntersectionObserver' in window)) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    el.classList.add('is-animated');
-    const steps = Array.from({ length: 21 }, (_, i) => i / 20);
-    const io = new IntersectionObserver(([entry]) => {
-      const p = Math.min(1, entry.intersectionRatio / full);
-      const prev = parseFloat(el.style.getPropertyValue('--reveal') || '0');
-      if (p > prev) el.style.setProperty('--reveal', p.toFixed(3));
-      if (p >= 1) io.disconnect();
-    }, { threshold: steps });
+
+    let io;
+    const show = () => {
+      el.classList.add('is-in');
+      if (io) io.disconnect();
+      el.removeEventListener('focusin', showNow);
+    };
+    // Keyboard focus reveals at once, without a transition, so the focused control is never faded.
+    const showNow = () => { el.classList.add('is-instant'); show(); };
+    el.classList.add('is-armed');
+    el.addEventListener('focusin', showNow);
+
+    if (immediate) {
+      // Two frames so the armed state is painted before it transitions.
+      const raf = requestAnimationFrame(() => requestAnimationFrame(show));
+      return () => { cancelAnimationFrame(raf); el.removeEventListener('focusin', showNow); };
+    }
+
+    io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      const tall = entry.intersectionRect.height >= window.innerHeight * 0.25;
+      if (entry.intersectionRatio >= 0.12 || tall) show();
+    }, { threshold: [0, 0.06, 0.12, 0.2] });
     io.observe(el);
-    return () => io.disconnect();
-  }, [ref, full]);
+    return () => { io.disconnect(); el.removeEventListener('focusin', showNow); };
+  }, [ref, immediate]);
 }

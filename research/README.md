@@ -58,8 +58,16 @@ so a shared, access-controlled store is needed before real participant data is k
 
 ### Team avatars
 
-`public/research/media/team/` holds three soft 3D avatars generated with Figma AI (draft file
-"Research site – team avatars (draft)"). Viploave's and Saba's were written from descriptions of their
-photos; the photos themselves were not uploaded. Prashanti's is a generic figure and is marked as a
-placeholder (`avatarIsPlaceholder` in `config.js`, which also sets its alt text). To replace any avatar,
-drop in a square image (320 px or larger) and update its `avatar` path.
+`public/research/media/team/` holds three 3D character avatars (384 px WebP with transparent backgrounds)
+generated with Figma AI in the draft file "Research site – team avatars (draft)". The 1024 px transparent
+PNG masters are in the project files under `research-home-assets/avatars/`. The image tool takes text only,
+so Viploave's and Saba's were written from descriptions of their photos, not from the photos themselves.
+Prashanti's is a generic figure and is marked as a placeholder (`avatarIsPlaceholder` in `config.js`, which
+also sets its alt text). To replace one, drop in a square transparent image and update its `avatar` path.
+
+### Walkthrough video
+
+`credit-proposal-walkthrough.mp4` is the uploaded file served unchanged (1280 × 720, H.264, about 2.6 Mbit/s,
+89.6 MB). An earlier version re-encoded it to about 0.33 Mbit/s, which softened text in moving frames. The
+poster is a frame taken from this original. The source itself is a 720p, WhatsApp-compressed recording, so
+the player is capped at 960 px wide; a sharper result needs a new 1080p (or larger) screen recording.

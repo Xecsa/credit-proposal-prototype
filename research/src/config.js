@@ -63,6 +63,9 @@ export const video = {
   poster: './media/walkthrough-poster.jpg',
   title: 'Credit Proposal walkthrough',
   duration: '4 min 28 s',
+  // Source is 1280 × 720 (the uploaded file, served unchanged). The frame reserves this ratio before loading.
+  width: 1280,
+  height: 720,
   playLabel: 'Play introduction',
   // The video walks through the journey click by click, with sound and on-screen captions.
   // It also uses an earlier sample client (Zenith Co LLC), so some screens differ from today's prototype.
@@ -81,8 +84,16 @@ export const participants = [
 
 export const sessionsSection = {
   heading: 'Your session starts here.',
-  text: 'Choose your assigned participant space to begin.'
+  text: 'Choose your assigned participant space to begin.',
+  note: 'No preparation needed. Your facilitator will guide you.'
 };
+
+// Header anchor links. Each `id` is a section on the page.
+export const nav = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'team', label: 'Team' },
+  { id: 'sessions', label: 'Sessions' }
+];
 
 export const statusLabels = {
   'not-started': 'Not started'
