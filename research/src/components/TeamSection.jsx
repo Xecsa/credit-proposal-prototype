@@ -2,20 +2,31 @@ import React, { useRef } from 'react';
 import { team, teamSection } from '../config.js';
 import useReveal from '../useReveal.js';
 
-// Portraits are decorative-but-informative images; they are not interactive.
-// A member without an avatar file gets a plainly labelled placeholder, never a drawn likeness.
-function Portrait({ member }) {
-  if (member.avatar) {
-    const alt = member.avatarIsPlaceholder ? `Placeholder avatar for ${member.name}` : `Illustrated avatar of ${member.name}`;
-    return <img className="r-team-img" src={member.avatar} alt={alt} width="160" height="160" loading="lazy" draggable="false" />;
-  }
+// Decorative, non-interactive composition. Portraits carry alt text; companions and lines are aria-hidden.
+// The connecting curves assume three equal columns (centres at 1/6, 3/6, 5/6 of the 880 viewBox)
+// and the per-member vertical offsets set in CSS (0, 72, 24px). They are hidden on small screens.
+function Lines() {
   return (
-    <div className="r-team-ph" role="img" aria-label={`Placeholder avatar for ${member.name}`}>
-      <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
-        <circle cx="32" cy="24" r="11" fill="currentColor" />
-        <path d="M12 56c2-11 10-17 20-17s18 6 20 17z" fill="currentColor" />
-      </svg>
-      <span className="r-team-ph-label">Avatar placeholder</span>
+    <svg className="r-team-lines" viewBox="0 0 880 320" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="r-line-in" x1="0" x2="1"><stop offset="0" stopColor="#5082FF" stopOpacity="0" /><stop offset="1" stopColor="#5082FF" stopOpacity=".55" /></linearGradient>
+        <linearGradient id="r-line-out" x1="0" x2="1"><stop offset="0" stopColor="#5082FF" stopOpacity=".55" /><stop offset="1" stopColor="#5082FF" stopOpacity="0" /></linearGradient>
+      </defs>
+      <g fill="none" strokeWidth="1.25" vectorEffect="non-scaling-stroke">
+        <path d="M0 84H78" stroke="url(#r-line-in)" vectorEffect="non-scaling-stroke" />
+        <path d="M262 84C318 84 316 156 372 156" stroke="#5082FF" strokeOpacity=".55" vectorEffect="non-scaling-stroke" />
+        <path d="M556 156C612 156 610 108 664 108" stroke="#5082FF" strokeOpacity=".55" vectorEffect="non-scaling-stroke" />
+        <path d="M848 108H880" stroke="url(#r-line-out)" vectorEffect="non-scaling-stroke" />
+      </g>
+    </svg>
+  );
+}
+
+function Portrait({ member }) {
+  const alt = member.avatarIsPlaceholder ? `Placeholder avatar for ${member.name}` : `Photo of ${member.name}`;
+  return (
+    <div className="r-team-portrait">
+      <img className={member.avatarIsPlaceholder ? 'is-placeholder' : undefined} src={member.avatar} alt={alt} width="110" height="110" loading="lazy" draggable="false" />
     </div>
   );
 }
@@ -30,13 +41,16 @@ export default function TeamSection() {
         <p className="r-muted">{teamSection.text}</p>
       </div>
       <div className="r-team-stage">
-        <div className="r-team-grid" aria-hidden="true">
-          {Array.from({ length: 15 }, (_, i) => <span key={i} />)}
-        </div>
+        <Lines />
         <ul ref={ref} className="r-team-list r-stagger" role="list">
           {team.map(m => (
             <li key={m.id} className="r-team-member">
-              <div className="r-team-tile"><Portrait member={m} /></div>
+              <div className="r-team-cluster">
+                <Portrait member={m} />
+                {m.companion && (
+                  <span className="r-team-companion" aria-hidden="true"><img src={m.companion} alt="" loading="lazy" draggable="false" /></span>
+                )}
+              </div>
               <p className="r-team-name">{m.name}</p>
               <p className="r-team-role">{m.role}</p>
             </li>

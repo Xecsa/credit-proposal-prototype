@@ -53,7 +53,7 @@ export default function App() {
             </div>
             <ul ref={bentoRef} className="r-bento r-stagger" role="list">
               {participants.map(p => (
-                <li key={p.id}>
+                <li key={p.id} className={`is-${p.size || 'narrow'}`}>
                   <ParticipantCard participant={p} onOpen={openPreview} />
                 </li>
               ))}

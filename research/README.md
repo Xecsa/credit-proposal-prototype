@@ -56,14 +56,17 @@ so a shared, access-controlled store is needed before real participant data is k
 - Hero gradient: recreated by sampling the "ENBD Gradient Header" in the Egypt EBM IPP Accounts screen. Values in
   `config.js` (`--r-hero-*`) are approximations, not design-system tokens.
 
-### Team avatars
+### Team portraits and companions
 
-`public/research/media/team/` holds three 3D character avatars (384 px WebP with transparent backgrounds)
-generated with Figma AI in the draft file "Research site – team avatars (draft)". The 1024 px transparent
-PNG masters are in the project files under `research-home-assets/avatars/`. The image tool takes text only,
-so Viploave's and Saba's were written from descriptions of their photos, not from the photos themselves.
-Prashanti's is a generic figure and is marked as a placeholder (`avatarIsPlaceholder` in `config.js`, which
-also sets its alt text). To replace one, drop in a square transparent image and update its `avatar` path.
+`public/research/media/team/` holds circular-crop portraits made from the photos supplied for Viploave and Saba,
+an illustrated stand-in for Prashanti (marked `avatarIsPlaceholder` in `config.js`, which also sets its alt text),
+and three decorative 3D companion shapes generated with Figma AI in ENBD blues. Masters are in the project files
+under `research-home-assets/`. To replace a portrait, drop in a square image (320 px or larger) and update `avatar`.
+
+### Session illustrations
+
+ADS illustrations (ENBD, light, default) exported at 3x from the library as their own two layers, the object and
+its shadow, so the hover can move them at slightly different rates without altering the artwork.
 
 ### Walkthrough video
 
