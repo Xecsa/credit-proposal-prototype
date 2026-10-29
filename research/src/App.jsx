@@ -8,8 +8,28 @@ import ParticipantCard from './components/ParticipantCard.jsx';
 import SessionPreviewDialog from './components/SessionPreviewDialog.jsx';
 import TeamSection from './components/TeamSection.jsx';
 import Footer from './components/Footer.jsx';
+import ParticipantSession from './components/ParticipantSession.jsx';
+import FacilitatorView, { FacilitatorOverview } from './components/FacilitatorView.jsx';
+import useRoute from './useRoute.js';
+import { useStatuses } from './store.js';
 
 export default function App() {
+  const route = useRoute();
+  return (
+    <div className="r-page" style={brand.tokens}>
+      <a className="r-skip" href="#main">Skip to content</a>
+      <Header view={route.view} />
+      {route.view === 'home' && <Home />}
+      {route.view === 'participant' && <ParticipantSession id={route.id} />}
+      {route.view === 'facilitator' && <FacilitatorView id={route.id} />}
+      {route.view === 'overview' && <FacilitatorOverview />}
+      <Footer />
+    </div>
+  );
+}
+
+// Research homepage. Scroll-linked and entrance motion are set up here only and cleaned up when leaving.
+function Home() {
   // Only the id of the previewed participant is held. Opening a preview never changes a status.
   const [previewId, setPreviewId] = useState(null);
   const triggerRef = useRef(null);
@@ -28,10 +48,10 @@ export default function App() {
     if (triggerRef.current) triggerRef.current.focus();
   };
 
+  const statuses = useStatuses(participants.map(p => p.id));
+
   return (
-    <div className="r-page" style={brand.tokens}>
-      <a className="r-skip" href="#main">Skip to content</a>
-      <Header />
+    <>
       <main id="main">
         {/* ENBD identity → introduction → video → project team → participant sessions */}
         <section ref={heroRef} id="overview" className="r-hero" aria-labelledby="welcome-title">
@@ -62,15 +82,14 @@ export default function App() {
             <ul ref={bentoRef} className="r-bento r-stagger" role="list">
               {participants.map(p => (
                 <li key={p.id} className={`is-${p.size || 'narrow'}`}>
-                  <ParticipantCard participant={p} onOpen={openPreview} />
+                  <ParticipantCard participant={{ ...p, status: statuses[p.id] }} onOpen={openPreview} />
                 </li>
               ))}
             </ul>
           </div>
         </section>
       </main>
-      <Footer />
-      <SessionPreviewDialog participant={selected} onClose={closePreview} />
-    </div>
+      <SessionPreviewDialog participant={selected} status={selected ? statuses[selected.id] : null} onClose={closePreview} />
+    </>
   );
 }

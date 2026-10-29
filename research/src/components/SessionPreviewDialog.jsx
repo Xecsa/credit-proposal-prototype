@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { project, sessionStages, sessionNote, journeys, statusLabels } from '../config.js';
+import { project, sessionStages, sessionNote, statusLabels } from '../config.js';
+import { journeysByRole } from '../script.js';
 import SessionStages from './SessionStages.jsx';
 
 // Native <dialog> opened with showModal(): focus is kept inside, Escape closes it,
 // and the page behind is inert. Focus returns to the card's button on close (see App).
-export default function SessionPreviewDialog({ participant, onClose }) {
+export default function SessionPreviewDialog({ participant, status, onClose }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function SessionPreviewDialog({ participant, onClose }) {
   }, [onClose]);
 
   const onBackdrop = e => { if (e.target === ref.current) ref.current.close(); };
-  const assigned = participant ? journeys.filter(j => j.roles.includes(participant.roleKey)) : [];
+  const assigned = participant ? journeysByRole[participant.roleKey].journeys : [];
 
   return (
     <dialog ref={ref} className="r-dialog" aria-labelledby="preview-title" aria-describedby="preview-desc" onClick={onBackdrop}>
@@ -39,7 +40,7 @@ export default function SessionPreviewDialog({ participant, onClose }) {
             </button>
           </div>
           <p id="preview-desc" className="r-muted">
-            {project.sessionMinutes}-minute guided session · Status: {statusLabels[participant.status] || participant.status}
+            {project.sessionMinutes}-minute guided session · Status: {statusLabels[status] || statusLabels['not-started']}
           </p>
 
           <h3 className="r-h3">Planned stages</h3>
@@ -48,19 +49,20 @@ export default function SessionPreviewDialog({ participant, onClose }) {
 
           {assigned.length > 0 && (
             <>
-              <h3 className="r-h3">Journey areas planned for this role</h3>
+              <h3 className="r-h3">Tasks for this session</h3>
               <ul className="r-list">
-                {assigned.map(j => <li key={j.id}>{j.title}{j.optional ? ' (if time allows)' : ''}</li>)}
+                {assigned.map(j => <li key={j.id}>{j.title} · {j.minutes} min</li>)}
               </ul>
-              <p className="r-small r-muted">Not every area has to be completed. Tasks are chosen to fit the time.</p>
+              <p className="r-small r-muted">You don’t need to finish everything.</p>
             </>
           )}
 
           <p className="r-callout r-callout-info">
-            This is a preview. The session screens (consent, tasks and feedback) come in the next iteration, so nothing is recorded or saved here.
+            Answers and notes are saved in this browser only. The facilitator view opens separately and is not shown to participants.
           </p>
           <div className="r-dialog-foot">
-            <button type="button" className="r-btn" onClick={() => ref.current.close()}>Close</button>
+            <a className="r-link-btn" href={`#/f/${participant.id}`}>Facilitator view</a>
+            <a className="r-btn" href={`#/s/${participant.id}`}>{status === 'not-started' || !status ? 'Start session' : 'Continue session'}</a>
           </div>
         </div>
       )}

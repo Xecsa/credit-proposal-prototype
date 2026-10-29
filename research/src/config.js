@@ -103,29 +103,20 @@ export const nav = [
 ];
 
 export const statusLabels = {
-  'not-started': 'Not started'
+  'not-started': 'Not started',
+  'in-progress': 'In progress',
+  'completed': 'Completed'
 };
 
 export const sessionStages = [
-  { title: 'Welcome and consent', text: 'A short introduction to the study, then the consent form.' },
-  { title: 'Explore assigned journeys', text: 'A few goal-based tasks in the prototype, thinking aloud as you go.' },
-  { title: 'Share feedback', text: 'A short conversation about what worked and what felt unclear.' }
+  { title: 'Welcome and consent', text: 'What the session is for, how notes are taken, and your consent.' },
+  { title: 'About your work', text: 'A few questions about the parts of a credit proposal you handle.' },
+  { title: 'Tasks', text: 'One goal at a time in the prototype, thinking aloud, with a short rating after each.' },
+  { title: 'Closing', text: 'Your overall feedback, then a thank-you.' }
 ];
 
 export const sessionNote = 'You can pause, skip a task, or stop at any time.';
 
-// Journey areas, checked against the prototype README (29 Oct 2026).
-// `roles` says who is assigned the area. Nobody is expected to cover everything in one session.
-// Scenarios and success criteria are written in a later iteration and are never shown as click paths.
-export const journeys = [
-  { id: 'leads', title: 'Leads, call report and generated summary', roles: ['RM'], optional: true }, // only if time allows
-  { id: 'hub', title: 'Facility Application hub', roles: ['RM', 'ARM'] },
-  { id: 'client-info', title: 'Client Information', roles: ['RM'] },
-  { id: 'documents', title: 'Documents & References, including Ejari', roles: ['RM'] },
-  { id: 'submit-arm', title: 'Submission to ARM', roles: ['RM'] },
-  { id: 'financial', title: 'Financial Analysis', roles: ['ARM'] },
-  { id: 'review', title: 'ARM-to-RM review, comments, return and confirmation', roles: ['RM', 'ARM'] }
-];
 
 // Project team. `avatar` is a path under public/research/media/team/, or null to show a
 // clearly labelled placeholder. Swap files in without touching the components.

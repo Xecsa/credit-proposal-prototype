@@ -35,6 +35,20 @@ addF: { title: '', first: 'Abdullah', last: 'Rahim', role: 'Director', nat: 'Uni
 addT: { uae: true, ruling: false, sign: false, borrow: false }
 };
 
+// Usability sessions can open the prototype at a prepared starting point with ?start=arm (application received
+// by the ARM, ready for financial analysis) or ?start=rm-review (ARM has returned the analysis to the RM).
+// Without the parameter nothing changes and the prototype starts at the leads home as usual.
+applyStart = (() => {
+  let start = '';
+  try { start = new URLSearchParams(window.location.search).get('start') || ''; } catch (e) { return start; }
+  const rmNote = { name: 'Jane Smith', role: 'RM', text: 'Please collect the signed board resolution.' };
+  const armNote = { name: 'Omar Khan', role: 'ARM', text: 'Analysis complete. Please review the ratios and ratings before confirming.' };
+  const received = { phase: 'selfHub', clientStarted: true, clientDone: true, docsDone: true, dFinLocked: true, finReady: true, sentToArm: true };
+  if (start === 'arm') Object.assign(this.state, received, { hubRole: 'arm', hubComments: [rmNote] });
+  if (start === 'rm-review') Object.assign(this.state, received, { finDone: true, hubRole: 'rm', hubComments: [rmNote, armNote] });
+  return start;
+})();
+
 seq = 0;
 timers = [];
 chatRef = (el) => { this.chatEl = el; };

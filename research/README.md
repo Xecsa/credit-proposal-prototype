@@ -6,10 +6,36 @@ It lives in `research/` and is built as a second page next to the prototype, so 
 - Local: `npm run dev`, then open `/research/`
 - Built: `dist/research/index.html`, served at `<site>/research/`
 
-## This iteration: home page only
+## What the site does
 
-Header, welcome and optional video, four participant cards that open a preview dialog, session overview,
-project team and footer. Nothing is collected or saved, and opening a preview does not change a status.
+- **Home** (`#/`): welcome, walkthrough video, project team and the four participant cards. Each card shows the
+  real status of that session (Not started, In progress, Completed) and opens a preview with
+  "Start session" and "Facilitator view".
+- **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome and consent (participation and note-taking, separate
+  optional recording, name, drawn or typed-name signature), brief role questions, the assigned journeys one scenario
+  at a time with an Open prototype button, a 1 to 7 ease rating with two short comments after each task, then the
+  closing question and a thank-you. Task text is goal-based only. No clicks, model answers or observation checklist appear here.
+- **Facilitator view** (`#/f/<id>`): intro script, consent status, materials, live participant answers, a session clock
+  with the agenda, neutral prompts, and for every task: Outcome, Observation, Quote, Screen or step, Assistance,
+  Impact, Classification, Follow-up, plus the questions to ask and what to observe. Export JSON or CSV, or reset the session.
+- **All sessions** (`#/f`): links to every session, export all, and the before-the-first-session checklist.
+
+The session script (agenda, consent wording, role questions, journeys, prompts, closing question) is in `src/script.js`.
+
+### Prototype starting states
+
+The prototype accepts an opt-in `?start=` parameter (in `src/logic.js`). Without it nothing changes.
+- `?start=arm`: the application as an ARM receives it (Client and Documents submitted, Financial Analysis ready to start, an RM comment).
+- `?start=rm-review`: the application back with the RM after the ARM's analysis (Financial Analysis submitted, ARM comment).
+RM tasks 1 to 3 use the normal start. The walkthrough video should only be shown after the tasks.
+
+### Where data is kept
+
+Everything is saved in this browser's localStorage under `cp-research:v1:<id>` and nothing is sent anywhere.
+Open the participant screen and the facilitator view in two tabs or windows of the same browser and the facilitator
+view updates live. Export after each session. The signature image is left out of exports (only "drawn" or "typed" is kept).
+Browser storage is per device and not secure shared storage, and participant codes are labels, not access control,
+so a shared, access-controlled store is needed before any real participant data is kept beyond the session laptop.
 
 ## Configuration
 
@@ -22,30 +48,8 @@ Brand values are labelled by source in `config.js`:
 - **project**: reused from the approved prototype (the Emirates NBD logo SVG in `src/assets`, borders, canvas, focus ring).
 - Nothing else is presented as an official token.
 
-Media lives in `public/research/media/`. The video is a re-encoded copy (H.264, about 15 MB) of the supplied 90 MB WhatsApp file, with no edits to content.
+Media lives in `public/research/media/`. The video is the supplied file, served unchanged (see Walkthrough video below).
 It walks through the journey click by click with an earlier sample client, so the page tells the facilitator to show it after the tasks or as onboarding.
-
-## Next iterations (plan, not built)
-
-**Participant experience** (one route per participant, e.g. `#/session/rm-01`):
-welcome, research information, participation consent, separate optional recording permission,
-electronic signature with a typed-name alternative (subject to the agreed consent process),
-assigned journey tasks, short post-task questions, thank-you page.
-No research responses are stored before consent. Participant codes are labels, not access control:
-participants should only reach their own workspace once real access control exists.
-
-**Journeys**, checked against the prototype README and assigned by role in `config.js`:
-Leads and call report (RM, if time), Facility Application hub, Client Information, Documents & References incl. Ejari,
-Submission to ARM (RM), Financial Analysis (ARM), ARM-to-RM review, comments, return and confirmation.
-Scenarios stay goal-based and never show click paths or moderator hints.
-
-**Moderator workspace** (facilitator only): per task, the research question, scenario and success criteria,
-what to observe, neutral prompts, outcome (independent / with help / unsuccessful / not attempted),
-observed behaviour, quote, screen or step, expected behaviour, assistance, impact,
-issue type (usability / prototype limitation / workflow question), follow-up action and ease rating.
-Facts, interpretations and proposed fixes are kept in separate fields.
-Saving must show saved / saving / failed. Browser storage is per device and not secure shared storage,
-so a shared, access-controlled store is needed before real participant data is kept.
 
 ## Assets added in the participant-section refinement
 
