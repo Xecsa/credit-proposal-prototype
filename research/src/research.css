@@ -8,7 +8,7 @@ html{scroll-padding-top:88px}
 @media (max-width:720px){html{scroll-padding-top:72px}}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:#F3F3F3}
-.r-page{min-height:100vh;display:flex;flex-direction:column;background:var(--r-canvas);color:var(--r-ink);font-family:var(--r-font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.r-page{--ease:cubic-bezier(.22,1,.36,1);--t-enter:.5s;--t-hover:.25s;min-height:100vh;display:flex;flex-direction:column;background:var(--r-canvas);color:var(--r-ink);font-family:var(--r-font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .r-page button{font:inherit}
 .r-page :focus-visible{outline:2px solid var(--r-focus);outline-offset:2px}
 .r-skip{position:absolute;left:16px;top:-48px;z-index:30;background:var(--r-card);color:var(--r-primary);padding:8px 16px;border-radius:var(--r-radius);border:1px solid var(--r-border)}
@@ -26,8 +26,8 @@ body{background:#F3F3F3}
 .r-note{margin:16px 0 0;color:var(--r-ink);font-weight:500}
 
 /* header: sticky, logo kept on white so its colours are unchanged. Dialogs open in the top layer, above it. */
-.r-header{position:sticky;top:0;z-index:20;background:var(--r-card);border-bottom:1px solid transparent;transition:border-color .2s ease}
-.r-header.is-scrolled{border-bottom-color:var(--r-divider)}
+.r-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid transparent;transition:background-color var(--t-hover) var(--ease),border-color var(--t-hover) var(--ease),box-shadow var(--t-hover) var(--ease)}
+.r-header.is-scrolled{background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--r-divider);box-shadow:0 6px 20px -12px rgba(7,36,71,.18)}
 .r-header-in{max-width:1200px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .r-header-brand{display:flex;align-items:center;gap:16px;min-width:0}
 .r-logo{height:32px;width:auto;display:block;flex:none}
@@ -47,16 +47,19 @@ body{background:#F3F3F3}
 /* hero: deep navy at the top, royal-blue glow upper right, fading through pale blue into white.
    Recreated from the Figma reference (see config.js); the fine vertical texture fades out with the colour. */
 .r-hero{position:relative;isolation:isolate;padding:112px 32px 0;background:
-  radial-gradient(60% 55% at 78% 22%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%),
   radial-gradient(45% 40% at 18% 8%,rgba(10,15,30,.9) 0%,rgba(10,15,30,0) 70%),
   linear-gradient(180deg,var(--r-hero-top) 0%,var(--r-hero-deep) 26%,#13368E 40%,var(--r-hero-mid) 54%,var(--r-hero-pale) 68%,var(--r-canvas) 80%)}
 .r-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,rgba(255,255,255,0) 1px 3px);
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%)}
+.r-hero-glow{position:absolute;inset:-40px 0 30% 0;z-index:-1;pointer-events:none;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0)}
 .r-hero-in{position:relative;max-width:1040px;margin:0 auto;text-align:center}
 
 /* video */
-.r-video{margin:56px auto 0;max-width:960px}
+.r-video{margin:56px auto 0;max-width:960px;transform-origin:50% 0}
+/* scroll-linked: 0.92 → 1 and 24px → 0 as it nears the centre; untransformed when full, settled or playing */
+.r-video.is-linked{transform:translate3d(0,calc((1 - var(--vp,1)) * 24px),0) scale(calc(.92 + var(--vp,1) * .08))}
+.r-video.is-linked.is-full,.r-video.is-settled{transform:none}
 /* max 960px: the source is 1280 × 720, so it is shown near its own size rather than stretched */
 .r-video-frame{position:relative;background:var(--r-card);border:1px solid rgba(7,36,71,.08);border-radius:var(--r-radius);overflow:hidden;box-shadow:0 1px 2px rgba(7,36,71,.06),0 16px 40px rgba(7,36,71,.10)}
 .r-video video{display:block;width:100%;height:100%;background:#fff;object-fit:contain;filter:none;transform:none}
@@ -81,13 +84,12 @@ body{background:#F3F3F3}
 
 /* Bento: 3 columns. RM 01 and ARM 02 span two, so the rows read wide/narrow then narrow/wide.
    The card's surface (::before) and glow lift on hover; the text and button never move. */
-.r-bento{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(336px,auto);gap:20px}
+.r-bento{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:20px}
 .r-bento > li{display:flex;min-width:0}
-.r-bento > li.is-wide{grid-column:span 2}
 .r-pcard{--lift:0px;--glow:.55;flex:1;position:relative;isolation:isolate;display:flex;gap:24px;padding:32px;border-radius:16px;-webkit-tap-highlight-color:transparent}
-.r-pcard::before{content:"";position:absolute;inset:0;z-index:-2;border-radius:inherit;background:var(--surface);border:1px solid var(--edge,#E3E8F5);box-shadow:0 1px 2px rgba(7,36,71,.04);transform:translateY(var(--lift));transition:transform .3s cubic-bezier(.22,.8,.3,1),box-shadow .3s ease-out,border-color .3s ease-out}
-.r-pcard-glow{position:absolute;inset:0;z-index:-1;border-radius:inherit;overflow:hidden;pointer-events:none;transform:translateY(var(--lift));transition:transform .3s cubic-bezier(.22,.8,.3,1)}
-.r-pcard-glow::before{content:"";position:absolute;width:70%;aspect-ratio:1;right:-10%;top:-20%;border-radius:50%;background:radial-gradient(closest-side,rgba(80,130,255,.32),rgba(80,130,255,0));opacity:var(--glow);transition:opacity .3s ease-out}
+.r-pcard::before{content:"";position:absolute;inset:0;z-index:-2;border-radius:inherit;background:var(--surface);border:1px solid var(--edge,#E3E8F5);box-shadow:0 1px 2px rgba(7,36,71,.04);transform:translateY(var(--lift));transition:transform var(--t-hover) var(--ease),box-shadow var(--t-hover) var(--ease),border-color var(--t-hover) var(--ease)}
+.r-pcard-glow{position:absolute;inset:0;z-index:-1;border-radius:inherit;overflow:hidden;pointer-events:none;transform:translateY(var(--lift));transition:transform var(--t-hover) var(--ease)}
+.r-pcard-glow::before{content:"";position:absolute;width:70%;aspect-ratio:1;right:-10%;top:-20%;border-radius:50%;background:radial-gradient(closest-side,rgba(80,130,255,.32),rgba(80,130,255,0));opacity:var(--glow);transition:opacity var(--t-hover) var(--ease)}
 /* surfaces: white, pale blue and two restrained ENBD-blue gradients */
 .r-pcard.tone-sky{--surface:linear-gradient(135deg,#DCE6FC 0%,#EEF3FD 55%,#F8FAFF 100%);--edge:#D3DEF6}
 .r-pcard.tone-white{--surface:#FFFFFF}
@@ -99,15 +101,13 @@ body{background:#F3F3F3}
 .r-pcard-role{margin:6px 0 0;color:var(--r-ink)}
 .r-pcard-status{margin:12px 0 0;display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;color:var(--r-text-2)}
 .r-pcard-foot{margin-top:auto;padding-top:24px}
-.r-btn-arrow{margin-left:8px;display:inline-flex;transition:transform .3s cubic-bezier(.22,.8,.3,1)}
+.r-btn-arrow{margin-left:8px;display:inline-flex;transition:transform var(--t-hover) var(--ease)}
 /* illustration: the ADS asset's own two layers. The object rises more than its shadow, for a little depth. */
 .r-pcard-art{position:relative;flex:none;align-self:center;aspect-ratio:1;pointer-events:none}
-.r-pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .32s cubic-bezier(.22,.8,.3,1),opacity .32s ease-out}
+.r-pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .28s var(--ease),opacity .28s var(--ease)}
 .r-art-shadow{opacity:.9}
-.is-wide .r-pcard{align-items:stretch}
-.is-wide .r-pcard-art{width:min(46%,300px);margin-right:16px}
-.is-narrow .r-pcard{flex-direction:column;gap:4px;padding-top:16px}
-.is-narrow .r-pcard-art{order:-1;width:144px;align-self:flex-start;margin-left:-10px}
+.r-pcard{min-height:288px}
+.r-pcard-art{width:min(42%,220px)}
 /* hover only where a real pointer can hover; touch keeps the static composition */
 @media (hover:hover) and (pointer:fine){
   .r-pcard:hover{--lift:-4px;--glow:1}
@@ -133,12 +133,12 @@ body{background:#F3F3F3}
 .r-team-member{position:relative;display:flex;flex-direction:column;align-items:center;cursor:default}
 .r-team-member:nth-child(2){margin-top:72px}
 .r-team-member:nth-child(3){margin-top:24px}
-.r-team-cluster{position:relative;width:120px;height:120px;transition:transform .3s cubic-bezier(.22,.8,.3,1)}
-.r-team-cluster::before{content:"";position:absolute;inset:-28px;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgba(80,130,255,.18),rgba(80,130,255,0));opacity:.6;transition:opacity .3s ease-out}
+.r-team-cluster{position:relative;width:120px;height:120px;transition:transform var(--t-hover) var(--ease)}
+.r-team-cluster::before{content:"";position:absolute;inset:-28px;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgba(80,130,255,.18),rgba(80,130,255,0));opacity:.6;transition:opacity var(--t-hover) var(--ease)}
 .r-team-portrait{width:120px;height:120px;border-radius:50%;padding:5px;background:#fff;border:1px solid #DCE3F2;box-shadow:0 1px 2px rgba(7,36,71,.06),0 10px 24px -6px rgba(7,36,71,.14)}
 .r-team-portrait img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#E8EEFB}
-.r-team-portrait img.is-placeholder{object-fit:contain;object-position:center bottom}
-.r-team-companion{position:absolute;right:-50px;top:30px;width:64px;height:64px;border-radius:50%;padding:7px;background:#fff;border:1px solid #DCE3F2;box-shadow:0 1px 2px rgba(7,36,71,.05),0 8px 18px -6px rgba(7,36,71,.14);transition:transform .3s cubic-bezier(.22,.8,.3,1)}
+.r-team-portrait img{object-fit:contain;object-position:center bottom}
+.r-team-companion{position:absolute;right:-50px;top:30px;width:64px;height:64px;border-radius:50%;padding:7px;background:#fff;border:1px solid #DCE3F2;box-shadow:0 1px 2px rgba(7,36,71,.05),0 8px 18px -6px rgba(7,36,71,.14);transition:transform var(--t-hover) var(--ease)}
 .r-team-companion img{display:block;width:100%;height:100%;object-fit:contain}
 .r-team-name{margin:20px 0 0;font-weight:500;color:var(--r-navy)}
 .r-team-role{margin:2px 0 0;font-size:13px;line-height:18px;color:var(--r-text-2)}
@@ -151,23 +151,28 @@ body{background:#F3F3F3}
 
 /* One-time entrances (useReveal). Content is visible unless JS has armed it; nothing hides on scroll back.
    Only opacity and transform move, and the final state has no transform. */
-.r-hero-text.is-armed,.r-video.is-armed,.r-stagger.is-armed > li{opacity:0}
+.r-hero-text.is-armed,.r-stagger.is-armed > li{opacity:0}
 .r-hero-text.is-armed{transform:translateY(14px)}
-.r-video.is-armed{transform:translateY(16px)}
 .r-stagger.is-armed > li{transform:translateY(12px)}
-.r-hero-text.is-in,.r-video.is-in,.r-stagger.is-in > li{opacity:1;transform:none}
-.r-hero-text.is-in{transition:opacity .45s ease-out,transform .45s cubic-bezier(.2,.7,.2,1)}
-.r-video.is-in{transition:opacity .45s ease-out,transform .45s cubic-bezier(.2,.7,.2,1)}
-/* team: 70ms stagger, 420ms each → whole sequence 560ms */
-.r-team-list.is-in > li{transition:opacity .42s ease-out var(--d,0s),transform .42s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
-.r-team-list > li:nth-child(2){--d:.07s}
-.r-team-list > li:nth-child(3){--d:.14s}
-/* cards: reading order, 60ms stagger, 400ms each */
-.r-bento.is-in > li{transition:opacity .4s ease-out var(--d,0s),transform .4s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
-.r-bento > li:nth-child(2){--d:.06s}
-.r-bento > li:nth-child(3){--d:.12s}
-.r-bento > li:nth-child(4){--d:.18s}
-.is-instant,.is-instant > li{transition:none!important}
+.r-hero-text.is-in,.r-stagger.is-in > li{opacity:1;transform:none}
+.r-hero-text.is-in{transition:opacity var(--t-enter) var(--ease),transform var(--t-enter) var(--ease)}
+/* cards: reading order, 70ms stagger, 450ms each (≈660ms in all) */
+.r-bento.is-in > li{transition:opacity .45s var(--ease) var(--d,0s),transform .45s var(--ease) var(--d,0s)}
+.r-bento > li:nth-child(2){--d:.07s}
+.r-bento > li:nth-child(3){--d:.14s}
+.r-bento > li:nth-child(4){--d:.21s}
+/* team assembles: clusters come in from ≤16px (left, below, right), 90ms apart; names and roles stay put.
+   Then the connector lines draw once. */
+.r-team-stage.is-armed .r-team-cluster{opacity:0}
+.r-team-stage.is-armed .r-team-member:nth-child(1) .r-team-cluster{transform:translate3d(-16px,0,0)}
+.r-team-stage.is-armed .r-team-member:nth-child(2) .r-team-cluster{transform:translate3d(0,16px,0)}
+.r-team-stage.is-armed .r-team-member:nth-child(3) .r-team-cluster{transform:translate3d(16px,0,0)}
+.r-team-stage.is-armed .r-team-lines path{stroke-dasharray:1;stroke-dashoffset:1}
+.r-team-stage.is-in .r-team-cluster{opacity:1;transform:none;transition:opacity var(--t-enter) var(--ease) var(--d,0s),transform var(--t-enter) var(--ease) var(--d,0s)}
+.r-team-stage.is-in .r-team-lines path{stroke-dashoffset:0;transition:stroke-dashoffset .6s var(--ease) .3s}
+.r-team-member:nth-child(2){--d:.09s}
+.r-team-member:nth-child(3){--d:.18s}
+.is-instant,.is-instant > li,.is-instant .r-team-cluster,.is-instant .r-team-lines path{transition:none!important}
 
 /* buttons */
 .r-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border:1px solid var(--r-primary);border-radius:var(--r-radius);background:var(--r-primary);color:#fff;font-weight:500;cursor:pointer;transition:background-color .15s ease,transform .08s ease}
@@ -205,10 +210,8 @@ body{background:#F3F3F3}
 @media (max-width:1024px){
   .r-display{font-size:52px}
   .r-hero{padding-top:88px}
-  .r-bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}
-  .r-bento > li.is-wide{grid-column:auto}
-  .is-wide .r-pcard{flex-direction:column;gap:4px;padding-top:16px}
-  .is-wide .r-pcard-art,.is-narrow .r-pcard-art{order:-1;width:144px;align-self:flex-start;margin:0 0 0 -10px}
+  .r-pcard{padding:24px;gap:12px}
+  .r-pcard-art{width:min(38%,168px)}
 }
 @media (max-width:720px){
   .r-main{padding:64px 16px 64px}
@@ -233,8 +236,8 @@ body{background:#F3F3F3}
   .r-team-member + .r-team-member::before{content:"";position:absolute;top:-48px;left:50%;width:1px;height:40px;background:linear-gradient(#5082FF00,#5082FF99,#5082FF00)}
   .r-bento{grid-template-columns:1fr;gap:16px}
   .r-pcard{padding:24px}
-  .is-wide .r-pcard,.is-narrow .r-pcard{padding-top:12px}
-  .is-wide .r-pcard-art,.is-narrow .r-pcard-art{width:136px}
+  .r-pcard{min-height:0;flex-direction:column;gap:0;padding-top:12px}
+  .r-pcard-art{order:-1;width:136px;align-self:flex-start;margin-left:-8px}
   .r-h2-lg{font-size:28px}
   .r-hero{padding:64px 16px 0}
   .r-stages{grid-template-columns:1fr}
@@ -251,7 +254,9 @@ body{background:#F3F3F3}
   .r-page *,.r-dialog *{transition:none!important;animation:none!important}
   .r-btn:active,.r-icon-btn:active{transform:none}
   .r-play:active{transform:translate(-50%,-50%)}
-  .r-hero-text.is-armed,.r-video.is-armed,.r-stagger.is-armed > li{opacity:1;transform:none}
+  .r-hero-text.is-armed,.r-stagger.is-armed > li,.r-team-stage.is-armed .r-team-cluster{opacity:1;transform:none}
+  .r-team-stage.is-armed .r-team-lines path{stroke-dashoffset:0}
+  .r-video,.r-hero-glow{transform:none!important}
   /* hover keeps its colour and border change, without movement */
   .r-pcard{--lift:0px!important}
   .r-pcard .r-pcard-art img,.r-pcard .r-btn-arrow,.r-team-member .r-team-cluster,.r-team-member .r-team-companion{transform:none!important}

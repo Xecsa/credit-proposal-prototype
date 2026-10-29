@@ -13,20 +13,20 @@ function Lines() {
         <linearGradient id="r-line-out" x1="0" x2="1"><stop offset="0" stopColor="#5082FF" stopOpacity=".55" /><stop offset="1" stopColor="#5082FF" stopOpacity="0" /></linearGradient>
       </defs>
       <g fill="none" strokeWidth="1.25" vectorEffect="non-scaling-stroke">
-        <path d="M0 84H78" stroke="url(#r-line-in)" vectorEffect="non-scaling-stroke" />
-        <path d="M262 84C318 84 316 156 372 156" stroke="#5082FF" strokeOpacity=".55" vectorEffect="non-scaling-stroke" />
-        <path d="M556 156C612 156 610 108 664 108" stroke="#5082FF" strokeOpacity=".55" vectorEffect="non-scaling-stroke" />
-        <path d="M848 108H880" stroke="url(#r-line-out)" vectorEffect="non-scaling-stroke" />
+        <path pathLength="1" d="M0 84H78" stroke="url(#r-line-in)" vectorEffect="non-scaling-stroke" />
+        <path pathLength="1" d="M262 84C318 84 316 156 372 156" stroke="#5082FF" strokeOpacity=".55" vectorEffect="non-scaling-stroke" />
+        <path pathLength="1" d="M556 156C612 156 610 108 664 108" stroke="#5082FF" strokeOpacity=".55" vectorEffect="non-scaling-stroke" />
+        <path pathLength="1" d="M848 108H880" stroke="url(#r-line-out)" vectorEffect="non-scaling-stroke" />
       </g>
     </svg>
   );
 }
 
 function Portrait({ member }) {
-  const alt = member.avatarIsPlaceholder ? `Placeholder avatar for ${member.name}` : `Photo of ${member.name}`;
+  const alt = member.avatarIsPlaceholder ? `Placeholder avatar for ${member.name}` : `Illustrated avatar of ${member.name}`;
   return (
     <div className="r-team-portrait">
-      <img className={member.avatarIsPlaceholder ? 'is-placeholder' : undefined} src={member.avatar} alt={alt} width="110" height="110" loading="lazy" draggable="false" />
+      <img src={member.avatar} alt={alt} width="110" height="110" loading="lazy" draggable="false" />
     </div>
   );
 }
@@ -40,9 +40,9 @@ export default function TeamSection() {
         <h2 id="team-title" className="r-h2 r-h2-lg">{teamSection.heading}</h2>
         <p className="r-muted">{teamSection.text}</p>
       </div>
-      <div className="r-team-stage">
+      <div ref={ref} className="r-team-stage">
         <Lines />
-        <ul ref={ref} className="r-team-list r-stagger" role="list">
+        <ul className="r-team-list" role="list">
           {team.map(m => (
             <li key={m.id} className="r-team-member">
               <div className="r-team-cluster">

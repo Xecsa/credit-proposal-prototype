@@ -75,17 +75,17 @@ export const video = {
 // Status values: 'not-started' only in this iteration. Opening a preview never changes it.
 // Illustrations: ENBD light/default renders from the ADS illustrations Figma library
 // (Document, Docs-Calculator, Docs-Gear, Phone-Chat). Decorative only.
-// Bento layout (desktop, 3 columns): RM 01 wide + RM 02 narrow, then ARM 01 narrow + ARM 02 wide.
+// Four equal cards (2 × 2 on desktop): every participant space has the same weight.
 // `illustration` / `illustrationShadow` are the two layers of the same ADS asset (ENBD, light, default),
 // exported at 3x. `tone` picks the card surface.
 export const participants = [
-  { id: 'rm-01', code: 'RM 01', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', size: 'wide', tone: 'sky',
+  { id: 'rm-01', code: 'RM 01', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', tone: 'sky',
     illustration: './media/illustrations/document.webp', illustrationShadow: './media/illustrations/document-shadow.webp' },
-  { id: 'rm-02', code: 'RM 02', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', size: 'narrow', tone: 'white',
+  { id: 'rm-02', code: 'RM 02', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', tone: 'white',
     illustration: './media/illustrations/docs-calculator.webp', illustrationShadow: './media/illustrations/docs-calculator-shadow.webp' },
-  { id: 'arm-01', code: 'ARM 01', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', size: 'narrow', tone: 'pale',
+  { id: 'arm-01', code: 'ARM 01', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', tone: 'pale',
     illustration: './media/illustrations/docs-gear.webp', illustrationShadow: './media/illustrations/docs-gear-shadow.webp' },
-  { id: 'arm-02', code: 'ARM 02', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', size: 'wide', tone: 'blue',
+  { id: 'arm-02', code: 'ARM 02', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', tone: 'blue',
     illustration: './media/illustrations/phone-chat.webp', illustrationShadow: './media/illustrations/phone-chat-shadow.webp' }
 ];
 
@@ -135,7 +135,7 @@ export const teamSection = {
 };
 // `companion` is a decorative 3D shape (Figma AI, ENBD blues) shown beside the portrait.
 export const team = [
-  { id: 'viploave', name: 'Viploave', role: 'Product Owner', avatar: './media/team/viploave-photo.webp', companion: './media/team/companion-navy.webp' },
-  { id: 'prashanti', name: 'Prashanti', role: 'Business Analyst', avatar: './media/team/prashanti-placeholder.webp', avatarIsPlaceholder: true, companion: './media/team/companion-royal.webp' },   // no photo supplied yet: illustrated stand-in, not a likeness. Swap the file to replace.
-  { id: 'saba', name: 'Saba', role: 'Senior Product Designer', avatar: './media/team/saba-photo.webp', companion: './media/team/companion-pale.webp' }
+  { id: 'viploave', name: 'Viploave', role: 'Product Owner', avatar: './media/team/viploave.webp', companion: './media/team/companion-navy.webp' },
+  { id: 'prashanti', name: 'Prashanti', role: 'Business Analyst', avatar: './media/team/prashanti-placeholder.webp', avatarIsPlaceholder: true, companion: './media/team/companion-royal.webp' },   // no photo supplied: generic figure, not a likeness. Swap the file to replace.
+  { id: 'saba', name: 'Saba', role: 'Senior Product Designer', avatar: './media/team/saba.webp', companion: './media/team/companion-pale.webp' }
 ];

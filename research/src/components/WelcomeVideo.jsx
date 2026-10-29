@@ -1,17 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { video } from '../config.js';
-import useReveal from '../useReveal.js';
 
 // Optional playback: no autoplay, no loop, never driven by scroll. Watching it is not required and is not consent.
-// Only the outer <figure> moves on entrance (16px lift, once). The frame and <video> are never transformed or
-// filtered, so playback renders at its final size. The frame reserves the source's aspect ratio before loading.
-export default function WelcomeVideo() {
+// Only the outer <figure> moves (scroll-linked, see useScrollMotion), and it is untransformed once it reaches
+// the centre or playback starts. The <video> itself is never transformed or filtered. The frame reserves the
+// source's aspect ratio before loading.
+export default function WelcomeVideo({ figRef }) {
   const [failed, setFailed] = useState(false);
   const [started, setStarted] = useState(false);
-  const figRef = useRef(null);
   const videoRef = useRef(null);
-
-  useReveal(figRef);
 
   const play = () => {
     const v = videoRef.current;

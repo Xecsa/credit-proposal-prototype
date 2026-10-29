@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { brand, welcome, participants, sessionsSection } from './config.js';
 import useReveal from './useReveal.js';
+import useScrollMotion from './useScrollMotion.js';
 import Header from './components/Header.jsx';
 import WelcomeVideo from './components/WelcomeVideo.jsx';
 import ParticipantCard from './components/ParticipantCard.jsx';
@@ -14,9 +15,12 @@ export default function App() {
   const triggerRef = useRef(null);
   const selected = participants.find(p => p.id === previewId) || null;
   const heroRef = useRef(null);
+  const heroTextRef = useRef(null);
+  const videoRef = useRef(null);
   const bentoRef = useRef(null);
-  useReveal(heroRef, { immediate: true });
+  useReveal(heroTextRef, { immediate: true });
   useReveal(bentoRef);
+  useScrollMotion(heroRef, videoRef);
 
   const openPreview = (id, button) => { triggerRef.current = button; setPreviewId(id); };
   const closePreview = () => {
@@ -30,15 +34,16 @@ export default function App() {
       <Header />
       <main id="main">
         {/* ENBD identity → introduction → video → project team → participant sessions */}
-        <section id="overview" className="r-hero" aria-labelledby="welcome-title">
+        <section ref={heroRef} id="overview" className="r-hero" aria-labelledby="welcome-title">
+          <div className="r-hero-glow" aria-hidden="true" />
           <div className="r-hero-in">
-            <div ref={heroRef} className="r-hero-text">
+            <div ref={heroTextRef} className="r-hero-text">
               <h1 id="welcome-title" className="r-display">{welcome.title}</h1>
               <p className="r-lead">
                 {welcome.intro.map((line, i) => <span key={i} className="r-lead-line">{line}</span>)}
               </p>
             </div>
-            <WelcomeVideo />
+            <WelcomeVideo figRef={videoRef} />
           </div>
         </section>
 
@@ -53,7 +58,7 @@ export default function App() {
             </div>
             <ul ref={bentoRef} className="r-bento r-stagger" role="list">
               {participants.map(p => (
-                <li key={p.id} className={`is-${p.size || 'narrow'}`}>
+                <li key={p.id}>
                   <ParticipantCard participant={p} onOpen={openPreview} />
                 </li>
               ))}

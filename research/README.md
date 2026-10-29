@@ -74,3 +74,12 @@ its shadow, so the hover can move them at slightly different rates without alter
 89.6 MB). An earlier version re-encoded it to about 0.33 Mbit/s, which softened text in moving frames. The
 poster is a frame taken from this original. The source itself is a 720p, WhatsApp-compressed recording, so
 the player is capped at 960 px wide; a sharper result needs a new 1080p (or larger) screen recording.
+
+### Motion
+
+One easing (`--ease: cubic-bezier(.22,1,.36,1)`), 500ms entrances and 250ms hover feedback, no libraries.
+Scroll-linked (`useScrollMotion.js`, one passive rAF listener): the hero glow drifts up to 28px, and the video's
+outer frame scales 0.92 → 1 and rises 24px → 0 as it nears the centre; it is untransformed once centred, focused
+or playing. One-time entrances (`useReveal.js`): team clusters assemble from ≤16px and the connector lines draw
+once; session cards rise 12px in reading order, 70ms apart. Content is visible unless JS arms it, focus reveals
+instantly, and `prefers-reduced-motion` gives a fully static page. Only the research homepage uses any of this.
