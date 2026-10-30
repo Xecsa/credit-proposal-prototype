@@ -9,8 +9,8 @@
 // The version is saved with each consent record, so change it whenever the wording changes.
 
 export const infoSheet = {
-  version: '0.1',
-  status: 'draft',          // 'draft' | 'final'
+  version: '1.0',
+  status: 'final',          // 'draft' | 'final'
   updated: '30 October 2026',
   label: 'Before we begin',
   title: 'About this research',
@@ -18,9 +18,7 @@ export const infoSheet = {
   contact: { name: 'Saba Shaikh', role: 'Senior Product Designer', email: 'sabash@emiratesnbd.com', phone: '+971 55 328 9032' },
 
   // Unconfirmed details. Keys are referenced from the sections below.
-  pending: {
-    recordingCapture: 'How screen and audio recordings are captured and where they are stored'
-  },
+  pending: {},
 
   // Each paragraph is an array of parts: a string, or { tbc: key }, or { roleList: true }.
   // `{role}`, `{code}` and `{minutes}` in strings are filled per participant.
@@ -68,7 +66,7 @@ export const infoSheet = {
         [{ strong: 'Screen recording. ' }, 'A recording of the prototype on screen while you complete the tasks, so we can review where the design worked and where it didn’t.'],
         [{ strong: 'Audio recording. ' }, 'A recording of what is said during the session, so we can check your comments accurately when writing up findings.'],
         ['You’ll make your recording choices on the next screen. Nothing is recorded on this page, and it doesn’t ask for access to your screen or microphone.'],
-        ['How recordings are made and kept: ', { tbc: 'recordingCapture' }]
+        ['Recordings are made in this browser and stored only on this device. They aren’t uploaded or sent anywhere.']
       ]
     },
     {
@@ -86,7 +84,7 @@ export const infoSheet = {
         { label: 'What we collect', body: [['Your participant code ({code}) and role; your answers to the questions in this session, including task ratings and any optional note; the times you start and finish each task; the facilitator’s observations; your name and signature on the consent form; and, only if you agree, screen and audio recordings.']] },
         { label: 'Where it’s stored', body: [['Your answers are stored in this browser on this device. They aren’t sent to a server and don’t sync to other devices.']] },
         { label: 'Who can see it', body: [['The project’s product owner (PO), business analyst (BA), Saba Shaikh (designer) and the lead designer.']] },
-        { label: 'Recordings', body: [['Only made if you agree on the next screen. ', { tbc: 'recordingCapture' }]] }
+        { label: 'Recordings', body: [['Only made if you agree on the next screen. They’re stored in this browser on this device and aren’t uploaded or shared.']] }
       ]
     },
     {
