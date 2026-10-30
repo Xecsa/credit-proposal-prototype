@@ -4,6 +4,7 @@ import {
   agenda, introScript, roleQuestions, journeysByRole, afterTaskQuestions, neutralPrompts, avoidPrompts,
   closingQuestion, limitationNote, outcomes, classifications, noteFields, secondaryArea, beforeFirstSession
 } from '../script.js';
+import { infoSheet, isDraft } from '../infoSheet.js';
 import { useSession, statusOf, readSession, writeSession, clearSession, download } from '../store.js';
 import { prototypeHref } from '../useRoute.js';
 import { statusLabels, sessionModal } from '../config.js';
@@ -61,7 +62,7 @@ export default function FacilitatorView({ id }) {
               <h2 className="r-fac-h2">0–3 min · Welcome and consent</h2>
               <blockquote className="r-quote">{introScript}</blockquote>
               <p className="r-small r-muted">Show the walkthrough video only after the tasks; it demonstrates the interface.</p>
-              <p className="r-fac-live">Consent: {data.consent && data.consent.at ? `given ${time(data.consent.at)}${data.consent.recording ? ', recording agreed' : ', no recording'}` : 'not yet given'}</p>
+              <p className="r-fac-live">Consent: {data.consent && data.consent.at ? `given ${time(data.consent.at)}, ${recordingText(data.consent)}${data.consent.infoSheetVersion ? `, information sheet v${data.consent.infoSheetVersion}` : ''}` : 'not yet given'}</p>
               <p className="r-small r-muted">Materials: {role.prep}</p>
             </section>
 
@@ -231,12 +232,31 @@ export function FacilitatorOverview() {
 
 // Quiet information panel: where data lives and how to keep observations away from the participant.
 function FacilitatorNotice() {
+  const pending = Object.values(infoSheet.pending);
   return (
-    <p className="r-panel is-quiet r-fac-notice">
-      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg>
-      <span>{sessionModal.facilitatorStorage} {sessionModal.facilitatorGuidance}</span>
-    </p>
+    <>
+      {isDraft() && (
+        <div className="r-panel is-warn r-fac-notice" role="note">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><path d="M10 3 2.5 16.5h15L10 3Z" /><path d="M10 8.5v3.5M10 14.5v.01" /></svg>
+          <div>
+            <strong>Information sheet v{infoSheet.version} is a draft and not ready for participants.</strong>
+            {pending.length > 0 && <> Confirm these {pending.length} details in <code>src/infoSheet.js</code> first:</>}
+            {pending.length > 0 && <ul className="r-fac-pending">{pending.map(t => <li key={t}>{t}</li>)}</ul>}
+          </div>
+        </div>
+      )}
+      <p className="r-panel is-quiet r-fac-notice">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg>
+        <span>{sessionModal.facilitatorStorage} {sessionModal.facilitatorGuidance}</span>
+      </p>
+    </>
   );
+}
+
+// `recording` is the single combined choice used before screen and audio were asked separately.
+function recordingText(c) {
+  const screen = c.recordScreen || c.recording, audio = c.recordAudio || c.recording;
+  return screen && audio ? 'screen and audio recording agreed' : screen ? 'screen recording only' : audio ? 'audio recording only' : 'no recording';
 }
 
 const time = iso => new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

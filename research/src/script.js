@@ -19,7 +19,11 @@ export const consentItems = [
   'I understand that the facilitator will take notes, and that I will be referred to only by my participant code.',
   'I agree to take part in this session.'
 ];
-export const consentRecording = 'I agree to my screen and voice being recorded for the design team only. (Optional)';
+// Two separate, optional recording choices, as described on the information sheet. Choosing here does not start any capture.
+export const consentRecordings = [
+  { key: 'recordScreen', label: 'I agree to my screen being recorded while I complete the tasks.' },
+  { key: 'recordAudio', label: 'I agree to audio of the session being recorded.' }
+];
 
 export const roleQuestions = [
   { id: 'handle', q: 'Which parts of a credit proposal do you normally handle?' },

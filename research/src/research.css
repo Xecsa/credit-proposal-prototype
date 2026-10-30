@@ -398,3 +398,50 @@ body{background:#F3F3F3}
   .r-pcard .r-pcard-art img,.r-pcard .r-btn-arrow{transform:none!important}
 }
 .r-fac-notice{margin:0 0 20px}
+
+/* Participant Information Sheet (session step 1). A stable white reading surface: no motion. Text column ~720px. */
+.r-session-in.is-reading{max-width:816px}
+.r-session-card.is-reading{padding:48px}
+.r-pis{color:var(--r-ink);font-size:16px;line-height:1.7}
+.r-pis-label{margin:0 0 8px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--r-primary)}
+.r-pis-meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;font-size:13px;line-height:18px;color:var(--r-text-2)}
+.r-pis-intro{margin:24px 0 0;font-size:18px;line-height:1.6;color:var(--r-ink)}
+.r-pis-draft{margin:24px 0 0;padding:12px 16px;border-radius:12px;border:1px solid #F0D9A0;background:#FFFAEC;font-size:14px;line-height:20px;color:#5A4300}
+.r-pis-draft strong{font-weight:600}
+.r-pis-sec{margin-top:40px;padding-top:40px;border-top:1px solid var(--r-divider)}
+.r-pis-head + .r-pis-sec{margin-top:40px}
+.r-pis-h{display:flex;gap:12px;align-items:flex-start;margin:0;font-size:20px;line-height:28px;font-weight:600;color:var(--r-navy)}
+.r-pis-n{flex:none;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--r-surface);color:var(--r-primary);font-size:13px;font-weight:600}
+.r-pis-body{padding-left:40px}
+.r-pis-body p{margin:12px 0 0}
+.r-pis-body strong{font-weight:600;color:var(--r-navy)}
+.r-pis-list{margin:8px 0 0;padding-left:22px}
+.r-pis-list li{margin-top:4px}
+.r-pis-list li::marker{color:var(--r-primary)}
+.r-pis-group{margin-top:20px}
+.r-pis-h3{margin:0;font-size:15px;line-height:22px;font-weight:600;color:var(--r-ink)}
+.r-pis-group p{margin-top:4px}
+.r-pis-contact{display:flex;flex-direction:column;gap:2px;padding:16px 20px;border-radius:12px;background:var(--r-surface)}
+.r-tbc{padding:1px 6px;border-radius:4px;background:#FFF4D6;color:#5A4300;font-size:.94em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.r-pis-foot{margin-top:48px;padding-top:32px;border-top:1px solid var(--r-divider)}
+.r-pis-next{margin:0;font-size:14px;line-height:20px;color:var(--r-text-2)}
+.r-pis-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+.r-pis-actions-start,.r-pis-actions-end{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap}
+.r-link-btn.is-inline{padding:0}
+.r-panel.is-warn{background:#FFFAEC;border:1px solid #F0D9A0;color:#5A4300}
+.r-panel.is-warn strong{font-weight:600}
+.r-fac-pending{margin:6px 0 0;padding-left:18px}
+@media (max-width:720px){
+  .r-session-card.is-reading{padding:28px 20px}
+  .r-pis{font-size:16px}
+  .r-pis-sec{margin-top:32px;padding-top:32px}
+  .r-pis-body{padding-left:0}
+  .r-pis-h{font-size:18px;line-height:26px}
+  .r-pis-actions,.r-pis-actions-start,.r-pis-actions-end{flex-direction:column-reverse;align-items:stretch;width:100%}
+  .r-pis-actions-start{flex-direction:column}
+  .r-pis-actions .r-link-btn{align-self:center}
+}
+@media print{
+  .r-header,.r-footer,.r-steps,.r-eyebrow,.r-pis-foot,.r-session-foot{display:none!important}
+  .r-session{padding:0;background:#fff}.r-session-card.is-reading{border:0;padding:0}
+}

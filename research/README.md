@@ -13,14 +13,24 @@ It lives in `research/` and is built as a second page next to the prototype, so 
   the role's three journeys, a reassurance line and a storage notice, with "Continue to welcome" (or "Resume session").
   "Open facilitator view" and the facilitator notes appear only in a browser tab where a facilitator page has been
   opened (a convenience flag in sessionStorage, not access control).
-- **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome and consent (participation and note-taking, separate
-  optional recording, name, drawn or typed-name signature), brief role questions with an optional note ("Anything you’d like us to know?", asked only after consent), the assigned journeys one scenario
+- **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome, then the Participant Information Sheet ("About this
+  research", 10 sections, the participant's own journeys, a downloadable copy built from the same content), then the
+  consent form (participation and note-taking, separate optional screen and audio recording, name, drawn or typed-name
+  signature, and a link back to the information sheet). The sheet's version is saved with the consent record. brief role questions with an optional note ("Anything you’d like us to know?", asked only after consent), the assigned journeys one scenario
   at a time with an Open prototype button, a 1 to 7 ease rating with two short comments after each task, then the
   closing question and a thank-you. Task text is goal-based only. No clicks, model answers or observation checklist appear here.
 - **Facilitator view** (`#/f/<id>`): intro script, consent status, materials, live participant answers, a session clock
   with the agenda, neutral prompts, and for every task: Outcome, Observation, Quote, Screen or step, Assistance,
   Impact, Classification, Follow-up, plus the questions to ask and what to observe. Export JSON or CSV, or reset the session.
 - **All sessions** (`#/f`): links to every session, export all, and the before-the-first-session checklist.
+
+### Information sheet (draft)
+
+Content and version live in `src/infoSheet.js`. Its structure follows the uploaded Middlesex template, adapted to this
+study; nothing from the earlier MDX study is reused and no ethics approval is implied. Details nobody has confirmed are
+`{ tbc: key }` entries listed in `pending`. They show as "To be confirmed" on the page and in the download, and the
+facilitator pages show a "not ready for participants" warning until `pending` is empty and `status` is `'final'`.
+Bump `version` whenever the wording changes. The sheet asks nothing, starts no recording and requests no device permissions.
 
 The session script (agenda, consent wording, role questions, journeys, prompts, closing question) is in `src/script.js`.
 
