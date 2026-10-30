@@ -77,8 +77,8 @@ function Home() {
           </div>
         </section>
 
-        {/* Pale blue band; the hero fades into the same colour. On wide, tall screens the intro sits in a sticky
-            left column beside the cards. */}
+        {/* Pale blue band; the hero fades into the same colour. Centred intro above the cards, which share the
+            header's content width. */}
         <section id="sessions" className="r-sessions-band" aria-labelledby="participants-title">
           <div className="r-sessions">
             <div ref={sessionsHeadRef} className="r-sessions-head r-reveal">

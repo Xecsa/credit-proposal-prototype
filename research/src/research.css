@@ -90,17 +90,13 @@ body{background:#F3F3F3}
 /* sessions: a pale blue band. Cards use a larger 28px radius here only (homepage treatment);
    buttons keep the corporate 8px radius. */
 .r-sessions-band{background:linear-gradient(180deg,#F4F7FE 0%,#EEF3FD 100%);padding:48px 32px 128px}
-.r-sessions{max-width:1240px;margin:0 auto}
+/* same content width as the header (1200 max minus 32px padding each side), so cards line up with the
+   logo on the left and the last nav link on the right */
+.r-sessions{max-width:1136px;margin:0 auto}
 .r-sessions-head{text-align:center;margin-bottom:48px}
 .r-sessions-head .r-muted{margin-top:12px;font-size:16px}
-.r-h2-lg{font-size:36px;line-height:1.2;letter-spacing:-.02em}
+.r-h2-lg{font-size:40px;line-height:1.2;letter-spacing:-.02em}
 .r-dot{width:8px;height:8px;border-radius:50%;background:#B8BFCC}
-/* sticky intro beside the cards: wide and tall enough screens only */
-@media (min-width:1180px) and (min-height:720px){
-  .r-sessions{display:grid;grid-template-columns:280px minmax(0,1fr);gap:56px;align-items:start}
-  .r-sessions-head{position:sticky;top:112px;text-align:left;margin:0;padding-top:8px}
-  .r-sessions-head .r-h2-lg{font-size:40px}
-}
 
 /* bento: 3 columns; RM 01 and ARM 02 span two */
 .r-bento{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:440px;gap:24px}
@@ -314,7 +310,7 @@ body{background:#F3F3F3}
   .r-stagger.is-armed > li{transform:translate3d(0,12px,0)}
   .r-lead-line{display:inline}
   .r-section{margin-top:64px}
-  .r-header-in{padding:0 12px 0 16px;height:56px;gap:8px}
+  .r-header-in{padding:0 16px;height:56px;gap:8px}
   .r-header-label{display:none}
   .r-nav{gap:0}
   .r-nav a{padding:0 8px;font-size:13px}
