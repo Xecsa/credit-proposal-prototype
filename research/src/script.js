@@ -37,7 +37,7 @@ export const roleIntro = {
   note: 'You can answer aloud—your facilitator can capture your responses.',
   placeholder: 'Add a response, or discuss with your facilitator.'
 };
-// Asked after the review task (moved from "About your work"): RM Financial Analysis review, ARM Submit to RM.
+// Asked after the review task (moved from "About your work"): RM Financial Analysis review, ARM Financial Analysis.
 export const reviewFollowUp = { id: 'check', q: 'Which information do you check most carefully before passing an application onward?' };
 
 export const afterTaskQuestions = {
@@ -54,7 +54,7 @@ export const closingQuestion = 'What is the most important thing we should impro
 
 export const limitationNote = 'If an action is unavailable in the prototype, record what the participant expected and classify it as a prototype limitation, not a usability failure.';
 
-// Participant-facing overview shown in the session modal: three short rows per role, no times.
+// Participant-facing overview shown in the session modal: one short row per journey, no times.
 // Detailed, goal-based task text stays on the individual task screens.
 export const journeyOverview = {
   RM: [
@@ -63,8 +63,6 @@ export const journeyOverview = {
     { icon: 'chart', title: 'Financial Analysis review', text: 'Review the application after ARM submission.' }
   ],
   ARM: [
-    { icon: 'client', title: 'Client Information review', text: 'Review the customer details you receive.' },
-    { icon: 'docs', title: 'Documents & References review', text: 'Check the supporting documents.' },
     { icon: 'chart', title: 'Financial Analysis', text: 'Complete the analysis and submit it to the RM.' }
   ]
 };
@@ -113,38 +111,33 @@ export const journeysByRole = {
     ]
   },
   ARM: {
-    title: 'ARM session: review the received application and perform financial analysis',
-    prep: 'Start at an application already submitted by the RM. The ARM does not repeat the RM’s preparation. Supplied statements with one specified discrepancy.',
-    priority: 'Financial Analysis is this session’s priority. If time is tight, shorten the document review rather than rushing the analysis.',
+    title: 'ARM session: complete the financial analysis',
+    prep: 'Start at an application already submitted by the RM, with the client information and supporting documents available as context. The ARM does not repeat the RM’s preparation. Supplied statements with one specified discrepancy.',
+    // One task: the ARM session's whole task time (agenda 5–24 min) goes to Financial Analysis.
     journeys: [
       {
-        id: 'arm-client', title: 'Client Information review', minutes: 4, start: 'arm', art: 'client',
-        intro: 'Review the client information the RM has submitted.',
-        situation: 'The RM has submitted Orient Insurance’s facility application to you, including the client information they completed and the requested term loan facility.',
-        goal: 'Review the client information supplied by the RM and identify anything that is missing or needs clarification before you start the financial analysis. You don’t need to complete this section yourself.',
-        ask: ['Was the RM’s request clear?', 'Which information did you look for first?', 'What would you need clarified?'],
-        observe: ['Understanding application context, ownership and status', 'Locating submitted information', 'Identifying gaps', 'Distinguishing review from editing']
-      },
-      {
-        id: 'arm-docs', title: 'Documents & References review', minutes: 5, start: 'arm', art: 'docs',
-        intro: 'Review the supporting documents the RM has provided.',
-        situation: 'The RM has added the supporting documents and references for Orient Insurance’s application, and the financial documents have been sent for analysis.',
-        goal: 'Check whether the documents and references are sufficient for your financial analysis, and identify anything that is missing, unclear or needs to be requested from the RM.',
-        ask: ['How did you determine whether the documents were usable?', 'Was it clear which borrower or stakeholder each document belonged to?', 'What would you do if something were missing?'],
-        observe: ['Document discoverability', 'Grouping', 'Previewing', 'Understanding processing status and responsibility for corrections']
-      },
-      {
-        id: 'arm-fin', title: 'Financial Analysis', minutes: 10, start: 'arm', priority: true, art: 'chart',
+        id: 'arm-fin', title: 'Financial Analysis', minutes: 19, start: 'arm', art: 'chart',
         intro: 'Complete the financial analysis and submit it to the RM.',
-        situation: 'The RM has submitted Orient Insurance’s application with the client information and supporting documents ready for financial analysis.',
-        // Matches the prototype: spreading figures are editable; ratios, ratings and the narrative are generated from them.
-        goal: 'Review the supplied financial information and the analysis output generated from it. Correct any spreading figures that don’t match the supplied statements, then submit the analysis to the RM with your comments for review.',
+        situation: 'The RM has submitted Orient Insurance’s facility application. The supporting financial information is available for you to complete the financial analysis.',
+        // Matches the prototype: spreading figures are editable; ratios, ratings and the Perfios output are generated from
+        // them; comments go with Submit to RM.
+        goal: 'Using the supplied financial information and available analysis outputs, complete the Financial Analysis section and submit it to the RM with your comments for review.',
         ask: ['How did you find the figure you needed?', 'What did you expect your correction to affect?', 'How would you verify the generated analysis?', 'Was the transition into and out of CreditLens clear?', 'What tells you that your work has been handed over to the RM?'],
         followUp: true,
-        observe: ['Discovering editable values', 'Comparing figures', 'Selecting entities', 'Interpreting external-tool transitions, ratios, ratings and generated narratives', 'Adding a useful comment', 'Submit to RM and next owner', 'Locating comment history']
+        observe: ['Finding the application context (client information and documents) when needed', 'Discovering editable values', 'Comparing figures', 'Selecting entities', 'Interpreting external-tool transitions, ratios, ratings and generated narratives', 'Adding a useful comment', 'Submit to RM and next owner', 'Locating comment history']
       }
     ]
   }
+};
+
+// Tasks from an earlier session plan. Not offered to new sessions; listed only so answers and notes already saved
+// under these ids still appear in the summary and exports.
+export const retiredJourneys = {
+  RM: [],
+  ARM: [
+    { id: 'arm-client', title: 'Client Information review' },
+    { id: 'arm-docs', title: 'Documents & References review' }
+  ]
 };
 
 // Facilitator recording fields, the same for every task.

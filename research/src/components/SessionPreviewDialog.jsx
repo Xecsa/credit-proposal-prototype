@@ -85,7 +85,7 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
               </section>
               {journeys.length > 0 && (
                 <section aria-labelledby="dlg-journeys">
-                  <h3 id="dlg-journeys" className="r-dlg-h">Journeys you’ll explore</h3>
+                  <h3 id="dlg-journeys" className="r-dlg-h">{journeys.length === 1 ? 'Journey you’ll explore' : 'Journeys you’ll explore'}</h3>
                   <ul className="r-dlg-list">
                     {journeys.map(j => (
                       <li key={j.title}>

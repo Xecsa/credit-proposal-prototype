@@ -5,7 +5,7 @@ import { infoSheet } from '../infoSheet.js';
 import { useSession } from '../store.js';
 import SignaturePad from './SignaturePad.jsx';
 import InfoSheet from './InfoSheet.jsx';
-import TaskJourney, { JCard, FeedbackArt } from './TaskJourney.jsx';
+import TaskJourney, { Panel, PanelHead, FeedbackArt } from './TaskJourney.jsx';
 import { discardCapture, resetParticipantMedia } from '../recorder.js';
 
 // Participant space: welcome → information sheet → consent → about your work → one task at a time → closing.
@@ -37,7 +37,8 @@ export default function ParticipantSession({ id }) {
   const role = journeysByRole[p.roleKey];
   const stage = stageOf(data);
   const step = STEPS.findIndex(s => s.id === stage);
-  const taskIndex = data.taskIndex || 0;
+  // Clamped, so a record saved under a longer task list (ARM sessions had three journeys) opens the last current one.
+  const taskIndex = Math.min(data.taskIndex || 0, role.journeys.length - 1);
   const ctx = { id: p.id, code: p.code, role: p.role, minutes: project.sessionMinutes, journeys: journeyOverview[p.roleKey].map(j => j.title) };
 
   const go = (patch) => {
@@ -47,7 +48,7 @@ export default function ParticipantSession({ id }) {
 
   return (
     <main id="main" className="r-session">
-      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'welcome' ? ' is-welcome' : stage === 'tasks' || stage === 'closing' ? ' is-journey' : ''}`}>
+      <div className="r-session-in">
         <Progress p={p} step={step} />
         {stage === 'tasks' && (
           <TaskJourney
@@ -286,28 +287,32 @@ function Closing({ data, update, headRef, onBack }) {
 
   if (done) {
     return (
-      <JCard key="thanks" className="is-closing" figure={<FeedbackArt />} eyebrow="Session complete" title="Thank you for your time" headRef={headRef}
-        intro="Your feedback will help us improve the credit proposal experience for RMs and ARMs." label="Thank you"
-        foot={<a className="r-btn r-btn-icon" href="#/">Return to research home</a>}>
-        <p className="r-fb-rec" role="status"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg><span>Your answers are saved in this browser on this device.</span></p>
-      </JCard>
+      <Panel key="thanks" className="is-closing" label="Thank you">
+        <PanelHead band art={<FeedbackArt />} eyebrow="Session complete" title="Thank you for your time" headRef={headRef}
+          intro="Your feedback will help us improve the credit proposal experience for RMs and ARMs." />
+        <div className="r-jp-body">
+          <p className="r-fb-rec" role="status"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg><span>Your answers are saved in this browser on this device.</span></p>
+        </div>
+        <footer className="r-jp-foot is-end"><a className="r-btn r-btn-icon" href="#/">Return to research home</a></footer>
+      </Panel>
     );
   }
   return (
-    <JCard key="form" className="is-closing" figure={<FeedbackArt />} eyebrow="Final reflection" title="One last question" headRef={headRef}
-      intro="Looking back at the journeys you tried, we’d like to understand your main priority." label="One last question"
-      foot={<>
-        <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back</button>
-        <button type="button" className="r-btn" onClick={finish}>{failed ? 'Try again' : 'Finish session'}</button>
-      </>}>
-      <div className="r-fb-field is-first">
-        <label htmlFor="closing" className="r-fb-q">{closingQuestion}</label>
+    <Panel key="form" className="is-closing" label="One last question">
+      <PanelHead band art={<FeedbackArt />} eyebrow="Final reflection" title="One last question" headRef={headRef}
+        intro="Looking back at the journeys you tried, we’d like to understand your main priority." />
+      <div className="r-jp-body">
+        <label htmlFor="closing" className="r-fb-q r-jp-q">{closingQuestion}</label>
         <textarea id="closing" className="r-fb-input is-tall" rows={5} placeholder="Share the improvement that matters most to you…" aria-describedby="closing-help"
           value={text} onChange={e => { const v = e.target.value; setText(v); update(d => ({ ...d, closing: v })); }} />
         <p id="closing-help" className="r-fb-help">You can answer aloud, and your facilitator can take notes.</p>
+        {failed && <p className="r-jnote" role="alert">Your answer couldn’t be saved in this browser. It’s still here; please try again, or ask your facilitator to note it.</p>}
       </div>
-      {failed && <p className="r-scn-left" role="alert">Your answer couldn’t be saved in this browser. It’s still here; please try again, or ask your facilitator to note it.</p>}
-    </JCard>
+      <footer className="r-jp-foot">
+        <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back</button>
+        <button type="button" className="r-btn" onClick={finish}>{failed ? 'Try again' : 'Finish session'}</button>
+      </footer>
+    </Panel>
   );
 }
 

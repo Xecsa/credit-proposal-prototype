@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { participants } from '../config.js';
 import {
   agenda, introScript, roleQuestions, journeysByRole, afterTaskQuestions, neutralPrompts, avoidPrompts,
-  closingQuestion, reviewFollowUp, limitationNote, outcomes, classifications, noteFields, secondaryArea, beforeFirstSession
+  closingQuestion, reviewFollowUp, retiredJourneys, limitationNote, outcomes, classifications, noteFields, secondaryArea, beforeFirstSession
 } from '../script.js';
 import { infoSheet, isDraft } from '../infoSheet.js';
 import { useSession, statusOf, readSession, writeSession, clearSession, download } from '../store.js';
@@ -329,6 +329,7 @@ function ClosingStage({ data, update }) {
 function Summary({ p, role, data, notes }) {
   const tasks = data.tasks || {};
   const follow = role.journeys.filter(j => (notes[j.id] || {}).followup);
+  const earlier = earlierTasks(p, data);
   return (
     <div className="r-fw-sum">
       <section className="r-fw-card" aria-labelledby="sum-j">
@@ -350,6 +351,17 @@ function Summary({ p, role, data, notes }) {
           </table>
         </div>
       </section>
+      {earlier.length > 0 && (
+        <section className="r-fw-card" aria-labelledby="sum-e">
+          <h2 id="sum-e" className="r-fw-h2">Earlier tasks</h2>
+          <p className="r-fw-hint">Saved before this session plan changed. Kept for reference; not part of the current session.</p>
+          <ul className="r-plain">
+            {earlier.map(j => { const t = tasks[j.id] || {}; const n = notes[j.id] || {}; return (
+              <li key={j.id}><strong>{j.title}:</strong> {[t.skipped ? 'skipped' : t.finishedAt ? 'finished' : t.leftAt ? 'left' : null, t.ease ? `ease ${t.ease}/7` : null, t.unclear ? `unclear: “${t.unclear}”` : null, t.check ? `checks: “${t.check}”` : null, n.outcome ? `outcome: ${n.outcome}` : null, n.observation ? `observation: ${n.observation}` : null].filter(Boolean).join(' · ') || 'no answers'}</li>
+            ); })}
+          </ul>
+        </section>
+      )}
       <section className="r-fw-card" aria-labelledby="sum-c">
         <h2 id="sum-c" className="r-fw-h2">Closing feedback <span className="r-fw-src">participant</span></h2>
         <p className="r-fw-q">{closingQuestion}</p><Answer>{data.closing}</Answer>
@@ -545,13 +557,17 @@ function exportCsv(list) {
   const rows = [cols];
   list.forEach(p => {
     const d = readSession(p.id);
-    journeysByRole[p.roleKey].journeys.forEach(j => {
+    [...journeysByRole[p.roleKey].journeys, ...earlierTasks(p, d)].forEach(j => {
       const t = (d.tasks || {})[j.id] || {}; const n = (d.notes || {})[j.id] || {};
-      rows.push([p.code, p.role, j.title, n.outcome, n.classification, t.ease, t.unclear, t.fit, t.check, n.observation, n.quote, n.screen, n.assistance, n.impact, n.followup, t.skipped ? 'skipped' : t.finishedAt ? 'finished' : '']);
+      rows.push([p.code, p.role, j.retired ? `${j.title} (earlier session plan)` : j.title, n.outcome, n.classification, t.ease, t.unclear, t.fit, t.check, n.observation, n.quote, n.screen, n.assistance, n.impact, n.followup, t.skipped ? 'skipped' : t.finishedAt ? 'finished' : '']);
     });
   });
   const csv = rows.map(r => r.map(v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`).join(',')).join('\n');
   download(`credit-proposal-sessions-${stamp()}.csv`, csv, 'text/csv');
+}
+// Tasks from an earlier session plan that this record still holds answers or notes for.
+function earlierTasks(p, d) {
+  return (retiredJourneys[p.roleKey] || []).filter(j => (d.tasks || {})[j.id] || (d.notes || {})[j.id]).map(j => ({ ...j, retired: true }));
 }
 // Exports keep the fact of signing, not the signature image.
 function stripSig(d) { if (!d.consent) return d; const { signature, ...c } = d.consent; return { ...d, consent: { ...c, signed: !!signature } }; }
