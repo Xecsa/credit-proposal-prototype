@@ -83,22 +83,26 @@ export const journeysByRole = {
     prep: 'Fictional customer pack: meeting notes, facility request, stakeholder details, documents, and one financial figure that needs checking. Same core information for both RMs.',
     journeys: [
       {
-        id: 'rm-client', title: 'Client Information', minutes: 6, start: 'rm-hub',
-        situation: 'You are preparing a facility application for Orient Insurance.',
-        goal: 'Using the supplied customer information, review the details already captured, make any necessary corrections, and prepare this section for the next stage.',
+        id: 'rm-client', title: 'Client Information', minutes: 6, start: 'rm-hub', art: 'client',
+        intro: 'Review and complete the client information for a facility application.',
+        situation: 'You are preparing a facility application for Orient Insurance. Some information and documents are already available, while other details need to be added.',
+        goal: 'Using the supplied customer information and documents, complete the Client Information section. Review the existing details, fill in missing information, make any necessary corrections, and submit the completed section.',
+        reassurance: 'Work as you normally would and share what you’re thinking. Your feedback matters more than finishing every task.',
         ask: ['What told you which information needed attention?', 'Was the source of the prefilled information clear?', 'What would you still need to verify outside this tool?'],
         observe: ['Discovering edits', 'Understanding stakeholder roles', 'Selecting the right accounts', 'Checking information before confirmation'],
         note: 'Keep this focused: same core checks for both RMs. If time allows, vary one secondary area (see the participant’s secondary area).'
       },
       {
-        id: 'rm-docs', title: 'Documents & References', minutes: 5, start: 'rm-docs',
+        id: 'rm-docs', title: 'Documents & References', minutes: 5, start: 'rm-docs', art: 'docs',
+        intro: 'Prepare the supporting documents for this facility application.',
         situation: 'The customer information has been completed.',
         goal: 'Using the supplied files, prepare the supporting documents and determine whether the application is ready to move forward.',
         ask: ['How did you decide where each document belonged?', 'What did you understand from the upload status?', 'What would you expect after sending these documents?'],
         observe: ['Document categorisation', 'Prefetched versus uploaded files', 'Interpreting errors', 'Recognising readiness and processing status']
       },
       {
-        id: 'rm-review', title: 'Financial Analysis review', minutes: 4, start: 'rm-review',
+        id: 'rm-review', title: 'Financial Analysis review', minutes: 4, start: 'rm-review', art: 'chart',
+        intro: 'Review the completed financial analysis for this application.',
         situation: 'The ARM has completed the financial analysis and submitted the application for your review.',
         goal: 'Review the analysis and comments, then take the action you consider appropriate.',
         ask: ['What informed your decision?', 'Was anything missing for your review?', 'Who would act next after your chosen action?'],

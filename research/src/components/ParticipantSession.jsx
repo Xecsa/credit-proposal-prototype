@@ -40,39 +40,58 @@ export default function ParticipantSession({ id }) {
 
   return (
     <main id="main" className="r-session">
-      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
-        <p className="r-eyebrow">{p.code} · {p.role}</p>
-        <ol className="r-steps" aria-label="Session progress">
-          {STEPS.map((s, i) => (
-            <li key={s.id} className={i === step ? 'is-current' : i < step ? 'is-done' : ''} aria-current={i === step ? 'step' : undefined}>
-              <span className="r-steps-n">{i + 1}</span>{s.label}
-            </li>
-          ))}
-        </ol>
-        <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
+      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'tasks' ? ' is-journey' : ''}`}>
+        <Progress p={p} step={step} />
+        {stage === 'tasks' && (
+          <TaskJourney
+            key={role.journeys[taskIndex].id}
+            p={p} journey={role.journeys[taskIndex]} index={taskIndex} total={role.journeys.length}
+            data={data} update={update}
+            onNext={() => { if (taskIndex + 1 < role.journeys.length) go({ taskIndex: taskIndex + 1 }); else { discardCapture(); go({ stage: 'closing' }); } }}
+          />
+        )}
+        {stage !== 'tasks' && <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
           {stage === 'info' && <InfoSheet ctx={ctx} headRef={headRef} onBack={() => go({ stage: 'welcome' })} onNext={() => go({ stage: 'consent' })} />}
           {stage === 'about' && <RoleQuestions p={p} headRef={headRef} data={data} update={update} onBack={() => go({ stage: 'consent' })} onNext={() => go({ stage: 'tasks', taskIndex: 0 })} />}
           {stage !== 'info' && stage !== 'about' && <h1 ref={headRef} tabIndex={-1} className="r-session-h">
                 {stage === 'welcome' && 'Welcome'}
                 {stage === 'consent' && 'Consent form'}
-                {stage === 'tasks' && `Task ${taskIndex + 1} of ${role.journeys.length}`}
                 {stage === 'closing' && (data.completedAt ? 'Thank you' : 'One last question')}
               </h1>}
           {stage === 'welcome' && <Welcome onNext={() => go({ stage: 'info' })} />}
           {stage === 'consent' && <Consent data={data} update={update} onInfo={() => go({ stage: 'info' })} onNext={() => go({ stage: 'about' })} />}
-          {stage === 'tasks' && (
-            <TaskJourney
-              key={role.journeys[taskIndex].id}
-              p={p} journey={role.journeys[taskIndex]} index={taskIndex} total={role.journeys.length}
-              data={data} update={update}
-              onNext={() => { if (taskIndex + 1 < role.journeys.length) go({ taskIndex: taskIndex + 1 }); else { discardCapture(); go({ stage: 'closing' }); } }}
-            />
-          )}
           {stage === 'closing' && <Closing data={data} update={update} onBack={() => go({ stage: 'tasks', taskIndex: role.journeys.length - 1 })} />}
-        </div>
-        <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>
+        </div>}
+        {stage !== 'tasks' && <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>}
       </div>
     </main>
+  );
+}
+
+// Compact session progress: "Step 5 of 6 · Tasks" with an optional list of all stages. Journeys within Tasks are
+// shown separately on each journey card ("Journey 1 of 3"), so the two levels aren't confused.
+function Progress({ p, step }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <nav className="r-prog" aria-label="Session progress">
+      <p className="r-prog-who">{p.code} · {p.role}</p>
+      <div className="r-prog-row">
+        <button type="button" className="r-prog-btn" aria-expanded={open} aria-controls="prog-list" onClick={() => setOpen(o => !o)}>
+          Step {step + 1} of {STEPS.length} · <strong>{STEPS[step].label}</strong>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 8 4 4 4-4" /></svg>
+        </button>
+        <span className="r-prog-bar" aria-hidden="true">{STEPS.map((s, i) => <span key={s.id} className={i < step ? 'is-done' : i === step ? 'is-current' : ''} />)}</span>
+      </div>
+      {open && (
+        <ol id="prog-list" className="r-prog-list">
+          {STEPS.map((s, i) => (
+            <li key={s.id} className={i === step ? 'is-current' : i < step ? 'is-done' : ''} aria-current={i === step ? 'step' : undefined}>
+              <span className="r-prog-n">{i + 1}</span>{s.label}{i < step && <span className="r-sr"> (done)</span>}
+            </li>
+          ))}
+        </ol>
+      )}
+    </nav>
   );
 }
 
@@ -189,7 +208,6 @@ function RoleQuestions({ p, headRef, data, update, onBack, onNext }) {
 
       <footer className="r-about-foot">
         <p className={`r-about-save${saved === false ? ' is-error' : ''}`} role="status" aria-live="polite">
-          {saved === true && 'Saved on this device'}
           {saved === false && 'Couldn’t save on this device. Your facilitator can note your answers.'}
         </p>
         <div className="r-about-actions">
