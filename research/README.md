@@ -18,11 +18,11 @@ It lives in `research/` and is built as a second page next to the prototype, so 
   consent form (participation and note-taking, separate optional screen and audio recording, name, drawn or typed-name
   signature, and a link back to the information sheet). The sheet's version is saved with the consent record. "A little about your work" (two optional questions in a centred card, answers can be given aloud instead, and a collapsed optional note asked only after consent; a status line shows whether the last edit actually saved to this browser), then each journey as
   scenario card (situation and goal) → focused prototype workspace (the prototype in a near-full-viewport frame with
-  View task, Pause, Stop recording, Leave task and Finish task) → feedback: a 1 to 7 ease rating and an optional "What, if anything, felt unclear?" (plus "Which information do you check most carefully before passing an application onward?" after RM Financial Analysis review and ARM Submit to RM), then the
+  View task, Pause, Stop recording, Leave task and Finish task) → feedback: a 1 to 7 ease rating and an optional "What, if anything, felt unclear?" (plus "Which information do you check most carefully before passing an application onward?" after RM Financial Analysis review and ARM Financial Analysis), then the
   closing question and a thank-you. Task text is goal-based only. No clicks, model answers or observation checklist appear here.
 - **Facilitator view** (`#/f/<id>`): intro script, consent status, materials, live participant answers, a session clock
   with the agenda, neutral prompts, and for every task: Outcome, Observation, Quote, Screen or step, Assistance,
-  Impact, Classification, Follow-up, plus the questions to ask and what to observe. Export JSON or CSV, or reset the session.
+  Impact, Classification, Follow-up, plus the questions to ask and what to observe. Export JSON or CSV, or use **Reset test session** (one participant) or **Reset all test sessions** (the facilitator overview) before a dry run. A reset works in the browser where you click it: it returns the participant to Not started, deletes their answers, consent, signature, progress, notes and recordings stored in that browser, and makes an open participant tab in the same browser stop recording without saving and release the screen and microphone. The pre-session checklist and other browser data are kept.
 - **All sessions** (`#/f`): links to every session, export all, and the before-the-first-session checklist.
 
 ### Information sheet (draft)

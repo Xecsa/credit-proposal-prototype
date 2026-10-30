@@ -207,11 +207,11 @@ body{background:#F3F3F3}
 .r-session-in{max-width:720px;margin:0 auto}
 .r-steps{list-style:none;margin:12px 0 24px;padding:0;display:flex;gap:8px;flex-wrap:wrap}
 .r-steps li{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;background:#fff;border:1px solid #E1E7F6;font-size:13px;color:var(--r-text-2)}
-.r-steps li.is-current{border-color:var(--r-primary);color:var(--r-navy);font-weight:500}
+.r-steps li.is-current{border-color:var(--r-navy);background:#fff;color:var(--r-navy);font-weight:600;box-shadow:0 0 0 1px var(--r-navy)}
 .r-steps li.is-done{color:var(--r-navy)}
 .r-steps-n{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--r-surface);font-size:12px;font-weight:600;color:var(--r-primary)}
-.r-steps li.is-current .r-steps-n{background:var(--r-primary);color:#fff}
-.r-session-card{background:#fff;border-radius:16px;border:1px solid #E1E7F6;padding:32px}
+.r-steps li.is-current .r-steps-n{background:var(--r-navy);color:#fff}
+.r-session-card{background:linear-gradient(180deg,#EDF2FF 0,rgba(255,255,255,0) 180px) #fff;border-radius:30px;border:1px solid #DFE6F3;padding:40px;box-shadow:0 1px 2px rgba(7,36,71,.04),0 28px 60px -36px rgba(7,36,71,.32)}
 .r-session-h{margin:0;font-size:32px;line-height:1.2;font-weight:500;letter-spacing:-.01em;color:var(--r-navy)}
 .r-session-h:focus{outline:none}
 .r-session-lead{margin:16px 0 0;font-size:17px;line-height:1.6;color:var(--r-ink)}
@@ -275,7 +275,7 @@ body{background:#F3F3F3}
   .r-fac-side{position:static}
 }
 @media (max-width:720px){
-  .r-session-card{padding:24px 20px}
+  .r-session-card{padding:28px 20px;border-radius:24px}
   .r-session-h{font-size:26px}
   .r-scale{gap:4px}
   .r-fac{padding:24px 16px 64px}
@@ -450,7 +450,7 @@ body{background:#F3F3F3}
 /* "About your work": a short conversation before the tasks. Centred white card, soft blue wash in the header,
    two optional questions, a collapsed optional note. The only motion is a brief fade on entering the step. */
 .r-session-in.is-about{max-width:784px}
-.r-session-card.is-about{padding:0;border-radius:24px;border-color:#DCE4F4;overflow:hidden;box-shadow:0 1px 2px rgba(7,36,71,.05),0 24px 56px -32px rgba(7,36,71,.30)}
+.r-session-card.is-about{padding:0;border-radius:30px;background:#fff;border-color:#DCE4F4;overflow:hidden;box-shadow:0 1px 2px rgba(7,36,71,.05),0 24px 56px -32px rgba(7,36,71,.30)}
 .r-about{animation:r-about-in .22s cubic-bezier(.22,1,.36,1) both}
 @keyframes r-about-in{from{opacity:0;transform:translate3d(0,6px,0)}to{opacity:1;transform:none}}
 .r-about-head{padding:40px 48px 32px;background:linear-gradient(180deg,#E9F0FF 0%,#F4F7FF 46%,#FFFFFF 100%);text-align:center}
@@ -568,21 +568,8 @@ html.is-task-focus .r-header,html.is-task-focus .r-footer,html.is-task-focus .r-
 
 /* Compact session progress */
 .r-prog{margin:0 0 20px}
-.r-prog-who{margin:0 0 6px;font-size:12px;line-height:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--r-text-2)}
-.r-prog-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.r-prog-btn{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px 0 12px;border:1px solid #DCE4F4;border-radius:999px;background:#fff;font:inherit;font-size:13px;color:var(--r-text-2);cursor:pointer}
-.r-prog-btn strong{font-weight:600;color:var(--r-navy)}
-.r-prog-btn svg{color:var(--r-primary);transition:transform .2s ease}
-.r-prog-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.r-prog-bar{display:inline-flex;gap:4px}
-.r-prog-bar span{width:20px;height:4px;border-radius:2px;background:#DCE4F4}
-.r-prog-bar .is-done{background:#8FA6DA}
-.r-prog-bar .is-current{background:var(--r-primary)}
-.r-prog-list{list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0 0;padding:12px 16px;border-radius:14px;background:#fff;border:1px solid #E6EBF5;font-size:13px;color:var(--r-text-2)}
-.r-prog-list li{display:inline-flex;align-items:center;gap:6px}
-.r-prog-list li.is-current{color:var(--r-navy);font-weight:600}
-.r-prog-n{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--r-surface);font-size:11px;font-weight:600;color:var(--r-primary)}
-.r-prog-list li.is-current .r-prog-n{background:var(--r-primary);color:#fff}
+.r-prog .r-eyebrow{margin-bottom:10px}
+.r-prog .r-steps{margin:0}
 
 /* Journey card (introduction, recording setup, feedback) */
 .r-session-in.is-journey{max-width:752px}
@@ -665,11 +652,10 @@ html.is-task-focus .r-header,html.is-task-focus .r-footer,html.is-task-focus .r-
   .r-rate-row{gap:6px}
   .r-rate-opt{height:46px;border-radius:12px;font-size:16px}
   .r-rate-tick{width:16px;height:16px;top:-5px;right:-5px}
-  .r-prog-bar{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .r-jcard{animation:none}
-  .r-rate-opt,.r-fb-input,.r-btn-icon svg,.r-prog-btn svg{transition:none}
+  .r-rate-opt,.r-fb-input,.r-btn-icon svg{transition:none}
 }
 /* Shorter laptop windows: keep the whole intro card in view */
 @media (max-height:760px) and (min-width:721px){
@@ -684,3 +670,6 @@ html.is-task-focus .r-header,html.is-task-focus .r-footer,html.is-task-focus .r-
   .r-jmeta{margin-top:12px}
   .r-jcard-foot{padding:12px 0 16px}
 }
+
+.r-welcome p{margin:0 0 12px;font-size:16px;line-height:1.65;color:var(--r-ink)}
+.r-welcome p:last-child{margin-bottom:0}

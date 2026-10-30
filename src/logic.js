@@ -44,9 +44,21 @@ applyStart = (() => {
   try { start = new URLSearchParams(window.location.search).get('start') || ''; } catch (e) { return start; }
   const rmNote = { name: 'Jane Smith', role: 'RM', text: 'Please collect the signed board resolution.' };
   const armNote = { name: 'Omar Khan', role: 'ARM', text: 'Analysis complete. Please review the ratios and ratings before confirming.' };
-  const received = { phase: 'selfHub', clientStarted: true, clientDone: true, docsDone: true, dFinLocked: true, finReady: true, sentToArm: true };
+  // What the RM has already entered by each point, so later journeys show it. Values come from the prototype's own
+  // sample content (the board resolution's AED 10,000,000 term loan; the meeting note's equity-release purpose).
+  const clientEntered = { clientStarted: true, clientDone: true, facSeq: 3,
+    facilities: [{ id: 3, seed: false, type: 'Term loan', product: '', limit: '10,000,000', purpose: 'Equity release on the office property purchased in DIFC, for reinvestment in the business' }] };
+  const st = this.state; let seq = 200; const file = (name, extra) => Object.assign({ id: ++seq, name: name, st: 'ok' }, extra);
+  const docsEntered = { docsDone: true, dFinLocked: true, ejBatches: 1, ejSeq: 5,
+    dKyc: Object.assign({}, st.dKyc, { aoa: [file('AOA.pdf')], br: [file('Board-resolution.pdf')] }),
+    dKycConf: { tl: true, moa: true, aoa: true, br: true },
+    dFin: Object.assign({}, st.dFin, { aud: ['2026', '2025'].map((y) => file('max-financials.pdf', { year: y })), inh: [file('max-financials.pdf', { year: '2026' })] }),
+    dFinConf: { aud: true, inh: true, bank: true, aecb: true },
+    ejFiles: ['marina-plaza-office-1204.pdf', 'jlt-cluster-x-unit-305.pdf', 'al-quoz-warehouse-17.pdf', 'business-bay-tower-a-2201.pdf', 'dip-unit-b14.pdf'].map((n, i) => ({ id: 'e' + (i + 1), name: 'ejari-' + n, st: 'up' })),
+    dSeq: seq };
+  const received = Object.assign({ phase: 'selfHub', finReady: true, sentToArm: true }, clientEntered, docsEntered);
   if (start === 'rm-hub') Object.assign(this.state, { phase: 'selfHub' });
-  if (start === 'rm-docs') Object.assign(this.state, { phase: 'selfHub', clientStarted: true, clientDone: true });
+  if (start === 'rm-docs') Object.assign(this.state, { phase: 'selfHub' }, clientEntered);
   if (start === 'arm') Object.assign(this.state, received, { hubRole: 'arm', hubComments: [rmNote] });
   if (start === 'rm-review') Object.assign(this.state, received, { finDone: true, hubRole: 'rm', hubComments: [rmNote, armNote] });
   return start;

@@ -6,7 +6,7 @@ import { useSession } from '../store.js';
 import SignaturePad from './SignaturePad.jsx';
 import InfoSheet from './InfoSheet.jsx';
 import TaskJourney, { JCard, FeedbackArt } from './TaskJourney.jsx';
-import { discardCapture } from '../recorder.js';
+import { discardCapture, resetParticipantMedia } from '../recorder.js';
 
 // Participant space: welcome → information sheet → consent → about your work → one task at a time → closing.
 // Calm and stable: no entrance or scroll motion here. Task text is goal-based; no clicks or answers shown.
@@ -26,6 +26,13 @@ export default function ParticipantSession({ id }) {
   const p = participants.find(x => x.id === id);
   const [data, update] = useSession(id);
   const headRef = useRef(null);
+  // A facilitator "Reset test session" in another tab removes this record: stop any recording without keeping it
+  // and release screen and microphone here too.
+  useEffect(() => {
+    const onStorage = e => { if (e.key === `cp-research:v1:${id}` && e.newValue === null) resetParticipantMedia(id).catch(() => {}); };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, [id]);
   if (!p) return <NotFound />;
   const role = journeysByRole[p.roleKey];
   const stage = stageOf(data);
@@ -40,7 +47,7 @@ export default function ParticipantSession({ id }) {
 
   return (
     <main id="main" className="r-session">
-      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'tasks' || stage === 'closing' ? ' is-journey' : ''}`}>
+      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'tasks' || stage === 'closing' || stage === 'welcome' ? ' is-journey' : ''}`}>
         <Progress p={p} step={step} />
         {stage === 'tasks' && (
           <TaskJourney
@@ -50,61 +57,52 @@ export default function ParticipantSession({ id }) {
             onNext={() => { if (taskIndex + 1 < role.journeys.length) go({ taskIndex: taskIndex + 1 }); else { discardCapture(); go({ stage: 'closing' }); } }}
           />
         )}
+        {stage === 'welcome' && <Welcome headRef={headRef} onNext={() => go({ stage: 'info' })} />}
         {stage === 'closing' && <Closing data={data} update={update} headRef={headRef} onBack={() => go({ stage: 'tasks', taskIndex: role.journeys.length - 1 })} />}
-        {stage !== 'tasks' && stage !== 'closing' && <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
+        {stage !== 'tasks' && stage !== 'closing' && stage !== 'welcome' && <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
           {stage === 'info' && <InfoSheet ctx={ctx} headRef={headRef} onBack={() => go({ stage: 'welcome' })} onNext={() => go({ stage: 'consent' })} />}
           {stage === 'about' && <RoleQuestions p={p} headRef={headRef} data={data} update={update} onBack={() => go({ stage: 'consent' })} onNext={() => go({ stage: 'tasks', taskIndex: 0 })} />}
           {stage !== 'info' && stage !== 'about' && <h1 ref={headRef} tabIndex={-1} className="r-session-h">
-                {stage === 'welcome' && 'Welcome'}
                 {stage === 'consent' && 'Consent form'}
               </h1>}
-          {stage === 'welcome' && <Welcome onNext={() => go({ stage: 'info' })} />}
           {stage === 'consent' && <Consent data={data} update={update} onInfo={() => go({ stage: 'info' })} onNext={() => go({ stage: 'about' })} />}
         </div>}
-        {stage !== 'tasks' && stage !== 'closing' && <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>}
+        {(stage === 'info' || stage === 'consent' || stage === 'about') && <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>}
       </div>
     </main>
   );
 }
 
-// Compact session progress: "Step 5 of 6 · Tasks" with an optional list of all stages. Journeys within Tasks are
-// shown separately on each journey card ("Journey 1 of 3"), so the two levels aren't confused.
+// Session stepper: six rounded pills, the current one in navy. Journeys within Tasks are numbered on each journey
+// card ("Journey 1 of 3"), so the two levels aren't confused.
 function Progress({ p, step }) {
-  const [open, setOpen] = useState(false);
   return (
     <nav className="r-prog" aria-label="Session progress">
-      <p className="r-prog-who">{p.code} · {p.role}</p>
-      <div className="r-prog-row">
-        <button type="button" className="r-prog-btn" aria-expanded={open} aria-controls="prog-list" onClick={() => setOpen(o => !o)}>
-          Step {step + 1} of {STEPS.length} · <strong>{STEPS[step].label}</strong>
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 8 4 4 4-4" /></svg>
-        </button>
-        <span className="r-prog-bar" aria-hidden="true">{STEPS.map((s, i) => <span key={s.id} className={i < step ? 'is-done' : i === step ? 'is-current' : ''} />)}</span>
-      </div>
-      {open && (
-        <ol id="prog-list" className="r-prog-list">
-          {STEPS.map((s, i) => (
-            <li key={s.id} className={i === step ? 'is-current' : i < step ? 'is-done' : ''} aria-current={i === step ? 'step' : undefined}>
-              <span className="r-prog-n">{i + 1}</span>{s.label}{i < step && <span className="r-sr"> (done)</span>}
-            </li>
-          ))}
-        </ol>
-      )}
+      <p className="r-eyebrow">{p.code} · {p.role}</p>
+      <ol className="r-steps">
+        {STEPS.map((s, i) => (
+          <li key={s.id} className={i === step ? 'is-current' : i < step ? 'is-done' : ''} aria-current={i === step ? 'step' : undefined}>
+            <span className="r-steps-n">{i + 1}</span>{s.label}{i < step && <span className="r-sr"> (done)</span>}
+          </li>
+        ))}
+      </ol>
     </nav>
   );
 }
 
-function Welcome({ onNext }) {
+function Welcome({ headRef, onNext }) {
   return (
-    <>
-      <p className="r-session-lead">Today we’re exploring how the credit proposal prototype supports your work. We’re testing the design, not you, and your honest feedback will help us improve it.</p>
-      <p>Please say out loud what you’re looking for, what you expect, and anything that feels unclear. Some functions are simulated, and you don’t need to finish everything.</p>
-      <p>First, we’ll share some information about this research. Then you can decide whether to take part.</p>
-      <div className="r-actions">
+    <JCard className="is-closing" figure={<FeedbackArt />} eyebrow="Usability session" title="Welcome" headRef={headRef} label="Welcome"
+      intro="Today we’re exploring how the credit proposal prototype supports your work. We’re testing the design, not you, and your honest feedback will help us improve it."
+      foot={<>
         <a className="r-link-btn" href="#/">Leave session</a>
-        <button type="button" className="r-btn" onClick={onNext}>Continue</button>
+        <button type="button" className="r-btn r-btn-icon" onClick={onNext}>Continue <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" /></svg></button>
+      </>}>
+      <div className="r-welcome">
+        <p>Please say out loud what you’re looking for, what you expect, and anything that feels unclear. Some functions are simulated, and you don’t need to finish everything.</p>
+        <p>First, we’ll share some information about this research. Then you can decide whether to take part.</p>
       </div>
-    </>
+    </JCard>
   );
 }
 

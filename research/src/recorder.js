@@ -247,3 +247,23 @@ export async function recordingBlob(rec) {
 // Unsaved data from a failed write in this tab, so the participant's facilitator can still download it.
 export const lastUnsaved = () => (cap.last && cap.last.unsaved && cap.last.unsaved.length ? new Blob(cap.last.unsaved, { type: cap.last.mimeType }) : null);
 export const recExt = mime => (mime || '').includes('mp4') ? 'mp4' : 'webm';
+
+// ---- reset for a test run ----
+// Stops this tab's recording without saving it, releases screen and microphone, and deletes every stored recording
+// (and its chunks) for the participant. Other participants' recordings are left alone.
+export async function resetParticipantMedia(participantId) {
+  const c = cap.current;
+  if (c && (!cap.participantId || cap.participantId === participantId)) {
+    cap.current = null;
+    c.mr.ondataavailable = null; c.mr.onerror = null;
+    try { if (c.mr.state !== 'inactive') c.mr.stop(); } catch (e) { /* already stopped */ }
+    await c.pending.catch(() => {});
+  }
+  if (!cap.participantId || cap.participantId === participantId) { cap.last = null; discardCapture(); }
+  const recs = await getAll('recordings', 'participantId', participantId);
+  for (const r of recs) {
+    await tx('chunks', 'readwrite', s => { s.delete(IDBKeyRange.bound([r.id, -Infinity], [r.id, Infinity])); });
+    await tx('recordings', 'readwrite', s => { s.delete(r.id); });
+  }
+  return recs.length;
+}

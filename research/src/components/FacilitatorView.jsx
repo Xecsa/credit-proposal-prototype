@@ -8,6 +8,7 @@ import { infoSheet, isDraft } from '../infoSheet.js';
 import { useSession, statusOf, readSession, writeSession, clearSession, download } from '../store.js';
 import { prototypeHref } from '../useRoute.js';
 import RecordingsPanel from './RecordingsPanel.jsx';
+import { resetParticipantMedia } from '../recorder.js';
 import { statusLabels, sessionModal } from '../config.js';
 import { participantNote } from '../script.js';
 
@@ -18,6 +19,7 @@ export default function FacilitatorView({ id }) {
   const p = participants.find(x => x.id === id);
   const [data, update] = useSession(id);
   const [confirmReset, setConfirmReset] = useState(false);
+  const [resetMsg, setResetMsg] = useState('');
   if (!p) return <main id="main" className="r-session"><div className="r-session-in"><p>Session not found. <a href="#/f">Facilitator overview</a></p></div></main>;
   const role = journeysByRole[p.roleKey];
   const notes = data.notes || {};
@@ -111,13 +113,14 @@ export default function FacilitatorView({ id }) {
                 <button type="button" className="r-btn" onClick={() => exportJson([p])}>Export JSON</button>
                 <button type="button" className="r-btn r-btn-secondary" onClick={() => exportCsv([p])}>Export CSV</button>
                 {!confirmReset
-                  ? <button type="button" className="r-link-btn is-danger" onClick={() => setConfirmReset(true)}>Reset this session…</button>
+                  ? <button type="button" className="r-link-btn is-danger" onClick={() => { setConfirmReset(true); setResetMsg(''); }}>Reset test session…</button>
                   : <span className="r-confirm" role="group" aria-label="Confirm reset">
-                      This clears consent, answers and notes for {p.code}.
-                      <button type="button" className="r-btn r-btn-danger" onClick={() => { clearSession(id); setConfirmReset(false); }}>Clear {p.code}</button>
+                      This returns {p.code} to Not started and deletes, in this browser only, their consent, signature, answers, task progress, notes and recordings. Export first if you need anything.
+                      <button type="button" className="r-btn r-btn-danger" onClick={async () => { setConfirmReset(false); setResetMsg(await resetTestSession(p)); }}>Reset {p.code}</button>
                       <button type="button" className="r-link-btn" onClick={() => setConfirmReset(false)}>Cancel</button>
                     </span>}
               </div>
+              {resetMsg && <p className="r-small" role="status">{resetMsg}</p>}
             </section>
           </div>
         </div>
@@ -204,6 +207,8 @@ function Timer({ data, update }) {
 }
 
 export function FacilitatorOverview() {
+  const [confirmAll, setConfirmAll] = useState(false);
+  const [allMsg, setAllMsg] = useState('');
   const [checks, setChecks] = useState(() => readSession('checklist').items || {});
   const [, force] = useState(0);
   useEffect(() => { const f = () => force(x => x + 1); window.addEventListener('storage', f); return () => window.removeEventListener('storage', f); }, []);
@@ -228,7 +233,19 @@ export function FacilitatorOverview() {
         <div className="r-actions is-start">
           <button type="button" className="r-btn" onClick={() => exportJson(participants)}>Export all (JSON)</button>
           <button type="button" className="r-btn r-btn-secondary" onClick={() => exportCsv(participants)}>Export all (CSV)</button>
+          {!confirmAll
+            ? <button type="button" className="r-link-btn is-danger" onClick={() => { setConfirmAll(true); setAllMsg(''); }}>Reset all test sessions…</button>
+            : <span className="r-confirm" role="group" aria-label="Confirm reset of all sessions">
+                This returns {participants.map(p => p.code).join(', ')} to Not started and deletes their answers, signatures, progress, notes and recordings in this browser.
+                <button type="button" className="r-btn r-btn-danger" onClick={async () => {
+                  setConfirmAll(false);
+                  const out = []; for (const p of participants) out.push(await resetTestSession(p));
+                  setAllMsg(out.join(' ')); force(x => x + 1);
+                }}>Reset all four</button>
+                <button type="button" className="r-link-btn" onClick={() => setConfirmAll(false)}>Cancel</button>
+              </span>}
         </div>
+        {allMsg && <p className="r-small" role="status">{allMsg}</p>}
         <section className="r-fac-box">
           <h2 className="r-fac-h2">Before the first session</h2>
           {beforeFirstSession.map((b, i) => (
@@ -238,6 +255,19 @@ export function FacilitatorOverview() {
       </div>
     </main>
   );
+}
+
+// Test-run reset for one participant, in this browser only: the session record and its recordings. An open
+// participant tab sees its record removed and releases its screen and microphone (see ParticipantSession).
+// The pre-session checklist and other participants are left alone.
+async function resetTestSession(p) {
+  clearSession(p.id);
+  try {
+    const n = await resetParticipantMedia(p.id);
+    return `${p.code} reset to Not started${n ? `; ${n} recording${n === 1 ? '' : 's'} deleted` : ''}.`;
+  } catch (e) {
+    return `${p.code} answers reset, but recordings couldn’t be deleted in this browser (${e.message}).`;
+  }
 }
 
 // Quiet information panel: where data lives and how to keep observations away from the participant.
