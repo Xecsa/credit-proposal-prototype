@@ -47,7 +47,7 @@ export default function ParticipantSession({ id }) {
 
   return (
     <main id="main" className="r-session">
-      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'tasks' || stage === 'closing' || stage === 'welcome' ? ' is-journey' : ''}`}>
+      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'welcome' ? ' is-welcome' : stage === 'tasks' || stage === 'closing' ? ' is-journey' : ''}`}>
         <Progress p={p} step={step} />
         {stage === 'tasks' && (
           <TaskJourney
@@ -90,19 +90,77 @@ function Progress({ p, step }) {
   );
 }
 
+// Welcome: one connected panel. Left, a static ENBD-blue illustration; right, the welcome copy and actions.
+// Continue only opens the information sheet: nothing is consented to or recorded here.
 function Welcome({ headRef, onNext }) {
   return (
-    <JCard className="is-closing" figure={<FeedbackArt />} eyebrow="Usability session" title="Welcome" headRef={headRef} label="Welcome"
-      intro="Today we’re exploring how the credit proposal prototype supports your work. We’re testing the design, not you, and your honest feedback will help us improve it."
-      foot={<>
-        <a className="r-link-btn" href="#/">Leave session</a>
-        <button type="button" className="r-btn r-btn-icon" onClick={onNext}>Continue <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" /></svg></button>
-      </>}>
-      <div className="r-welcome">
-        <p>Please say out loud what you’re looking for, what you expect, and anything that feels unclear. Some functions are simulated, and you don’t need to finish everything.</p>
-        <p>First, we’ll share some information about this research. Then you can decide whether to take part.</p>
+    <section className="r-wel" aria-labelledby="r-wel-h">
+      <div className="r-wel-art" aria-hidden="true"><WelcomeArt /></div>
+      <div className="r-wel-body">
+        <p className="r-wel-eyebrow">Credit proposal research</p>
+        <h1 id="r-wel-h" ref={headRef} tabIndex={-1} className="r-wel-h">Welcome to your session</h1>
+        <p className="r-wel-p">Today, we’ll explore how the credit proposal prototype fits into your work. Your feedback will help us understand what works well and what needs improvement.</p>
+        <div className="r-wel-note">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M10 2.5 4 4.8v4.6c0 3.7 2.6 6.8 6 8.1 3.4-1.3 6-4.4 6-8.1V4.8L10 2.5Z" /><path d="m7.4 10 1.8 1.8 3.5-3.6" /></svg>
+          <p>We’re testing the design, not you. Some features are simulated. You can pause, skip a task, or stop at any time.</p>
+        </div>
+        <p className="r-wel-p r-wel-next">First, we’ll share information about the research so you can decide whether to take part.</p>
+        <div className="r-wel-foot">
+          <a className="r-wel-leave" href="#/">Leave session</a>
+          <button type="button" className="r-btn r-btn-icon r-wel-go" onClick={onNext}>Continue <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" /></svg></button>
+        </div>
       </div>
-    </JCard>
+    </section>
+  );
+}
+
+// Custom illustration: layered conversation cards, speech bubbles and soft shapes on the hero gradient.
+function WelcomeArt() {
+  return (
+    <svg className="r-wel-svg" viewBox="0 0 360 400" preserveAspectRatio="xMidYMid meet" focusable="false">
+      <defs>
+        <linearGradient id="wa-card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff" /><stop offset="1" stopColor="#EEF3FF" /></linearGradient>
+        <linearGradient id="wa-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#fff" stopOpacity=".22" /><stop offset="1" stopColor="#fff" stopOpacity=".06" /></linearGradient>
+        <filter id="wa-sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="#020B24" floodOpacity=".28" /></filter>
+      </defs>
+      <circle cx="292" cy="70" r="74" fill="#fff" opacity=".07" />
+      <circle cx="54" cy="338" r="96" fill="#5082FF" opacity=".22" />
+      <path d="M-10 250C60 214 120 290 196 262s118-98 184-70" stroke="#fff" strokeOpacity=".16" strokeWidth="1.5" fill="none" />
+      <path d="M-10 280C70 246 128 318 206 290s112-92 174-66" stroke="#fff" strokeOpacity=".08" strokeWidth="1.5" fill="none" />
+      {/* back card */}
+      <rect x="96" y="58" width="208" height="128" rx="20" fill="url(#wa-glass)" stroke="#fff" strokeOpacity=".28" />
+      <rect x="116" y="82" width="70" height="8" rx="4" fill="#fff" opacity=".55" />
+      <rect x="116" y="100" width="150" height="6" rx="3" fill="#fff" opacity=".3" />
+      <rect x="116" y="114" width="120" height="6" rx="3" fill="#fff" opacity=".3" />
+      {/* main conversation card */}
+      <g filter="url(#wa-sh)">
+        <rect x="44" y="132" width="248" height="164" rx="22" fill="url(#wa-card)" />
+      </g>
+      <circle cx="76" cy="166" r="14" fill="#DCE6FF" />
+      <path d="M70 168a6 6 0 0 1 12 0" stroke="#182F7C" strokeWidth="2" fill="none" strokeLinecap="round" />
+      <circle cx="76" cy="160" r="3.5" fill="#182F7C" />
+      <rect x="100" y="156" width="78" height="8" rx="4" fill="#072447" opacity=".85" />
+      <rect x="100" y="170" width="52" height="6" rx="3" fill="#8CA3D8" />
+      <rect x="64" y="198" width="160" height="34" rx="14" fill="#F4F7FE" stroke="#DCE6FF" />
+      <rect x="78" y="212" width="108" height="6" rx="3" fill="#8CA3D8" />
+      <rect x="116" y="242" width="156" height="34" rx="14" fill="#182F7C" />
+      <rect x="132" y="256" width="96" height="6" rx="3" fill="#fff" opacity=".85" />
+      <circle cx="252" cy="259" r="3" fill="#fff" opacity=".85" />
+      {/* speech bubbles */}
+      <g filter="url(#wa-sh)">
+        <path d="M232 302h86a16 16 0 0 1 16 16v26a16 16 0 0 1-16 16h-58l-16 14v-14h-12a16 16 0 0 1-16-16v-26a16 16 0 0 1 16-16Z" fill="#fff" />
+      </g>
+      <circle cx="252" cy="331" r="4" fill="#182F7C" />
+      <circle cx="268" cy="331" r="4" fill="#5082FF" />
+      <circle cx="284" cy="331" r="4" fill="#A9BFF5" />
+      <path d="M262 30h60a14 14 0 0 1 14 14v20a14 14 0 0 1-14 14h-36l-12 11V78h-12a14 14 0 0 1-14-14V44a14 14 0 0 1 14-14Z" fill="#5082FF" />
+      <path d="m280 55 7 7 14-14" stroke="#fff" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      {/* sparkles */}
+      <path d="M44 92l4 10 10 4-10 4-4 10-4-10-10-4 10-4Z" fill="#fff" opacity=".7" />
+      <path d="M330 214l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5Z" fill="#fff" opacity=".55" />
+      <circle cx="30" cy="200" r="3" fill="#fff" opacity=".45" />
+      <circle cx="190" cy="372" r="2.5" fill="#fff" opacity=".4" />
+    </svg>
   );
 }
 

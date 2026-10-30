@@ -169,7 +169,8 @@ export const beforeFirstSession = [
   'Define task success with the BA/PO before testing.',
   'Keep the same core tasks for participants in the same role.',
   'Prepare the fictional customer pack and the statement with the discrepancy.',
-  'Confirm remaining ownership details with the BA/PO.'
+  'Confirm remaining ownership details with the BA/PO.',
+  'Keep facilitator notes out of the participant’s view: run the facilitator workspace on a separate screen.'
 ];
 
 // Full scenario text, used by the facilitator view and exports.

@@ -34,7 +34,7 @@ export default function Header({ view = 'home' }) {
   }, [view]);
 
   return (
-    <header className={`r-header${scrolled ? ' is-scrolled' : ''}`}>
+    <header className={`r-header${scrolled ? ' is-scrolled' : ''}${view === 'overview' ? ' is-wide' : ''}`}>
       <div className="r-header-in">
         <div className="r-header-brand">
           <img className="r-logo" src={brand.logo} alt={brand.logoAlt} />
@@ -45,7 +45,7 @@ export default function Header({ view = 'home' }) {
               {nav.map(n => <a key={n.id} href={`#${n.id}`} className={active === n.id ? 'is-active' : undefined} aria-current={active === n.id ? 'location' : undefined}>{n.label}</a>)}
             </nav>
           : <nav className="r-nav" aria-label="Research site">
-              {view !== 'participant' && <a href="#/f">All sessions</a>}
+              {view === 'facilitator' && <a href="#/f">All sessions</a>}
               <a href="#/">Research home</a>
             </nav>}
       </div>

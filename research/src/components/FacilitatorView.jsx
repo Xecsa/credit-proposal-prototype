@@ -9,7 +9,7 @@ import { useSession, statusOf, readSession, writeSession, clearSession, download
 import { prototypeHref } from '../useRoute.js';
 import RecordingsPanel from './RecordingsPanel.jsx';
 import { resetParticipantMedia } from '../recorder.js';
-import { statusLabels, sessionModal } from '../config.js';
+import { statusLabels, sessionModal, sessionStages } from '../config.js';
 import { participantNote } from '../script.js';
 
 // Facilitator workspace for one participant: a compact session bar, then three tabs. Run session shows one stage at a
@@ -393,6 +393,7 @@ function Timer({ data, update }) {
   );
 }
 
+// Sessions overview: the four participant sessions as equal cards, plus storage, preparation and management.
 export function FacilitatorOverview() {
   const [confirmAll, setConfirmAll] = useState(false);
   const [allMsg, setAllMsg] = useState('');
@@ -400,47 +401,101 @@ export function FacilitatorOverview() {
   const [, force] = useState(0);
   useEffect(() => { const f = () => force(x => x + 1); window.addEventListener('storage', f); return () => window.removeEventListener('storage', f); }, []);
   const toggle = (i, v) => { const next = { ...checks, [i]: v }; setChecks(next); writeSession('checklist', { items: next }); };
+  const done = beforeFirstSession.filter((_, i) => checks[i]).length;
   return (
-    <main id="main" className="r-fac">
-      <div className="r-fac-in">
-        <p className="r-eyebrow">Facilitator view · not for participants</p>
-        <h1 className="r-fac-h">Sessions</h1>
-        <FacilitatorNotice />
-        <ul className="r-fac-list">
-          {participants.map(p => (
-            <li key={p.id} className="r-fac-box">
-              <div><strong>{p.code}</strong> · {p.role}<br /><span className="r-small r-muted">{statusLabels[statusOf(readSession(p.id))]}</span></div>
-              <span className="r-actions-end">
-                <a className="r-btn" href={`#/f/${p.id}`}>Facilitator view</a>
-                <a className="r-btn r-btn-secondary" href={`#/s/${p.id}`} target="_blank" rel="noopener">Participant screen<span className="r-sr"> (opens in a new tab)</span></a>
-              </span>
-            </li>
-          ))}
+    <main id="main" className="r-ov">
+      <div className="r-ov-in">
+        <div className="r-ov-head">
+          <div>
+            <h1 className="r-ov-h">Research sessions</h1>
+            <p className="r-ov-sub">Manage your four participant sessions, capture observations, and review recordings.</p>
+          </div>
+          <Menu label="Export all" className="r-ov-export">
+            <button type="button" role="menuitem" onClick={() => exportCsv(participants)}>CSV (spreadsheet)</button>
+            <button type="button" role="menuitem" onClick={() => exportJson(participants)}>JSON (full record)</button>
+          </Menu>
+        </div>
+        <DraftNotice />
+        <ul className="r-ov-grid">
+          {participants.map(p => <li key={p.id}><SessionCard p={p} data={readSession(p.id)} /></li>)}
         </ul>
-        <div className="r-actions is-start">
-          <button type="button" className="r-btn" onClick={() => exportJson(participants)}>Export all (JSON)</button>
-          <button type="button" className="r-btn r-btn-secondary" onClick={() => exportCsv(participants)}>Export all (CSV)</button>
-          {!confirmAll
-            ? <button type="button" className="r-link-btn is-danger" onClick={() => { setConfirmAll(true); setAllMsg(''); }}>Reset all test sessions…</button>
-            : <span className="r-confirm" role="group" aria-label="Confirm reset of all sessions">
-                This returns {participants.map(p => p.code).join(', ')} to Not started and deletes their answers, signatures, progress, notes and recordings in this browser.
+        <section className="r-ov-store" aria-labelledby="ov-store-h">
+          <div className="r-ov-store-row">
+            <span className="r-ov-store-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="14" height="9" rx="1.5" /><path d="M7 16.5h6M10 13v3.5" /></svg></span>
+            <p><strong id="ov-store-h">Stored on this device</strong> <span>Export notes and download recordings before clearing browser data.</span></p>
+          </div>
+          <details className="r-ov-more">
+            <summary>Storage details</summary>
+            <div>
+              <p>Responses, signatures, progress, your notes and this checklist are saved in this browser’s local storage. Recordings are saved in this browser’s IndexedDB. Nothing is uploaded, synced or backed up.</p>
+              <p>Open the participant screen and this workspace in the same browser on the same device. A participant screen opened on another device or browser keeps its own separate record, which this workspace can’t see.</p>
+              <p>Clearing site data, or closing a private window, removes everything here. Use Export all and each session’s Recordings tab to keep a copy first.</p>
+            </div>
+          </details>
+        </section>
+        <details className="r-ov-check">
+          <summary><span className="r-ov-check-t">Before your first session</span><span className="r-ov-count">{done} of {beforeFirstSession.length} done</span></summary>
+          <div className="r-ov-check-body">
+            <p className="r-ov-note">Facilitator preparation only. This doesn’t affect any participant’s progress.</p>
+            {beforeFirstSession.map((b, i) => (
+              <label key={i} className="r-check"><input type="checkbox" checked={!!checks[i]} onChange={e => toggle(i, e.target.checked)} /><span>{b}</span></label>
+            ))}
+          </div>
+        </details>
+        <section className="r-ov-manage" aria-labelledby="ov-manage-h">
+          <div className="r-ov-manage-row">
+            <p id="ov-manage-h" className="r-ov-note">Test-run tools for sessions in this browser. Export first if you need anything.</p>
+            <Menu label="Session management" className="r-ov-mgmt">
+              <button type="button" role="menuitem" className="is-danger" onClick={() => { setConfirmAll(true); setAllMsg(''); }}>Reset all test sessions…</button>
+            </Menu>
+          </div>
+          {confirmAll && (
+            <div className="r-fw-confirm" role="alertdialog" aria-labelledby="ov-reset-h">
+              <p id="ov-reset-h"><strong>Reset all test sessions?</strong> This returns {participants.map(p => p.code).join(', ')} to Not started. In this browser only, it deletes their consent and signatures, answers, task progress and feedback, your notes, and their recordings. Open participant tabs in this browser stop recording and go back to Welcome. Your checklist is kept. It can’t be undone.</p>
+              <div className="r-actions is-start">
                 <button type="button" className="r-btn r-btn-danger" onClick={async () => {
                   setConfirmAll(false);
                   const out = []; for (const p of participants) out.push(await resetTestSession(p));
                   setAllMsg(out.join(' ')); force(x => x + 1);
                 }}>Reset all four</button>
-                <button type="button" className="r-link-btn" onClick={() => setConfirmAll(false)}>Cancel</button>
-              </span>}
-        </div>
-        {allMsg && <p className="r-small" role="status">{allMsg}</p>}
-        <section className="r-fac-box">
-          <h2 className="r-fac-h2">Before the first session</h2>
-          {beforeFirstSession.map((b, i) => (
-            <label key={i} className="r-check"><input type="checkbox" checked={!!checks[i]} onChange={e => toggle(i, e.target.checked)} /><span>{b}</span></label>
-          ))}
+                <button type="button" className="r-btn r-btn-secondary" onClick={() => setConfirmAll(false)}>Cancel</button>
+              </div>
+            </div>
+          )}
+          {allMsg && <p className="r-small" role="status">{allMsg}</p>}
         </section>
       </div>
     </main>
+  );
+}
+
+const STAGE_IDS = ['welcome', 'info', 'consent', 'about', 'tasks', 'closing'];
+
+// One participant session. Status comes from statusOf only (Completed needs the closing to have been saved).
+function SessionCard({ p, data }) {
+  const status = statusOf(data);
+  const total = journeysByRole[p.roleKey].journeys.length;
+  const si = STAGE_IDS.indexOf(data.stage);
+  const stage = status === 'in-progress' && si >= 0
+    ? `${sessionStages[si].title}${data.stage === 'tasks' ? ` · journey ${(data.taskIndex || 0) + 1} of ${total}` : ''}`
+    : null;
+  return (
+    <article className="r-ov-card" aria-labelledby={`ov-${p.id}`}>
+      <div className="r-ov-card-top">
+        <span className="r-ov-role" aria-hidden="true">{p.roleKey === 'ARM'
+          ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="3" /><path d="M8 15v-3M12 15V9M16 15v-5" /></svg>
+          : <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" /><path d="M15.5 5.5a3 3 0 0 1 0 5.6M17.5 14.4c1.6.6 2.7 2.2 3 4.6" /></svg>}
+        </span>
+        <span className={`r-ov-status is-${status}`}>{statusLabels[status]}</span>
+      </div>
+      <h2 id={`ov-${p.id}`} className="r-ov-code">{p.code}</h2>
+      <p className="r-ov-role-t">{p.role}</p>
+      <p className="r-ov-stage">{stage ? <>Current stage: <strong>{stage}</strong></> : status === 'completed' ? 'All stages complete' : 'Waiting to begin'}</p>
+      <div className="r-ov-actions">
+        <a className="r-btn" href={`#/f/${p.id}`}>Open workspace<span className="r-sr"> for {p.code}</span></a>
+        <a className="r-btn r-btn-secondary" href={`#/s/${p.id}`} target="_blank" rel="noopener">Participant screen <span aria-hidden="true">↗</span><span className="r-sr"> for {p.code} (opens in a new tab)</span></a>
+      </div>
+    </article>
   );
 }
 
@@ -457,26 +512,19 @@ async function resetTestSession(p) {
   }
 }
 
-// Quiet information panel: where data lives and how to keep observations away from the participant.
-function FacilitatorNotice() {
+// Shown only while the information sheet is still a draft.
+function DraftNotice() {
+  if (!isDraft()) return null;
   const pending = Object.values(infoSheet.pending);
   return (
-    <>
-      {isDraft() && (
-        <div className="r-panel is-warn r-fac-notice" role="note">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><path d="M10 3 2.5 16.5h15L10 3Z" /><path d="M10 8.5v3.5M10 14.5v.01" /></svg>
-          <div>
-            <strong>Information sheet v{infoSheet.version} is a draft and not ready for participants.</strong>
-            {pending.length > 0 && <> Confirm {pending.length === 1 ? 'this detail' : `these ${pending.length} details`} in <code>src/infoSheet.js</code> first:</>}
-            {pending.length > 0 && <ul className="r-fac-pending">{pending.map(t => <li key={t}>{t}</li>)}</ul>}
-          </div>
-        </div>
-      )}
-      <p className="r-panel is-quiet r-fac-notice">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg>
-        <span>{sessionModal.facilitatorStorage} {sessionModal.facilitatorGuidance}</span>
-      </p>
-    </>
+    <div className="r-panel is-warn r-fac-notice" role="note">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><path d="M10 3 2.5 16.5h15L10 3Z" /><path d="M10 8.5v3.5M10 14.5v.01" /></svg>
+      <div>
+        <strong>Information sheet v{infoSheet.version} is a draft and not ready for participants.</strong>
+        {pending.length > 0 && <> Confirm {pending.length === 1 ? 'this detail' : `these ${pending.length} details`} in <code>src/infoSheet.js</code> first:</>}
+        {pending.length > 0 && <ul className="r-fac-pending">{pending.map(t => <li key={t}>{t}</li>)}</ul>}
+      </div>
+    </div>
   );
 }
 
