@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // Hash routes for the session views: #/s/<id> participant, #/f/<id> facilitator, #/f facilitator overview.
-// Plain anchors on the home page (#team, #sessions) are not routes and leave the home page in place.
+// Plain anchors on the home page (#overview, #sessions) are not routes and leave the home page in place.
 function parse() {
   const h = window.location.hash || '';
   if (!h.startsWith('#/')) return { view: 'home' };

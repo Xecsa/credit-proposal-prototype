@@ -40,13 +40,12 @@ body{background:#F3F3F3}
 .r-tag{display:inline-flex;align-items:center;font-size:12px;line-height:16px;padding:4px 10px;border-radius:12px;background:var(--r-tag-bg);color:var(--r-text-2);white-space:nowrap}
 
 /* layout */
-.r-main{width:100%;max-width:1104px;margin:0 auto;padding:96px 32px 96px}
 .r-section{margin-top:96px}
 .r-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px}
 
 /* hero: deep navy at the top, royal-blue glow upper right, fading through pale blue into white.
    Recreated from the Figma reference (see config.js); the fine vertical texture fades out with the colour. */
-.r-hero{position:relative;isolation:isolate;padding:112px 32px 0;background:
+.r-hero{position:relative;isolation:isolate;padding:112px 32px 96px;background:
   radial-gradient(45% 40% at 18% 8%,rgba(10,15,30,.9) 0%,rgba(10,15,30,0) 70%),
   linear-gradient(180deg,var(--r-hero-top) 0%,var(--r-hero-deep) 26%,#13368E 40%,var(--r-hero-mid) 54%,var(--r-hero-pale) 68%,var(--r-canvas) 80%)}
 .r-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
@@ -131,35 +130,6 @@ body{background:#F3F3F3}
 .r-pcard:focus-within .r-pcard-bg{box-shadow:0 0 0 2px var(--r-primary)}
 .r-pcard .r-btn:active{transform:scale(.97)}
 
-/* project team: portrait + companion clusters on a faint dot grid, joined by thin curves */
-.r-team-sec{text-align:center;margin-bottom:32px;overflow-x:clip}
-.r-team-head{position:relative;z-index:1}
-.r-team-head .r-muted{margin-top:12px;font-size:16px}
-.r-team-stage{position:relative;isolation:isolate;max-width:880px;margin:40px auto 0;padding:24px 0 8px}
-.r-team-stage::before{content:"";position:absolute;inset:-40px -120px;z-index:-1;pointer-events:none;
-  background-image:radial-gradient(circle,#BFCBE5 1.2px,transparent 1.7px);background-size:22px 22px;
-  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 30%,transparent 100%)}
-.r-team-lines{position:absolute;left:0;top:0;width:100%;height:320px;overflow:visible;pointer-events:none}
-.r-team-list{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
-.r-team-member{position:relative;display:flex;flex-direction:column;align-items:center;cursor:default}
-.r-team-member:nth-child(2){margin-top:72px}
-.r-team-member:nth-child(3){margin-top:24px}
-.r-team-cluster{position:relative;width:120px;height:120px;transition:transform var(--t-hover) var(--ease)}
-.r-team-cluster::before{content:"";position:absolute;inset:-28px;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgba(80,130,255,.18),rgba(80,130,255,0));opacity:.6;transition:opacity var(--t-hover) var(--ease)}
-.r-team-portrait{width:120px;height:120px;border-radius:50%;padding:5px;background:#fff;border:1px solid #DCE3F2;box-shadow:0 1px 2px rgba(7,36,71,.06),0 10px 24px -6px rgba(7,36,71,.14)}
-.r-team-portrait img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#E8EEFB}
-.r-team-portrait img{object-fit:contain;object-position:center bottom}
-.r-team-companion{position:absolute;right:-50px;top:30px;width:64px;height:64px;border-radius:50%;padding:7px;background:#fff;border:1px solid #DCE3F2;box-shadow:0 1px 2px rgba(7,36,71,.05),0 8px 18px -6px rgba(7,36,71,.14);transition:transform var(--t-hover) var(--ease)}
-.r-team-companion img{display:block;width:100%;height:100%;object-fit:contain}
-.r-team-name{margin:20px 0 0;font-weight:500;color:var(--r-navy)}
-.r-team-role{margin:2px 0 0;font-size:13px;line-height:18px;color:var(--r-text-2)}
-.r-team-tag{display:block;margin-top:2px;font-size:11px;line-height:14px;color:var(--r-text-2)}
-@media (hover:hover) and (pointer:fine){
-  .r-team-member:hover .r-team-cluster{transform:translateY(-3px)}
-  .r-team-member:hover .r-team-cluster::before{opacity:1}
-  .r-team-member:hover .r-team-companion{transform:translateY(-5px) rotate(-4deg)}
-}
-
 /* One-time entrances (useReveal). Content is visible unless JS has armed it; nothing hides on scroll back.
    Only opacity and transform move, and the final state has no transform. */
 .r-hero-text.is-armed,.r-stagger.is-armed > li{opacity:0}
@@ -172,18 +142,7 @@ body{background:#F3F3F3}
 .r-bento > li:nth-child(2){--d:.07s}
 .r-bento > li:nth-child(3){--d:.14s}
 .r-bento > li:nth-child(4){--d:.21s}
-/* team assembles: clusters come in from ≤16px (left, below, right), 90ms apart; names and roles stay put.
-   Then the connector lines draw once. */
-.r-team-stage.is-armed .r-team-cluster{opacity:0}
-.r-team-stage.is-armed .r-team-member:nth-child(1) .r-team-cluster{transform:translate3d(-16px,0,0)}
-.r-team-stage.is-armed .r-team-member:nth-child(2) .r-team-cluster{transform:translate3d(0,16px,0)}
-.r-team-stage.is-armed .r-team-member:nth-child(3) .r-team-cluster{transform:translate3d(16px,0,0)}
-.r-team-stage.is-armed .r-team-lines path{stroke-dasharray:1;stroke-dashoffset:1}
-.r-team-stage.is-in .r-team-cluster{opacity:1;transform:none;transition:opacity var(--t-enter) var(--ease) var(--d,0s),transform var(--t-enter) var(--ease) var(--d,0s)}
-.r-team-stage.is-in .r-team-lines path{stroke-dashoffset:0;transition:stroke-dashoffset .6s var(--ease) .3s}
-.r-team-member:nth-child(2){--d:.09s}
-.r-team-member:nth-child(3){--d:.18s}
-.is-instant,.is-instant > li,.is-instant .r-team-cluster,.is-instant .r-team-lines path{transition:none!important}
+.is-instant,.is-instant > li{transition:none!important}
 
 /* buttons */
 .r-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border:1px solid var(--r-primary);border-radius:var(--r-radius);background:var(--r-primary);color:#fff;font-weight:500;cursor:pointer;transition:background-color .15s ease,transform .08s ease}
@@ -327,13 +286,12 @@ body{background:#F3F3F3}
 /* responsive */
 @media (max-width:1024px){
   .r-display{font-size:52px}
-  .r-hero{padding-top:88px}
+  .r-hero{padding-top:88px;padding-bottom:64px}
   .r-bento{grid-template-columns:repeat(2,minmax(0,1fr))}
   .r-bento > li.is-wide{grid-column:auto}
   .r-pcard-art,.is-narrow .r-pcard-art{width:240px}
 }
 @media (max-width:720px){
-  .r-main{padding:64px 16px 64px}
   .r-video{margin-top:40px}
   .r-lead-line{display:inline}
   .r-section{margin-top:64px}
@@ -346,20 +304,13 @@ body{background:#F3F3F3}
   .r-h2{font-size:24px}
   .r-lead{font-size:16px}
   .r-bento{grid-template-columns:1fr}
-  .r-team-sec{margin-bottom:16px}
-  .r-team-stage{margin-top:24px}
-  .r-team-lines{display:none}
-  .r-team-list{grid-template-columns:1fr;gap:56px}
-  .r-team-member:nth-child(n){margin-top:0}
-  /* simplified connector: a short vertical stroke between stacked clusters */
-  .r-team-member + .r-team-member::before{content:"";position:absolute;top:-48px;left:50%;width:1px;height:40px;background:linear-gradient(#5082FF00,#5082FF99,#5082FF00)}
   .r-sessions-band{padding:64px 16px 80px}
   .r-bento{grid-template-columns:1fr;grid-auto-rows:auto;gap:20px}
   .r-pcard{min-height:372px;border-radius:24px}
   .r-pcard-body{padding:28px 24px}
   .r-pcard-art,.is-narrow .r-pcard-art{width:200px;right:-24px;bottom:-30px}
   .r-h2-lg{font-size:28px}
-  .r-hero{padding:64px 16px 0}
+  .r-hero{padding:64px 16px 56px}
   .r-stages{grid-template-columns:1fr}
   .r-dialog-in{padding:20px}
   .r-logo{height:28px}
@@ -374,10 +325,9 @@ body{background:#F3F3F3}
   .r-page *,.r-dialog *{transition:none!important;animation:none!important}
   .r-btn:active,.r-icon-btn:active{transform:none}
   .r-play:active{transform:translate(-50%,-50%)}
-  .r-hero-text.is-armed,.r-stagger.is-armed > li,.r-team-stage.is-armed .r-team-cluster{opacity:1;transform:none}
-  .r-team-stage.is-armed .r-team-lines path{stroke-dashoffset:0}
+  .r-hero-text.is-armed,.r-stagger.is-armed > li{opacity:1;transform:none}
   .r-video,.r-hero-glow{transform:none!important}
   /* hover keeps its colour and border change, without movement */
   .r-pcard{--lift:0px!important}
-  .r-pcard .r-pcard-art img,.r-pcard .r-btn-arrow,.r-team-member .r-team-cluster,.r-team-member .r-team-companion{transform:none!important}
+  .r-pcard .r-pcard-art img,.r-pcard .r-btn-arrow{transform:none!important}
 }

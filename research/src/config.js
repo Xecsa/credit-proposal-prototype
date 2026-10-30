@@ -98,7 +98,6 @@ export const sessionsSection = {
 // Header anchor links. Each `id` is a section on the page.
 export const nav = [
   { id: 'overview', label: 'Overview' },
-  { id: 'team', label: 'Team' },
   { id: 'sessions', label: 'Sessions' }
 ];
 
@@ -116,17 +115,3 @@ export const sessionStages = [
 ];
 
 export const sessionNote = 'You can pause, skip a task, or stop at any time.';
-
-
-// Project team. `avatar` is a path under public/research/media/team/, or null to show a
-// clearly labelled placeholder. Swap files in without touching the components.
-export const teamSection = {
-  heading: 'Meet the project team',
-  text: 'Working together to shape the credit proposal experience.'
-};
-// `companion` is a decorative 3D shape (Figma AI, ENBD blues) shown beside the portrait.
-export const team = [
-  { id: 'viploave', name: 'Viploave', role: 'Product Owner', avatar: './media/team/viploave.webp', companion: './media/team/companion-navy.webp' },
-  { id: 'prashanti', name: 'Prashanti', role: 'Business Analyst', avatar: './media/team/prashanti-placeholder.webp', avatarIsPlaceholder: true, companion: './media/team/companion-royal.webp' },   // no photo supplied: generic figure, not a likeness. Swap the file to replace.
-  { id: 'saba', name: 'Saba', role: 'Senior Product Designer', avatar: './media/team/saba.webp', companion: './media/team/companion-pale.webp' }
-];

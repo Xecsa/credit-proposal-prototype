@@ -6,7 +6,6 @@ import Header from './components/Header.jsx';
 import WelcomeVideo from './components/WelcomeVideo.jsx';
 import ParticipantCard from './components/ParticipantCard.jsx';
 import SessionPreviewDialog from './components/SessionPreviewDialog.jsx';
-import TeamSection from './components/TeamSection.jsx';
 import Footer from './components/Footer.jsx';
 import ParticipantSession from './components/ParticipantSession.jsx';
 import FacilitatorView, { FacilitatorOverview } from './components/FacilitatorView.jsx';
@@ -53,7 +52,7 @@ function Home() {
   return (
     <>
       <main id="main">
-        {/* ENBD identity → introduction → video → project team → participant sessions */}
+        {/* ENBD identity → introduction → video → participant sessions */}
         <section ref={heroRef} id="overview" className="r-hero" aria-labelledby="welcome-title">
           <div className="r-hero-glow" aria-hidden="true" />
           <div className="r-hero-in">
@@ -66,10 +65,6 @@ function Home() {
             <WelcomeVideo figRef={videoRef} />
           </div>
         </section>
-
-        <div className="r-main">
-          <TeamSection />
-        </div>
 
         {/* Pale blue band. On wide, tall screens the intro sits in a sticky left column beside the cards. */}
         <section id="sessions" className="r-sessions-band" aria-labelledby="participants-title">

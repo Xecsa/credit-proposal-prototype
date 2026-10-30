@@ -8,7 +8,7 @@ It lives in `research/` and is built as a second page next to the prototype, so 
 
 ## What the site does
 
-- **Home** (`#/`): welcome, walkthrough video, project team and the four participant cards. Each card shows the
+- **Home** (`#/`): welcome, walkthrough video and the four participant cards. Each card shows the
   real status of that session (Not started, In progress, Completed) and opens a preview with
   "Start session" and "Facilitator view".
 - **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome and consent (participation and note-taking, separate
@@ -41,7 +41,7 @@ so a shared, access-controlled store is needed before any real participant data 
 
 Everything editable is in `src/config.js`: brand tokens and logo, project labels, prototype URL,
 version and research date (footer shows them only when set), session length, welcome copy, video path,
-participant codes and roles, session stages, journey areas and team names.
+participant codes and roles, session stages and journey areas.
 
 Brand values are labelled by source in `config.js`:
 - **corporate-ui**: read from the lib : corporate-ui Figma variables (font, primary #182F7C, text colours, 8px radius, 16px spacing).
@@ -59,13 +59,6 @@ It walks through the journey click by click with an earlier sample client, so th
   Figma for sharper display on high-density screens.
 - Hero gradient: recreated by sampling the "ENBD Gradient Header" in the Egypt EBM IPP Accounts screen. Values in
   `config.js` (`--r-hero-*`) are approximations, not design-system tokens.
-
-### Team portraits and companions
-
-`public/research/media/team/` holds circular-crop portraits made from the photos supplied for Viploave and Saba,
-an illustrated stand-in for Prashanti (marked `avatarIsPlaceholder` in `config.js`, which also sets its alt text),
-and three decorative 3D companion shapes generated with Figma AI in ENBD blues. Masters are in the project files
-under `research-home-assets/`. To replace a portrait, drop in a square image (320 px or larger) and update `avatar`.
 
 ### Session illustrations
 
@@ -89,7 +82,7 @@ passive, rAF-throttled listener (`useScrollMotion.js`) rather than adding GSAP:
 - video frame: scales 0.88 → 1 and rises 32px → 0 from the first scroll position where it is in view until its
   top sits below the sticky header; untransformed once full, focused or playing (no scrubbing, manual playback)
 Positions are read live each frame and recalculated after fonts, images and video metadata load.
-One-time entrances (`useReveal.js`): team clusters assemble and the connector lines draw once; session cards rise
+One-time entrances (`useReveal.js`): session cards rise
 12px in reading order. Sticky participant intro: CSS `position: sticky` at ≥1180px wide and ≥720px tall.
 Hover motion only on fine pointers. Content is visible unless JS arms it; focus reveals instantly;
 `prefers-reduced-motion` gives a static page. Only the research homepage uses any of this.
