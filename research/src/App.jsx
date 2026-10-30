@@ -82,14 +82,14 @@ function Home() {
             same content container as the header. */}
         <section id="sessions" className="r-sessions-band" aria-labelledby="participants-title">
           <div className="r-sessions">
-            {/* data-reveal wrappers are measured, never moved; their children carry the scroll-linked motion. */}
+            {/* data-reveal / data-card wrappers are measured, never moved; their children carry the motion. */}
             <div className="r-sessions-head">
               <div className="r-mask" data-reveal="heading"><h2 id="participants-title" className="r-h2 r-h2-lg r-mask-in">{sessionsSection.heading}</h2></div>
               <div data-reveal="text"><p className="r-muted r-rise">{sessionsSection.text}</p></div>
             </div>
             <ul className="r-bento" role="list">
               {participants.map(p => (
-                <li key={p.id} data-reveal="card">
+                <li key={p.id} data-card>
                   <div className="r-card-move">
                     <ParticipantCard participant={{ ...p, status: statuses[p.id] }} onOpen={openPreview} />
                   </div>

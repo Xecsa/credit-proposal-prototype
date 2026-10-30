@@ -89,17 +89,19 @@ Homepage only (Hero → Video → Sessions). Participant, consent and facilitato
   Anchors land below the header via `scroll-padding-top`.
 - Hero text (`useReveal.js`, on load): the heading rises 40px through an overflow-hidden mask, then the introduction
   follows (20px and a fade). It plays on load rather than on scroll so the first screen explains the project.
-- Scroll-linked (`useScrollMotion.js`, one passive rAF-throttled listener; every value is a function of scroll
-  position, so slow, fast and reverse scrolling end in the same state):
-  - hero layers: glow drifts down up to 40px and texture up to 16px, both slower than the text; the navy base is static
+- `useScrollMotion.js` (one passive rAF-throttled scroll listener plus one IntersectionObserver):
+  - hero layers: across the hero's whole scroll range the glow travels 56px and the texture 20px, so they keep
+    moving relative to the heading and video; the navy base is static
   - video frame: 94% scale and 30px lower to 100% and 0 as its slot travels from 90% of the viewport to the centre.
     Pressing play (or focusing it) settles it for the rest of the visit. No autoplay, scrubbing or pinning.
-  - `[data-reveal]` wrappers get `--p` (0 to 1) over a defined range of their top edge (`RANGES` in the hook): the
-    sessions heading rises through a mask, the sentence follows, and the cards rise 32px with the second card in a
-    row starting slightly later. Cards also get `--q` for a slow illustration drift (±14px).
-  - wrappers are measured but never moved; children carry the motion. Hover uses separate layers (card background
-    lift, illustration image lift, arrow), so scroll and hover transforms never combine on one element.
-- Content is visible if the script does not run (CSS falls back to the final state). Focus inside a card shows it
-  fully, and the bottom of the page shows everything.
-- Small screens: smaller video and card movement, no background or illustration parallax.
+  - text (`[data-reveal]`): "Your session starts here." rises 40px through a mask and fades in as its top moves from
+    90% to 65% of the viewport height; the sentence follows (86% to 60%, 24px). Follows the scroll until fully
+    revealed, then stays.
+  - cards (`[data-card]`): a one-off entrance (40px, fade, 550ms) when 15% is visible, 80ms apart for cards entering
+    together. A slow illustration drift (±14px) follows the scroll on its own wrapper.
+  - focus inside a section, a nav link, or loading the page with `#sessions` reveals it immediately.
+  - wrappers are measured but never moved. Entrance (`.r-card-move`), hover (`.r-pcard-bg`, `.r-art-main`, arrow)
+    and illustration drift (`.r-pcard-art`) are separate elements, so no element combines two transforms.
+- Content is visible if the script does not run (CSS falls back to the final state).
+- Small screens: smaller text, video and card movement, no background or illustration parallax.
 - `prefers-reduced-motion`: a static, fully readable page.

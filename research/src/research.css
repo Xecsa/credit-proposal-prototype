@@ -61,7 +61,7 @@ body{background:#F3F3F3}
 .r-hero-base{position:absolute;inset:0;background:
   radial-gradient(45% 40% at 18% 8%,rgba(10,15,30,.9) 0%,rgba(10,15,30,0) 70%),
   linear-gradient(180deg,var(--r-hero-top) 0%,var(--r-hero-deep) 26%,#13368E 40%,var(--r-hero-mid) 54%,var(--r-hero-pale) 68%,#F4F7FE 84%)}
-.r-hero-glow{position:absolute;inset:-56px 0 30% 0;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0);will-change:transform}
+.r-hero-glow{position:absolute;inset:-72px 0 30% 0;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0);will-change:transform}
 .r-hero-texture{position:absolute;inset:-24px 0 0;transform:translate3d(0,var(--tex-y,0px),0);background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,rgba(255,255,255,0) 1px 3px);
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%)}
 .r-hero-in{position:relative;text-align:center}
@@ -146,14 +146,18 @@ body{background:#F3F3F3}
 .r-hero-text.is-in .r-mask-in{transition:transform .7s var(--ease)}
 .r-hero-text.is-in .r-hero-intro{transition:opacity .6s var(--ease) .18s,transform .6s var(--ease) .18s}
 
-/* Scroll-linked reveals (useScrollMotion sets --p 0→1 on each [data-reveal] wrapper from its position).
-   Without JS the variable is unset and everything sits in its final place. Wrappers never move; children do. */
-.is-scroll-linked [data-reveal="heading"] .r-mask-in{transform:translate3d(0,calc((1 - var(--p,1)) * 105%),0)}
-.is-scroll-linked [data-reveal="text"] .r-rise{opacity:var(--p,1);transform:translate3d(0,calc((1 - var(--p,1)) * 20px),0)}
-.is-scroll-linked [data-reveal="card"] .r-card-move{opacity:calc(var(--p,1) * 1.6);transform:translate3d(0,calc((1 - var(--p,1)) * var(--card-rise,32px)),0)}
+/* Scroll-linked text (useScrollMotion sets --p 0→1 on each [data-reveal] wrapper from its position; it stays at 1
+   once reached). Without JS the variable is unset and everything sits in its final place. Wrappers never move. */
+.is-scroll-linked [data-reveal="heading"] .r-mask-in{opacity:var(--p,1);transform:translate3d(0,calc((1 - var(--p,1)) * var(--head-rise,40px)),0)}
+.is-scroll-linked [data-reveal="text"] .r-rise{opacity:var(--p,1);transform:translate3d(0,calc((1 - var(--p,1)) * var(--text-rise,24px)),0)}
+/* Card entrance, played once when 15% is visible: 40px and a fade over 550ms, 80ms apart (--d set by the hook).
+   Only .r-card-move moves here; hover lives on .r-pcard-bg and the illustration on .r-pcard-art / its <img>. */
+[data-card].is-armed .r-card-move{opacity:0;transform:translate3d(0,var(--card-rise,40px),0)}
+[data-card].is-armed.is-in .r-card-move{opacity:1;transform:none;transition:opacity .55s var(--ease) var(--d,0ms),transform .55s var(--ease) var(--d,0ms)}
+[data-card].is-armed.is-in.is-instant .r-card-move{transition:none}
 /* illustration depth: drifts 14px either side of its resting place while the card crosses the viewport,
    more slowly than the card itself; the hover lift is on the <img> inside, so the two never fight */
-.is-scroll-linked [data-reveal="card"] .r-pcard-art{transform:translate3d(0,calc((.5 - var(--q,.5)) * var(--art-drift,28px)),0)}
+.is-scroll-linked [data-card] .r-pcard-art{transform:translate3d(0,calc((.5 - var(--q,.5)) * var(--art-drift,28px)),0)}
 
 /* buttons */
 .r-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border:1px solid var(--r-primary);border-radius:var(--r-radius);background:var(--r-primary);color:#fff;font-weight:500;cursor:pointer;transition:background-color .15s ease,transform .08s ease}
@@ -308,7 +312,8 @@ body{background:#F3F3F3}
   .r-page{--gutter:16px}
   .r-video{--v-s0:.97;--v-y0:16px}
   .r-hero-glow,.r-hero-texture{transform:none}
-  .r-bento{--card-rise:16px;--art-drift:0px}
+  .r-page{--head-rise:24px;--text-rise:16px}
+  .r-bento{--card-rise:24px;--art-drift:0px}
   .r-lead-line{display:inline}
   .r-section{margin-top:64px}
   .r-header-in{height:56px;gap:8px}
