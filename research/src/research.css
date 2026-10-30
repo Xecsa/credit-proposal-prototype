@@ -38,6 +38,10 @@ body{background:#F3F3F3}
 .r-header-brand{display:flex;align-items:center;gap:16px;min-width:0}
 .r-logo{height:32px;width:auto;display:block;flex:none}
 .r-header-label{font-size:13px;line-height:18px;color:var(--r-text-2);padding-left:16px;border-left:1px solid var(--r-divider);white-space:nowrap}
+/* On every non-participant page the label is the way into the facilitator workspace */
+.r-header-label.is-link{display:inline-flex;align-items:center;min-height:44px;color:var(--r-primary);font-weight:500;text-decoration:none}
+.r-header-label.is-link:hover{text-decoration:underline;text-underline-offset:3px}
+.r-header-label.is-link.is-current{color:var(--r-navy)}
 /* compact navigation group: a subtle rounded container; the current item is a white tab with a fine border.
    Items keep the corporate 8px radius. Its outer edge is the container's right edge. */
 .r-nav{display:flex;align-items:center;gap:2px;padding:3px;background:#F1F4FB;border:1px solid #E1E7F4;border-radius:12px}
@@ -173,7 +177,8 @@ body{background:#F3F3F3}
 
 /* footer */
 .r-footer{border-top:1px solid var(--r-divider);background:var(--r-card)}
-.r-footer-in{padding-block:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--r-text-2)}
+.r-footer-in{padding-block:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--r-text-2)}
+.r-footer-fac{display:inline-flex;align-items:center;min-height:44px;color:var(--r-primary);font-weight:500;text-underline-offset:3px}
 
 
 /* ---------- session screens: participant and facilitator. Calm and stable, no motion. ---------- */

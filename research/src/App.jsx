@@ -23,7 +23,7 @@ export default function App() {
       {route.view === 'participant' && <ParticipantSession id={route.id} />}
       {route.view === 'facilitator' && <FacilitatorView id={route.id} />}
       {route.view === 'overview' && <FacilitatorOverview />}
-      <Footer />
+      <Footer view={route.view} />
     </div>
   );
 }

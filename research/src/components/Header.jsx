@@ -38,7 +38,9 @@ export default function Header({ view = 'home' }) {
       <div className="r-header-in">
         <div className="r-header-brand">
           <img className="r-logo" src={brand.logo} alt={brand.logoAlt} />
-          <span className="r-header-label">{view === 'participant' ? 'Usability session' : project.workspaceLabel}</span>
+          {view === 'participant'
+            ? <span className="r-header-label">Usability session</span>
+            : <a className={`r-header-label is-link${view === 'overview' ? ' is-current' : ''}`} href="#/f" aria-current={view === 'overview' ? 'page' : undefined}>{project.workspaceLabel}</a>}
         </div>
         {view === 'home'
           ? <nav className="r-nav" aria-label="Page sections">
