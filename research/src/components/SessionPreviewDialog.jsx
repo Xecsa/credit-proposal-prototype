@@ -47,9 +47,13 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
       {participant && (
         <div className="r-dlg">
           <header className="r-dlg-head">
-            {participant.illustration && (
-              <span className="r-dlg-art" aria-hidden="true"><img src={participant.illustration} alt="" /></span>
-            )}
+            {/* decorative band: soft ENBD-blue gradient over a faint grid, with the card's ADS illustration */}
+            <div className="r-dlg-hero" aria-hidden="true">
+              {participant.illustration && <span className="r-dlg-art"><img src={participant.illustration} alt="" /></span>}
+            </div>
+            <button type="button" className="r-dlg-close" onClick={() => ref.current.close()} aria-label="Close">
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
+            </button>
             <div className="r-dlg-titles">
               <h2 id="dlg-title" className="r-dlg-title">{participant.code}</h2>
               <p id="dlg-role" className="r-dlg-role">{participant.role}</p>
@@ -58,9 +62,6 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
                 <span className={`r-tag r-status is-${s}`}>Status: {statusLabels[s] || statusLabels['not-started']}</span>
               </div>
             </div>
-            <button type="button" className="r-dlg-close" onClick={() => ref.current.close()} aria-label="Close">
-              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
-            </button>
           </header>
 
           <div className="r-dlg-body">
@@ -91,7 +92,7 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
               </section>
             )}
 
-            <p className="r-panel is-calm"><Icon name="heart" /><span>{sessionModal.reassurance}</span></p>
+            <p className="r-panel is-glow"><Icon name="info" /><span>{sessionModal.reassurance}</span></p>
             {facilitator && (
               <div className="r-panel is-quiet is-facilitator">
                 <Icon name="info" />
@@ -105,9 +106,17 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
           </div>
 
           <footer className="r-dlg-foot">
-            <p className="r-dlg-store"><Icon name="device" /><span><strong>{sessionModal.storageTitle}</strong> {sessionModal.storage}</span></p>
-            {facilitator && <a className="r-btn r-btn-secondary" href={`#/f/${participant.id}`}>Open facilitator view</a>}
-            <a className="r-btn" href={`#/s/${participant.id}`}>{primary}</a>
+            <div className="r-dlg-sep" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12M2.8 2.8l8.4 8.4M11.2 2.8l-8.4 8.4" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" /></svg>
+            </div>
+            <div className="r-dlg-row">
+              <p className="r-dlg-store"><Icon name="device" /><span><strong>{sessionModal.storageTitle}</strong> {sessionModal.storage}</span></p>
+              {facilitator && <a className="r-link-btn r-dlg-fac" href={`#/f/${participant.id}`}>Open facilitator view</a>}
+              <div className="r-dlg-actions">
+                <button type="button" className="r-btn r-btn-secondary" onClick={() => ref.current.close()}>Not now</button>
+                <a className="r-btn" href={`#/s/${participant.id}`}>{primary}</a>
+              </div>
+            </div>
           </footer>
         </div>
       )}
