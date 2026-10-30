@@ -103,7 +103,6 @@ function Consent({ data, update, onInfo, onNext }) {
   return (
     <>
       <p className="r-session-lead">Please read each statement. Tick the ones you agree with, then add your name and signature.</p>
-      <p className="r-hint">Want to check something first? <button type="button" className="r-link-btn is-inline" onClick={onInfo}>Read the information sheet again</button></p>
       <fieldset className="r-fieldset">
         <legend>Consent</legend>
         {consentItems.map((t, i) => (
@@ -124,7 +123,7 @@ function Consent({ data, update, onInfo, onNext }) {
       </fieldset>
       <div className="r-field">
         <label htmlFor="c-name">Your name</label>
-        <input id="c-name" className="r-input" type="text" autoComplete="off" value={c.name || ''} onChange={e => set({ name: e.target.value })} />
+        <input id="c-name" className="r-input r-field-soft" type="text" autoComplete="off" value={c.name || ''} onChange={e => set({ name: e.target.value })} />
       </div>
       <div className="r-field">
         <span className="r-label" id="sig-label">Signature</span>
@@ -136,7 +135,7 @@ function Consent({ data, update, onInfo, onNext }) {
             </>}
       </div>
       <div className="r-actions">
-        <span />
+        <button type="button" className="r-btn r-btn-secondary" onClick={onInfo}>Back</button>
         <button type="button" className="r-btn" disabled={!ready} onClick={agree}>I agree, continue</button>
       </div>
       {!ready && <p className="r-hint">Tick each statement, add your name and sign to continue.</p>}
