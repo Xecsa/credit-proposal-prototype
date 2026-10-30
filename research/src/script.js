@@ -65,7 +65,7 @@ export const journeyOverview = {
   ARM: [
     { icon: 'client', title: 'Client Information review', text: 'Review the customer details you receive.' },
     { icon: 'docs', title: 'Documents & References review', text: 'Check the supporting documents.' },
-    { icon: 'chart', title: 'Financial Analysis and submission to RM', text: 'Complete the analysis and send it back to the RM.' }
+    { icon: 'chart', title: 'Financial Analysis', text: 'Complete the analysis and submit it to the RM.' }
   ]
 };
 

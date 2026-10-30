@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { project, sessionStages, sessionModal, statusLabels } from '../config.js';
 import { journeyOverview } from '../script.js';
+import { readSession } from '../store.js';
 
 // Session modal on the research home page. Native <dialog> opened with showModal(): focus stays inside, Escape
 // closes it and the page behind is inert. Focus returns to the card's button on close (see App).
@@ -39,6 +40,10 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
 
   const onBackdrop = e => { if (e.target === ref.current) ref.current.close(); };
   const s = status || 'not-started';
+  // Where a started session is now, using the same six stages as the participant's stepper.
+  const STAGE_IDS = ['welcome', 'info', 'consent', 'about', 'tasks', 'closing'];
+  const saved = participant && s === 'in-progress' ? readSession(participant.id) : {};
+  const current = s === 'in-progress' ? Math.max(0, STAGE_IDS.indexOf(saved.stage || 'welcome')) : -1;
   const journeys = participant ? journeyOverview[participant.roleKey] || [] : [];
   const primary = s === 'not-started' ? 'Continue to welcome' : s === 'in-progress' ? 'Resume session' : 'Open session';
 
@@ -71,9 +76,9 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
                 <h3 id="dlg-expect" className="r-dlg-h">What to expect</h3>
                 <ol className="r-dlg-list r-timeline">
                   {sessionStages.map((st, i) => (
-                    <li key={st.title}>
+                    <li key={st.title} className={i === current ? 'is-current' : ''} aria-current={i === current ? 'step' : undefined}>
                       <span className="r-dlg-mark is-step" aria-hidden="true">{i + 1}</span>
-                      <span className="r-dlg-item">{st.title}</span>
+                      <span className="r-dlg-item">{st.title}{i === current && <span className="r-sr"> (current step)</span>}</span>
                     </li>
                   ))}
                 </ol>

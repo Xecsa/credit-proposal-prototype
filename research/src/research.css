@@ -316,6 +316,8 @@ body{background:#F3F3F3}
 .r-dlg-list li{position:relative;display:flex;align-items:center;gap:12px;min-height:32px}
 .r-dlg-mark{flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--r-primary)}
 .r-dlg-mark.is-step{border-radius:50%;border:1px solid #C9D6F2;background:#fff;font-size:12px;font-weight:600}
+.r-timeline li.is-current .r-dlg-mark.is-step{background:var(--r-navy);border-color:var(--r-navy);color:#fff}
+.r-timeline li.is-current .r-dlg-item{font-weight:600;color:var(--r-navy)}
 .r-dlg-mark.is-icon{border-radius:10px;background:#EEF3FF}
 .r-timeline li:not(:last-child)::before{content:"";position:absolute;left:15.5px;top:32px;height:12px;width:1px;background:#D5DEF2}
 .r-dlg-item{font-size:14px;line-height:19px;color:var(--r-ink)}

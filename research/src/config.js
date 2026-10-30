@@ -109,10 +109,12 @@ export const statusLabels = {
 
 // "What to expect" in the session modal. Informational only: not progress, and not every task is required.
 export const sessionStages = [
-  { title: 'Welcome & consent', text: 'Understand the session and choose whether to participate.' },
+  { title: 'Welcome', text: 'Understand the session.' },
+  { title: 'Information', text: 'Read about this research.' },
+  { title: 'Consent', text: 'Choose whether to take part, and about recording.' },
   { title: 'About your work', text: 'Share a little about your responsibilities.' },
-  { title: 'Explore the application', text: 'Try realistic journeys and share your thoughts.' },
-  { title: 'Final feedback', text: 'Tell us what would better support your work.' }
+  { title: 'Tasks', text: 'Try realistic journeys and share your thoughts.' },
+  { title: 'Closing', text: 'Tell us what would better support your work.' }
 ];
 
 // Modal copy. Storage wording matches the implementation: localStorage in this browser, no sync, no backup.
