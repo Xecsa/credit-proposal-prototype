@@ -41,17 +41,33 @@ export const closingQuestion = 'What is the most important thing we should impro
 
 export const limitationNote = 'If an action is unavailable in the prototype, record what the participant expected and classify it as a prototype limitation, not a usability failure.';
 
+// Participant-facing overview shown in the session modal: three short rows per role, no times.
+// Detailed, goal-based task text stays on the individual task screens.
+export const journeyOverview = {
+  RM: [
+    { icon: 'client', title: 'Client Information', text: 'Review and update customer details.' },
+    { icon: 'docs', title: 'Documents & References', text: 'Prepare and check supporting documents.' },
+    { icon: 'chart', title: 'Financial Analysis review', text: 'Review the application after ARM submission.' }
+  ],
+  ARM: [
+    { icon: 'client', title: 'Client Information review', text: 'Review the customer details you receive.' },
+    { icon: 'docs', title: 'Documents & References review', text: 'Check the supporting documents.' },
+    { icon: 'chart', title: 'Financial Analysis and submission to RM', text: 'Complete the analysis and send it back to the RM.' }
+  ]
+};
+
+// Optional note from the participant, asked only after consent (on the "About your work" step).
+export const participantNote = {
+  label: 'Anything you’d like us to know? (optional)',
+  helper: 'You can also share this with your facilitator during the session.',
+  placeholder: 'Add a question or anything that would help you take part comfortably.'
+};
+
 export const journeysByRole = {
   RM: {
     title: 'RM session: prepare the application and review the analysis',
     prep: 'Fictional customer pack: meeting notes, facility request, stakeholder details, documents, and one financial figure that needs checking. Same core information for both RMs.',
     journeys: [
-      {
-        id: 'rm-call', title: 'BusinessOne / call report', minutes: 4, start: '',
-        task: 'You have met Orient Insurance to discuss a facility requirement. Record the meeting using these notes and take the opportunity forward into an application.',
-        ask: ['How well did the summary represent the discussion?', 'What would you check or change before continuing?', 'What did you expect to happen next?'],
-        observe: ['Finding the starting point', 'Entering notes', 'Checking generated content', 'Understanding the move from meeting to application']
-      },
       {
         id: 'rm-client', title: 'Client Information', minutes: 6, start: '',
         task: 'Prepare the customer information using this pack. Check the facility request, correct the supplied discrepancy, and confirm the relevant people and accounts.',

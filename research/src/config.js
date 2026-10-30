@@ -107,11 +107,19 @@ export const statusLabels = {
   'completed': 'Completed'
 };
 
+// "What to expect" in the session modal. Informational only: not progress, and not every task is required.
 export const sessionStages = [
-  { title: 'Welcome and consent', text: 'What the session is for, how notes are taken, and your consent.' },
-  { title: 'About your work', text: 'A few questions about the parts of a credit proposal you handle.' },
-  { title: 'Tasks', text: 'One goal at a time in the prototype, thinking aloud, with a short rating after each.' },
-  { title: 'Closing', text: 'Your overall feedback, then a thank-you.' }
+  { title: 'Welcome & consent', text: 'Understand the session and choose whether to participate.' },
+  { title: 'About your work', text: 'Share a little about your responsibilities.' },
+  { title: 'Explore the application', text: 'Try realistic journeys and share your thoughts.' },
+  { title: 'Final feedback', text: 'Tell us what would better support your work.' }
 ];
 
-export const sessionNote = 'You can pause, skip a task, or stop at any time.';
+// Modal copy. Storage wording matches the implementation: localStorage in this browser, no sync, no backup.
+export const sessionModal = {
+  reassurance: 'We’ll focus on your experience, not how much you complete. You can pause or skip a task at any time.',
+  storageTitle: 'Saved on this device.',
+  storage: 'Responses are stored in this browser and won’t sync to other devices.',
+  facilitatorStorage: 'Responses and notes are stored in this browser on this device. Export them before clearing browser data.',
+  facilitatorGuidance: 'Use the facilitator view on a separate screen to keep your observations out of the participant’s view.'
+};

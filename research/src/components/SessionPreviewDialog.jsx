@@ -1,11 +1,25 @@
 import React, { useEffect, useRef } from 'react';
-import { project, sessionStages, sessionNote, statusLabels } from '../config.js';
-import { journeysByRole } from '../script.js';
-import SessionStages from './SessionStages.jsx';
+import { project, sessionStages, sessionModal, statusLabels } from '../config.js';
+import { journeyOverview } from '../script.js';
 
-// Native <dialog> opened with showModal(): focus is kept inside, Escape closes it,
-// and the page behind is inert. Focus returns to the card's button on close (see App).
-export default function SessionPreviewDialog({ participant, status, onClose }) {
+// Session modal on the research home page. Native <dialog> opened with showModal(): focus stays inside, Escape
+// closes it and the page behind is inert. Focus returns to the card's button on close (see App).
+// Opening it never starts a session or changes a status; there are no inputs here, so nothing can be lost on close.
+// Participant notes are asked later, after consent. Facilitator actions and notes show only in a tab where a
+// facilitator route has been opened (see store.js); that is a convenience, not access control.
+const Icon = ({ name }) => {
+  const p = { width: 18, height: 18, viewBox: '0 0 20 20', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
+  if (name === 'clock') return <svg {...p} width={16} height={16}><circle cx="10" cy="10" r="7.25" /><path d="M10 6v4.2l2.6 1.6" /></svg>;
+  if (name === 'client') return <svg {...p}><circle cx="10" cy="7" r="3" /><path d="M4.5 16c.8-2.7 2.9-4 5.5-4s4.7 1.3 5.5 4" /></svg>;
+  if (name === 'docs') return <svg {...p}><path d="M6 2.75h5.5L15 6.25v11H6z" /><path d="M11.5 2.75v3.5H15M8.5 10h4M8.5 13h4" /></svg>;
+  if (name === 'chart') return <svg {...p}><path d="M3.5 16.5h13" /><path d="M6 13.5v-3M10 13.5V6.5M14 13.5v-5" /></svg>;
+  if (name === 'heart') return <svg {...p}><path d="M10 16s-6-3.6-6-8a3.25 3.25 0 0 1 6-1.7A3.25 3.25 0 0 1 16 8c0 4.4-6 8-6 8z" /></svg>;
+  if (name === 'device') return <svg {...p}><rect x="3" y="4" width="14" height="9.5" rx="1.5" /><path d="M7.5 16.5h5M10 13.5v3" /></svg>;
+  if (name === 'info') return <svg {...p}><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg>;
+  return null;
+};
+
+export default function SessionPreviewDialog({ participant, status, facilitator = false, onClose }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -24,46 +38,77 @@ export default function SessionPreviewDialog({ participant, status, onClose }) {
   }, [onClose]);
 
   const onBackdrop = e => { if (e.target === ref.current) ref.current.close(); };
-  const assigned = participant ? journeysByRole[participant.roleKey].journeys : [];
+  const s = status || 'not-started';
+  const journeys = participant ? journeyOverview[participant.roleKey] || [] : [];
+  const primary = s === 'not-started' ? 'Continue to welcome' : s === 'in-progress' ? 'Resume session' : 'Open session';
 
   return (
-    <dialog ref={ref} className="r-dialog" aria-labelledby="preview-title" aria-describedby="preview-desc" onClick={onBackdrop}>
+    <dialog ref={ref} className="r-dialog" aria-labelledby="dlg-title" aria-describedby="dlg-role" onClick={onBackdrop}>
       {participant && (
-        <div className="r-dialog-in">
-          <div className="r-dialog-head">
-            <div>
-              <p className="r-eyebrow">Session preview</p>
-              <h2 id="preview-title" className="r-h2">{participant.code} · {participant.role}</h2>
+        <div className="r-dlg">
+          <header className="r-dlg-head">
+            {participant.illustration && (
+              <span className="r-dlg-art" aria-hidden="true"><img src={participant.illustration} alt="" /></span>
+            )}
+            <div className="r-dlg-titles">
+              <h2 id="dlg-title" className="r-dlg-title">{participant.code}</h2>
+              <p id="dlg-role" className="r-dlg-role">{participant.role}</p>
+              <div className="r-dlg-meta">
+                <span className="r-dlg-time"><Icon name="clock" />Approximately {project.sessionMinutes} minutes</span>
+                <span className={`r-tag r-status is-${s}`}>Status: {statusLabels[s] || statusLabels['not-started']}</span>
+              </div>
             </div>
-            <button type="button" className="r-icon-btn" onClick={() => ref.current.close()} aria-label="Close preview">
-              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+            <button type="button" className="r-dlg-close" onClick={() => ref.current.close()} aria-label="Close">
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
             </button>
+          </header>
+
+          <div className="r-dlg-body">
+            <section aria-labelledby="dlg-expect">
+              <h3 id="dlg-expect" className="r-dlg-h">What to expect</h3>
+              <ol className="r-timeline">
+                {sessionStages.map((st, i) => (
+                  <li key={st.title}>
+                    <span className="r-timeline-n" aria-hidden="true">{i + 1}</span>
+                    <span className="r-timeline-t">{st.title}</span>
+                    <span className="r-timeline-d">{st.text}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            {journeys.length > 0 && (
+              <section aria-labelledby="dlg-journeys">
+                <h3 id="dlg-journeys" className="r-dlg-h">Journeys you’ll explore</h3>
+                <ul className="r-journeys">
+                  {journeys.map(j => (
+                    <li key={j.title}>
+                      <span className="r-journeys-icon"><Icon name={j.icon} /></span>
+                      <span><span className="r-journeys-t">{j.title}</span><span className="r-journeys-d">{j.text}</span></span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            <p className="r-panel is-calm"><Icon name="heart" /><span>{sessionModal.reassurance}</span></p>
+            {facilitator && (
+              <div className="r-panel is-quiet is-facilitator">
+                <Icon name="info" />
+                <span>
+                  <strong>For facilitators</strong>
+                  <span className="r-panel-line">{sessionModal.facilitatorStorage}</span>
+                  <span className="r-panel-line">{sessionModal.facilitatorGuidance}</span>
+                </span>
+              </div>
+            )}
           </div>
-          <p id="preview-desc" className="r-muted">
-            {project.sessionMinutes}-minute guided session · Status: {statusLabels[status] || statusLabels['not-started']}
-          </p>
 
-          <h3 className="r-h3">Planned stages</h3>
-          <SessionStages stages={sessionStages} compact />
-          <p className="r-note">{sessionNote}</p>
-
-          {assigned.length > 0 && (
-            <>
-              <h3 className="r-h3">Tasks for this session</h3>
-              <ul className="r-list">
-                {assigned.map(j => <li key={j.id}>{j.title} · {j.minutes} min</li>)}
-              </ul>
-              <p className="r-small r-muted">You don’t need to finish everything.</p>
-            </>
-          )}
-
-          <p className="r-callout r-callout-info">
-            Answers and notes are saved in this browser only. The facilitator view opens separately and is not shown to participants.
-          </p>
-          <div className="r-dialog-foot">
-            <a className="r-link-btn" href={`#/f/${participant.id}`}>Facilitator view</a>
-            <a className="r-btn" href={`#/s/${participant.id}`}>{status === 'not-started' || !status ? 'Start session' : 'Continue session'}</a>
-          </div>
+          <footer className="r-dlg-foot">
+            <p className="r-dlg-store"><Icon name="device" /><span><strong>{sessionModal.storageTitle}</strong> {sessionModal.storage}</span></p>
+            {facilitator && <a className="r-btn r-btn-secondary" href={`#/f/${participant.id}`}>Open facilitator view</a>}
+            <a className="r-btn" href={`#/s/${participant.id}`}>{primary}</a>
+          </footer>
         </div>
       )}
     </dialog>

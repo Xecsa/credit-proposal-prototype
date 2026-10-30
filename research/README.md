@@ -9,10 +9,12 @@ It lives in `research/` and is built as a second page next to the prototype, so 
 ## What the site does
 
 - **Home** (`#/`): welcome, walkthrough video and the four participant cards. Each card shows the
-  real status of that session (Not started, In progress, Completed) and opens a preview with
-  "Start session" and "Facilitator view".
+  real status of that session (Not started, In progress, Completed) and opens a session modal: what to expect,
+  the role's three journeys, a reassurance line and a storage notice, with "Continue to welcome" (or "Resume session").
+  "Open facilitator view" and the facilitator notes appear only in a browser tab where a facilitator page has been
+  opened (a convenience flag in sessionStorage, not access control).
 - **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome and consent (participation and note-taking, separate
-  optional recording, name, drawn or typed-name signature), brief role questions, the assigned journeys one scenario
+  optional recording, name, drawn or typed-name signature), brief role questions with an optional note ("Anything you’d like us to know?", asked only after consent), the assigned journeys one scenario
   at a time with an Open prototype button, a 1 to 7 ease rating with two short comments after each task, then the
   closing question and a thank-you. Task text is goal-based only. No clicks, model answers or observation checklist appear here.
 - **Facilitator view** (`#/f/<id>`): intro script, consent status, materials, live participant answers, a session clock

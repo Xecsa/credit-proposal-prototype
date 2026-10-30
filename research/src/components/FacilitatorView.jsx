@@ -6,7 +6,8 @@ import {
 } from '../script.js';
 import { useSession, statusOf, readSession, writeSession, clearSession, download } from '../store.js';
 import { prototypeHref } from '../useRoute.js';
-import { statusLabels } from '../config.js';
+import { statusLabels, sessionModal } from '../config.js';
+import { participantNote } from '../script.js';
 
 // Facilitator-only view: the script, prompts, what to observe, live participant answers, and the eight
 // recording fields for every task. Open it on a second screen; it updates as the participant answers.
@@ -34,6 +35,7 @@ export default function FacilitatorView({ id }) {
             <a className="r-link-btn" href="#/f">All sessions</a>
           </div>
         </div>
+        <FacilitatorNotice />
 
         <div className="r-fac-grid">
           <aside className="r-fac-side" aria-label="Timing and prompts">
@@ -71,6 +73,10 @@ export default function FacilitatorView({ id }) {
                   <p className="r-fac-a">{(data.role || {})[q.id] || <span className="r-muted">No answer yet</span>}</p>
                 </div>
               ))}
+              <div className="r-fac-qa">
+                <p className="r-fac-q">Participant’s note · {participantNote.label}</p>
+                <p className="r-fac-a">{data.participantNote || <span className="r-muted">None</span>}</p>
+              </div>
             </section>
 
             <h2 className="r-fac-h2 r-fac-sep">5–24 min · Journeys</h2>
@@ -84,14 +90,14 @@ export default function FacilitatorView({ id }) {
               <p className="r-fac-q">“{closingQuestion}”</p>
               <p className="r-fac-a">{data.closing || <span className="r-muted">No answer yet</span>}</p>
               <div className="r-field">
-                <label htmlFor="gen-notes">General notes</label>
+                <label htmlFor="gen-notes">Facilitator observations</label>
                 <textarea id="gen-notes" className="r-input" rows={4} value={data.generalNotes || ''} onChange={e => update(d => ({ ...d, generalNotes: e.target.value }))} />
               </div>
             </section>
 
             <section className="r-fac-box">
               <h2 className="r-fac-h2">Export and reset</h2>
-              <p className="r-small r-muted">Everything is saved in this browser only. Export after each session.</p>
+              <p className="r-small r-muted">{sessionModal.facilitatorStorage}</p>
               <div className="r-actions is-start">
                 <button type="button" className="r-btn" onClick={() => exportJson([p])}>Export JSON</button>
                 <button type="button" className="r-btn r-btn-secondary" onClick={() => exportCsv([p])}>Export CSV</button>
@@ -196,6 +202,7 @@ export function FacilitatorOverview() {
       <div className="r-fac-in">
         <p className="r-eyebrow">Facilitator view · not for participants</p>
         <h1 className="r-fac-h">Sessions</h1>
+        <FacilitatorNotice />
         <ul className="r-fac-list">
           {participants.map(p => (
             <li key={p.id} className="r-fac-box">
@@ -219,6 +226,16 @@ export function FacilitatorOverview() {
         </section>
       </div>
     </main>
+  );
+}
+
+// Quiet information panel: where data lives and how to keep observations away from the participant.
+function FacilitatorNotice() {
+  return (
+    <p className="r-panel is-quiet r-fac-notice">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg>
+      <span>{sessionModal.facilitatorStorage} {sessionModal.facilitatorGuidance}</span>
+    </p>
   );
 }
 

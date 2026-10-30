@@ -62,3 +62,9 @@ export function download(name, text, type) {
   a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+
+// Facilitator mode for this tab only: set when a facilitator route is opened in it, so the home page modal can show
+// facilitator actions and notes in that tab. A convenience, not access control.
+const FAC = 'cp-research:facilitator-tab';
+export function markFacilitatorTab() { try { sessionStorage.setItem(FAC, '1'); } catch (e) { /* ignore */ } }
+export function isFacilitatorTab() { try { return sessionStorage.getItem(FAC) === '1'; } catch (e) { return false; } }

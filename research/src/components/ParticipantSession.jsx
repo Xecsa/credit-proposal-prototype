@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { participants, project } from '../config.js';
-import { consentItems, consentRecording, roleQuestions, journeysByRole, afterTaskQuestions, easeScale, closingQuestion } from '../script.js';
+import { consentItems, consentRecording, roleQuestions, journeysByRole, afterTaskQuestions, easeScale, closingQuestion, participantNote } from '../script.js';
 import { useSession } from '../store.js';
 import { prototypeHref } from '../useRoute.js';
 import SignaturePad from './SignaturePad.jsx';
@@ -119,6 +119,12 @@ function RoleQuestions({ data, update, onBack, onNext }) {
           <textarea id={`rq-${q.id}`} className="r-input" rows={3} value={r[q.id] || ''} onChange={e => update(d => ({ ...d, role: { ...(d.role || {}), [q.id]: e.target.value } }))} />
         </div>
       ))}
+      {/* Optional, and only asked here, after consent. Stored with the session; never required. */}
+      <div className="r-field r-field-optional">
+        <label htmlFor="p-note">{participantNote.label}</label>
+        <p id="p-note-help" className="r-hint">{participantNote.helper}</p>
+        <textarea id="p-note" className="r-input" rows={4} aria-describedby="p-note-help" placeholder={participantNote.placeholder} value={data.participantNote || ''} onChange={e => update(d => ({ ...d, participantNote: e.target.value }))} />
+      </div>
       <div className="r-actions">
         <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back</button>
         <button type="button" className="r-btn" onClick={onNext}>Start the tasks</button>

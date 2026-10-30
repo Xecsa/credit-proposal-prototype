@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { brand, welcome, participants, sessionsSection } from './config.js';
 import useReveal from './useReveal.js';
 import useScrollMotion from './useScrollMotion.js';
@@ -10,10 +10,11 @@ import Footer from './components/Footer.jsx';
 import ParticipantSession from './components/ParticipantSession.jsx';
 import FacilitatorView, { FacilitatorOverview } from './components/FacilitatorView.jsx';
 import useRoute from './useRoute.js';
-import { useStatuses } from './store.js';
+import { useStatuses, markFacilitatorTab, isFacilitatorTab } from './store.js';
 
 export default function App() {
   const route = useRoute();
+  useEffect(() => { if (route.view === 'facilitator' || route.view === 'overview') markFacilitatorTab(); }, [route.view]);
   return (
     <div className="r-page" style={brand.tokens}>
       <a className="r-skip" href="#main">Skip to content</a>
@@ -99,7 +100,7 @@ function Home() {
           </div>
         </section>
       </main>
-      <SessionPreviewDialog participant={selected} status={selected ? statuses[selected.id] : null} onClose={closePreview} />
+      <SessionPreviewDialog participant={selected} status={selected ? statuses[selected.id] : null} facilitator={isFacilitatorTab()} onClose={closePreview} />
     </>
   );
 }
