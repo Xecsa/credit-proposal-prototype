@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { participants } from '../config.js';
 import {
   agenda, introScript, roleQuestions, journeysByRole, afterTaskQuestions, neutralPrompts, avoidPrompts,
-  closingQuestion, limitationNote, outcomes, classifications, noteFields, secondaryArea, beforeFirstSession
+  closingQuestion, reviewFollowUp, limitationNote, outcomes, classifications, noteFields, secondaryArea, beforeFirstSession
 } from '../script.js';
 import { infoSheet, isDraft } from '../infoSheet.js';
 import { useSession, statusOf, readSession, writeSession, clearSession, download } from '../store.js';
@@ -52,6 +52,7 @@ export default function FacilitatorView({ id }) {
                 <li>{afterTaskQuestions.ease} (1–7)</li>
                 <li>{afterTaskQuestions.unclear}</li>
                 <li>{afterTaskQuestions.fit}</li>
+                <li>After RM review / ARM submit only: {reviewFollowUp.q}</li>
               </ol>
               <p className="r-small r-muted">{limitationNote}</p>
             </section>
@@ -78,6 +79,12 @@ export default function FacilitatorView({ id }) {
                 <p className="r-fac-q">Participant’s note · {participantNote.label}</p>
                 <p className="r-fac-a">{data.participantNote || <span className="r-muted">None</span>}</p>
               </div>
+              {(data.role || {}).check && (
+                <div className="r-fac-qa">
+                  <p className="r-fac-q">Asked in About your work (earlier version) · “{reviewFollowUp.q}”</p>
+                  <p className="r-fac-a">{data.role.check}</p>
+                </div>
+              )}
             </section>
 
             <h2 className="r-fac-h2 r-fac-sep">5–24 min · Journeys</h2>
@@ -145,6 +152,7 @@ function JourneyCard({ n, j, pid, task, note, setNote }) {
         {task.ease ? ` · Ease ${task.ease}/7` : ''}
         {task.unclear ? ` · Unclear: “${task.unclear}”` : ''}
         {task.fit ? ` · Fit: “${task.fit}”` : ''}
+        {j.followUp && task.check ? ` · Checks most carefully: “${task.check}”` : ''}
       </p>
       <div className="r-fac-record">
         <fieldset className="r-seg">
@@ -266,13 +274,13 @@ function exportJson(list) {
   download(`credit-proposal-sessions-${stamp()}.json`, JSON.stringify(out, null, 2), 'application/json');
 }
 function exportCsv(list) {
-  const cols = ['participant', 'role', 'task', 'outcome', 'classification', 'ease', 'unclear', 'fit', 'observation', 'quote', 'screen', 'assistance', 'impact', 'followup', 'participant_status'];
+  const cols = ['participant', 'role', 'task', 'outcome', 'classification', 'ease', 'unclear', 'fit', 'checks_most_carefully', 'observation', 'quote', 'screen', 'assistance', 'impact', 'followup', 'participant_status'];
   const rows = [cols];
   list.forEach(p => {
     const d = readSession(p.id);
     journeysByRole[p.roleKey].journeys.forEach(j => {
       const t = (d.tasks || {})[j.id] || {}; const n = (d.notes || {})[j.id] || {};
-      rows.push([p.code, p.role, j.title, n.outcome, n.classification, t.ease, t.unclear, t.fit, n.observation, n.quote, n.screen, n.assistance, n.impact, n.followup, t.skipped ? 'skipped' : t.finishedAt ? 'finished' : '']);
+      rows.push([p.code, p.role, j.title, n.outcome, n.classification, t.ease, t.unclear, t.fit, t.check, n.observation, n.quote, n.screen, n.assistance, n.impact, n.followup, t.skipped ? 'skipped' : t.finishedAt ? 'finished' : '']);
     });
   });
   const csv = rows.map(r => r.map(v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`).join(',')).join('\n');

@@ -25,11 +25,20 @@ export const consentRecordings = [
   { key: 'recordAudio', label: 'I agree to audio of the session being recorded.' }
 ];
 
+// "About your work": two optional questions. Answers are optional so the facilitator can capture spoken answers instead.
+// `effort` keeps its id so answers saved under the earlier wording still show.
 export const roleQuestions = [
   { id: 'handle', q: 'Which parts of a credit proposal do you normally handle?' },
-  { id: 'effort', q: 'Where do you usually spend the most effort?' },
-  { id: 'check', q: 'Which information do you check most carefully before passing an application onward?' }
+  { id: 'effort', q: 'Thinking about your most recent credit proposal, which part required the most effort, and why?' }
 ];
+export const roleIntro = {
+  title: 'A little about your work',
+  intro: 'Let’s start with a brief conversation about how you work today.',
+  note: 'You can answer aloud—your facilitator can capture your responses.',
+  placeholder: 'Add a response, or discuss with your facilitator.'
+};
+// Asked after the review task (moved from "About your work"): RM Financial Analysis review, ARM Submit to RM.
+export const reviewFollowUp = { id: 'check', q: 'Which information do you check most carefully before passing an application onward?' };
 
 export const afterTaskQuestions = {
   ease: 'Overall, how difficult or easy was that task?',
@@ -63,7 +72,6 @@ export const journeyOverview = {
 // Optional note from the participant, asked only after consent (on the "About your work" step).
 export const participantNote = {
   label: 'Anything you’d like us to know? (optional)',
-  helper: 'You can also share this with your facilitator during the session.',
   placeholder: 'Add a question or anything that would help you take part comfortably.'
 };
 
@@ -89,6 +97,7 @@ export const journeysByRole = {
         id: 'rm-review', title: 'Financial Analysis review', minutes: 4, start: 'rm-review',
         task: 'The ARM has returned the application for your review. Review the analysis and comments, then decide whether to confirm it or return it.',
         ask: ['What informed your decision?', 'Was anything missing for your review?', 'Who would act next after your chosen action?'],
+        followUp: true,
         observe: ['Finding analysis and comments', 'Understanding ratings and summaries', 'Distinguishing review from editing', 'Choosing the appropriate handoff'],
         note: 'Opens at the prepared RM review state. Use a consistent scenario with a clear basis for the decision (e.g. a source figure that doesn’t match the analysis). Agree the expected response with the BA/PO.'
       }
@@ -121,6 +130,7 @@ export const journeysByRole = {
         id: 'arm-submit', title: 'Submit to RM', minutes: 3, start: 'arm',
         task: 'Your analysis is ready for RM review. Communicate the issue or qualification they need to consider and pass the application onward.',
         ask: ['What do you expect the RM to receive?', 'Where would you check your comment later?', 'What tells you that your work has been handed over?'],
+        followUp: true,
         observe: ['Adding a useful comment', 'Understanding submission', 'Confirmation and next owner', 'Locating comment history'],
         note: 'Continues in the same prototype tab from the analysis task.'
       }

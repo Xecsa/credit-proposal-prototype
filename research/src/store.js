@@ -10,8 +10,10 @@ export function readSession(id) {
   try { return JSON.parse(localStorage.getItem(KEY(id)) || 'null') || {}; } catch (e) { return {}; }
 }
 export function writeSession(id, data) {
-  try { localStorage.setItem(KEY(id), JSON.stringify(data)); } catch (e) { /* storage unavailable: keep in memory only */ }
+  let ok = true;
+  try { localStorage.setItem(KEY(id), JSON.stringify(data)); } catch (e) { ok = false; /* storage unavailable */ }
   listeners.forEach(fn => fn(id));
+  return ok;
 }
 export function clearSession(id) {
   try { localStorage.removeItem(KEY(id)); } catch (e) { /* ignore */ }
@@ -38,7 +40,7 @@ export function useSession(id) {
   }, [id]);
   const update = useCallback(fn => {
     const next = fn(readSession(id));
-    writeSession(id, next);
+    return writeSession(id, next);
   }, [id]);
   return [data, update];
 }

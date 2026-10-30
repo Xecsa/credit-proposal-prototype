@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { participants, project } from '../config.js';
-import { consentItems, consentRecordings, roleQuestions, journeysByRole, journeyOverview, afterTaskQuestions, easeScale, closingQuestion, participantNote } from '../script.js';
+import { consentItems, consentRecordings, roleQuestions, roleIntro, reviewFollowUp, journeysByRole, journeyOverview, afterTaskQuestions, easeScale, closingQuestion, participantNote } from '../script.js';
 import { infoSheet } from '../infoSheet.js';
 import { useSession } from '../store.js';
 import { prototypeHref } from '../useRoute.js';
@@ -39,7 +39,7 @@ export default function ParticipantSession({ id }) {
 
   return (
     <main id="main" className="r-session">
-      <div className={`r-session-in${stage === 'info' ? ' is-reading' : ''}`}>
+      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
         <p className="r-eyebrow">{p.code} · {p.role}</p>
         <ol className="r-steps" aria-label="Session progress">
           {STEPS.map((s, i) => (
@@ -48,19 +48,17 @@ export default function ParticipantSession({ id }) {
             </li>
           ))}
         </ol>
-        <div className={`r-session-card${stage === 'info' ? ' is-reading' : ''}`}>
-          {stage === 'info'
-            ? <InfoSheet ctx={ctx} headRef={headRef} onBack={() => go({ stage: 'welcome' })} onNext={() => go({ stage: 'consent' })} />
-            : <h1 ref={headRef} tabIndex={-1} className="r-session-h">
+        <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
+          {stage === 'info' && <InfoSheet ctx={ctx} headRef={headRef} onBack={() => go({ stage: 'welcome' })} onNext={() => go({ stage: 'consent' })} />}
+          {stage === 'about' && <RoleQuestions p={p} headRef={headRef} data={data} update={update} onBack={() => go({ stage: 'consent' })} onNext={() => go({ stage: 'tasks', taskIndex: 0 })} />}
+          {stage !== 'info' && stage !== 'about' && <h1 ref={headRef} tabIndex={-1} className="r-session-h">
                 {stage === 'welcome' && 'Welcome'}
                 {stage === 'consent' && 'Consent form'}
-                {stage === 'about' && 'About your work'}
                 {stage === 'tasks' && `Task ${taskIndex + 1} of ${role.journeys.length}`}
                 {stage === 'closing' && (data.completedAt ? 'Thank you' : 'One last question')}
               </h1>}
           {stage === 'welcome' && <Welcome onNext={() => go({ stage: 'info' })} />}
           {stage === 'consent' && <Consent data={data} update={update} onInfo={() => go({ stage: 'info' })} onNext={() => go({ stage: 'about' })} />}
-          {stage === 'about' && <RoleQuestions data={data} update={update} onBack={() => go({ stage: 'consent' })} onNext={() => go({ stage: 'tasks', taskIndex: 0 })} />}
           {stage === 'tasks' && (
             <Task
               key={role.journeys[taskIndex].id}
@@ -146,28 +144,61 @@ function Consent({ data, update, onInfo, onNext }) {
   );
 }
 
-function RoleQuestions({ data, update, onBack, onNext }) {
+// "About your work": a short conversation, not a questionnaire. Two optional questions (the facilitator may capture
+// spoken answers instead), a collapsed optional note, and a save status that reflects the actual localStorage write.
+function RoleQuestions({ p, headRef, data, update, onBack, onNext }) {
   const r = data.role || {};
+  const [noteOpen, setNoteOpen] = useState(!!data.participantNote);
+  const [saved, setSaved] = useState(null); // null until the first edit, then true / false
+  const save = fn => setSaved(update(fn) !== false);
   return (
-    <>
-      <p className="r-session-lead">Before we start, a little about how you work today. Your facilitator may ask these out loud and note your answers.</p>
-      {roleQuestions.map(q => (
-        <div key={q.id} className="r-field">
-          <label htmlFor={`rq-${q.id}`}>{q.q}</label>
-          <textarea id={`rq-${q.id}`} className="r-input" rows={3} value={r[q.id] || ''} onChange={e => update(d => ({ ...d, role: { ...(d.role || {}), [q.id]: e.target.value } }))} />
+    <section className="r-about" aria-labelledby="about-title">
+      <header className="r-about-head">
+        <span className="r-about-art" aria-hidden="true"><img src={p.illustration} alt="" width="52" height="52" /></span>
+        <h1 id="about-title" ref={headRef} tabIndex={-1} className="r-about-title">{roleIntro.title}</h1>
+        <p className="r-about-intro">{roleIntro.intro}</p>
+        <p className="r-about-note">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M10 3a2.5 2.5 0 0 1 2.5 2.5V10a2.5 2.5 0 0 1-5 0V5.5A2.5 2.5 0 0 1 10 3Z" /><path d="M5 9.5a5 5 0 0 0 10 0M10 14.5V17" /></svg>
+          {roleIntro.note}
+        </p>
+      </header>
+
+      <div className="r-about-body">
+        {roleQuestions.map((q, i) => (
+          <div key={q.id} className="r-about-q">
+            <span className="r-about-n" aria-hidden="true">{i + 1}</span>
+            <div className="r-about-field">
+              <label htmlFor={`rq-${q.id}`} className="r-about-label">{q.q}</label>
+              <textarea id={`rq-${q.id}`} className="r-about-input" rows={3} placeholder={roleIntro.placeholder} value={r[q.id] || ''}
+                onChange={e => { const v = e.target.value; save(d => ({ ...d, role: { ...(d.role || {}), [q.id]: v } })); }} />
+            </div>
+          </div>
+        ))}
+
+        <div className={`r-about-more${noteOpen ? ' is-open' : ''}`}>
+          <button type="button" className="r-about-toggle" aria-expanded={noteOpen} aria-controls="p-note-wrap" onClick={() => setNoteOpen(o => !o)}>
+            <span>{participantNote.label}</span>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 8 4 4 4-4" /></svg>
+          </button>
+          <div id="p-note-wrap" hidden={!noteOpen}>
+            <label htmlFor="p-note" className="r-sr">{participantNote.label}</label>
+            <textarea id="p-note" className="r-about-input" rows={3} placeholder={participantNote.placeholder} value={data.participantNote || ''}
+              onChange={e => { const v = e.target.value; save(d => ({ ...d, participantNote: v })); }} />
+          </div>
         </div>
-      ))}
-      {/* Optional, and only asked here, after consent. Stored with the session; never required. */}
-      <div className="r-field r-field-optional">
-        <label htmlFor="p-note">{participantNote.label}</label>
-        <p id="p-note-help" className="r-hint">{participantNote.helper}</p>
-        <textarea id="p-note" className="r-input" rows={4} aria-describedby="p-note-help" placeholder={participantNote.placeholder} value={data.participantNote || ''} onChange={e => update(d => ({ ...d, participantNote: e.target.value }))} />
       </div>
-      <div className="r-actions">
-        <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back</button>
-        <button type="button" className="r-btn" onClick={onNext}>Start the tasks</button>
-      </div>
-    </>
+
+      <footer className="r-about-foot">
+        <p className={`r-about-save${saved === false ? ' is-error' : ''}`} role="status" aria-live="polite">
+          {saved === true && 'Saved on this device'}
+          {saved === false && 'Couldn’t save on this device. Your facilitator can note your answers.'}
+        </p>
+        <div className="r-about-actions">
+          <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back</button>
+          <button type="button" className="r-btn" onClick={onNext}>Continue to tasks</button>
+        </div>
+      </footer>
+    </section>
   );
 }
 
@@ -226,6 +257,12 @@ function Task({ journey, data, update, onBack, onNext }) {
             <label htmlFor={`fit-${journey.id}`}>{afterTaskQuestions.fit}</label>
             <textarea id={`fit-${journey.id}`} className="r-input" rows={3} value={t.fit || ''} onChange={e => set({ fit: e.target.value })} />
           </div>
+          {journey.followUp && (
+            <div className="r-field">
+              <label htmlFor={`chk-${journey.id}`}>{reviewFollowUp.q}</label>
+              <textarea id={`chk-${journey.id}`} className="r-input" rows={3} value={t.check || ''} onChange={e => set({ check: e.target.value })} />
+            </div>
+          )}
           <div className="r-actions">
             <button type="button" className="r-btn r-btn-secondary" onClick={() => setPhase('task')}>Back to the task</button>
             <button type="button" className="r-btn" onClick={onNext}>Continue</button>

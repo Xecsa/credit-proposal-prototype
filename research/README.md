@@ -16,8 +16,8 @@ It lives in `research/` and is built as a second page next to the prototype, so 
 - **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome, then the Participant Information Sheet ("About this
   research", 10 sections, the participant's own journeys, a downloadable copy built from the same content), then the
   consent form (participation and note-taking, separate optional screen and audio recording, name, drawn or typed-name
-  signature, and a link back to the information sheet). The sheet's version is saved with the consent record. brief role questions with an optional note ("Anything you’d like us to know?", asked only after consent), the assigned journeys one scenario
-  at a time with an Open prototype button, a 1 to 7 ease rating with two short comments after each task, then the
+  signature, and a link back to the information sheet). The sheet's version is saved with the consent record. "A little about your work" (two optional questions in a centred card, answers can be given aloud instead, and a collapsed optional note asked only after consent; a status line shows whether the last edit actually saved to this browser), the assigned journeys one scenario
+  at a time with an Open prototype button, a 1 to 7 ease rating with two short comments after each task (plus "Which information do you check most carefully before passing an application onward?" after RM Financial Analysis review and ARM Submit to RM), then the
   closing question and a thank-you. Task text is goal-based only. No clicks, model answers or observation checklist appear here.
 - **Facilitator view** (`#/f/<id>`): intro script, consent status, materials, live participant answers, a session clock
   with the agenda, neutral prompts, and for every task: Outcome, Observation, Quote, Screen or step, Assistance,
