@@ -421,6 +421,7 @@ body{background:#F3F3F3}
 .r-pis-group{margin-top:20px}
 .r-pis-h3{margin:0;font-size:15px;line-height:22px;font-weight:600;color:var(--r-ink)}
 .r-pis-group p{margin-top:4px}
+.r-pis-contact a{color:var(--r-primary);text-underline-offset:3px}
 .r-pis-contact{display:flex;flex-direction:column;gap:2px;padding:16px 20px;border-radius:12px;background:var(--r-surface)}
 .r-tbc{padding:1px 6px;border-radius:4px;background:#FFF4D6;color:#5A4300;font-size:.94em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .r-pis-foot{margin-top:48px;padding-top:32px;border-top:1px solid var(--r-divider)}

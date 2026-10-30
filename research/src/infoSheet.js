@@ -1,5 +1,5 @@
 // Participant Information Sheet: step 1 of the participant session, after Welcome and before Consent.
-// One versioned source for both the page and the downloadable copy (see infoSheetHtml below).
+// One versioned source for the page (and for infoSheetHtml below, which is kept but not offered as a download).
 // Structure follows the uploaded Middlesex (MDX) template, adapted to this study. Nothing from the earlier
 // MDX study (topic, university, ethics committee, team) is reused.
 //
@@ -15,19 +15,11 @@ export const infoSheet = {
   label: 'Before we begin',
   title: 'About this research',
   intro: 'Please read this information before deciding whether to take part. Take your time, and ask your facilitator if anything is unclear.',
-  contact: { name: 'Saba Shaikh', role: 'Senior Product Designer', email: { tbc: 'contactEmail' } },
+  contact: { name: 'Saba Shaikh', role: 'Senior Product Designer', email: 'sabash@emiratesnbd.com', phone: '+971 55 328 9032' },
 
   // Unconfirmed details. Keys are referenced from the sections below.
   pending: {
-    contactEmail: 'Confirmed research contact email address',
-    stopHandling: 'What happens to information already collected if a participant stops during the session',
-    recordingCapture: 'How screen and audio recordings are captured, where they are stored, and who can access them',
-    exportStorage: 'Where exported session files are stored after the session',
-    viewers: 'Who is authorised to see session answers, facilitator notes and recordings',
-    retention: 'How long session information, consent records and recordings are kept, and how they are deleted',
-    consentStorage: 'How signed consent records are kept separate from research data after export',
-    withdrawalContact: 'The agreed way to ask for information to be withdrawn',
-    withdrawalLimits: 'Any deadline or limits on withdrawing information (do not assume one)'
+    recordingCapture: 'How screen and audio recordings are captured and where they are stored'
   },
 
   // Each paragraph is an array of parts: a string, or { tbc: key }, or { roleList: true }.
@@ -64,7 +56,7 @@ export const infoSheet = {
       heading: 'Do I have to take part?',
       body: [
         ['No. Taking part is voluntary, and it’s fine to decide not to.'],
-        ['If you do take part, you can pause, skip a task or stop at any time, without giving a reason. If you stop: ', { tbc: 'stopHandling' }],
+        ['If you do take part, you can pause, skip a task or stop at any time, without giving a reason. You can also ask for your information to be withdrawn at any time (see below).'],
         ['If you later want your information withdrawn, see “Can I withdraw my information?” below.']
       ]
     },
@@ -92,10 +84,8 @@ export const infoSheet = {
       heading: 'How will my information be handled?',
       groups: [
         { label: 'What we collect', body: [['Your participant code ({code}) and role; your answers to the questions in this session, including task ratings and any optional note; the times you start and finish each task; the facilitator’s observations; your name and signature on the consent form; and, only if you agree, screen and audio recordings.']] },
-        { label: 'Where it’s stored', body: [['During the session, your answers are saved only in this browser on this device. They aren’t sent to a server and don’t sync to other devices. After the session, the facilitator exports them as a file. '], [{ tbc: 'exportStorage' }]] },
-        { label: 'Who can see it', body: [[{ tbc: 'viewers' }]] },
-        { label: 'How long it’s kept', body: [[{ tbc: 'retention' }]] },
-        { label: 'Consent records', body: [['Your name and signature are saved with this session in the browser. The exported file includes your name and records that the form was signed, but not the signature itself. '], [{ tbc: 'consentStorage' }]] },
+        { label: 'Where it’s stored', body: [['Your answers are stored in this browser on this device. They aren’t sent to a server and don’t sync to other devices.']] },
+        { label: 'Who can see it', body: [['The project’s product owner (PO), business analyst (BA), Saba Shaikh (designer) and the lead designer.']] },
         { label: 'Recordings', body: [['Only made if you agree on the next screen. ', { tbc: 'recordingCapture' }]] }
       ]
     },
@@ -111,8 +101,7 @@ export const infoSheet = {
       id: 'withdraw',
       heading: 'Can I withdraw my information?',
       body: [
-        ['To ask for your information to be withdrawn: ', { tbc: 'withdrawalContact' }, ' Please quote your participant code, {code}.'],
-        [{ tbc: 'withdrawalLimits' }]
+        ['Yes, you can withdraw your information at any time. Contact Saba Shaikh by email or phone (see below) and quote your participant code, {code}.']
       ]
     },
     {
@@ -134,7 +123,8 @@ export function fill(text, ctx) {
   return text.replace(/\{(role|code|minutes)\}/g, (_, k) => ctx[k]);
 }
 
-// Downloadable copy: a self-contained HTML file built from the same content and version as the page.
+// Standalone HTML copy built from the same content and version. Not linked from the page (the download button was
+// removed at Saba's request); kept so it can be offered again or printed by the facilitator.
 export function infoSheetHtml(ctx) {
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const part = x => {
@@ -144,7 +134,7 @@ export function infoSheetHtml(ctx) {
     if (x.roleList) return `<ul>${ctx.journeys.map(j => `<li>${esc(j)}</li>`).join('')}</ul>`;
     if (x.contact) {
       const c = infoSheet.contact;
-      return `<strong>${esc(c.name)}</strong><br>${esc(c.role)}<br>${typeof c.email === 'string' ? esc(c.email) : part(c.email)}`;
+      return `<strong>${esc(c.name)}</strong><br>${esc(c.role)}<br>Email: ${esc(c.email)}<br>Phone: ${esc(c.phone)}`;
     }
     return '';
   };

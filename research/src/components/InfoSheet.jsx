@@ -1,15 +1,10 @@
 import React from 'react';
-import { infoSheet, isDraft, infoSheetVersionLabel, fill, infoSheetHtml } from '../infoSheet.js';
-import { download } from '../store.js';
+import { infoSheet, isDraft, infoSheetVersionLabel, fill } from '../infoSheet.js';
 
 // Step 1: Participant Information Sheet. A stable reading page: no motion, no questions, no timers,
 // no recording or device permissions. Continuing is not consent; that is asked on the next screen.
 export default function InfoSheet({ ctx, headRef, onBack, onNext }) {
   const draft = isDraft();
-  const save = () => download(
-    `enbd-credit-proposal-information-sheet-v${infoSheet.version}${draft ? '-draft' : ''}-${ctx.id}.html`,
-    infoSheetHtml(ctx), 'text/html'
-  );
 
   const part = (x, k) => {
     if (typeof x === 'string') return <React.Fragment key={k}>{fill(x, ctx)}</React.Fragment>;
@@ -21,7 +16,8 @@ export default function InfoSheet({ ctx, headRef, onBack, onNext }) {
         <span key={k} className="r-pis-contact">
           <strong>{c.name}</strong>
           <span>{c.role}</span>
-          <span>{typeof c.email === 'string' ? <a href={`mailto:${c.email}`}>{c.email}</a> : <Tbc id={c.email.tbc} />}</span>
+          <span>Email: <a href={`mailto:${c.email}`}>{c.email}</a></span>
+          <span>Phone: <a href={`tel:${c.phone.replace(/\s/g, '')}`}>{c.phone}</a></span>
         </span>
       );
     }
@@ -71,10 +67,7 @@ export default function InfoSheet({ ctx, headRef, onBack, onNext }) {
             <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back to welcome</button>
             <a className="r-link-btn" href="#/">Leave session</a>
           </span>
-          <span className="r-pis-actions-end">
-            <button type="button" className="r-btn r-btn-secondary" onClick={save}>Download information sheet</button>
-            <button type="button" className="r-btn" onClick={onNext}>Continue to consent</button>
-          </span>
+          <button type="button" className="r-btn" onClick={onNext}>Continue to consent</button>
         </div>
       </footer>
     </article>

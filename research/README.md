@@ -14,7 +14,7 @@ It lives in `research/` and is built as a second page next to the prototype, so 
   "Open facilitator view" and the facilitator notes appear only in a browser tab where a facilitator page has been
   opened (a convenience flag in sessionStorage, not access control).
 - **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome, then the Participant Information Sheet ("About this
-  research", 10 sections, the participant's own journeys, a downloadable copy built from the same content), then the
+  research", 10 sections, the participant's own journeys; actions are Back to welcome, Leave session and Continue to consent), then the
   consent form (participation and note-taking, separate optional screen and audio recording, name, drawn or typed-name
   signature, and a link back to the information sheet). The sheet's version is saved with the consent record. "A little about your work" (two optional questions in a centred card, answers can be given aloud instead, and a collapsed optional note asked only after consent; a status line shows whether the last edit actually saved to this browser), the assigned journeys one scenario
   at a time with an Open prototype button, a 1 to 7 ease rating with two short comments after each task (plus "Which information do you check most carefully before passing an application onward?" after RM Financial Analysis review and ARM Submit to RM), then the
@@ -28,7 +28,7 @@ It lives in `research/` and is built as a second page next to the prototype, so 
 
 Content and version live in `src/infoSheet.js`. Its structure follows the uploaded Middlesex template, adapted to this
 study; nothing from the earlier MDX study is reused and no ethics approval is implied. Details nobody has confirmed are
-`{ tbc: key }` entries listed in `pending`. They show as "To be confirmed" on the page and in the download, and the
+`{ tbc: key }` entries listed in `pending`. They show as "To be confirmed" on the page, and the
 facilitator pages show a "not ready for participants" warning until `pending` is empty and `status` is `'final'`.
 Bump `version` whenever the wording changes. The sheet asks nothing, starts no recording and requests no device permissions.
 
