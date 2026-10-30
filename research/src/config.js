@@ -77,15 +77,15 @@ export const video = {
 // (Document, Docs-Calculator, Docs-Gear, Phone-Chat). Decorative only.
 // Asymmetric bento on desktop: RM 01 wide + RM 02 narrow, then ARM 01 narrow + ARM 02 wide.
 // `illustration` / `illustrationShadow` are the two layers of the same ADS asset (ENBD, light, metallic),
-// exported at 3x. `tone` picks the card surface.
+// exported at 3x. All four cards share one size and surface.
 export const participants = [
-  { id: 'rm-01', code: 'RM 01', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', size: 'wide', tone: 'sky',
+  { id: 'rm-01', code: 'RM 01', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started',
     illustration: './media/illustrations/metallic-document-declaration.webp', illustrationShadow: './media/illustrations/metallic-document-declaration-shadow.webp' },
-  { id: 'rm-02', code: 'RM 02', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started', size: 'narrow', tone: 'white',
+  { id: 'rm-02', code: 'RM 02', role: 'Relationship Manager', roleKey: 'RM', status: 'not-started',
     illustration: './media/illustrations/metallic-docs-calculator.webp', illustrationShadow: './media/illustrations/metallic-docs-calculator-shadow.webp' },
-  { id: 'arm-01', code: 'ARM 01', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', size: 'narrow', tone: 'white',
+  { id: 'arm-01', code: 'ARM 01', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started',
     illustration: './media/illustrations/metallic-document-search.webp', illustrationShadow: './media/illustrations/metallic-document-search-shadow.webp' },
-  { id: 'arm-02', code: 'ARM 02', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started', size: 'wide', tone: 'white',
+  { id: 'arm-02', code: 'ARM 02', role: 'Assistant Relationship Manager', roleKey: 'ARM', status: 'not-started',
     illustration: './media/illustrations/metallic-phone-chat.webp', illustrationShadow: './media/illustrations/metallic-phone-chat-shadow.webp' }
 ];
 

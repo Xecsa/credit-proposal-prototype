@@ -8,11 +8,15 @@ html{scroll-padding-top:88px}
 @media (max-width:720px){html{scroll-padding-top:72px}}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:#F3F3F3}
-.r-page{--ease:cubic-bezier(.22,1,.36,1);--t-enter:.5s;--t-hover:.25s;min-height:100vh;display:flex;flex-direction:column;background:var(--r-canvas);color:var(--r-ink);font-family:var(--r-font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.r-page{--ease:cubic-bezier(.22,1,.36,1);--t-enter:.5s;--t-hover:.25s;--content:1136px;--gutter:32px;min-height:100vh;display:flex;flex-direction:column;background:var(--r-canvas);color:var(--r-ink);font-family:var(--r-font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .r-page button{font:inherit}
 .r-page :focus-visible{outline:2px solid var(--r-focus);outline-offset:2px}
 .r-skip{position:absolute;left:16px;top:-48px;z-index:30;background:var(--r-card);color:var(--r-primary);padding:8px 16px;border-radius:var(--r-radius);border:1px solid var(--r-border)}
 .r-skip:focus{top:12px}
+
+/* One content container for the header, hero, video, sessions and footer: 1136px of content plus the gutters.
+   Full-width backgrounds sit on the outer elements; only these inner wrappers are constrained. */
+.r-header-in,.r-hero-in,.r-sessions,.r-footer-in{width:100%;max-width:calc(var(--content) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
 
 /* type */
 .r-eyebrow{margin:0 0 16px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--r-text-2)}
@@ -26,21 +30,20 @@ body{background:#F3F3F3}
 .r-note{margin:16px 0 0;color:var(--r-ink);font-weight:500}
 
 /* header: sticky, logo kept on white so its colours are unchanged. Dialogs open in the top layer, above it. */
-/* At the top it is a light, slightly translucent white (the logo always sits on white, so its colours are
-   unchanged); after ~50px it turns solid with a subtle border, over 200ms. Height never changes. */
-.r-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.3) blur(8px);backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid transparent;transition:background-color .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease)}
-.r-header.is-scrolled{background:#fff;border-bottom-color:var(--r-divider);box-shadow:0 6px 20px -14px rgba(7,36,71,.16)}
-.r-header-in{max-width:1200px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+/* Opaque white and sticky, so nothing shows through; after ~50px a subtle border and shadow appear (200ms).
+   Height and logo never change. Dialogs open in the top layer, above it. */
+.r-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid transparent;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.r-header.is-scrolled{border-bottom-color:var(--r-divider);box-shadow:0 6px 20px -14px rgba(7,36,71,.16)}
+.r-header-in{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .r-header-brand{display:flex;align-items:center;gap:16px;min-width:0}
 .r-logo{height:32px;width:auto;display:block;flex:none}
 .r-header-label{font-size:13px;line-height:18px;color:var(--r-text-2);padding-left:16px;border-left:1px solid var(--r-divider);white-space:nowrap}
-.r-nav{display:flex;align-items:center;gap:4px}
-.r-nav a{position:relative;display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:var(--r-radius);font-size:14px;font-weight:500;color:var(--r-text-2);text-decoration:none;transition:background-color .15s ease,color .2s var(--ease)}
-.r-nav a:hover{background:var(--r-surface);color:var(--r-navy)}
-/* current section: colour and an underline drawn in place, so nothing shifts */
-.r-nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:1px;background:var(--r-primary);transform:scaleX(0);transition:transform .25s var(--ease)}
-.r-nav a.is-active{color:var(--r-navy)}
-.r-nav a.is-active::after{transform:scaleX(1)}
+/* compact navigation group: a subtle rounded container; the current item is a white tab with a fine border.
+   Items keep the corporate 8px radius. Its outer edge is the container's right edge. */
+.r-nav{display:flex;align-items:center;gap:2px;padding:3px;background:#F1F4FB;border:1px solid #E1E7F4;border-radius:12px}
+.r-nav a{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border-radius:var(--r-radius);font-size:14px;font-weight:500;color:var(--r-text-2);text-decoration:none;transition:background-color .2s var(--ease),color .2s var(--ease),box-shadow .2s var(--ease)}
+.r-nav a:hover{color:var(--r-navy);background:rgba(255,255,255,.6)}
+.r-nav a.is-active{color:var(--r-navy);background:#fff;box-shadow:0 1px 2px rgba(7,36,71,.08),0 0 0 1px rgba(24,47,124,.10)}
 
 /* tags */
 .r-tag{display:inline-flex;align-items:center;font-size:12px;line-height:16px;padding:4px 10px;border-radius:12px;background:var(--r-tag-bg);color:var(--r-text-2);white-space:nowrap}
@@ -53,21 +56,24 @@ body{background:#F3F3F3}
    sessions band colour (#F4F7FE), so the page flows into the cards with no hard edge. The glow moves
    with scroll (parallax, max 40px); the base and texture do not. Values recreated from the Figma reference
    (see config.js); they are approximations, not tokens. */
-.r-hero{position:relative;isolation:isolate;padding:112px 32px 112px}
+.r-hero{position:relative;isolation:isolate;padding:112px 0}
 .r-hero-layers{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
 .r-hero-base{position:absolute;inset:0;background:
   radial-gradient(45% 40% at 18% 8%,rgba(10,15,30,.9) 0%,rgba(10,15,30,0) 70%),
   linear-gradient(180deg,var(--r-hero-top) 0%,var(--r-hero-deep) 26%,#13368E 40%,var(--r-hero-mid) 54%,var(--r-hero-pale) 68%,#F4F7FE 84%)}
 .r-hero-glow{position:absolute;inset:-56px 0 30% 0;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0);will-change:transform}
-.r-hero-texture{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,rgba(255,255,255,0) 1px 3px);
+.r-hero-texture{position:absolute;inset:-24px 0 0;transform:translate3d(0,var(--tex-y,0px),0);background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,rgba(255,255,255,0) 1px 3px);
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%)}
-.r-hero-in{position:relative;max-width:1040px;margin:0 auto;text-align:center}
+.r-hero-in{position:relative;text-align:center}
+/* text masks: the inner element rises through an overflow-hidden wrapper; a little padding keeps descenders */
+.r-mask{overflow:hidden;padding:0 0 .12em;margin-bottom:-.12em}
+.r-mask-in{display:block}
 
 /* video */
 /* The slot holds the final layout space (and is the #video anchor); only the figure inside is transformed. */
 .r-video-slot{margin:56px auto 0;max-width:960px}
-.r-video{--v-s0:.92;--v-y0:20px;margin:0;transform-origin:50% 50%}
-/* scroll-linked: 92% → 100% and 20px → 0 as it travels to the centre; untransformed when full or settled */
+.r-video{--v-s0:.94;--v-y0:30px;margin:0;transform-origin:50% 50%}
+/* scroll-linked: 94% → 100% and 30px → 0 as it travels to the centre; untransformed when full or settled */
 .r-video.is-linked{transform:translate3d(0,calc((1 - var(--vp,1)) * var(--v-y0)),0) scale(calc(var(--v-s0) + var(--vp,1) * (1 - var(--v-s0))))}
 .r-video.is-linked.is-full,.r-video.is-settled{transform:none}
 /* pressing play early settles the frame with a short ease rather than a jump */
@@ -89,34 +95,29 @@ body{background:#F3F3F3}
 
 /* sessions: a pale blue band. Cards use a larger 28px radius here only (homepage treatment);
    buttons keep the corporate 8px radius. */
-.r-sessions-band{background:linear-gradient(180deg,#F4F7FE 0%,#EEF3FD 100%);padding:48px 32px 128px}
-/* same content width as the header (1200 max minus 32px padding each side), so cards line up with the
-   logo on the left and the last nav link on the right */
-.r-sessions{max-width:1136px;margin:0 auto}
+.r-sessions-band{background:linear-gradient(180deg,#F4F7FE 0%,#EEF3FD 100%);padding:48px 0 128px}
+/* .r-sessions uses the shared content container (see top), so the grid's edges match the header's */
 .r-sessions-head{text-align:center;margin-bottom:48px}
 .r-sessions-head .r-muted{margin-top:12px;font-size:16px}
 .r-h2-lg{font-size:40px;line-height:1.2;letter-spacing:-.02em}
 .r-dot{width:8px;height:8px;border-radius:50%;background:#B8BFCC}
 
-/* bento: 3 columns; RM 01 and ARM 02 span two */
-.r-bento{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:440px;gap:24px}
+/* four equal cards, two by two; every card has the same size, surface and illustration placement */
+.r-bento{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:400px;gap:24px}
 .r-bento > li{display:flex;min-width:0}
-.r-bento > li.is-wide{grid-column:span 2}
-.r-pcard{--lift:0px;--glow:0;flex:1;position:relative;isolation:isolate;border-radius:28px;-webkit-tap-highlight-color:transparent}
+.r-card-move{flex:1;display:flex;min-width:0}
+.r-pcard{--lift:0px;--glow:0;--surface:#fff;flex:1;position:relative;isolation:isolate;border-radius:28px;-webkit-tap-highlight-color:transparent}
 /* background layer: surface, glow and illustration. It lifts and clips; the text above it does not move. */
 .r-pcard-bg{position:absolute;inset:0;z-index:-1;border-radius:inherit;overflow:hidden;background:var(--surface);
   box-shadow:0 1px 2px rgba(7,36,71,.04),0 0 0 1px rgba(24,47,124,.05);transform:translate3d(0,var(--lift),0);
   transition:transform .28s var(--ease),box-shadow .28s var(--ease)}
 .r-pcard-glow{position:absolute;width:80%;aspect-ratio:1;right:-18%;bottom:-30%;border-radius:50%;background:radial-gradient(closest-side,rgba(80,130,255,.28),rgba(80,130,255,0));opacity:calc(.45 + var(--glow) * .55);transition:opacity .28s var(--ease)}
-.r-pcard.tone-sky{--surface:linear-gradient(140deg,#FFFFFF 0%,#F1F5FE 45%,#DCE6FC 100%)}
-.r-pcard.tone-white{--surface:#FFFFFF}
 /* illustration anchored lower right, allowed to crop at the rounded edge */
-.r-pcard-art{position:absolute;right:-28px;bottom:-40px;width:330px;aspect-ratio:1;pointer-events:none}
-.is-narrow .r-pcard-art{width:204px;right:-26px;bottom:-40px}
+.r-pcard-art{position:absolute;right:-20px;bottom:-40px;width:290px;aspect-ratio:1;pointer-events:none}
 .r-pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .28s var(--ease),opacity .28s var(--ease)}
 .r-art-shadow{opacity:.85}
 /* details top-left */
-.r-pcard-body{position:relative;padding:36px;display:flex;flex-direction:column;align-items:flex-start;max-width:340px}
+.r-pcard-body{position:relative;padding:36px;display:flex;flex-direction:column;align-items:flex-start;max-width:330px}
 .r-pcard-label{margin:0 0 12px;font-size:12px;line-height:16px;color:var(--r-text-2)}
 .r-pcard-code{margin:0;font-size:34px;line-height:1.1;font-weight:500;letter-spacing:-.02em;color:var(--r-navy)}
 .r-pcard-role{margin:8px 0 0;color:var(--r-ink)}
@@ -136,23 +137,23 @@ body{background:#F3F3F3}
 .r-pcard:has(:focus-visible) .r-pcard-bg{box-shadow:0 0 0 2px var(--r-primary),0 22px 44px -16px rgba(24,47,124,.24)}
 .r-pcard .r-btn:active{transform:scale(.97)}
 
-/* One-time entrances (useReveal). Content is visible unless JS has armed it; nothing hides on scroll back.
-   Only opacity and transform move, and the final state has no transform. */
-.r-hero-text.is-armed,.r-reveal.is-armed,.r-stagger.is-armed > li{opacity:0}
-.r-hero-text.is-armed{transform:translateY(14px)}
-.r-reveal.is-armed{transform:translateY(12px)}
-.r-hero-text.is-in,.r-reveal.is-in,.r-stagger.is-in > li{opacity:1;transform:none}
-.r-hero-text.is-in,.r-reveal.is-in{transition:opacity var(--t-enter) var(--ease),transform var(--t-enter) var(--ease)}
-/* cards: the <li> carries the entrance only (18px, ±0.4° settling to 0), the card background carries hover and
-   the illustration its own lift, so the three never fight. Reading order, 60ms stagger, 450ms each. */
-.r-stagger.is-armed > li{transform:translate3d(0,18px,0) rotate(var(--rot,0deg))}
-.r-bento > li:nth-child(odd){--rot:-.4deg}
-.r-bento > li:nth-child(even){--rot:.4deg}
-.r-bento.is-in > li{transition:opacity .45s var(--ease) var(--d,0s),transform .45s var(--ease) var(--d,0s)}
-.r-bento > li:nth-child(2){--d:.06s}
-.r-bento > li:nth-child(3){--d:.12s}
-.r-bento > li:nth-child(4){--d:.18s}
-.is-instant,.is-instant > li{transition:none!important}
+/* Hero text on load (useReveal, immediate): the heading rises 40px through its mask, the introduction follows
+   with 20px and a fade. It runs at load rather than on scroll so the first screen already explains the project.
+   Content is visible unless JS has armed it. */
+.r-hero-text.is-armed .r-mask-in{transform:translate3d(0,40px,0)}
+.r-hero-text.is-armed .r-hero-intro{opacity:0;transform:translate3d(0,20px,0)}
+.r-hero-text.is-in .r-mask-in,.r-hero-text.is-in .r-hero-intro{opacity:1;transform:none}
+.r-hero-text.is-in .r-mask-in{transition:transform .7s var(--ease)}
+.r-hero-text.is-in .r-hero-intro{transition:opacity .6s var(--ease) .18s,transform .6s var(--ease) .18s}
+
+/* Scroll-linked reveals (useScrollMotion sets --p 0→1 on each [data-reveal] wrapper from its position).
+   Without JS the variable is unset and everything sits in its final place. Wrappers never move; children do. */
+.is-scroll-linked [data-reveal="heading"] .r-mask-in{transform:translate3d(0,calc((1 - var(--p,1)) * 105%),0)}
+.is-scroll-linked [data-reveal="text"] .r-rise{opacity:var(--p,1);transform:translate3d(0,calc((1 - var(--p,1)) * 20px),0)}
+.is-scroll-linked [data-reveal="card"] .r-card-move{opacity:calc(var(--p,1) * 1.6);transform:translate3d(0,calc((1 - var(--p,1)) * var(--card-rise,32px)),0)}
+/* illustration depth: drifts 14px either side of its resting place while the card crosses the viewport,
+   more slowly than the card itself; the hover lift is on the <img> inside, so the two never fight */
+.is-scroll-linked [data-reveal="card"] .r-pcard-art{transform:translate3d(0,calc((.5 - var(--q,.5)) * var(--art-drift,28px)),0)}
 
 /* buttons */
 .r-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border:1px solid var(--r-primary);border-radius:var(--r-radius);background:var(--r-primary);color:#fff;font-weight:500;cursor:pointer;transition:background-color .15s ease,transform .08s ease}
@@ -184,7 +185,7 @@ body{background:#F3F3F3}
 
 /* footer */
 .r-footer{border-top:1px solid var(--r-divider);background:var(--r-card)}
-.r-footer-in{max-width:1200px;margin:0 auto;padding:24px 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--r-text-2)}
+.r-footer-in{padding-block:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--r-text-2)}
 
 
 /* ---------- session screens: participant and facilitator. Calm and stable, no motion. ---------- */
@@ -297,35 +298,32 @@ body{background:#F3F3F3}
 @media (max-width:1024px){
   .r-display{font-size:52px}
   .r-hero{padding-top:88px;padding-bottom:64px}
-  .r-bento{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .r-bento > li.is-wide{grid-column:auto}
-  .r-pcard-art,.is-narrow .r-pcard-art{width:240px}
+  .r-bento{grid-auto-rows:420px}
+  .r-pcard-body{padding:32px;max-width:300px}
+  .r-pcard-art{width:200px;right:-18px;bottom:-30px}
 }
 @media (max-width:720px){
   .r-video-slot{margin-top:40px}
-  /* simpler motion on small screens: a smaller video change, no glow parallax, no card rotation */
-  .r-video{--v-s0:.96;--v-y0:12px}
-  .r-hero-glow{transform:none}
-  .r-bento > li:nth-child(n){--rot:0deg}
-  .r-stagger.is-armed > li{transform:translate3d(0,12px,0)}
+  /* simpler motion on small screens: smaller video and card movement, no background or illustration parallax */
+  .r-page{--gutter:16px}
+  .r-video{--v-s0:.97;--v-y0:16px}
+  .r-hero-glow,.r-hero-texture{transform:none}
+  .r-bento{--card-rise:16px;--art-drift:0px}
   .r-lead-line{display:inline}
   .r-section{margin-top:64px}
-  .r-header-in{padding:0 16px;height:56px;gap:8px}
+  .r-header-in{height:56px;gap:8px}
   .r-header-label{display:none}
-  .r-nav{gap:0}
-  .r-nav a{padding:0 8px;font-size:13px}
-  .r-footer-in{padding:20px 16px}
+  .r-nav a{min-height:32px;padding:0 10px;font-size:13px}
+  .r-footer-in{padding-block:20px}
   .r-display{font-size:40px}
   .r-h2{font-size:24px}
   .r-lead{font-size:16px}
-  .r-bento{grid-template-columns:1fr}
-  .r-sessions-band{padding:32px 16px 80px}
-  .r-bento{grid-template-columns:1fr;grid-auto-rows:auto;gap:20px}
-  .r-pcard{min-height:372px;border-radius:28px}
+  .r-sessions-band{padding:32px 0 80px}
+  .r-bento{grid-template-columns:1fr;grid-auto-rows:360px;gap:20px}
   .r-pcard-body{padding:28px 24px}
-  .r-pcard-art,.is-narrow .r-pcard-art{width:200px;right:-24px;bottom:-30px}
+  .r-pcard-art{width:180px;right:-16px;bottom:-26px}
   .r-h2-lg{font-size:28px}
-  .r-hero{padding:64px 16px 56px}
+  .r-hero{padding:64px 0 56px}
   .r-stages{grid-template-columns:1fr}
   .r-dialog-in{padding:20px}
   .r-logo{height:28px}
@@ -334,14 +332,14 @@ body{background:#F3F3F3}
 }
 @media (max-width:360px){
   .r-logo{height:24px}
-  .r-nav a{padding:0 6px}
+  .r-nav a{padding:0 8px}
 }
 @media (prefers-reduced-motion:reduce){
   .r-page *,.r-dialog *{transition:none!important;animation:none!important}
   .r-btn:active,.r-icon-btn:active{transform:none}
   .r-play:active{transform:translate(-50%,-50%)}
-  .r-hero-text.is-armed,.r-reveal.is-armed,.r-stagger.is-armed > li{opacity:1;transform:none}
-  .r-video,.r-hero-glow{transform:none!important}
+  .r-hero-text .r-mask-in,.r-hero-text .r-hero-intro{opacity:1!important;transform:none!important}
+  .r-video,.r-hero-glow,.r-hero-texture,.r-card-move,.r-pcard-art,.r-mask-in,.r-rise{opacity:1!important;transform:none!important}
   /* hover keeps its colour and border change, without movement */
   .r-pcard{--lift:0px!important}
   .r-pcard .r-pcard-art img,.r-pcard .r-btn-arrow{transform:none!important}

@@ -74,23 +74,32 @@ its shadow, so the hover can move them at slightly different rates without alter
 poster is a frame taken from this original. The source itself is a 720p, WhatsApp-compressed recording, so
 the player is capped at 960 px wide; a sharper result needs a new 1080p (or larger) screen recording.
 
+### Layout
+
+One content container (`--content: 1136px` plus `--gutter`, 32px or 16px on small screens) is shared by the header,
+hero, video, sessions grid and footer, so the grid's edges line up with the logo and the navigation group.
+Full-width backgrounds sit on the outer elements. The four participant cards are equal (two by two, one column on
+small screens) with the same surface, padding, 28px corners and lower-right illustration, clipped inside the card.
+
 ### Motion
 
 Homepage only (Hero → Video → Sessions). Participant, consent and facilitator screens have no motion.
-- Header (`Header.jsx`): sticky, fixed 64px height; after ~50px of scroll the background turns solid with a subtle
-  border (200ms). Overview / Video / Sessions links underline the section under the header without shifting.
+- Header (`Header.jsx`): sticky and opaque, fixed height. A compact rounded group holds Overview, Video and Sessions;
+  the section under the header is the highlighted item. After ~50px a subtle border and shadow appear (200ms).
   Anchors land below the header via `scroll-padding-top`.
-- Scroll-linked (`useScrollMotion.js`, one passive rAF-throttled listener):
-  - hero glow layer moves down up to 40px, so it travels more slowly than the text; the navy base and texture are
-    separate static layers and the base fades into the sessions band colour
-  - video frame goes from 92% scale and 20px lower to 100% and 0 as it travels from the lower viewport to the
-    centre, both ways with the scroll. The `#video` slot keeps the final layout space; only the figure moves.
-    Pressing play (or focusing the video) settles it at full size for the rest of the visit. No autoplay,
-    no scrubbing, no pinning.
-- One-time entrances (`useReveal.js`): the sessions intro fades up 12px; the four cards rise 18px with a ±0.4°
-  tilt settling to 0, 450ms each, 60ms apart in reading order. They stay visible on scroll back.
-- Cards: the list item carries the entrance, the card background the 4px hover lift and glow, the illustration its
-  own 7px lift and 1.03 scale, and the arrow moves 3px, all 280ms. Text and button never move. Keyboard focus gets
-  an equivalent border emphasis. Hover only on fine pointers.
-- Small screens: smaller video change (96%, 12px), no glow parallax, no card tilt.
-- Content is visible unless JS arms it; focus reveals instantly; `prefers-reduced-motion` gives a static page.
+- Hero text (`useReveal.js`, on load): the heading rises 40px through an overflow-hidden mask, then the introduction
+  follows (20px and a fade). It plays on load rather than on scroll so the first screen explains the project.
+- Scroll-linked (`useScrollMotion.js`, one passive rAF-throttled listener; every value is a function of scroll
+  position, so slow, fast and reverse scrolling end in the same state):
+  - hero layers: glow drifts down up to 40px and texture up to 16px, both slower than the text; the navy base is static
+  - video frame: 94% scale and 30px lower to 100% and 0 as its slot travels from 90% of the viewport to the centre.
+    Pressing play (or focusing it) settles it for the rest of the visit. No autoplay, scrubbing or pinning.
+  - `[data-reveal]` wrappers get `--p` (0 to 1) over a defined range of their top edge (`RANGES` in the hook): the
+    sessions heading rises through a mask, the sentence follows, and the cards rise 32px with the second card in a
+    row starting slightly later. Cards also get `--q` for a slow illustration drift (±14px).
+  - wrappers are measured but never moved; children carry the motion. Hover uses separate layers (card background
+    lift, illustration image lift, arrow), so scroll and hover transforms never combine on one element.
+- Content is visible if the script does not run (CSS falls back to the final state). Focus inside a card shows it
+  fully, and the bottom of the page shows everything.
+- Small screens: smaller video and card movement, no background or illustration parallax.
+- `prefers-reduced-motion`: a static, fully readable page.

@@ -2,13 +2,14 @@ import React from 'react';
 import { project, statusLabels } from '../config.js';
 
 // The button is the only interactive element. Status comes from config/session data and is never
-// changed by opening the card. On hover only the background layer (surface, glow, illustration) and
-// the arrow move; the text and button stay where they are.
+// changed by opening the card. Wrappers: the list item's .r-card-move carries the scroll entrance, .r-pcard-bg
+// the hover lift, .r-pcard-art the slow scroll depth and its <img> the hover lift. Text and button never move
+// on their own.
 export default function ParticipantCard({ participant, onOpen }) {
-  const { id, code, role, status, illustration, illustrationShadow, tone = 'white' } = participant;
+  const { id, code, role, status, illustration, illustrationShadow } = participant;
   const titleId = `card-${id}`;
   return (
-    <article className={`r-pcard tone-${tone}`} aria-labelledby={titleId}>
+    <article className="r-pcard" aria-labelledby={titleId}>
       <div className="r-pcard-bg" aria-hidden="true">
         <span className="r-pcard-glow" />
         {illustration && (
