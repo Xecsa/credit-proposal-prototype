@@ -565,7 +565,9 @@ finHub: goSelf('selfHub'), finBackSum: goSelf('selfFinSum'), finToEntity: goSelf
 finPick: () => { set({ phase: 'selfFinLaunch' }); this.later(2000, () => { if (this.state.phase === 'selfFinLaunch') this.setState({ phase: 'selfFinCl' }); }); },
 finClDone: () => { set({ phase: 'selfFinRedir' }); this.later(2000, () => { if (this.state.phase === 'selfFinRedir') this.setState({ phase: 'selfFinRatios' }); }); },
 showFinXls: s.phase === 'selfFinRatings' && s.finXls, finXlsOpen: () => set({ finXls: true }), finXlsClose: () => set({ finXls: false }),
-finSubmit: () => set({ phase: 'selfHub', finDone: true, hubRole: 'arm', selfNote: '' }),
+// The ARM completes the analysis (finDone false, or returned to them) and hands it to the RM with "Submit to RM".
+// An RM reviewing an analysis the ARM already submitted stays the RM, so the hub offers Return to ARM / Submit.
+finSubmit: () => set({ phase: 'selfHub', finDone: true, hubRole: s.finDone && s.hubRole === 'rm' ? 'rm' : 'arm', selfNote: '' }),
 goSelfKm: goSelf('selfKm'), showSelfKm: s.phase === 'selfKm' || s.phase === 'selfKmForm', showSelfKmForm: s.phase === 'selfKmForm',
 kmHas: s.kmList.length > 0, kmSug: kmSug, kmF: kmF, kmSet: kmSet, kmS: kmS,
 kmNarr: s.kmNarr, setKmNarr: (e) => set({ kmNarr: e.target.value }),

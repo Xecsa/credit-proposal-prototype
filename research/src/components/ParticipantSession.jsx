@@ -5,7 +5,7 @@ import { infoSheet } from '../infoSheet.js';
 import { useSession } from '../store.js';
 import SignaturePad from './SignaturePad.jsx';
 import InfoSheet from './InfoSheet.jsx';
-import TaskJourney from './TaskJourney.jsx';
+import TaskJourney, { JCard, FeedbackArt } from './TaskJourney.jsx';
 import { discardCapture } from '../recorder.js';
 
 // Participant space: welcome → information sheet → consent → about your work → one task at a time → closing.
@@ -40,7 +40,7 @@ export default function ParticipantSession({ id }) {
 
   return (
     <main id="main" className="r-session">
-      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'tasks' ? ' is-journey' : ''}`}>
+      <div className={`r-session-in${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : stage === 'tasks' || stage === 'closing' ? ' is-journey' : ''}`}>
         <Progress p={p} step={step} />
         {stage === 'tasks' && (
           <TaskJourney
@@ -50,19 +50,18 @@ export default function ParticipantSession({ id }) {
             onNext={() => { if (taskIndex + 1 < role.journeys.length) go({ taskIndex: taskIndex + 1 }); else { discardCapture(); go({ stage: 'closing' }); } }}
           />
         )}
-        {stage !== 'tasks' && <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
+        {stage === 'closing' && <Closing data={data} update={update} headRef={headRef} onBack={() => go({ stage: 'tasks', taskIndex: role.journeys.length - 1 })} />}
+        {stage !== 'tasks' && stage !== 'closing' && <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
           {stage === 'info' && <InfoSheet ctx={ctx} headRef={headRef} onBack={() => go({ stage: 'welcome' })} onNext={() => go({ stage: 'consent' })} />}
           {stage === 'about' && <RoleQuestions p={p} headRef={headRef} data={data} update={update} onBack={() => go({ stage: 'consent' })} onNext={() => go({ stage: 'tasks', taskIndex: 0 })} />}
           {stage !== 'info' && stage !== 'about' && <h1 ref={headRef} tabIndex={-1} className="r-session-h">
                 {stage === 'welcome' && 'Welcome'}
                 {stage === 'consent' && 'Consent form'}
-                {stage === 'closing' && (data.completedAt ? 'Thank you' : 'One last question')}
               </h1>}
           {stage === 'welcome' && <Welcome onNext={() => go({ stage: 'info' })} />}
           {stage === 'consent' && <Consent data={data} update={update} onInfo={() => go({ stage: 'info' })} onNext={() => go({ stage: 'about' })} />}
-          {stage === 'closing' && <Closing data={data} update={update} onBack={() => go({ stage: 'tasks', taskIndex: role.journeys.length - 1 })} />}
         </div>}
-        {stage !== 'tasks' && <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>}
+        {stage !== 'tasks' && stage !== 'closing' && <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>}
       </div>
     </main>
   );
@@ -219,27 +218,40 @@ function RoleQuestions({ p, headRef, data, update, onBack, onNext }) {
   );
 }
 
-function Closing({ data, update, onBack }) {
+// Closing: one reflective question, then a thank-you in the same panel. Recordings were already finalised when the
+// last task ended (and any open capture released on the way here), so finishing only saves the answer.
+function Closing({ data, update, headRef, onBack }) {
+  const [failed, setFailed] = useState(false);
+  // Kept locally too, so the answer stays on screen even if this browser refuses to save it.
+  const [text, setText] = useState(data.closing || '');
   const done = !!data.completedAt;
+  const finish = () => { const ok = update(d => ({ ...d, closing: text, completedAt: new Date().toISOString() })); setFailed(ok === false); };
+  useEffect(() => { headRef.current && headRef.current.focus(); }, [done]); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (done) {
     return (
-      <>
-        <p className="r-session-lead">Thank you for your time and your honest feedback. It goes straight into the next version of the credit proposal experience.</p>
-        <p className="r-hint">Your facilitator will take it from here.</p>
-      </>
+      <JCard key="thanks" className="is-closing" figure={<FeedbackArt />} eyebrow="Session complete" title="Thank you for your time" headRef={headRef}
+        intro="Your feedback will help us improve the credit proposal experience for RMs and ARMs." label="Thank you"
+        foot={<a className="r-btn r-btn-icon" href="#/">Return to research home</a>}>
+        <p className="r-fb-rec" role="status"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.25" /><path d="M10 9v4.5M10 6.5v.01" /></svg><span>Your answers are saved in this browser on this device.</span></p>
+      </JCard>
     );
   }
   return (
-    <>
-      <div className="r-field">
-        <label htmlFor="closing">{closingQuestion}</label>
-        <textarea id="closing" className="r-input" rows={4} value={data.closing || ''} onChange={e => update(d => ({ ...d, closing: e.target.value }))} />
-      </div>
-      <div className="r-actions">
+    <JCard key="form" className="is-closing" figure={<FeedbackArt />} eyebrow="Final reflection" title="One last question" headRef={headRef}
+      intro="Looking back at the journeys you tried, we’d like to understand your main priority." label="One last question"
+      foot={<>
         <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back</button>
-        <button type="button" className="r-btn" onClick={() => update(d => ({ ...d, completedAt: new Date().toISOString() }))}>Finish session</button>
+        <button type="button" className="r-btn" onClick={finish}>{failed ? 'Try again' : 'Finish session'}</button>
+      </>}>
+      <div className="r-fb-field is-first">
+        <label htmlFor="closing" className="r-fb-q">{closingQuestion}</label>
+        <textarea id="closing" className="r-fb-input is-tall" rows={5} placeholder="Share the improvement that matters most to you…" aria-describedby="closing-help"
+          value={text} onChange={e => { const v = e.target.value; setText(v); update(d => ({ ...d, closing: v })); }} />
+        <p id="closing-help" className="r-fb-help">You can answer aloud, and your facilitator can take notes.</p>
       </div>
-    </>
+      {failed && <p className="r-scn-left" role="alert">Your answer couldn’t be saved in this browser. It’s still here; please try again, or ask your facilitator to note it.</p>}
+    </JCard>
   );
 }
 

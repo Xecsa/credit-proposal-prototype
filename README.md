@@ -40,7 +40,7 @@ Every push to `main` rebuilds GitHub Pages (`.github/workflows/deploy.yml`) and 
 5. **Submit to ARM.** The RM adds a comment in the **Add comment for ARM** dialog; *Application submitted to ARM*.
 6. **Financial analysis.** Spreading tables, risk ratios, ratings and the Perfios output (analysis.xlsx).
 7. **ARM and RM on the hub.** The ARM submits to the RM with a comment; the RM can **Return to ARM** or
-   **Confirm application**. *Application confirmed* → **Back to HUB** shows the RM hub with all three sections
+   **Submit** (opens **Confirm application**). *Application confirmed* → **Back to HUB** shows the RM hub with all three sections
    Submitted and the comment history.
 
 Every document has a **Preview document** viewer with zoom; the sample pages are generated and marked as samples.

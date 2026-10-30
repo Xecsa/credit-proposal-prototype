@@ -94,17 +94,17 @@ export const journeysByRole = {
       },
       {
         id: 'rm-docs', title: 'Documents & References', minutes: 5, start: 'rm-docs', art: 'docs',
-        intro: 'Prepare the supporting documents for this facility application.',
-        situation: 'The customer information has been completed.',
-        goal: 'Using the supplied files, prepare the supporting documents and determine whether the application is ready to move forward.',
+        intro: 'Complete the supporting documents and references for this facility application.',
+        situation: 'Client Information has been completed for Orient Insurance. You now need to complete the supporting documents and references for the facility application.',
+        goal: 'Review the documents and references already available, add the missing supporting files using the supplied materials, and complete the section so the application is ready for the ARM’s financial analysis.',
         ask: ['How did you decide where each document belonged?', 'What did you understand from the upload status?', 'What would you expect after sending these documents?'],
         observe: ['Document categorisation', 'Prefetched versus uploaded files', 'Interpreting errors', 'Recognising readiness and processing status']
       },
       {
         id: 'rm-review', title: 'Financial Analysis review', minutes: 4, start: 'rm-review', art: 'chart',
         intro: 'Review the completed financial analysis for this application.',
-        situation: 'The ARM has completed the financial analysis and submitted the application for your review.',
-        goal: 'Review the analysis and comments, then take the action you consider appropriate.',
+        situation: 'The ARM has completed the financial analysis for Orient Insurance and submitted the application for your review.',
+        goal: 'Review the financial analysis, including the ratios, ratings, and ARM’s comments. Determine whether any changes are needed, then submit the application if it is ready or return it to the ARM with your comments.',
         ask: ['What informed your decision?', 'Was anything missing for your review?', 'Who would act next after your chosen action?'],
         followUp: true,
         observe: ['Finding analysis and comments', 'Understanding ratings and summaries', 'Distinguishing review from editing', 'Choosing the appropriate handoff'],
@@ -118,28 +118,30 @@ export const journeysByRole = {
     priority: 'Financial Analysis is this session’s priority. If time is tight, shorten the document review rather than rushing the analysis.',
     journeys: [
       {
-        id: 'arm-client', title: 'Received application and Client Information review', minutes: 4, start: 'arm',
+        id: 'arm-client', title: 'Received application and Client Information review', minutes: 4, start: 'arm', art: 'client',
         situation: 'This application has been assigned to you.',
         goal: 'Review the customer and facility information and identify anything you need clarified before proceeding.',
         ask: ['Was the RM’s request clear?', 'Which information did you look for first?', 'What would you need clarified?'],
         observe: ['Understanding application context, ownership and status', 'Locating submitted information', 'Identifying gaps']
       },
       {
-        id: 'arm-docs', title: 'Documents & References review', minutes: 4, start: 'arm',
+        id: 'arm-docs', title: 'Documents & References review', minutes: 4, start: 'arm', art: 'docs',
         situation: 'The RM has added the supporting documents.',
         goal: 'Check whether the supporting documents are sufficient for your analysis and establish their current processing status.',
         ask: ['How did you determine whether the documents were usable?', 'Was it clear which borrower or stakeholder each document belonged to?', 'What would you do if something were missing?'],
         observe: ['Document discoverability', 'Grouping', 'Previewing', 'Understanding processing status and responsibility for corrections']
       },
       {
-        id: 'arm-fin', title: 'Financial Analysis process', minutes: 8, start: 'arm', priority: true,
-        situation: 'The application is ready for financial analysis.',
-        goal: 'Use the supplied statements to review the spreading, correct the specified discrepancy, select the relevant entity, and assess the resulting analysis.',
+        id: 'arm-fin', title: 'Financial Analysis', minutes: 8, start: 'arm', priority: true, art: 'chart',
+        intro: 'Complete the financial analysis for this facility application.',
+        situation: 'The RM has submitted Orient Insurance’s application with the client information and supporting documents ready for financial analysis.',
+        // Matches the prototype: spreading figures are editable; ratios, ratings and the narrative are generated from them.
+        goal: 'Review the supplied financial information and the analysis output generated from it. Correct any spreading figures that don’t match the supplied statements, then submit the analysis to the RM with your comments for review.',
         ask: ['How did you find the figure you needed?', 'What did you expect your correction to affect?', 'How would you verify the generated analysis?', 'Was the transition into and out of CreditLens clear?'],
         observe: ['Discovering editable values', 'Comparing figures', 'Selecting entities', 'Interpreting external-tool transitions, ratios, ratings and generated narratives']
       },
       {
-        id: 'arm-submit', title: 'Submit to RM', minutes: 3, start: 'arm',
+        id: 'arm-submit', title: 'Submit to RM', minutes: 3, start: 'arm', art: 'send',
         situation: 'Your analysis is ready for RM review.',
         goal: 'Communicate the issue or qualification they need to consider and pass the application onward.',
         ask: ['What do you expect the RM to receive?', 'Where would you check your comment later?', 'What tells you that your work has been handed over?'],

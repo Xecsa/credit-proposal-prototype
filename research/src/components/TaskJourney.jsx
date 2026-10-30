@@ -10,15 +10,34 @@ import { download } from '../store.js';
 import artClient from '../../../src/assets/48d1ac83055cf739d59eb9a8a7234415.png';
 import artDocs from '../../../src/assets/54ed698967b05294cca56c56f3884d39.png';
 import artChart from '../../../src/assets/567e0ec0472f73849c690a5a80845d7e.png';
+import artSend from '../../../src/assets/54e0b6371a984d52d4c9e3542ffdd26c.png';
 
-const ART = { client: artClient, docs: artDocs, chart: artChart };
+const ART = { client: artClient, docs: artDocs, chart: artChart, send: artSend };
+
+// Feedback illustration: two speech bubbles in ENBD navy and blue. Deliberately neutral (no tick or celebration),
+// so it doesn't suggest the task was done correctly. Shared with the closing screen.
+export const FeedbackArt = () => (
+  <span className="r-jcard-glow" aria-hidden="true">
+    <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+      <defs>
+        <linearGradient id="fa-b" x1="10" y1="12" x2="46" y2="46" gradientUnits="userSpaceOnUse"><stop stopColor="#3D63C9" /><stop offset="1" stopColor="#14307E" /></linearGradient>
+        <linearGradient id="fa-l" x1="30" y1="28" x2="62" y2="60" gradientUnits="userSpaceOnUse"><stop stopColor="#FFFFFF" /><stop offset="1" stopColor="#DCE5F8" /></linearGradient>
+      </defs>
+      <path d="M14 12h28a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H26l-8 7v-7h-4a6 6 0 0 1-6-6V18a6 6 0 0 1 6-6Z" fill="url(#fa-b)" />
+      <path d="M17 22h20M17 29h13" stroke="#fff" strokeOpacity=".85" strokeWidth="3" strokeLinecap="round" />
+      <path d="M58 30H36a6 6 0 0 0-6 6v12a6 6 0 0 0 6 6h14l7 6v-6h1a6 6 0 0 0 6-6V36a6 6 0 0 0-6-6Z" fill="url(#fa-l)" stroke="#B9C8EA" strokeWidth="1.5" />
+      <circle cx="40" cy="42" r="2.4" fill="#3D63C9" /><circle cx="47" cy="42" r="2.4" fill="#3D63C9" /><circle cx="54" cy="42" r="2.4" fill="#3D63C9" />
+    </svg>
+  </span>
+);
 
 // Shared surface for the journey screens: rounded white card, pale ENBD-blue wash at the top, one focal heading.
-export function JCard({ wide, center, art, eyebrow, title, intro, headRef, children, foot, label }) {
+export function JCard({ wide, center, art, figure, eyebrow, title, intro, headRef, children, foot, label, className = '' }) {
   return (
-    <section className={`r-jcard${wide ? ' is-wide' : ''}${center ? ' is-center' : ''}`} aria-label={label}>
+    <section className={`r-jcard${wide ? ' is-wide' : ''}${center ? ' is-center' : ''}${className ? ` ${className}` : ''}`} aria-label={label}>
       <header className="r-jcard-head">
         {art && <img className="r-jcard-art" src={art} alt="" width="96" height="96" />}
+        {figure}
         {eyebrow && <p className="r-jcard-eyebrow">{eyebrow}</p>}
         <h1 ref={headRef} tabIndex={-1} className="r-jcard-title">{title}</h1>
         {intro && <p className="r-jcard-intro">{intro}</p>}
@@ -131,7 +150,6 @@ export default function TaskJourney({ p, journey, index, total, data, update, on
       onBack={() => { discardCapture(); setPhase('intro'); }} />;
   }
 
-  const recText = setupNext ? 'Recording setup comes next.' : rec.live ? 'Recording is ready.' : 'Recording is off.';
   const art = ART[journey.art] || ART.docs;
 
   return (
@@ -148,10 +166,7 @@ export default function TaskJourney({ p, journey, index, total, data, update, on
           </>}>
           <Scenario journey={journey} />
           {t.leftAt && !t.finishedAt && <p className="r-jnote">You left this journey before finishing. You can start it again or skip it.</p>}
-          <ul className="r-jmeta">
-            <li>{Ico.speech}<span>{journey.reassurance ? `${journey.reassurance} ` : 'Think aloud as you explore. '}You can reopen these instructions during the task.</span></li>
-            <li>{Ico.video}<span>{recText}</span></li>
-          </ul>
+          {journey.reassurance && <ul className="r-jmeta"><li>{Ico.speech}<span>{journey.reassurance}</span></li></ul>}
         </JCard>
       )}
       {phase === 'task' && (
@@ -334,8 +349,8 @@ function Feedback({ journey, index, total, t, set, rec, wantsRecording, headRef,
   const unsaved = last && (last.recStatus === 'failed' || last.recStatus === 'empty') ? lastUnsaved() : null;
 
   return (
-    <JCard wide={false} eyebrow={`Journey ${index + 1} of ${total} · ${journey.title}`} title="How was this task?" headRef={headRef}
-      intro={isLast ? 'Share your experience before you continue.' : 'Share your experience before moving to the next journey.'}
+    <JCard className="is-feedback" figure={<FeedbackArt />} eyebrow={`Journey ${index + 1} of ${total} · ${journey.title}`} title="How was this task?" headRef={headRef}
+      intro={isLast ? 'Share your experience before we wrap up.' : 'Share your experience before moving to the next journey.'}
       label={`Feedback on ${journey.title}`}
       foot={<>
         <button type="button" className="r-link-btn" aria-expanded={showScn} aria-controls="fb-scn" onClick={() => setShowScn(v => !v)}>{showScn ? 'Hide scenario' : 'View scenario'}</button>
@@ -358,15 +373,15 @@ function Feedback({ journey, index, total, t, set, rec, wantsRecording, headRef,
       </fieldset>
       <div className="r-fb-field">
         <label htmlFor={`un-${journey.id}`} className="r-fb-q">{afterTaskQuestions.unclear} <span className="r-opt">Optional</span></label>
-        <textarea id={`un-${journey.id}`} className="r-fb-input" rows={4} placeholder="Share anything you found unclear…" aria-describedby={`un-help-${journey.id}`} value={t.unclear || ''} onChange={e => set({ unclear: e.target.value })} />
-        <p id={`un-help-${journey.id}`} className="r-fb-help">Prefer to answer aloud? Your facilitator can take notes.</p>
+        <textarea id={`un-${journey.id}`} className="r-fb-input" rows={4} placeholder="Share anything you found unclear…" aria-describedby={`fb-help-${journey.id}`} value={t.unclear || ''} onChange={e => set({ unclear: e.target.value })} />
       </div>
       {journey.followUp && (
         <div className="r-fb-field">
           <label htmlFor={`chk-${journey.id}`} className="r-fb-q">{reviewFollowUp.q} <span className="r-opt">Optional</span></label>
-          <textarea id={`chk-${journey.id}`} className="r-fb-input" rows={4} value={t.check || ''} onChange={e => set({ check: e.target.value })} />
+          <textarea id={`chk-${journey.id}`} className="r-fb-input" rows={4} placeholder="Describe the information you usually check…" aria-describedby={`fb-help-${journey.id}`} value={t.check || ''} onChange={e => set({ check: e.target.value })} />
         </div>
       )}
+      <p id={`fb-help-${journey.id}`} className="r-fb-help">Prefer to answer aloud? Your facilitator can take notes.</p>
       {recMsg && (
         <p className="r-fb-rec" role="status">{Ico.info}<span>{recMsg}
           {unsaved && <> <button type="button" className="r-link-btn is-inline" onClick={() => download(`${journey.id}-unsaved-recording.${recExt(unsaved.type)}`, unsaved, unsaved.type)}>Download the unsaved part</button> before leaving this page.</>}
