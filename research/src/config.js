@@ -91,13 +91,13 @@ export const participants = [
 
 export const sessionsSection = {
   heading: 'Your session starts here.',
-  text: 'Choose your assigned participant space to begin.',
-  note: 'No preparation needed. Your facilitator will guide you.'
+  text: 'Choose your assigned space. Your facilitator will guide you.'
 };
 
 // Header anchor links. Each `id` is a section on the page.
 export const nav = [
   { id: 'overview', label: 'Overview' },
+  { id: 'video', label: 'Video' },
   { id: 'sessions', label: 'Sessions' }
 ];
 

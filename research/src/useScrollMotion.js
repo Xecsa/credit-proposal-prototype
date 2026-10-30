@@ -2,17 +2,22 @@ import { useEffect } from 'react';
 
 // Scroll-linked motion for the research homepage only, driven by one passive, rAF-throttled listener
 // (no library needed for two values):
-//  - hero glow: a decorative layer that moves down up to 40px as the page scrolls, so it trails the content
-//  - video frame: scales 0.88 → 1 and rises 32px → 0 from the first scroll position where it is in view until its
-//    top sits just below the sticky header. It is untransformed once full, focused or playing.
-// Positions are read live on every frame, and recalculated after fonts, images and video metadata load.
+//  - hero glow: a decorative layer that moves down up to 40px as the page scrolls, so it travels more slowly
+//    than the heading and text, which scroll normally.
+//  - video frame: starts at 92% scale and 20px lower (96% and 12px on small screens, set in CSS) and reaches
+//    100% and 0 as the frame travels from the lower part of the viewport to the centre. Progress follows the
+//    scroll position in both directions. Once playback starts (or the frame takes focus) it settles at full
+//    size and is never transformed again on this visit.
+// Positions are measured on the untransformed slot that holds the frame, so the transform never feeds back
+// into its own measurement, and are re-read after fonts, images and video metadata load.
 // Native scrolling is untouched. Without JS, or with reduced motion, nothing here runs and the layout is static.
-export default function useScrollMotion(heroRef, videoRef) {
+export default function useScrollMotion(heroRef, slotRef, frameRef) {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const hero = heroRef.current;
-    const fig = videoRef.current;
-    if (!hero || !fig) return;
+    const slot = slotRef.current;
+    const fig = frameRef.current;
+    if (!hero || !slot || !fig) return;
 
     fig.classList.add('is-linked');
     let raf = 0;
@@ -20,17 +25,17 @@ export default function useScrollMotion(heroRef, videoRef) {
 
     const update = () => {
       raf = 0;
+      const y = window.scrollY;
       const vh = window.innerHeight;
-      if (window.scrollY < hero.offsetHeight + vh) {
-        hero.style.setProperty('--glow-y', `${Math.min(40, window.scrollY * 0.3).toFixed(1)}px`);
-      }
+      if (y < hero.offsetHeight + vh) hero.style.setProperty('--glow-y', `${Math.min(40, y * 0.25).toFixed(1)}px`);
       if (fig.classList.contains('is-settled')) return;
-      // Progress runs from the first scroll position where the frame is in view (the top of the page, if it is
-      // visible on load) to the point where its top sits just below the sticky header.
-      const pageTop = fig.getBoundingClientRect().top + window.scrollY;
-      const startY = Math.max(0, pageTop - vh);
-      const endY = Math.max(startY + 1, pageTop - 96);
-      const p = clamp((window.scrollY - startY) / (endY - startY), 0, 1);
+      // Start: the slot's top at 90% of the viewport height, or the top of the page if it is already higher.
+      // End: the slot's centre at the viewport centre (never closer than just below the sticky header).
+      const r = slot.getBoundingClientRect();
+      const top = r.top + y;
+      const startY = Math.max(0, top - vh * 0.9);
+      const endY = Math.max(startY + 1, Math.min(top + r.height / 2 - vh / 2, top - 96));
+      const p = clamp((y - startY) / (endY - startY), 0, 1);
       fig.style.setProperty('--vp', p.toFixed(3));
       fig.classList.toggle('is-full', p >= 1);
     };
@@ -55,5 +60,5 @@ export default function useScrollMotion(heroRef, videoRef) {
       fig.removeEventListener('focusin', settle);
       fig.removeEventListener('play', settle, true);
     };
-  }, [heroRef, videoRef]);
+  }, [heroRef, slotRef, frameRef]);
 }

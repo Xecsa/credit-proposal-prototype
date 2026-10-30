@@ -76,13 +76,21 @@ the player is capped at 960 px wide; a sharper result needs a new 1080p (or larg
 
 ### Motion
 
-No animation library is installed, and two scroll-linked values do not need one, so the page uses a single
-passive, rAF-throttled listener (`useScrollMotion.js`) rather than adding GSAP:
-- hero glow: decorative layer, moves up to 40px as the page scrolls (trails the content)
-- video frame: scales 0.88 → 1 and rises 32px → 0 from the first scroll position where it is in view until its
-  top sits below the sticky header; untransformed once full, focused or playing (no scrubbing, manual playback)
-Positions are read live each frame and recalculated after fonts, images and video metadata load.
-One-time entrances (`useReveal.js`): session cards rise
-12px in reading order. Sticky participant intro: CSS `position: sticky` at ≥1180px wide and ≥720px tall.
-Hover motion only on fine pointers. Content is visible unless JS arms it; focus reveals instantly;
-`prefers-reduced-motion` gives a static page. Only the research homepage uses any of this.
+Homepage only (Hero → Video → Sessions). Participant, consent and facilitator screens have no motion.
+- Header (`Header.jsx`): sticky, fixed 64px height; after ~50px of scroll the background turns solid with a subtle
+  border (200ms). Overview / Video / Sessions links underline the section under the header without shifting.
+  Anchors land below the header via `scroll-padding-top`.
+- Scroll-linked (`useScrollMotion.js`, one passive rAF-throttled listener):
+  - hero glow layer moves down up to 40px, so it travels more slowly than the text; the navy base and texture are
+    separate static layers and the base fades into the sessions band colour
+  - video frame goes from 92% scale and 20px lower to 100% and 0 as it travels from the lower viewport to the
+    centre, both ways with the scroll. The `#video` slot keeps the final layout space; only the figure moves.
+    Pressing play (or focusing the video) settles it at full size for the rest of the visit. No autoplay,
+    no scrubbing, no pinning.
+- One-time entrances (`useReveal.js`): the sessions intro fades up 12px; the four cards rise 18px with a ±0.4°
+  tilt settling to 0, 450ms each, 60ms apart in reading order. They stay visible on scroll back.
+- Cards: the list item carries the entrance, the card background the 4px hover lift and glow, the illustration its
+  own 7px lift and 1.03 scale, and the arrow moves 3px, all 280ms. Text and button never move. Keyboard focus gets
+  an equivalent border emphasis. Hover only on fine pointers.
+- Small screens: smaller video change (96%, 12px), no glow parallax, no card tilt.
+- Content is visible unless JS arms it; focus reveals instantly; `prefers-reduced-motion` gives a static page.

@@ -36,10 +36,13 @@ function Home() {
   const heroRef = useRef(null);
   const heroTextRef = useRef(null);
   const videoRef = useRef(null);
+  const videoSlotRef = useRef(null);
+  const sessionsHeadRef = useRef(null);
   const bentoRef = useRef(null);
   useReveal(heroTextRef, { immediate: true });
+  useReveal(sessionsHeadRef);
   useReveal(bentoRef);
-  useScrollMotion(heroRef, videoRef);
+  useScrollMotion(heroRef, videoSlotRef, videoRef);
 
   const openPreview = (id, button) => { triggerRef.current = button; setPreviewId(id); };
   const closePreview = () => {
@@ -54,7 +57,12 @@ function Home() {
       <main id="main">
         {/* ENBD identity → introduction → video → participant sessions */}
         <section ref={heroRef} id="overview" className="r-hero" aria-labelledby="welcome-title">
-          <div className="r-hero-glow" aria-hidden="true" />
+          {/* Decorative layers: navy base, royal-blue glow (scroll parallax), fine texture. Text sits above them. */}
+          <div className="r-hero-layers" aria-hidden="true">
+            <div className="r-hero-base" />
+            <div className="r-hero-glow" />
+            <div className="r-hero-texture" />
+          </div>
           <div className="r-hero-in">
             <div ref={heroTextRef} className="r-hero-text">
               <h1 id="welcome-title" className="r-display">{welcome.title}</h1>
@@ -62,17 +70,20 @@ function Home() {
                 {welcome.intro.map((line, i) => <span key={i} className="r-lead-line">{line}</span>)}
               </p>
             </div>
-            <WelcomeVideo figRef={videoRef} />
+            {/* The slot keeps the video's final layout space; only the frame inside it is transformed. */}
+            <div id="video" ref={videoSlotRef} className="r-video-slot">
+              <WelcomeVideo figRef={videoRef} />
+            </div>
           </div>
         </section>
 
-        {/* Pale blue band. On wide, tall screens the intro sits in a sticky left column beside the cards. */}
+        {/* Pale blue band; the hero fades into the same colour. On wide, tall screens the intro sits in a sticky
+            left column beside the cards. */}
         <section id="sessions" className="r-sessions-band" aria-labelledby="participants-title">
           <div className="r-sessions">
-            <div className="r-sessions-head">
+            <div ref={sessionsHeadRef} className="r-sessions-head r-reveal">
               <h2 id="participants-title" className="r-h2 r-h2-lg">{sessionsSection.heading}</h2>
               <p className="r-muted">{sessionsSection.text}</p>
-              {sessionsSection.note && <p className="r-sessions-note">{sessionsSection.note}</p>}
             </div>
             <ul ref={bentoRef} className="r-bento r-stagger" role="list">
               {participants.map(p => (

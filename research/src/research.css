@@ -26,15 +26,21 @@ body{background:#F3F3F3}
 .r-note{margin:16px 0 0;color:var(--r-ink);font-weight:500}
 
 /* header: sticky, logo kept on white so its colours are unchanged. Dialogs open in the top layer, above it. */
-.r-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid transparent;transition:background-color var(--t-hover) var(--ease),border-color var(--t-hover) var(--ease),box-shadow var(--t-hover) var(--ease)}
-.r-header.is-scrolled{background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--r-divider);box-shadow:0 6px 20px -12px rgba(7,36,71,.18)}
+/* At the top it is a light, slightly translucent white (the logo always sits on white, so its colours are
+   unchanged); after ~50px it turns solid with a subtle border, over 200ms. Height never changes. */
+.r-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.3) blur(8px);backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid transparent;transition:background-color .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.r-header.is-scrolled{background:#fff;border-bottom-color:var(--r-divider);box-shadow:0 6px 20px -14px rgba(7,36,71,.16)}
 .r-header-in{max-width:1200px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .r-header-brand{display:flex;align-items:center;gap:16px;min-width:0}
 .r-logo{height:32px;width:auto;display:block;flex:none}
 .r-header-label{font-size:13px;line-height:18px;color:var(--r-text-2);padding-left:16px;border-left:1px solid var(--r-divider);white-space:nowrap}
 .r-nav{display:flex;align-items:center;gap:4px}
-.r-nav a{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:var(--r-radius);font-size:14px;font-weight:500;color:var(--r-navy);text-decoration:none;transition:background-color .15s ease}
-.r-nav a:hover{background:var(--r-surface)}
+.r-nav a{position:relative;display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:var(--r-radius);font-size:14px;font-weight:500;color:var(--r-text-2);text-decoration:none;transition:background-color .15s ease,color .2s var(--ease)}
+.r-nav a:hover{background:var(--r-surface);color:var(--r-navy)}
+/* current section: colour and an underline drawn in place, so nothing shifts */
+.r-nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:1px;background:var(--r-primary);transform:scaleX(0);transition:transform .25s var(--ease)}
+.r-nav a.is-active{color:var(--r-navy)}
+.r-nav a.is-active::after{transform:scaleX(1)}
 
 /* tags */
 .r-tag{display:inline-flex;align-items:center;font-size:12px;line-height:16px;padding:4px 10px;border-radius:12px;background:var(--r-tag-bg);color:var(--r-text-2);white-space:nowrap}
@@ -43,21 +49,26 @@ body{background:#F3F3F3}
 .r-section{margin-top:96px}
 .r-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px}
 
-/* hero: deep navy at the top, royal-blue glow upper right, fading through pale blue into white.
-   Recreated from the Figma reference (see config.js); the fine vertical texture fades out with the colour. */
-.r-hero{position:relative;isolation:isolate;padding:112px 32px 96px;background:
+/* hero: three decorative layers under the text. The navy base fades through royal and pale blue into the
+   sessions band colour (#F4F7FE), so the page flows into the cards with no hard edge. The glow moves
+   with scroll (parallax, max 40px); the base and texture do not. Values recreated from the Figma reference
+   (see config.js); they are approximations, not tokens. */
+.r-hero{position:relative;isolation:isolate;padding:112px 32px 112px}
+.r-hero-layers{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.r-hero-base{position:absolute;inset:0;background:
   radial-gradient(45% 40% at 18% 8%,rgba(10,15,30,.9) 0%,rgba(10,15,30,0) 70%),
-  linear-gradient(180deg,var(--r-hero-top) 0%,var(--r-hero-deep) 26%,#13368E 40%,var(--r-hero-mid) 54%,var(--r-hero-pale) 68%,var(--r-canvas) 80%)}
-.r-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,rgba(255,255,255,0) 1px 3px);
+  linear-gradient(180deg,var(--r-hero-top) 0%,var(--r-hero-deep) 26%,#13368E 40%,var(--r-hero-mid) 54%,var(--r-hero-pale) 68%,#F4F7FE 84%)}
+.r-hero-glow{position:absolute;inset:-56px 0 30% 0;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0);will-change:transform}
+.r-hero-texture{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,rgba(255,255,255,0) 1px 3px);
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 75%)}
-.r-hero-glow{position:absolute;inset:-56px 0 30% 0;z-index:-1;pointer-events:none;background:radial-gradient(60% 55% at 78% 30%,var(--r-hero-glow) 0%,rgba(31,79,184,0) 70%);transform:translate3d(0,var(--glow-y,0px),0)}
 .r-hero-in{position:relative;max-width:1040px;margin:0 auto;text-align:center}
 
 /* video */
-.r-video{margin:56px auto 0;max-width:960px;transform-origin:50% 0}
-/* scroll-linked: 0.88 → 1 and 32px → 0 as it scrolls up the viewport; untransformed when full, settled or playing */
-.r-video.is-linked{transform:translate3d(0,calc((1 - var(--vp,1)) * 32px),0) scale(calc(.88 + var(--vp,1) * .12))}
+/* The slot holds the final layout space (and is the #video anchor); only the figure inside is transformed. */
+.r-video-slot{margin:56px auto 0;max-width:960px}
+.r-video{--v-s0:.92;--v-y0:20px;margin:0;transform-origin:50% 50%}
+/* scroll-linked: 92% → 100% and 20px → 0 as it travels to the centre; untransformed when full or settled */
+.r-video.is-linked{transform:translate3d(0,calc((1 - var(--vp,1)) * var(--v-y0)),0) scale(calc(var(--v-s0) + var(--vp,1) * (1 - var(--v-s0))))}
 .r-video.is-linked.is-full,.r-video.is-settled{transform:none}
 /* pressing play early settles the frame with a short ease rather than a jump */
 .r-video.is-settled{transition:transform .3s var(--ease)}
@@ -78,19 +89,17 @@ body{background:#F3F3F3}
 
 /* sessions: a pale blue band. Cards use a larger 28px radius here only (homepage treatment);
    buttons keep the corporate 8px radius. */
-.r-sessions-band{background:linear-gradient(180deg,#F4F7FE 0%,#EEF3FD 100%);padding:112px 32px 128px}
+.r-sessions-band{background:linear-gradient(180deg,#F4F7FE 0%,#EEF3FD 100%);padding:48px 32px 128px}
 .r-sessions{max-width:1240px;margin:0 auto}
 .r-sessions-head{text-align:center;margin-bottom:48px}
 .r-sessions-head .r-muted{margin-top:12px;font-size:16px}
 .r-h2-lg{font-size:36px;line-height:1.2;letter-spacing:-.02em}
 .r-dot{width:8px;height:8px;border-radius:50%;background:#B8BFCC}
-.r-sessions-note{margin:16px auto 0;font-size:13px;line-height:18px;color:var(--r-text-2)}
 /* sticky intro beside the cards: wide and tall enough screens only */
 @media (min-width:1180px) and (min-height:720px){
   .r-sessions{display:grid;grid-template-columns:280px minmax(0,1fr);gap:56px;align-items:start}
   .r-sessions-head{position:sticky;top:112px;text-align:left;margin:0;padding-top:8px}
   .r-sessions-head .r-h2-lg{font-size:40px}
-  .r-sessions-note{margin-left:0}
 }
 
 /* bento: 3 columns; RM 01 and ARM 02 span two */
@@ -101,47 +110,52 @@ body{background:#F3F3F3}
 /* background layer: surface, glow and illustration. It lifts and clips; the text above it does not move. */
 .r-pcard-bg{position:absolute;inset:0;z-index:-1;border-radius:inherit;overflow:hidden;background:var(--surface);
   box-shadow:0 1px 2px rgba(7,36,71,.04),0 0 0 1px rgba(24,47,124,.05);transform:translate3d(0,var(--lift),0);
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.r-pcard-glow{position:absolute;width:80%;aspect-ratio:1;right:-18%;bottom:-30%;border-radius:50%;background:radial-gradient(closest-side,rgba(80,130,255,.28),rgba(80,130,255,0));opacity:calc(.45 + var(--glow) * .55);transition:opacity .3s var(--ease)}
+  transition:transform .28s var(--ease),box-shadow .28s var(--ease)}
+.r-pcard-glow{position:absolute;width:80%;aspect-ratio:1;right:-18%;bottom:-30%;border-radius:50%;background:radial-gradient(closest-side,rgba(80,130,255,.28),rgba(80,130,255,0));opacity:calc(.45 + var(--glow) * .55);transition:opacity .28s var(--ease)}
 .r-pcard.tone-sky{--surface:linear-gradient(140deg,#FFFFFF 0%,#F1F5FE 45%,#DCE6FC 100%)}
 .r-pcard.tone-white{--surface:#FFFFFF}
 /* illustration anchored lower right, allowed to crop at the rounded edge */
 .r-pcard-art{position:absolute;right:-28px;bottom:-40px;width:330px;aspect-ratio:1;pointer-events:none}
 .is-narrow .r-pcard-art{width:204px;right:-26px;bottom:-40px}
-.r-pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.r-pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .28s var(--ease),opacity .28s var(--ease)}
 .r-art-shadow{opacity:.85}
 /* details top-left */
-.r-pcard-body{position:relative;padding:32px;display:flex;flex-direction:column;align-items:flex-start;max-width:340px}
+.r-pcard-body{position:relative;padding:36px;display:flex;flex-direction:column;align-items:flex-start;max-width:340px}
 .r-pcard-label{margin:0 0 12px;font-size:12px;line-height:16px;color:var(--r-text-2)}
 .r-pcard-code{margin:0;font-size:34px;line-height:1.1;font-weight:500;letter-spacing:-.02em;color:var(--r-navy)}
 .r-pcard-role{margin:8px 0 0;color:var(--r-ink)}
 .r-pcard-status{margin:12px 0 0;display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;color:var(--r-text-2)}
 .r-pcard-foot{margin-top:24px}
-.r-btn-arrow{margin-left:8px;display:inline-flex;transition:transform .3s var(--ease)}
+.r-btn-arrow{margin-left:8px;display:inline-flex;transition:transform .28s var(--ease)}
 /* hover only where a real pointer can hover; touch keeps the static composition */
 @media (hover:hover) and (pointer:fine){
   .r-pcard:hover{--lift:-4px;--glow:1}
   .r-pcard:hover .r-pcard-bg{box-shadow:0 2px 4px rgba(7,36,71,.04),0 0 0 1px rgba(24,47,124,.10),0 22px 44px -16px rgba(24,47,124,.28)}
-  .r-pcard:hover .r-art-main{transform:translate3d(0,-8px,0) scale(1.04)}
+  .r-pcard:hover .r-art-main{transform:translate3d(0,-7px,0) scale(1.03)}
   .r-pcard:hover .r-art-shadow{transform:translate3d(0,-2px,0) scale(.97);opacity:.6}
   .r-pcard:hover .r-btn-arrow{transform:translateX(3px)}
 }
 .r-pcard:focus-within{--glow:1}
-.r-pcard:focus-within .r-pcard-bg{box-shadow:0 0 0 2px var(--r-primary)}
+/* keyboard focus: the same emphasis as hover, carried by the border rather than movement */
+.r-pcard:has(:focus-visible) .r-pcard-bg{box-shadow:0 0 0 2px var(--r-primary),0 22px 44px -16px rgba(24,47,124,.24)}
 .r-pcard .r-btn:active{transform:scale(.97)}
 
 /* One-time entrances (useReveal). Content is visible unless JS has armed it; nothing hides on scroll back.
    Only opacity and transform move, and the final state has no transform. */
-.r-hero-text.is-armed,.r-stagger.is-armed > li{opacity:0}
+.r-hero-text.is-armed,.r-reveal.is-armed,.r-stagger.is-armed > li{opacity:0}
 .r-hero-text.is-armed{transform:translateY(14px)}
-.r-stagger.is-armed > li{transform:translateY(12px)}
-.r-hero-text.is-in,.r-stagger.is-in > li{opacity:1;transform:none}
-.r-hero-text.is-in{transition:opacity var(--t-enter) var(--ease),transform var(--t-enter) var(--ease)}
-/* cards: reading order, 70ms stagger, 450ms each (≈660ms in all) */
+.r-reveal.is-armed{transform:translateY(12px)}
+.r-hero-text.is-in,.r-reveal.is-in,.r-stagger.is-in > li{opacity:1;transform:none}
+.r-hero-text.is-in,.r-reveal.is-in{transition:opacity var(--t-enter) var(--ease),transform var(--t-enter) var(--ease)}
+/* cards: the <li> carries the entrance only (18px, ±0.4° settling to 0), the card background carries hover and
+   the illustration its own lift, so the three never fight. Reading order, 60ms stagger, 450ms each. */
+.r-stagger.is-armed > li{transform:translate3d(0,18px,0) rotate(var(--rot,0deg))}
+.r-bento > li:nth-child(odd){--rot:-.4deg}
+.r-bento > li:nth-child(even){--rot:.4deg}
 .r-bento.is-in > li{transition:opacity .45s var(--ease) var(--d,0s),transform .45s var(--ease) var(--d,0s)}
-.r-bento > li:nth-child(2){--d:.07s}
-.r-bento > li:nth-child(3){--d:.14s}
-.r-bento > li:nth-child(4){--d:.21s}
+.r-bento > li:nth-child(2){--d:.06s}
+.r-bento > li:nth-child(3){--d:.12s}
+.r-bento > li:nth-child(4){--d:.18s}
 .is-instant,.is-instant > li{transition:none!important}
 
 /* buttons */
@@ -292,7 +306,12 @@ body{background:#F3F3F3}
   .r-pcard-art,.is-narrow .r-pcard-art{width:240px}
 }
 @media (max-width:720px){
-  .r-video{margin-top:40px}
+  .r-video-slot{margin-top:40px}
+  /* simpler motion on small screens: a smaller video change, no glow parallax, no card rotation */
+  .r-video{--v-s0:.96;--v-y0:12px}
+  .r-hero-glow{transform:none}
+  .r-bento > li:nth-child(n){--rot:0deg}
+  .r-stagger.is-armed > li{transform:translate3d(0,12px,0)}
   .r-lead-line{display:inline}
   .r-section{margin-top:64px}
   .r-header-in{padding:0 12px 0 16px;height:56px;gap:8px}
@@ -304,9 +323,9 @@ body{background:#F3F3F3}
   .r-h2{font-size:24px}
   .r-lead{font-size:16px}
   .r-bento{grid-template-columns:1fr}
-  .r-sessions-band{padding:64px 16px 80px}
+  .r-sessions-band{padding:32px 16px 80px}
   .r-bento{grid-template-columns:1fr;grid-auto-rows:auto;gap:20px}
-  .r-pcard{min-height:372px;border-radius:24px}
+  .r-pcard{min-height:372px;border-radius:28px}
   .r-pcard-body{padding:28px 24px}
   .r-pcard-art,.is-narrow .r-pcard-art{width:200px;right:-24px;bottom:-30px}
   .r-h2-lg{font-size:28px}
@@ -325,7 +344,7 @@ body{background:#F3F3F3}
   .r-page *,.r-dialog *{transition:none!important;animation:none!important}
   .r-btn:active,.r-icon-btn:active{transform:none}
   .r-play:active{transform:translate(-50%,-50%)}
-  .r-hero-text.is-armed,.r-stagger.is-armed > li{opacity:1;transform:none}
+  .r-hero-text.is-armed,.r-reveal.is-armed,.r-stagger.is-armed > li{opacity:1;transform:none}
   .r-video,.r-hero-glow{transform:none!important}
   /* hover keeps its colour and border change, without movement */
   .r-pcard{--lift:0px!important}
