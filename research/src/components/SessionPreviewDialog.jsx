@@ -65,58 +65,47 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
           </header>
 
           <div className="r-dlg-body">
-            <section aria-labelledby="dlg-expect">
-              <h3 id="dlg-expect" className="r-dlg-h">What to expect</h3>
-              <ol className="r-timeline">
-                {sessionStages.map((st, i) => (
-                  <li key={st.title}>
-                    <span className="r-timeline-n" aria-hidden="true">{i + 1}</span>
-                    <span className="r-timeline-t">{st.title}</span>
-                    <span className="r-timeline-d">{st.text}</span>
-                  </li>
-                ))}
-              </ol>
-            </section>
-
-            {journeys.length > 0 && (
-              <section aria-labelledby="dlg-journeys">
-                <h3 id="dlg-journeys" className="r-dlg-h">Journeys you’ll explore</h3>
-                <ul className="r-journeys">
-                  {journeys.map(j => (
-                    <li key={j.title}>
-                      <span className="r-journeys-icon"><Icon name={j.icon} /></span>
-                      <span><span className="r-journeys-t">{j.title}</span><span className="r-journeys-d">{j.text}</span></span>
+            {/* two aligned columns: same row height, same 32px marker column */}
+            <div className="r-dlg-cols">
+              <section aria-labelledby="dlg-expect">
+                <h3 id="dlg-expect" className="r-dlg-h">What to expect</h3>
+                <ol className="r-dlg-list r-timeline">
+                  {sessionStages.map((st, i) => (
+                    <li key={st.title}>
+                      <span className="r-dlg-mark is-step" aria-hidden="true">{i + 1}</span>
+                      <span className="r-dlg-item">{st.title}</span>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </section>
-            )}
+              {journeys.length > 0 && (
+                <section aria-labelledby="dlg-journeys">
+                  <h3 id="dlg-journeys" className="r-dlg-h">Journeys you’ll explore</h3>
+                  <ul className="r-dlg-list">
+                    {journeys.map(j => (
+                      <li key={j.title}>
+                        <span className="r-dlg-mark is-icon"><Icon name={j.icon} /></span>
+                        <span className="r-dlg-item">{j.title}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
 
             <p className="r-panel is-glow"><Icon name="info" /><span>{sessionModal.reassurance}</span></p>
+            <p className="r-dlg-store"><Icon name="device" /><span>{sessionModal.storageTitle} {sessionModal.storage}</span></p>
             {facilitator && (
-              <div className="r-panel is-quiet is-facilitator">
-                <Icon name="info" />
-                <span>
-                  <strong>For facilitators</strong>
-                  <span className="r-panel-line">{sessionModal.facilitatorStorage}</span>
-                  <span className="r-panel-line">{sessionModal.facilitatorGuidance}</span>
-                </span>
-              </div>
+              <p className="r-dlg-store">
+                <Icon name="info" /><span>For facilitators: {sessionModal.facilitatorStorage} {sessionModal.facilitatorGuidance}</span>
+              </p>
             )}
           </div>
 
           <footer className="r-dlg-foot">
-            <div className="r-dlg-sep" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12M2.8 2.8l8.4 8.4M11.2 2.8l-8.4 8.4" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" /></svg>
-            </div>
-            <div className="r-dlg-row">
-              <p className="r-dlg-store"><Icon name="device" /><span><strong>{sessionModal.storageTitle}</strong> {sessionModal.storage}</span></p>
-              {facilitator && <a className="r-link-btn r-dlg-fac" href={`#/f/${participant.id}`}>Open facilitator view</a>}
-              <div className="r-dlg-actions">
-                <button type="button" className="r-btn r-btn-secondary" onClick={() => ref.current.close()}>Not now</button>
-                <a className="r-btn" href={`#/s/${participant.id}`}>{primary}</a>
-              </div>
-            </div>
+            {facilitator && <a className="r-link-btn r-dlg-fac" href={`#/f/${participant.id}`}>Open facilitator view</a>}
+            <button type="button" className="r-btn r-btn-secondary" onClick={() => ref.current.close()}>Not now</button>
+            <a className="r-btn" href={`#/s/${participant.id}`}>{primary}</a>
           </footer>
         </div>
       )}
