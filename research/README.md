@@ -16,8 +16,9 @@ It lives in `research/` and is built as a second page next to the prototype, so 
 - **Participant space** (`#/s/<id>`, e.g. `#/s/rm-01`): welcome, then the Participant Information Sheet ("About this
   research", 10 sections, the participant's own journeys; actions are Back to welcome, Leave session and Continue to consent), then the
   consent form (participation and note-taking, separate optional screen and audio recording, name, drawn or typed-name
-  signature, and a link back to the information sheet). The sheet's version is saved with the consent record. "A little about your work" (two optional questions in a centred card, answers can be given aloud instead, and a collapsed optional note asked only after consent; a status line shows whether the last edit actually saved to this browser), the assigned journeys one scenario
-  at a time with an Open prototype button, a 1 to 7 ease rating with two short comments after each task (plus "Which information do you check most carefully before passing an application onward?" after RM Financial Analysis review and ARM Submit to RM), then the
+  signature, and a link back to the information sheet). The sheet's version is saved with the consent record. "A little about your work" (two optional questions in a centred card, answers can be given aloud instead, and a collapsed optional note asked only after consent; a status line shows whether the last edit actually saved to this browser), then each journey as
+  scenario card (situation and goal) → focused prototype workspace (the prototype in a near-full-viewport frame with
+  View task, Pause, Stop recording, Leave task and Finish task) → feedback: a 1 to 7 ease rating and an optional "What, if anything, felt unclear?" (plus "Which information do you check most carefully before passing an application onward?" after RM Financial Analysis review and ARM Submit to RM), then the
   closing question and a thank-you. Task text is goal-based only. No clicks, model answers or observation checklist appear here.
 - **Facilitator view** (`#/f/<id>`): intro script, consent status, materials, live participant answers, a session clock
   with the agenda, neutral prompts, and for every task: Outcome, Observation, Quote, Screen or step, Assistance,
@@ -34,9 +35,32 @@ Bump `version` whenever the wording changes. The sheet asks nothing, starts no r
 
 The session script (agenda, consent wording, role questions, journeys, prompts, closing question) is in `src/script.js`.
 
+### Task recordings
+
+Recording follows the consent form: screen and audio are separate choices. On the first journey, "Start journey"
+opens a setup step: "Share this tab" (the browser's screen-capture prompt, asking for this tab where supported),
+a preview to check what is shared, then "Turn on microphone" only when audio was agreed. Recording never starts
+before that. Each journey is its own recording, from task start to Finish/Leave task, so the feedback questions are
+not recorded. The capture stays open between journeys, so there are no repeat prompts unless sharing has ended.
+Markers record task start and end, pauses, and interruptions (sharing ended from the browser bar, recorder errors,
+the participant stopping recording). States shown: Ready, Recording, Paused, Stopped, Saving, Saved, Save failed.
+A recording is only marked Saved after it is written and read back; empty or unreadable recordings are marked as such.
+
+**Where recordings are stored:** IndexedDB in the browser that captured them, on that device only (`src/recorder.js`),
+written in two-second chunks so an interrupted recording keeps what was captured. Nothing is uploaded, and nothing
+goes into the repository or the deployed site. The facilitator view (`#/f/<id>`) lists them with status, duration,
+date, size, markers, playback and download (.webm, plus markers as .json), but only in a window of the same browser
+on the same device. A facilitator on a second device will not see them; that needs authenticated shared storage,
+which this static site does not have. Download every recording after each session: clearing site data deletes them.
+
+Tab capture records the whole selected surface. While a task runs, the portal's header, footer and other content are
+hidden behind the workspace, and the recording starts on that workspace before the prototype loads.
+
 ### Prototype starting states
 
 The prototype accepts an opt-in `?start=` parameter (in `src/logic.js`). Without it nothing changes.
+- `?start=rm-hub`: the Facility Application Hub with nothing started (RM journey 1, Client Information).
+- `?start=rm-docs`: the hub with Client Information already submitted (RM journey 2, Documents & References).
 - `?start=arm`: the application as an ARM receives it (Client and Documents submitted, Financial Analysis ready to start, an RM comment).
 - `?start=rm-review`: the application back with the RM after the ARM's analysis (Financial Analysis submitted, ARM comment).
 RM tasks 1 to 3 use the normal start. The walkthrough video should only be shown after the tasks.

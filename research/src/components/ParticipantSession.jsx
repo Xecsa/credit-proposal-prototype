@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { participants, project } from '../config.js';
-import { consentItems, consentRecordings, roleQuestions, roleIntro, reviewFollowUp, journeysByRole, journeyOverview, afterTaskQuestions, easeScale, closingQuestion, participantNote } from '../script.js';
+import { consentItems, consentRecordings, roleQuestions, roleIntro, journeysByRole, journeyOverview, closingQuestion, participantNote } from '../script.js';
 import { infoSheet } from '../infoSheet.js';
 import { useSession } from '../store.js';
-import { prototypeHref } from '../useRoute.js';
 import SignaturePad from './SignaturePad.jsx';
 import InfoSheet from './InfoSheet.jsx';
+import TaskJourney from './TaskJourney.jsx';
+import { discardCapture } from '../recorder.js';
 
 // Participant space: welcome → information sheet → consent → about your work → one task at a time → closing.
 // Calm and stable: no entrance or scroll motion here. Task text is goal-based; no clicks or answers shown.
@@ -60,12 +61,11 @@ export default function ParticipantSession({ id }) {
           {stage === 'welcome' && <Welcome onNext={() => go({ stage: 'info' })} />}
           {stage === 'consent' && <Consent data={data} update={update} onInfo={() => go({ stage: 'info' })} onNext={() => go({ stage: 'about' })} />}
           {stage === 'tasks' && (
-            <Task
+            <TaskJourney
               key={role.journeys[taskIndex].id}
-              journey={role.journeys[taskIndex]}
+              p={p} journey={role.journeys[taskIndex]} index={taskIndex} total={role.journeys.length}
               data={data} update={update}
-              onBack={() => taskIndex === 0 ? go({ stage: 'about' }) : go({ taskIndex: taskIndex - 1 })}
-              onNext={() => taskIndex + 1 < role.journeys.length ? go({ taskIndex: taskIndex + 1 }) : go({ stage: 'closing' })}
+              onNext={() => { if (taskIndex + 1 < role.journeys.length) go({ taskIndex: taskIndex + 1 }); else { discardCapture(); go({ stage: 'closing' }); } }}
             />
           )}
           {stage === 'closing' && <Closing data={data} update={update} onBack={() => go({ stage: 'tasks', taskIndex: role.journeys.length - 1 })} />}
@@ -199,77 +199,6 @@ function RoleQuestions({ p, headRef, data, update, onBack, onNext }) {
         </div>
       </footer>
     </section>
-  );
-}
-
-function Task({ journey, data, update, onBack, onNext }) {
-  const t = (data.tasks || {})[journey.id] || {};
-  const set = patch => update(d => ({ ...d, tasks: { ...(d.tasks || {}), [journey.id]: { ...((d.tasks || {})[journey.id] || {}), ...patch } } }));
-  const [phase, setPhase] = useState(t.finishedAt || t.skipped ? 'feedback' : 'task');
-  const fbRef = useRef(null);
-  useEffect(() => { if (phase === 'feedback' && fbRef.current && !t.ease) fbRef.current.focus(); }, [phase]); // eslint-disable-line react-hooks/exhaustive-deps
-  const scale = [];
-  for (let n = easeScale.min; n <= easeScale.max; n++) scale.push(n);
-
-  return (
-    <>
-      <h2 className="r-task-title">{journey.title}</h2>
-      <div className="r-scenario">
-        <p className="r-label">Your task</p>
-        <p className="r-scenario-text">{journey.task}</p>
-      </div>
-      {phase === 'task' && (
-        <>
-          <div className="r-actions is-start">
-            <a className="r-btn" href={prototypeHref(journey.start)} target="_blank" rel="noopener" onClick={() => !t.openedAt && set({ openedAt: new Date().toISOString() })}>
-              Open prototype<span className="r-sr"> (opens in a new tab)</span>
-            </a>
-          </div>
-          <p className="r-hint">Take your time and think aloud. Come back here when you’ve finished or want to stop.</p>
-          <div className="r-actions">
-            <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back</button>
-            <span className="r-actions-end">
-              <button type="button" className="r-link-btn" onClick={() => { set({ skipped: true }); onNext(); }}>Skip this task</button>
-              <button type="button" className="r-btn" onClick={() => { set({ finishedAt: new Date().toISOString(), skipped: false }); setPhase('feedback'); }}>I’ve finished this task</button>
-            </span>
-          </div>
-        </>
-      )}
-      {phase === 'feedback' && (
-        <>
-          <fieldset className="r-fieldset" ref={fbRef} tabIndex={-1}>
-            <legend>{afterTaskQuestions.ease}</legend>
-            <div className="r-scale" role="radiogroup" aria-label={afterTaskQuestions.ease}>
-              {scale.map(n => (
-                <label key={n} className={`r-scale-opt${t.ease === n ? ' is-on' : ''}`}>
-                  <input type="radio" name={`ease-${journey.id}`} value={n} checked={t.ease === n} onChange={() => set({ ease: n })} />
-                  <span>{n}</span>
-                </label>
-              ))}
-            </div>
-            <div className="r-scale-ends"><span>1 — {easeScale.minLabel}</span><span>7 — {easeScale.maxLabel}</span></div>
-          </fieldset>
-          <div className="r-field">
-            <label htmlFor={`un-${journey.id}`}>{afterTaskQuestions.unclear}</label>
-            <textarea id={`un-${journey.id}`} className="r-input" rows={3} value={t.unclear || ''} onChange={e => set({ unclear: e.target.value })} />
-          </div>
-          <div className="r-field">
-            <label htmlFor={`fit-${journey.id}`}>{afterTaskQuestions.fit}</label>
-            <textarea id={`fit-${journey.id}`} className="r-input" rows={3} value={t.fit || ''} onChange={e => set({ fit: e.target.value })} />
-          </div>
-          {journey.followUp && (
-            <div className="r-field">
-              <label htmlFor={`chk-${journey.id}`}>{reviewFollowUp.q}</label>
-              <textarea id={`chk-${journey.id}`} className="r-input" rows={3} value={t.check || ''} onChange={e => set({ check: e.target.value })} />
-            </div>
-          )}
-          <div className="r-actions">
-            <button type="button" className="r-btn r-btn-secondary" onClick={() => setPhase('task')}>Back to the task</button>
-            <button type="button" className="r-btn" onClick={onNext}>Continue</button>
-          </div>
-        </>
-      )}
-    </>
   );
 }
 

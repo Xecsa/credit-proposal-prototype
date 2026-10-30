@@ -41,7 +41,7 @@ export const roleIntro = {
 export const reviewFollowUp = { id: 'check', q: 'Which information do you check most carefully before passing an application onward?' };
 
 export const afterTaskQuestions = {
-  ease: 'Overall, how difficult or easy was that task?',
+  ease: 'Overall, how difficult or easy was this task?',
   unclear: 'What, if anything, felt unclear?',
   fit: 'How would this fit into your current way of working?'
 };
@@ -75,27 +75,32 @@ export const participantNote = {
   placeholder: 'Add a question or anything that would help you take part comfortably.'
 };
 
+// Each journey: Short scenario (situation + goal) → prototype task in the focused workspace → feedback.
+// `start` opens the prototype at an independent prepared state, so no journey depends on finishing an earlier one.
 export const journeysByRole = {
   RM: {
     title: 'RM session: prepare the application and review the analysis',
     prep: 'Fictional customer pack: meeting notes, facility request, stakeholder details, documents, and one financial figure that needs checking. Same core information for both RMs.',
     journeys: [
       {
-        id: 'rm-client', title: 'Client Information', minutes: 6, start: '',
-        task: 'Prepare the customer information using this pack. Check the facility request, correct the supplied discrepancy, and confirm the relevant people and accounts.',
+        id: 'rm-client', title: 'Client Information', minutes: 6, start: 'rm-hub',
+        situation: 'You are preparing a facility application for Orient Insurance.',
+        goal: 'Using the supplied customer information, review the details already captured, make any necessary corrections, and prepare this section for the next stage.',
         ask: ['What told you which information needed attention?', 'Was the source of the prefilled information clear?', 'What would you still need to verify outside this tool?'],
         observe: ['Discovering edits', 'Understanding stakeholder roles', 'Selecting the right accounts', 'Checking information before confirmation'],
         note: 'Keep this focused: same core checks for both RMs. If time allows, vary one secondary area (see the participant’s secondary area).'
       },
       {
-        id: 'rm-docs', title: 'Documents & References', minutes: 5, start: '',
-        task: 'Prepare the supporting documents for the next stage. Add the supplied documents and check whether anything else is needed.',
+        id: 'rm-docs', title: 'Documents & References', minutes: 5, start: 'rm-docs',
+        situation: 'The customer information has been completed.',
+        goal: 'Using the supplied files, prepare the supporting documents and determine whether the application is ready to move forward.',
         ask: ['How did you decide where each document belonged?', 'What did you understand from the upload status?', 'What would you expect after sending these documents?'],
         observe: ['Document categorisation', 'Prefetched versus uploaded files', 'Interpreting errors', 'Recognising readiness and processing status']
       },
       {
         id: 'rm-review', title: 'Financial Analysis review', minutes: 4, start: 'rm-review',
-        task: 'The ARM has returned the application for your review. Review the analysis and comments, then decide whether to confirm it or return it.',
+        situation: 'The ARM has completed the financial analysis and submitted the application for your review.',
+        goal: 'Review the analysis and comments, then take the action you consider appropriate.',
         ask: ['What informed your decision?', 'Was anything missing for your review?', 'Who would act next after your chosen action?'],
         followUp: true,
         observe: ['Finding analysis and comments', 'Understanding ratings and summaries', 'Distinguishing review from editing', 'Choosing the appropriate handoff'],
@@ -110,25 +115,29 @@ export const journeysByRole = {
     journeys: [
       {
         id: 'arm-client', title: 'Received application and Client Information review', minutes: 4, start: 'arm',
-        task: 'This application has been assigned to you. Review the customer and facility information and identify anything you need clarified before proceeding.',
+        situation: 'This application has been assigned to you.',
+        goal: 'Review the customer and facility information and identify anything you need clarified before proceeding.',
         ask: ['Was the RM’s request clear?', 'Which information did you look for first?', 'What would you need clarified?'],
         observe: ['Understanding application context, ownership and status', 'Locating submitted information', 'Identifying gaps']
       },
       {
         id: 'arm-docs', title: 'Documents & References review', minutes: 4, start: 'arm',
-        task: 'Check whether the supporting documents are sufficient for your analysis and establish their current processing status.',
+        situation: 'The RM has added the supporting documents.',
+        goal: 'Check whether the supporting documents are sufficient for your analysis and establish their current processing status.',
         ask: ['How did you determine whether the documents were usable?', 'Was it clear which borrower or stakeholder each document belonged to?', 'What would you do if something were missing?'],
         observe: ['Document discoverability', 'Grouping', 'Previewing', 'Understanding processing status and responsibility for corrections']
       },
       {
         id: 'arm-fin', title: 'Financial Analysis process', minutes: 8, start: 'arm', priority: true,
-        task: 'Use the supplied statements to review the spreading, correct the specified discrepancy, select the relevant entity, and assess the resulting analysis.',
+        situation: 'The application is ready for financial analysis.',
+        goal: 'Use the supplied statements to review the spreading, correct the specified discrepancy, select the relevant entity, and assess the resulting analysis.',
         ask: ['How did you find the figure you needed?', 'What did you expect your correction to affect?', 'How would you verify the generated analysis?', 'Was the transition into and out of CreditLens clear?'],
         observe: ['Discovering editable values', 'Comparing figures', 'Selecting entities', 'Interpreting external-tool transitions, ratios, ratings and generated narratives']
       },
       {
         id: 'arm-submit', title: 'Submit to RM', minutes: 3, start: 'arm',
-        task: 'Your analysis is ready for RM review. Communicate the issue or qualification they need to consider and pass the application onward.',
+        situation: 'Your analysis is ready for RM review.',
+        goal: 'Communicate the issue or qualification they need to consider and pass the application onward.',
         ask: ['What do you expect the RM to receive?', 'Where would you check your comment later?', 'What tells you that your work has been handed over?'],
         followUp: true,
         observe: ['Adding a useful comment', 'Understanding submission', 'Confirmation and next owner', 'Locating comment history'],
@@ -162,3 +171,6 @@ export const beforeFirstSession = [
   'Prepare the fictional customer pack and the statement with the discrepancy.',
   'Confirm remaining ownership details with the BA/PO.'
 ];
+
+// Full scenario text, used by the facilitator view and exports.
+Object.values(journeysByRole).forEach(r => r.journeys.forEach(j => { j.task = `${j.situation} ${j.goal}`; }));

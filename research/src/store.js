@@ -59,7 +59,7 @@ export function useStatuses(ids) {
 }
 
 export function download(name, text, type) {
-  const url = URL.createObjectURL(new Blob([text], { type }));
+  const url = URL.createObjectURL(text instanceof Blob ? text : new Blob([text], { type }));
   const a = document.createElement('a');
   a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);

@@ -7,6 +7,7 @@ import {
 import { infoSheet, isDraft } from '../infoSheet.js';
 import { useSession, statusOf, readSession, writeSession, clearSession, download } from '../store.js';
 import { prototypeHref } from '../useRoute.js';
+import RecordingsPanel from './RecordingsPanel.jsx';
 import { statusLabels, sessionModal } from '../config.js';
 import { participantNote } from '../script.js';
 
@@ -37,6 +38,7 @@ export default function FacilitatorView({ id }) {
           </div>
         </div>
         <FacilitatorNotice />
+        <RecordingsPanel participant={p} live={data.recording} journeys={role.journeys} />
 
         <div className="r-fac-grid">
           <aside className="r-fac-side" aria-label="Timing and prompts">
@@ -51,7 +53,6 @@ export default function FacilitatorView({ id }) {
               <ol className="r-plain-ol">
                 <li>{afterTaskQuestions.ease} (1–7)</li>
                 <li>{afterTaskQuestions.unclear}</li>
-                <li>{afterTaskQuestions.fit}</li>
                 <li>After RM review / ARM submit only: {reviewFollowUp.q}</li>
               </ol>
               <p className="r-small r-muted">{limitationNote}</p>
@@ -130,7 +131,7 @@ function JourneyCard({ n, j, pid, task, note, setNote }) {
     <section className={`r-fac-box r-fac-journey${j.priority ? ' is-priority' : ''}`} aria-labelledby={`fj-${j.id}`}>
       <div className="r-fac-jhead">
         <h3 id={`fj-${j.id}`} className="r-fac-h3">{n}. {j.title} · {j.minutes} min</h3>
-        <a className="r-link-btn" href={prototypeHref(j.start)} target="_blank" rel="noopener">Open prototype{j.start ? ` (${j.start} state)` : ''}<span className="r-sr"> (opens in a new tab)</span></a>
+        <a className="r-link-btn" href={prototypeHref(j.start)} target="_blank" rel="noopener">Preview starting state{j.start ? ` (${j.start})` : ''}<span className="r-sr"> (opens in a new tab)</span></a>
       </div>
       <p className="r-fac-task">“{j.task}”</p>
       {j.id === 'rm-client' && secondaryArea[pid] && <p className="r-small"><strong>Secondary area for {pid.toUpperCase().replace('-', ' ')}:</strong> {secondaryArea[pid]} (if time allows)</p>}
@@ -148,7 +149,8 @@ function JourneyCard({ n, j, pid, task, note, setNote }) {
         </div>
       </div>
       <p className="r-fac-live">
-        Participant: {task.skipped ? 'skipped' : task.finishedAt ? 'finished' : task.openedAt ? 'in the prototype' : 'not started'}
+        Participant: {task.skipped ? 'skipped (not attempted)' : task.finishedAt ? 'pressed Finish task' : task.leftAt ? 'left the task unfinished' : (task.startedAt || task.openedAt) ? 'in the prototype' : 'not started'}
+        {task.attempts && task.attempts.length > 1 ? ` · ${task.attempts.length} attempts` : ''}
         {task.ease ? ` · Ease ${task.ease}/7` : ''}
         {task.unclear ? ` · Unclear: “${task.unclear}”` : ''}
         {task.fit ? ` · Fit: “${task.fit}”` : ''}
@@ -248,7 +250,7 @@ function FacilitatorNotice() {
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><path d="M10 3 2.5 16.5h15L10 3Z" /><path d="M10 8.5v3.5M10 14.5v.01" /></svg>
           <div>
             <strong>Information sheet v{infoSheet.version} is a draft and not ready for participants.</strong>
-            {pending.length > 0 && <> Confirm these {pending.length} details in <code>src/infoSheet.js</code> first:</>}
+            {pending.length > 0 && <> Confirm {pending.length === 1 ? 'this detail' : `these ${pending.length} details`} in <code>src/infoSheet.js</code> first:</>}
             {pending.length > 0 && <ul className="r-fac-pending">{pending.map(t => <li key={t}>{t}</li>)}</ul>}
           </div>
         </div>
