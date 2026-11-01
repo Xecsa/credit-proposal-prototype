@@ -41,9 +41,9 @@ export default function SessionPreviewDialog({ participant, status, facilitator 
   const onBackdrop = e => { if (e.target === ref.current) ref.current.close(); };
   const s = status || 'not-started';
   // Where a started session is now, using the same six stages as the participant's stepper.
-  const STAGE_IDS = ['welcome', 'info', 'consent', 'about', 'tasks', 'closing'];
+  const STAGE_IDS = ['welcome', 'info', 'about', 'tasks', 'closing'];
   const saved = participant && s === 'in-progress' ? readSession(participant.id) : {};
-  const current = s === 'in-progress' ? Math.max(0, STAGE_IDS.indexOf(saved.stage || 'welcome')) : -1;
+  const current = s === 'in-progress' ? Math.max(0, STAGE_IDS.indexOf(saved.stage === 'consent' ? 'about' : saved.stage || 'welcome')) : -1;
   const journeys = participant ? journeyOverview[participant.roleKey] || [] : [];
   const primary = s === 'not-started' ? 'Continue to welcome' : s === 'in-progress' ? 'Resume session' : 'Open session';
 

@@ -1,4 +1,4 @@
-// Participant Information Sheet: step 1 of the participant session, after Welcome and before Consent.
+// Participant Information Sheet: after Welcome and before About your work.
 // One versioned source for the page (and for infoSheetHtml below, which is kept but not offered as a download).
 // Structure follows the uploaded Middlesex (MDX) template, adapted to this study. Nothing from the earlier
 // MDX study (topic, university, ethics committee, team) is reused.
@@ -65,7 +65,7 @@ export const infoSheet = {
         ['We’d like to make two kinds of recording. Each is optional, and you can agree to one, both or neither.'],
         [{ strong: 'Screen recording. ' }, 'A recording of the prototype on screen while you complete the tasks, so we can review where the design worked and where it didn’t.'],
         [{ strong: 'Audio recording. ' }, 'A recording of what is said during the session, so we can check your comments accurately when writing up findings.'],
-        ['You’ll make your recording choices on the next screen. Nothing is recorded on this page, and it doesn’t ask for access to your screen or microphone.'],
+        ['Before the first task, you’ll be asked whether to share your screen and turn on your microphone. You can continue without recording. Nothing is recorded on this page, and it doesn’t ask for access to your screen or microphone.'],
         ['Recordings are made in this browser and stored only on this device. They aren’t uploaded or sent anywhere.']
       ]
     },
@@ -81,10 +81,10 @@ export const infoSheet = {
       id: 'handling',
       heading: 'How will my information be handled?',
       groups: [
-        { label: 'What we collect', body: [['Your participant code ({code}) and role; your answers to the questions in this session, including task ratings and any optional note; the times you start and finish each task; the facilitator’s observations; your name and signature on the consent form; and, only if you agree, screen and audio recordings.']] },
-        { label: 'Where it’s stored', body: [['Your answers are stored in this browser on this device. They aren’t sent to a server and don’t sync to other devices.']] },
+        { label: 'What we collect', body: [['Your participant code ({code}) and role; your answers to the questions in this session, including task ratings and any optional note; the times you start and finish each task; where you click in the prototype during tasks, to build heatmaps; the facilitator’s observations; and, only if you agree, screen and audio recordings.']] },
+        { label: 'Where it’s stored', body: [['Your answers and clicks are stored in this browser on this device. They aren’t sent to a server and don’t sync to other devices.']] },
         { label: 'Who can see it', body: [['The project’s product owner (PO), business analyst (BA), Saba Shaikh (designer) and the lead designer.']] },
-        { label: 'Recordings', body: [['Only made if you agree on the next screen. They’re stored in this browser on this device and aren’t uploaded or shared.']] }
+        { label: 'Recordings', body: [['Only made if you agree before the first task. They’re stored in this browser on this device and aren’t uploaded or shared.']] }
       ]
     },
     {

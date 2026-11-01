@@ -13,7 +13,7 @@ Back</button>
 {' '}
 {(v.shExisting) ? (<><div style={{ padding: "12px", display: "flex", gap: "16px", alignItems: "flex-start" }}><span aria-hidden="true" style={{ flex: "none", width: "40px", height: "40px", borderRadius: "8px", background: "#f4f7fe", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "500", lineHeight: "16px", letterSpacing: "0.4px", color: "#072447" }}>AA</span>
 <div style={{ flex: "1", minWidth: "0", display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-start", paddingTop: "2px" }}><div style={{ fontWeight: "500", lineHeight: "16px", color: "#000000" }}>Ahmed Al-Hassan</div>
-<div style={{ lineHeight: "16px", color: "#575757", overflowWrap: "anywhere" }}>50%&nbsp; Shareholder - GETAX</div></div></div></>) : null}
+<div style={{ lineHeight: "16px", color: "#575757", overflowWrap: "anywhere" }}>50%&nbsp; Shareholder - Individual</div></div></div></>) : null}
 {' '}
 {(v.shAdding) ? (<>{' '}
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}><h2 style={{ margin: "0", fontSize: "16px", lineHeight: "24px", fontWeight: "500", color: "#072447" }}>Stakeholder type</h2>

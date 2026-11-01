@@ -6,6 +6,7 @@ import {
 } from '../script.js';
 import { infoSheet, isDraft } from '../infoSheet.js';
 import { useSession, statusOf, readSession, writeSession, clearSession, download } from '../store.js';
+import { clearClicks, readClicks } from '../clicks.js';
 import { prototypeHref } from '../useRoute.js';
 import RecordingsPanel from './RecordingsPanel.jsx';
 import { resetParticipantMedia } from '../recorder.js';
@@ -120,7 +121,7 @@ function SessionMenu({ p, data, update }) {
       {(confirm || msg) && (
         <div className="r-fw-confirm" role={confirm ? 'alertdialog' : 'status'} aria-labelledby="reset-h">
           {confirm ? <>
-            <p id="reset-h"><strong>Reset {p.code}?</strong> This returns {p.code} to Not started. In this browser only, it deletes their consent and signature, answers, task progress and feedback, your notes for this session, and their recordings. An open participant tab in this browser stops recording and goes back to Welcome. It can’t be undone, so export first if you need anything.</p>
+            <p id="reset-h"><strong>Reset {p.code}?</strong> This returns {p.code} to Not started. In this browser only, it deletes their answers, task progress and feedback, your notes for this session, their click data, and their recordings. An open participant tab in this browser stops recording and goes back to Welcome. It can’t be undone, so export first if you need anything.</p>
             <div className="r-actions is-start">
               <button type="button" className="r-btn r-btn-danger" onClick={async () => { setConfirm(false); setMsg(await resetTestSession(p)); }}>Reset {p.code}</button>
               <button type="button" className="r-btn r-btn-secondary" onClick={() => setConfirm(false)}>Cancel</button>
@@ -135,14 +136,14 @@ function SessionMenu({ p, data, update }) {
 // ---- Run session ----
 function RunSession({ p, role, data, update, notes, setNote, stage, setStage }) {
   const stages = [
-    { id: 'welcome', label: 'Welcome and consent', time: '0–3 min' },
+    { id: 'welcome', label: 'Welcome and information', time: '0–3 min' },
     { id: 'about', label: 'About their work', time: '3–5 min' },
     ...role.journeys.map((j, i) => ({ id: j.id, label: `Journey ${i + 1}`, sub: j.title, time: `${j.minutes} min`, j, i })),
     { id: 'closing', label: 'Closing', time: '24–30 min' }
   ];
   const cur = stages.find(s => s.id === stage) || stages[0];
   const tasks = data.tasks || {};
-  const done = s => s.id === 'welcome' ? !!(data.consent && data.consent.at) : s.id === 'about' ? !!data.role : s.id === 'closing' ? !!data.completedAt : !!((tasks[s.id] || {}).finishedAt || (tasks[s.id] || {}).skipped);
+  const done = s => s.id === 'welcome' ? !!(data.startedAt || (data.consent && data.consent.at)) : s.id === 'about' ? !!data.role : s.id === 'closing' ? !!data.completedAt : !!((tasks[s.id] || {}).finishedAt || (tasks[s.id] || {}).skipped);
   const mainRef = useRef(null);
   const pick = id => { setStage(id); requestAnimationFrame(() => { const h = mainRef.current && mainRef.current.querySelector('h2'); if (h) h.focus({ preventScroll: true }); }); };
   return (
@@ -182,20 +183,19 @@ function WelcomeStage({ role, data }) {
   const c = data.consent || {};
   return (
     <section className="r-fw-card" aria-labelledby="st-h">
-      <h2 id="st-h" tabIndex={-1} className="r-fw-h2">Welcome and consent</h2>
+      <h2 id="st-h" tabIndex={-1} className="r-fw-h2">Welcome and information</h2>
       <p className="r-fw-time">Suggested 0–3 min</p>
       <h3 className="r-fw-h3">Say</h3>
       <blockquote className="r-quote">{introScript}</blockquote>
       <h3 className="r-fw-h3">From the participant</h3>
       <dl className="r-fw-facts">
-        <div><dt>Consent</dt><dd>{c.at ? `Given at ${time(c.at)}` : 'Not yet given'}</dd></div>
-        <div><dt>Recording</dt><dd>{c.at ? recordingText(c) : '—'}</dd></div>
-        {c.at && c.infoSheetVersion && <div><dt>Information sheet</dt><dd>Version {c.infoSheetVersion}</dd></div>}
+        <div><dt>Started</dt><dd>{data.startedAt ? `Read the information sheet, ${time(data.startedAt)}` : 'Not yet'}</dd></div>
+        <div><dt>Recording</dt><dd>{data.recordingMode === 'record' ? 'Chose to record before the first task' : data.recordingMode === 'notes-only' ? `Not recording${data.recordingNote ? ` (${data.recordingNote})` : ''}` : 'Not yet asked'}</dd></div>
+        {c.at && <div><dt>Earlier consent record</dt><dd>Given at {time(c.at)}, {recordingText(c)}</dd></div>}
       </dl>
       <Guide>
         <p><strong>Materials:</strong> {role.prep}</p>
         {role.priority && <p><strong>Priority:</strong> {role.priority}</p>}
-        <p>Show the walkthrough video only after the tasks; it demonstrates the interface.</p>
         <p>{sessionModal.facilitatorGuidance}</p>
       </Guide>
     </section>
@@ -320,7 +320,7 @@ function ClosingStage({ data, update }) {
         <textarea id="gen-notes" className="r-fw-input is-main" rows={6} value={data.generalNotes || ''} onChange={e => update(d => ({ ...d, generalNotes: e.target.value }))}
           placeholder="Patterns across journeys, notable moments, and anything to follow up." />
       </div>
-      <Guide><p>Show the walkthrough video now if you plan to, then thank the participant. Export notes and download recordings before clearing browser data.</p></Guide>
+      <Guide><p>Thank the participant. Export notes and download recordings before clearing browser data.</p></Guide>
     </section>
   );
 }
@@ -414,18 +414,22 @@ export function FacilitatorOverview() {
   useEffect(() => { const f = () => force(x => x + 1); window.addEventListener('storage', f); return () => window.removeEventListener('storage', f); }, []);
   const toggle = (i, v) => { const next = { ...checks, [i]: v }; setChecks(next); writeSession('checklist', { items: next }); };
   const done = beforeFirstSession.filter((_, i) => checks[i]).length;
+  const heatSessions = participants.filter(p => readClicks(p.id).length > 0).length;
   return (
     <main id="main" className="r-ov">
       <div className="r-ov-in">
         <div className="r-ov-head">
           <div>
             <h1 className="r-ov-h">Research sessions</h1>
-            <p className="r-ov-sub">Manage your four participant sessions, capture observations, and review recordings.</p>
+            <p className="r-ov-sub">Manage your four participant sessions, capture observations, review recordings and compare click heatmaps.</p>
           </div>
+          <div className="r-ov-head-actions">
+          <a className="r-btn r-btn-secondary r-ov-heat" href="#/f/analysis">Click heatmaps<span className="r-ov-heat-n">{heatSessions} of {participants.length}</span></a>
           <Menu label="Export all" className="r-ov-export">
             <button type="button" role="menuitem" onClick={() => exportCsv(participants)}>CSV (spreadsheet)</button>
             <button type="button" role="menuitem" onClick={() => exportJson(participants)}>JSON (full record)</button>
           </Menu>
+          </div>
         </div>
         <DraftNotice />
         <ul className="r-ov-grid">
@@ -463,7 +467,7 @@ export function FacilitatorOverview() {
           </div>
           {confirmAll && (
             <div className="r-fw-confirm" role="alertdialog" aria-labelledby="ov-reset-h">
-              <p id="ov-reset-h"><strong>Reset all test sessions?</strong> This returns {participants.map(p => p.code).join(', ')} to Not started. In this browser only, it deletes their consent and signatures, answers, task progress and feedback, your notes, and their recordings. Open participant tabs in this browser stop recording and go back to Welcome. Your checklist is kept. It can’t be undone.</p>
+              <p id="ov-reset-h"><strong>Reset all test sessions?</strong> This returns {participants.map(p => p.code).join(', ')} to Not started. In this browser only, it deletes their answers, task progress and feedback, your notes, their click data, and their recordings. Open participant tabs in this browser stop recording and go back to Welcome. Your checklist is kept. It can’t be undone.</p>
               <div className="r-actions is-start">
                 <button type="button" className="r-btn r-btn-danger" onClick={async () => {
                   setConfirmAll(false);
@@ -481,13 +485,13 @@ export function FacilitatorOverview() {
   );
 }
 
-const STAGE_IDS = ['welcome', 'info', 'consent', 'about', 'tasks', 'closing'];
+const STAGE_IDS = ['welcome', 'info', 'about', 'tasks', 'closing'];
 
 // One participant session. Status comes from statusOf only (Completed needs the closing to have been saved).
 function SessionCard({ p, data }) {
   const status = statusOf(data);
   const total = journeysByRole[p.roleKey].journeys.length;
-  const si = STAGE_IDS.indexOf(data.stage);
+  const si = STAGE_IDS.indexOf(data.stage === 'consent' ? 'about' : data.stage);
   const stage = status === 'in-progress' && si >= 0
     ? `${sessionStages[si].title}${data.stage === 'tasks' ? ` · journey ${(data.taskIndex || 0) + 1} of ${total}` : ''}`
     : null;
@@ -516,6 +520,7 @@ function SessionCard({ p, data }) {
 // The pre-session checklist and other participants are left alone.
 async function resetTestSession(p) {
   clearSession(p.id);
+  clearClicks(p.id);
   try {
     const n = await resetParticipantMedia(p.id);
     return `${p.code} reset to Not started${n ? `; ${n} recording${n === 1 ? '' : 's'} deleted` : ''}.`;
@@ -549,7 +554,7 @@ function recordingText(c) {
 const time = iso => new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
 function exportJson(list) {
-  const out = list.map(p => ({ participant: p.code, role: p.role, status: statusOf(readSession(p.id)), ...stripSig(readSession(p.id)) }));
+  const out = list.map(p => ({ participant: p.code, role: p.role, status: statusOf(readSession(p.id)), ...stripSig(readSession(p.id)), clicks: readClicks(p.id) }));
   download(`credit-proposal-sessions-${stamp()}.json`, JSON.stringify(out, null, 2), 'application/json');
 }
 function exportCsv(list) {

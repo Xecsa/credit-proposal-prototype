@@ -891,3 +891,72 @@ html.is-task-focus .r-header,html.is-task-focus .r-footer,html.is-task-focus .r-
   .r-ov-head .r-fw-pop{right:auto;left:0}
 }
 @media (prefers-reduced-motion:reduce){.r-ov-card,.r-ov-more summary::after,.r-ov-check summary::after{transition:none}}
+
+/* ---- Facilitator: click heatmaps (#/f/analysis) */
+.r-ov-head-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.r-ov-heat{gap:10px}
+.r-ov-heat-n{font-size:12px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--r-surface);color:var(--r-primary)}
+.r-heat-crumb{margin:0 0 8px;font-size:14px;color:var(--r-text-2)}
+.r-heat-crumb a{color:var(--r-primary)}
+.r-heat-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0}
+.r-heat-stats > div{background:#fff;border:1px solid #DFE6F3;border-radius:16px;padding:16px 20px}
+.r-heat-stats dt{font-size:13px;color:var(--r-text-2)}
+.r-heat-stats dd{margin:4px 0 0;font-size:28px;line-height:1.2;font-weight:500;color:var(--r-navy)}
+.r-heat-empty{background:#fff;border:1px solid #DFE6F3;border-radius:24px;padding:32px}
+.r-heat-empty h2{margin:0 0 8px;font-size:20px;font-weight:500;color:var(--r-navy)}
+.r-heat-empty p{margin:0;max-width:68ch;line-height:1.6;color:var(--r-text-2)}
+.r-heat-filters{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:flex-end}
+.r-heat-who{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.r-heat-who legend{float:left;width:100%;margin-bottom:8px;font-size:13px;color:var(--r-text-2)}
+.r-heat-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--r-border);border-radius:999px;background:#fff;font-size:14px;font-weight:500;color:var(--r-navy);cursor:pointer}
+.r-heat-chip.is-on{border-color:var(--r-primary);background:#F0F5FF}
+.r-heat-chip.is-empty{color:var(--r-text-2)}
+.r-heat-chip input{width:16px;height:16px;margin:0;accent-color:var(--r-primary)}
+.r-heat-chip:focus-within{outline:2px solid var(--r-primary);outline-offset:2px}
+.r-heat-chip-n{font-size:12px;font-weight:400;color:var(--r-text-2)}
+.r-heat-sel{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--r-text-2)}
+.r-heat-sel select{font:inherit;font-size:14px;min-height:40px;padding:0 12px;border:1px solid var(--r-border);border-radius:10px;background:#fff;color:var(--r-ink);max-width:100%}
+.r-heat-grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;align-items:start}
+.r-heat-screens{background:#fff;border:1px solid #DFE6F3;border-radius:20px;padding:12px;position:sticky;top:96px;max-height:calc(100vh - 120px);overflow:auto}
+.r-heat-side-h{margin:4px 8px 8px;font-size:14px;font-weight:500;color:var(--r-navy)}
+.r-heat-side-h span{font-weight:400;color:var(--r-text-2)}
+.r-heat-screens ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.r-heat-screens button{display:flex;flex-direction:column;gap:4px;width:100%;padding:10px 12px;border:0;border-radius:12px;background:none;font:inherit;text-align:left;cursor:pointer;color:var(--r-ink)}
+.r-heat-screens button:hover{background:#F6F8FD}
+.r-heat-screens button[aria-current="true"]{background:#F0F5FF;box-shadow:inset 3px 0 0 var(--r-primary)}
+.r-heat-s-t{font-size:14px;font-weight:500;line-height:1.35;overflow-wrap:anywhere}
+.r-heat-s-m{font-size:12px;color:var(--r-text-2)}
+.r-heat-s-bar{display:block;height:4px;border-radius:2px;background:#EEF1F7}
+.r-heat-s-bar span{display:block;height:100%;border-radius:2px;background:#D7301F}
+.r-heat-main{background:#fff;border:1px solid #DFE6F3;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.r-heat-main-head{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;align-items:center}
+.r-heat-main-head h2{margin:0;font-size:20px;font-weight:500;color:var(--r-navy)}
+.r-heat-legend{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--r-text-2)}
+.r-heat-legend i{display:block;width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,rgb(253,217,168),rgb(247,147,76),rgb(215,48,31),rgb(127,23,10))}
+.r-heat-figure{display:flex;flex-direction:column;gap:8px}
+.r-heat-stage{position:relative;width:100%;overflow:hidden;border:1px solid #DFE6F3;border-radius:12px;background:#F1F4F7}
+.r-heat-layer{position:absolute;top:0;left:0;transform-origin:0 0}
+.r-heat-shot{position:absolute;inset:0;border:0;pointer-events:none;background:#fff}
+.r-heat-blank{position:absolute;inset:0;background:#fff linear-gradient(#EEF1F7 1px,transparent 1px) 0 0/100% 48px}
+.r-heat-veil{position:absolute;inset:0;background:rgba(255,255,255,.35);pointer-events:none}
+.r-heat-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.r-heat-tip{position:absolute;z-index:2;display:flex;flex-direction:column;gap:2px;max-width:220px;padding:8px 12px;border-radius:10px;background:#072447;color:#fff;font-size:13px;line-height:1.4;pointer-events:none;box-shadow:0 8px 20px -8px rgba(7,36,71,.5)}
+.r-heat-tip span{color:#DCE5F5}
+.r-heat-cap,.r-heat-note{margin:0;font-size:13px;line-height:1.5;color:var(--r-text-2)}
+.r-heat-table h3{margin:8px 0;font-size:16px;font-weight:500;color:var(--r-navy)}
+.r-heat-table table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.r-heat-table th,.r-heat-table td{padding:10px 8px;border-bottom:1px solid #EEF1F7;text-align:left;vertical-align:top}
+.r-heat-table thead th{font-size:12px;font-weight:500;color:var(--r-text-2)}
+.r-heat-table tbody th{font-weight:500;color:var(--r-ink);overflow-wrap:anywhere}
+.r-heat-table .is-num{text-align:right;font-variant-numeric:tabular-nums}
+.r-heat-flag{display:inline-block;padding:2px 8px;border-radius:8px;background:#FEF3E6;color:#8A5A00;font-size:12px;white-space:nowrap}
+@media (max-width:900px){
+  .r-heat-grid{grid-template-columns:1fr}
+  .r-heat-screens{position:static;max-height:280px}
+}
+@media (max-width:560px){
+  .r-heat-stats{grid-template-columns:1fr}
+  .r-heat-stats dd{font-size:24px}
+  .r-heat-main{padding:16px}
+  .r-heat-table th:nth-child(5),.r-heat-table td:nth-child(5){display:none}
+}

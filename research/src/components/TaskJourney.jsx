@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { trackFrame } from '../clicks.js';
 import { afterTaskQuestions, easeScale, reviewFollowUp } from '../script.js';
 import { prototypeHref } from '../useRoute.js';
 import {
@@ -149,9 +150,11 @@ export function useRec() {
   return rec;
 }
 
-// Recording consent from the consent form. `recording` is the combined choice used before screen and audio were split.
+// Which recordings to offer. There is no consent form: screen and audio are both offered in the recording setup,
+// where the participant can decline. Records from the earlier consent form keep their choices.
 export function recordingConsent(data) {
   const c = data.consent || {};
+  if (!c.at) return { screen: true, audio: true };
   return { screen: !!(c.recordScreen || c.recording), audio: !!(c.recordAudio || c.recording) };
 }
 
@@ -254,7 +257,7 @@ export default function TaskJourney({ p, journey, index, total, data, update, on
         </Panel>
       )}
       {phase === 'task' && (
-        <Workspace journey={journey} index={index} total={total} rec={rec} frameOn={frameOn} startError={startError}
+        <Workspace pid={p.id} journey={journey} index={index} total={total} rec={rec} frameOn={frameOn} startError={startError}
           onFinish={() => endTask('finished')} onLeave={() => endTask('left')} />
       )}
       {phase === 'feedback' && <Feedback journey={journey} index={index} total={total} t={t} set={set} rec={rec} wantsRecording={wantsRecording} headRef={headRef} onNext={onNext} />}
@@ -302,7 +305,7 @@ function RecordingSetup({ consent, rec, index, onReady, onSkip, onBack }) {
   return (
     <Panel className="is-form" label="Set up recording">
       <PanelHead icon={Ico.video} eyebrow={`Before journey ${index + 1}`} title="Set up recording" headRef={headRef}
-        intro={`You agreed to ${consent.screen && consent.audio ? 'screen and audio recording' : consent.screen ? 'screen recording' : 'audio recording'}. Nothing is recorded until the task opens, and you can stop recording at any time.`} />
+        intro={`If you’re happy to, share this tab${consent.audio ? ' and turn on your microphone' : ''} so we can review the session afterwards. Recording is optional: you can continue without it. Nothing is recorded until the task opens, and you can stop at any time.`} />
       <div className="r-jp-body">
 
       {step === 'screen' && (
@@ -362,11 +365,15 @@ function RecordingSetup({ consent, rec, index, onReady, onSkip, onBack }) {
 }
 
 // ---- focused workspace: near full viewport, only the prototype and minimal research controls ----
-function Workspace({ journey, index, total, rec, frameOn, startError, onFinish, onLeave }) {
+function Workspace({ pid, journey, index, total, rec, frameOn, startError, onFinish, onLeave }) {
   const [showTask, setShowTask] = useState(false);
   const [paused, setPaused] = useState(false);
   const [busy, setBusy] = useState(false);
   const headRef = useRef(null);
+  const detachRef = useRef(null);
+  // Clicks in the prototype are saved on this device for the facilitator heatmaps.
+  const onFrameLoad = e => { if (detachRef.current) detachRef.current(); detachRef.current = trackFrame(e.currentTarget, pid, journey.id); };
+  useEffect(() => () => { if (detachRef.current) detachRef.current(); }, []);
   useEffect(() => {
     document.documentElement.classList.add('is-task-focus');
     headRef.current && headRef.current.focus();
@@ -404,7 +411,7 @@ function Workspace({ journey, index, total, rec, frameOn, startError, onFinish, 
       {startError && <p className="r-ws-alert" role="alert">Recording didn’t start: {startError} The task continues without recording.</p>}
       <div className="r-ws-frame">
         {frameOn
-          ? <iframe key={journey.id} src={prototypeHref(journey.start)} title={`Credit Proposal prototype: ${journey.title}`} />
+          ? <iframe key={journey.id} src={prototypeHref(journey.start)} onLoad={onFrameLoad} title={`Credit Proposal prototype: ${journey.title}`} />
           : <div className="r-ws-paused"><p>Opening the prototype…</p></div>}
         {paused && (
           <div className="r-ws-paused">

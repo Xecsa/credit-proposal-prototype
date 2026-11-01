@@ -97,7 +97,6 @@ export const sessionsSection = {
 // Header anchor links. Each `id` is a section on the page.
 export const nav = [
   { id: 'overview', label: 'Overview' },
-  { id: 'video', label: 'Video' },
   { id: 'sessions', label: 'Sessions' }
 ];
 
@@ -111,7 +110,6 @@ export const statusLabels = {
 export const sessionStages = [
   { title: 'Welcome', text: 'Understand the session.' },
   { title: 'Information', text: 'Read about this research.' },
-  { title: 'Consent', text: 'Choose whether to take part, and about recording.' },
   { title: 'About your work', text: 'Share a little about your responsibilities.' },
   { title: 'Tasks', text: 'Try realistic journeys and share your thoughts.' },
   { title: 'Closing', text: 'Tell us what would better support your work.' }

@@ -46,7 +46,7 @@ export default class App extends ProtoLogic {
   render() {
     const v = this.renderVals();
     return (
-<div style={{ height: "100vh", minHeight: "720px", display: "flex", flexDirection: "column", background: "#f1f4f7", color: "#072447", fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif", fontSize: "14px", lineHeight: "20px", fontFeatureSettings: "'liga' 0" }}>
+<div data-phase={this.state.phase} style={{ height: "100vh", minHeight: "720px", display: "flex", flexDirection: "column", background: "#f1f4f7", color: "#072447", fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif", fontSize: "14px", lineHeight: "20px", fontFeatureSettings: "'liga' 0" }}>
 {' '}
 {(v.gdpShow) ? (<><button aria-label="Close calendar" tabIndex="-1" onClick={v.gdpCancel} style={{ position: "fixed", inset: "0", zIndex: "70", border: "0", padding: "0", background: "transparent", cursor: "default" }}></button>
 {' '}
