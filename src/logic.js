@@ -316,9 +316,8 @@ from: s.finFrom, to: s.finTo, setFrom: (e) => set({ finFrom: e.target.value }), 
 files: files.map((f) => dView('dFin', 'dFinConf', key, f)), showConfirm: false, box: dBox('dFinConf', key),
 upload: () => dAdd('dFin', 'dFinConf', key, finNew(key), key === 'bank' && !s.finFrom && !s.finTo ? { finFrom: '12/01/2023', finTo: '12/02/2026' } : null)
 }; });
-// Send for Perfios Analysis is available once the user has uploaded a financial document (prefetched bank
-// statements and the AECB report don't count).
-const dFinOk = Object.keys(s.dFin).some((k) => s.dFin[k].some((f) => f.st === 'ok' && !f.prefetched));
+// Send for Perfios Analysis is always available, so the journey can continue with the prefetched documents.
+const dFinOk = true;
 const stkPeople = [['Mostafa Hamed', 'Director'], ['Fatima Ahmed Ali', 'Director'], ['Mo Ahmed Ali', 'POA']];
 const dq = s.dSearch.trim().toLowerCase();
 const dStkGroups = stkPeople.filter((p) => !dq || p[0].toLowerCase().indexOf(dq) >= 0).map((p) => ({ title: p[0], desc: p[1],
@@ -536,6 +535,7 @@ cons: cons, cob: cob, bank: bank,
 cobPicked: s.ownExtra.filter((x) => s.cob['x' + x.id]),
 consExtra: s.ownExtra.map((x) => { const k = 'x' + x.id; const on = s.consent === k; return { initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder - Authorized signatory', on: on ? 'true' : 'false', ring: on ? '#182f7c' : '#575757', dot: on ? '#182f7c' : 'transparent', pick: () => set({ consent: k }) }; }),
 cobExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as co-borrower' }, box(s.cob['x' + x.id], flipIn('cob', 'x' + x.id)))),
+kmExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as key management' }, box(s.kmSel['x' + x.id], flipIn('kmSel', 'x' + x.id)))),
 goSelfCp: goSelf('selfCp'), showSelfCp: s.phase === 'selfCp' || s.phase === 'selfCpForm', showSelfCpForm: s.phase === 'selfCpForm',
 shAShow: !s.ownGone, shFShow: !s.entGone, shFName: s.entName, shFPct: s.entPct, shFIni: s.entName.trim().split(/ +/).filter(Boolean).map((w, i, a) => (i === 0 || i === a.length - 1) ? w[0] : '').join('').toUpperCase(),
 cpHas: s.cpList.length > 0, cpSug: cpSug, cpF: cpF, cpSet: cpSet,
@@ -882,7 +882,8 @@ const kmSugs = { a: per(P.ah, { sub: '50%  Shareholder of ' + co + ' - Individua
   c: per(P_fa, { sub: s.entPct + '%  Shareholder of ' + co + ' - Individual' }), d: ent('Gulf Crest Investments', 'Affiliate of ' + co + ' - Company'),
   e: per(P.mh, { sub: 'Authorized borrower of ' + co + ' - Individual' }), f: ent('Desert Rose Trading LLC', 'Subsidiary of ' + co + ' - Company') };
 const rvKm = s.kmList.map((r) => per({ name: ((r.title ? r.title + ' ' : '') + r.first + ' ' + r.last).trim(), initials: ((r.first.trim()[0] || '') + (r.last.trim()[0] || '')).toUpperCase() }, { sub: r.role || '-' }))
-  .concat(['a', 'b', 'c', 'd', 'e', 'f'].filter((k) => s.kmSel[k] && !(k === 'a' && shGone.ah) && !(k === 'c' && shGone.fa)).map((k) => kmSugs[k]));
+  .concat(['a', 'c', 'e'].filter((k) => s.kmSel[k] && !(k === 'a' && shGone.ah) && !(k === 'c' && shGone.fa)).map((k) => kmSugs[k]))
+  .concat(s.ownExtra.filter((x) => s.kmSel['x' + x.id]).map((x) => per({ name: x.name, initials: x.initials }, { sub: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of ' + co + ' - Individual' })));
 const enbd = { 1: '1044560850002', 2: '1024560850002' };
 const banks = (w) => [1, 2].filter((n) => s.bankSel[w + n]).map((n) => ({ name: 'Emirates NBD', num: enbd[n], kind: 'Current Account', hasKind: true, enbd: true, ext: false }))
   .concat(s.bankExt[w].map((r) => ({ name: r.name, num: r.iban, kind: '', hasKind: false, enbd: false, ext: true })));
