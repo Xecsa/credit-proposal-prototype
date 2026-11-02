@@ -9,7 +9,7 @@ participants: [''], files: [], draftSaved: false,
 messages: [], draft: '', recording: false, recSecs: 0, answered: false, choice: '',
 fdp: '', fdpView: 'date', fdpYear: 2026, fdpMonth: 0, fdpPick: '', fdpYearStart: 2016, gdp: '', gdpView: 'date', gdpYear: 2026, gdpMonth: 0, gdpPick: '', gdpYearStart: 2016, gdpTop: '0px', gdpLeft: '0px', dpOpen: false, dpView: 'date', dpYear: new Date().getFullYear(), dpMonth: new Date().getMonth(), dpPick: '', dpYearStart: new Date().getFullYear() - 10,
 tpOpen: '', tpH: '12', tpM: '00', tpP: 'PM', topicOpen: false,
-hubRole: 'rm', sentToArm: false, corpModal: false, ownMenu: '', ownEditId: 0, entGone: false, entName: 'GETAX Agrifert DMCC', entPct: '50', entEdit: false, entDraftName: '', entDraftPct: '', pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
+hubRole: 'rm', sentToArm: false, corpModal: false, ownMenu: '', ownEditId: 0, entGone: false, entName: 'Fatima Al-Mansoori', entPct: '50', entEdit: false, entDraftName: '', entDraftPct: '', pv: null, pvZoom: 100, dStkDel: {}, shDel: {}, clientStarted: false, hubModal: '', hubModalText: '', hubComments: null, appConfirmed: false, selfQuery: '', selfSearched: false, selfNote: '', selfUploads: [], listSearch: '', listStatus: '', listOpen: '',
 facilities: [],
 facSeq: 2, facMenu: 0, facDelete: 0, facEdit: 0, fType: '', fProduct: '', fLimit: '', fPurpose: '', fOpen: '',
 facLoading: false, docsUp: { tl: true, moa: true }, docsAuto: { tl: true, moa: true }, docCatOpen: false, docCatDrop: false, docCatType: '', docCatDone: false, docStage: '', docMenu: '', docDelete: '',
@@ -22,9 +22,9 @@ consent: '', cob: {}, bankSel: {}, bankAdded: false, bankToast: false, bankExt: 
 acIban: '', acAge: '', acStage: '', acConfirm: true, acUae: true, clientDone: false,
 shMode: '', addType: '', addDocs: '', ownExtra: [], ownDel: false, ownGone: false,
 docsDone: false, finReady: false, finDone: false, finXls: false, dSeq: 10, dAoaErr: false, dCat: 0, dCatType: '', dSearch: '', finFrom: '12/01/2023', finTo: '12/02/2026',
-dKyc: { tl: [{ id: 101, name: 'Trade-license.pdf', st: 'ok' }], moa: [{ id: 102, name: 'MOA.pdf', st: 'ok' }], aoa: [], aoa2: [], br: [], org: [], other: [] }, dKycConf: {},
+dKyc: { tl: [{ id: 101, name: 'Trade-license.pdf', st: 'ok', prefetched: true }], moa: [{ id: 102, name: 'MOA.pdf', st: 'ok', prefetched: true }], aoa: [], aoa2: [], br: [], org: [], other: [] }, dKycConf: {},
 dFin: { aud: [], inh: [],
-rec: [], bank: [{ id: 103, name: 'max-q1.pdf', st: 'ok' }, { id: 104, name: 'max-q2.pdf', st: 'ok' }, { id: 105, name: 'max-q3.pdf', st: 'ok' }, { id: 106, name: 'max-q4.pdf', st: 'ok' }], vat: [], cbrb: [], aecb: [{ id: 107, name: 'aecb-report.pdf', st: 'ok' }] }, dFinConf: {},
+rec: [], bank: [{ id: 103, name: 'max-q1.pdf', st: 'ok', prefetched: true }, { id: 104, name: 'max-q2.pdf', st: 'ok', prefetched: true }, { id: 105, name: 'max-q3.pdf', st: 'ok', prefetched: true }, { id: 106, name: 'max-q4.pdf', st: 'ok', prefetched: true }], vat: [], cbrb: [], aecb: [{ id: 107, name: 'aecb-report.pdf', st: 'ok', prefetched: true }] }, dFinConf: {},
 cpList: [], cpSeq: 0, cpMenu: 0, cpEdit: 0, cpDel: 0, cpSel: {}, cpF: { name: '', rel: 'Associate', mobile: '', email: '' },
 finVals: {}, finEditId: '', finDraft: '',
 dFinLocked: false, ejFiles: [], ejSeq: 0, ejBatches: 0, ejTab: 'all', ejQ: '', ejSel: {}, ejPage: 1, ejWidget: false, ejWidgetMin: false, ejBatchIds: [],
@@ -259,7 +259,7 @@ const up = !!s.docsUp[d[0]];
 const open = s.docMenu === d[0];
 return {
 title: d[1], desc: d[2], uploaded: up, showRequired: d[3] && !up, autoFetched: up && !!s.docsAuto[d[0]],
-menuLabel: 'Actions for ' + d[1], expanded: open ? 'true' : 'false', menuUploaded: open && up, menuEmpty: open && !up,
+menuLabel: 'Actions for ' + d[1], expanded: open ? 'true' : 'false', menuUploaded: open && up, menuEmpty: open && !up, canDelete: !s.docsAuto[d[0]],
 toggleMenu: () => set({ docMenu: open ? '' : d[0] }),
 upload: () => set({ docMenu: '', docStage: 'picker' }),
 view: () => set({ docMenu: '' }),
@@ -268,7 +268,7 @@ del: () => set({ docMenu: '', docDelete: d[0] })
 });
 const docsReady = !!(s.docsUp.tl && s.docsUp.moa);
 const dView = (group, confName, key, f) => ({
-name: f.name, info: f.info || '', tag: f.tag || '', hasTag: !!f.tag, noTag: !f.tag, ok: f.st === 'ok', err: f.st === 'err', warn: f.st === 'warn', hasYear: !!f.year, year: f.year || '', removable: true,
+name: f.name, info: f.info || '', tag: f.tag || '', hasTag: !!f.tag, noTag: !f.tag, ok: f.st === 'ok', err: f.st === 'err', warn: f.st === 'warn', hasYear: !!f.year, year: f.year || '', removable: !f.prefetched,
 removeLabel: 'Remove ' + f.name,
 remove: () => { const o = Object.assign({}, s[group]); o[key] = o[key].filter((x) => x.id !== f.id); const p = {}; p[group] = o; set(p); },
 categorize: () => set({ dCat: f.id, dCatType: '' })
@@ -316,7 +316,9 @@ from: s.finFrom, to: s.finTo, setFrom: (e) => set({ finFrom: e.target.value }), 
 files: files.map((f) => dView('dFin', 'dFinConf', key, f)), showConfirm: false, box: dBox('dFinConf', key),
 upload: () => dAdd('dFin', 'dFinConf', key, finNew(key), key === 'bank' && !s.finFrom && !s.finTo ? { finFrom: '12/01/2023', finTo: '12/02/2026' } : null)
 }; });
-const dFinOk = s.dFin.aud.length > 0 && s.dFin.inh.length > 0;
+// Send for Perfios Analysis is available once the user has uploaded a financial document (prefetched bank
+// statements and the AECB report don't count).
+const dFinOk = Object.keys(s.dFin).some((k) => s.dFin[k].some((f) => f.st === 'ok' && !f.prefetched));
 const stkPeople = [['Mostafa Hamed', 'Director'], ['Fatima Ahmed Ali', 'Director'], ['Mo Ahmed Ali', 'POA']];
 const dq = s.dSearch.trim().toLowerCase();
 const dStkGroups = stkPeople.filter((p) => !dq || p[0].toLowerCase().indexOf(dq) >= 0).map((p) => ({ title: p[0], desc: p[1],
@@ -535,6 +537,7 @@ cobPicked: s.ownExtra.filter((x) => s.cob['x' + x.id]),
 consExtra: s.ownExtra.map((x) => { const k = 'x' + x.id; const on = s.consent === k; return { initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder - Authorized signatory', on: on ? 'true' : 'false', ring: on ? '#182f7c' : '#575757', dot: on ? '#182f7c' : 'transparent', pick: () => set({ consent: k }) }; }),
 cobExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as co-borrower' }, box(s.cob['x' + x.id], flipIn('cob', 'x' + x.id)))),
 goSelfCp: goSelf('selfCp'), showSelfCp: s.phase === 'selfCp' || s.phase === 'selfCpForm', showSelfCpForm: s.phase === 'selfCpForm',
+shAShow: !s.ownGone, shFShow: !s.entGone, shFName: s.entName, shFPct: s.entPct, shFIni: s.entName.trim().split(/ +/).filter(Boolean).map((w, i, a) => (i === 0 || i === a.length - 1) ? w[0] : '').join('').toUpperCase(),
 cpHas: s.cpList.length > 0, cpSug: cpSug, cpF: cpF, cpSet: cpSet,
 cpRows: s.cpList.map((r) => { const open = s.cpMenu === r.id; const parts = r.name.trim().split(/ +/); return {
 initials: ((parts[0] || '')[0] || '').toUpperCase() + (parts.length > 1 ? parts[parts.length - 1][0].toUpperCase() : ''), name: r.name.trim(), rel: r.rel,
@@ -864,27 +867,29 @@ const P = {
 };
 const per = (o, extra) => Object.assign({ initials: ini2(o.name), ind: true, ent: false, hasSub: true }, o, extra || {});
 const ent = (name, sub) => ({ name: name, sub: sub, ind: false, ent: true, hasSub: true, initials: '' });
-const rvOwn = (s.ownGone ? [] : [per(P.ah, { sub: '50%  Shareholder - Individual' })]).concat([ent('GETAX Agrifert DMCC', '50% Shareholder - Entity')])
+const rvOwn = (s.ownGone ? [] : [per(P.ah, { sub: '50%  Shareholder - Individual' })]).concat(s.entGone ? [] : [per({ name: s.entName }, { sub: s.entPct + '%  Shareholder - Individual' })])
   .concat(s.ownExtra.map((x) => per({ name: x.name, initials: x.initials }, { sub: x.body })));
-const cmap = { a: P.ah, b: P.fa, c: P.mh };
+const P_fa = Object.assign({}, P.fa, { name: s.entName });
+const shGone = { ah: !!s.ownGone, fa: !!s.entGone };
+const cmap = { a: shGone.ah ? null : P.ah, b: shGone.fa ? null : P_fa, c: P.mh };
 const cx = s.consent && s.consent[0] === 'x' ? s.ownExtra.find((x) => 'x' + x.id === s.consent) : null;
 const cPick = cmap[s.consent] || cx;
 const rvConsent = cPick ? [{ name: cPick.name, email: cPick.email, bt: '0' }] : [];
-const cobMap = { a: P.ah, b: P.fa, c: P.mh };
-const rvCob = ['a', 'b', 'c'].filter((k) => s.cob[k]).map((k) => per(cobMap[k], { sub: cobMap[k].email }))
+const cobMap = { a: P.ah, b: P_fa, c: P.mh };
+const rvCob = ['a', 'b', 'c'].filter((k) => s.cob[k] && cobMap[k] && !(k === 'a' && shGone.ah) && !(k === 'b' && shGone.fa)).map((k) => per(cobMap[k], { sub: cobMap[k].email }))
   .concat(s.ownExtra.filter((x) => s.cob['x' + x.id]).map((x) => per({ name: x.name, initials: x.initials }, { sub: x.email })));
 const kmSugs = { a: per(P.ah, { sub: '50%  Shareholder of ' + co + ' - Individual' }), b: ent('Al Noor Holdings LLC', 'Parent company of ' + co + ' - Company'),
-  c: per(P.fa, { sub: '50%  Shareholder of ' + co + ' - Individual' }), d: ent('Gulf Crest Investments', 'Affiliate of ' + co + ' - Company'),
+  c: per(P_fa, { sub: s.entPct + '%  Shareholder of ' + co + ' - Individual' }), d: ent('Gulf Crest Investments', 'Affiliate of ' + co + ' - Company'),
   e: per(P.mh, { sub: 'Authorized borrower of ' + co + ' - Individual' }), f: ent('Desert Rose Trading LLC', 'Subsidiary of ' + co + ' - Company') };
 const rvKm = s.kmList.map((r) => per({ name: ((r.title ? r.title + ' ' : '') + r.first + ' ' + r.last).trim(), initials: ((r.first.trim()[0] || '') + (r.last.trim()[0] || '')).toUpperCase() }, { sub: r.role || '-' }))
-  .concat(['a', 'b', 'c', 'd', 'e', 'f'].filter((k) => s.kmSel[k]).map((k) => kmSugs[k]));
+  .concat(['a', 'b', 'c', 'd', 'e', 'f'].filter((k) => s.kmSel[k] && !(k === 'a' && shGone.ah) && !(k === 'c' && shGone.fa)).map((k) => kmSugs[k]));
 const enbd = { 1: '1044560850002', 2: '1024560850002' };
 const banks = (w) => [1, 2].filter((n) => s.bankSel[w + n]).map((n) => ({ name: 'Emirates NBD', num: enbd[n], kind: 'Current Account', hasKind: true, enbd: true, ext: false }))
   .concat(s.bankExt[w].map((r) => ({ name: r.name, num: r.iban, kind: '', hasKind: false, enbd: false, ext: true })));
 const cobFirst = rvCob[0];
-const cpSugs = { a: P.ah, b: P.fa, c: P.mh };
+const cpSugs = { a: P.ah, b: P_fa, c: P.mh };
 const rvCp = s.cpList.map((r) => per({ name: r.name.trim(), initials: ini2(r.name) }, { sub: r.rel, mobile: r.mobile.trim() ? '+971 ' + r.mobile.trim() : '-', email: r.email.trim() || '-' }))
-  .concat(['a', 'b', 'c'].filter((k) => s.cpSel[k]).map((k) => per(cpSugs[k], { sub: k === 'c' ? 'Authorized borrower of ' + co + ' - Individual' : '50%  Shareholder of ' + co + ' - Individual' })));
+  .concat(['a', 'b', 'c'].filter((k) => s.cpSel[k] && !(k === 'a' && shGone.ah) && !(k === 'b' && shGone.fa)).map((k) => per(cpSugs[k], { sub: k === 'c' ? 'Authorized borrower of ' + co + ' - Individual' : (k === 'b' ? s.entPct : '50') + '%  Shareholder of ' + co + ' - Individual' })));
 Object.assign(__v, {
   rvOwn: rvOwn, rvNoOwn: rvOwn.length === 0,
   rvConsent: rvConsent, rvNoConsent: rvConsent.length === 0,
@@ -1065,7 +1070,7 @@ const pvDoc = (kind, file, x) => {
   const person = x.person || 'Ahmed Al-Hassan';
   const base = { issuer: PV_CO, issuerSub: 'Office 1204, Marina Plaza, Dubai Marina, Dubai, UAE', ref: 'CIF 102938859\nLicense 1234567789353', docTitle: '', docSub: '', sections: [], sig1: 'Authorized signatory', sig2: 'Date' };
   const d = (o) => Object.assign({}, base, o);
-  const owners = pvTB('Owners / partners', ['Name', 'Type', 'Nationality / place', 'Share'], [['Ahmed Al-Hassan', 'Individual', 'UAE', '50%'], ['GETAX Agrifert DMCC', 'Entity', 'Dubai, UAE', '50%']]);
+  const owners = pvTB('Owners / partners', ['Name', 'Type', 'Nationality / place', 'Share'], [['Ahmed Al-Hassan', 'Individual', 'UAE', '50%'], ['Fatima Al-Mansoori', 'Individual', 'UAE', '50%']]);
   if (kind === 'tl') return d({ issuer: 'Licensing Authority', issuerSub: 'Government of Dubai (sample)', ref: 'License No. 1234567789353\nIssued 15/03/2015', docTitle: 'Commercial License', docSub: 'Trade name: ' + PV_CO, sections: [
     pvKV('License details', [['License number', '1234567789353'], ['Trade name', PV_CO], ['Legal form', 'Limited Liability Company'], ['Issue date', '15/03/2015'], ['Expiry date', '14/03/2027'], ['Status', 'Active']]),
     pvTX('Licensed activities', ['1. Non-life insurance (K65.12)', '2. Insurance agency and brokerage']),
@@ -1073,20 +1078,20 @@ const pvDoc = (kind, file, x) => {
     owners], sig1: 'Registrar', sig2: 'Date of issue: 15/03/2015' });
   if (kind === 'moa') return d({ docTitle: 'Memorandum of Association', docSub: PV_CO + ' L.L.C.', sections: [
     pvKV('Company', [['Name', PV_CO + ' L.L.C.'], ['Legal form', 'Limited Liability Company'], ['Registered office', 'Dubai, United Arab Emirates'], ['Duration', '25 years, renewable']]),
-    pvTB('Capital and shares', ['Partner', 'Shares', 'Value (AED)', 'Share'], [['Ahmed Al-Hassan', '5,000', '5,000,000', '50%'], ['GETAX Agrifert DMCC', '5,000', '5,000,000', '50%'], ['Total', '10,000', '10,000,000', '100%']]),
+    pvTB('Capital and shares', ['Partner', 'Shares', 'Value (AED)', 'Share'], [['Ahmed Al-Hassan', '5,000', '5,000,000', '50%'], ['Fatima Al-Mansoori', '5,000', '5,000,000', '50%'], ['Total', '10,000', '10,000,000', '100%']]),
     pvTX('Objects of the company', ['The company is established to carry out non-life insurance business and insurance agency services within the UAE, and any activity related to these objects.']),
-    pvTX('Management', ['The company is managed by a manager appointed by the partners. Fatima Al-Mansoori is appointed as manager and authorized signatory.'])], sig1: 'Partner: Ahmed Al-Hassan', sig2: 'Partner: GETAX Agrifert DMCC' });
+    pvTX('Management', ['The company is managed by a manager appointed by the partners. Fatima Al-Mansoori is appointed as manager and authorized signatory.'])], sig1: 'Partner: Ahmed Al-Hassan', sig2: 'Partner: Fatima Al-Mansoori' });
   if (kind === 'aoa') return d({ docTitle: 'Articles of Association', docSub: PV_CO + ' L.L.C.', sections: [
     pvTX('Article 1 – Name', ['The name of the company is ' + PV_CO + ' L.L.C.']),
     pvTX('Article 5 – Capital', ['The share capital is AED 10,000,000, divided into 10,000 shares of AED 1,000 each, fully paid.']),
     pvTX('Article 12 – Board and management', ['The company is managed by a board of up to three members appointed by the general assembly for a term of three years.']),
     pvTX('Article 18 – Signatory powers', ['The manager may sign on behalf of the company for credit facilities up to AED 50,000,000. Amounts above this require a board resolution.']),
-    pvTX('Article 24 – Shareholder rights', ['Each share carries one vote. Transfers of shares require the consent of the other partners.'])], sig1: 'Partner: Ahmed Al-Hassan', sig2: 'Partner: GETAX Agrifert DMCC' });
+    pvTX('Article 24 – Shareholder rights', ['Each share carries one vote. Transfers of shares require the consent of the other partners.'])], sig1: 'Partner: Ahmed Al-Hassan', sig2: 'Partner: Fatima Al-Mansoori' });
   if (kind === 'br') return d({ docTitle: 'Board Resolution', docSub: 'Resolution No. BR-2026-014', sections: [
     pvKV('Meeting', [['Date', '12/10/2026'], ['Place', 'Head office, Dubai'], ['Chair', 'Ahmed Al-Hassan'], ['Quorum', 'Present (3 of 3 members)']]),
     pvTX('Resolutions', ['1. To apply to Emirates NBD for a Term Loan of AED 10,000,000 and a Project-specific facility of AED 20,000,000.', '2. To authorize Fatima Al-Mansoori to negotiate, sign and execute all facility documents on behalf of the company.', '3. To provide the security and guarantees required by the bank.'])], sig1: 'Chair: Ahmed Al-Hassan', sig2: 'Secretary' });
   if (kind === 'ss') return d({ docTitle: 'Shareholding Structure', docSub: 'Group organogram as at 30/09/2026', sections: [
-    pvTB('Direct shareholders of ' + PV_CO, ['Shareholder', 'Type', 'Share'], [['Ahmed Al-Hassan', 'Individual', '50%'], ['GETAX Agrifert DMCC', 'Entity', '50%']]),
+    pvTB('Direct shareholders of ' + PV_CO, ['Shareholder', 'Type', 'Share'], [['Ahmed Al-Hassan', 'Individual', '50%'], ['Fatima Al-Mansoori', 'Individual', '50%']]),
     pvTB('Related companies', ['Company', 'Relationship', 'Share'], [['Al Noor Holdings LLC', 'Parent', '–'], ['Gulf Crest Investments', 'Affiliate', '–'], ['Desert Rose Trading LLC', 'Subsidiary', '60%']])] });
   if (kind === 'other') return d({ docTitle: 'Supporting Document', docSub: file, sections: [pvKV('Details', [['Company', PV_CO], ['Document', file], ['Received', '27/10/2026']]), pvTX('Notes', ['Additional document supplied by the client in support of the facility application.'])] });
   if (kind === 'passport' || kind === 'eidf' || kind === 'eidb' || kind === 'poa') {
@@ -1175,7 +1180,7 @@ Object.assign(__v, {
   dKycSecs: (__v.dKycSecs || []).map((sec, i) => Object.assign({}, sec, { files: sec.files.map((f) => Object.assign({}, f, { preview: () => pvShow(PV_KYC_KEYS[i] || 'other', sec.title, f.name) })) })),
   dFinSecs: (__v.dFinSecs || []).map((sec, i) => Object.assign({}, sec, { files: sec.files.map((f) => Object.assign({}, f, { preview: () => pvShow(PV_FIN_KEYS[i] || 'other', sec.title, f.name, { year: f.year }) })) })),
   dStkGroups: (__v.dStkGroups || []).map((g) => Object.assign({}, g, { files: g.files.filter((f) => !s.dStkDel[g.title + '|' + f.name]).map((f) => Object.assign({}, f, {
-    removable: true, removeLabel: 'Remove ' + f.name + ' for ' + g.title,
+    removable: false, removeLabel: 'Remove ' + f.name + ' for ' + g.title,
     remove: () => { const o = Object.assign({}, s.dStkDel); o[g.title + '|' + f.name] = true; this.setState({ dStkDel: o }); },
     preview: () => pvShow(pvStk(f.name), (pvStk(f.name) === 'passport' ? 'Passport' : pvStk(f.name) === 'eidb' ? 'Emirates ID back' : 'Emirates ID front') + ' – ' + g.title, f.name, { person: g.title })
   })) })),
@@ -1188,7 +1193,7 @@ const owBase = (key, extra) => { const open = s.ownMenu === key; return Object.a
 const owOpenAh = () => set({ phase: 'selfSh', shMode: '', shStep: s.ownDone ? 'details' : 'docs', shMenu: '', shDrop: '', shEdit: '', ownMenu: '' });
 const ownList = [];
 if (!s.ownGone) ownList.push(owBase('ah', { name: 'Ahmed Al-Hassan', initials: 'AA', person: true, entity: false, body: '50%  Shareholder - Individual', todo: !s.ownDone, bg: !s.ownDone ? '#f4f7fe' : 'transparent', cursor: !s.ownDone ? 'pointer' : 'default', aria: !s.ownDone ? 'Ahmed Al-Hassan, additional information required. Add stakeholder information' : 'Ahmed Al-Hassan', open: !s.ownDone ? owOpenAh : () => {}, edit: owOpenAh }));
-if (!s.entGone) ownList.push(owBase('ent', { name: s.entName, initials: '', person: false, entity: true, body: s.entPct + '% Shareholder - Entity', todo: false, bg: 'transparent', cursor: 'default', aria: s.entName, open: () => {}, edit: () => this.setState({ ownMenu: '', entEdit: true, entDraftName: s.entName, entDraftPct: s.entPct }) }));
+if (!s.entGone) ownList.push(owBase('ent', { name: s.entName, initials: s.entName.trim().split(/ +/).filter(Boolean).map((w, i, a) => (i === 0 || i === a.length - 1) ? w[0] : '').join('').toUpperCase(), person: true, entity: false, body: s.entPct + '%  Shareholder - Individual', todo: false, bg: 'transparent', cursor: 'default', aria: s.entName, open: () => {}, edit: () => this.setState({ ownMenu: '', entEdit: true, entDraftName: s.entName, entDraftPct: s.entPct }) }));
 s.ownExtra.forEach((x) => ownList.push(owBase('x' + x.id, { name: x.name, initials: x.initials, person: true, entity: false, body: x.body, todo: false, bg: 'transparent', cursor: 'default', aria: x.name, open: () => {},
   edit: () => set({ phase: 'selfSh', shMode: 'add', shStep: 'details', addF: Object.assign({}, x.f || {}), addType: x.type || (x.poa ? 'poa' : 'sh'), addDocs: x.docs || 'done', ownEditId: x.id, shMenu: '', shDrop: '', shEdit: '', ownMenu: '' }) })));
 const owDelItem = ownList.find((o) => o.key === s.ownDel);
@@ -1204,17 +1209,16 @@ Object.assign(__v, {
 
 // ---- Ownership error states
 const owPct = (b) => { const m = /(\d+(?:\.\d+)?)%/.exec(b || ''); return m ? parseFloat(m[1]) : 0; };
-const owHolders = __v.ownList.filter((o) => owPct(o.body) > 0 || o.key === 'ent');
+const owHolders = __v.ownList.filter((o) => owPct(o.body) > 0);
 const ownTotal = Math.round(__v.ownList.reduce((t, o) => t + owPct(o.body), 0) * 100) / 100;
 const own100 = ownTotal === 100;
 const ownReady = (s.ownDone || s.ownGone) && own100;
 Object.assign(__v, {
-  ownList: __v.ownList.map((o) => o.key !== 'ent' ? o : Object.assign({}, o, { cursor: 'pointer', aria: o.name + ', corporate shareholder', open: () => this.setState({ corpModal: true, ownMenu: '' }) })),
   ownTotal: String(ownTotal), own100: own100,
   ownErrNone: owHolders.length === 0, ownErrOver: ownTotal > 100, ownErrUnder: owHolders.length > 0 && ownTotal < 100,
   ownBlocked: !ownReady, ownBg: ownReady ? 'linear-gradient(94.48deg, #395fc0 0%, #081f5b 100%)' : 'linear-gradient(95.67deg, #d7dae5 0%, #a4a7af 100%)', ownCursor: ownReady ? 'pointer' : 'not-allowed',
   ownContinue: () => { if (ownReady) set({ phase: 'selfConsent', selfNote: '' }); },
-  ownDelBody: s.ownDel === 'ent' ? 'This will delete all shareholders of “Orient Insurance” too.' : 'This will remove this shareholder from the application.',
+  ownDelBody: 'This will remove this shareholder from the application.',
   corpShow: !!s.corpModal && s.phase === 'selfOwn',
   corpBack: () => this.setState({ corpModal: false }),
   corpClose: () => set({ corpModal: false, phase: 'selfTerminated' }),

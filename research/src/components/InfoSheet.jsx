@@ -2,7 +2,7 @@ import React from 'react';
 import { infoSheet, isDraft, infoSheetVersionLabel, fill } from '../infoSheet.js';
 
 // Step 1: Participant Information Sheet. A stable reading page: no motion, no questions, no timers,
-// no recording or device permissions. Continuing is not consent; that is asked on the next screen.
+// no recording or device permissions. Recording is offered, and can be declined, before the first task.
 export default function InfoSheet({ ctx, headRef, onBack, onNext }) {
   const draft = isDraft();
 
@@ -61,13 +61,13 @@ export default function InfoSheet({ ctx, headRef, onBack, onNext }) {
       ))}
 
       <footer className="r-pis-foot">
-        <p className="r-pis-next">Continuing doesn’t mean you’ve agreed to take part. You’ll decide on the next screen.</p>
+        <p className="r-pis-next">Taking part is voluntary. You can pause, skip a task or stop at any time.</p>
         <div className="r-pis-actions">
           <span className="r-pis-actions-start">
             <button type="button" className="r-btn r-btn-secondary" onClick={onBack}>Back to welcome</button>
             <a className="r-link-btn" href="#/">Leave session</a>
           </span>
-          <button type="button" className="r-btn" onClick={onNext}>Continue to consent</button>
+          <button type="button" className="r-btn" onClick={onNext}>Continue</button>
         </div>
       </footer>
     </article>

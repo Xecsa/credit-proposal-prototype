@@ -28,7 +28,8 @@ export default function useScrollMotion(rootRef, heroRef, slotRef, frameRef) {
     const hero = heroRef.current;
     const slot = slotRef.current;
     const fig = frameRef.current;
-    if (!root || !hero || !slot || !fig) return;
+    // The video frame is optional: the page may have no video.
+    if (!root || !hero) return;
 
     const texts = [...root.querySelectorAll('[data-reveal]')];
     const cards = [...root.querySelectorAll('[data-card]')];
@@ -49,7 +50,7 @@ export default function useScrollMotion(rootRef, heroRef, slotRef, frameRef) {
         hero.style.setProperty('--tex-y', `${(hp * 20).toFixed(1)}px`);
       }
 
-      if (!fig.classList.contains('is-settled')) {
+      if (fig && slot && !fig.classList.contains('is-settled')) {
         const r = slot.getBoundingClientRect();
         const top = r.top + y;
         const startY = Math.max(0, top - vh * 0.9);
@@ -113,9 +114,9 @@ export default function useScrollMotion(rootRef, heroRef, slotRef, frameRef) {
     };
 
     const settle = () => { fig.classList.add('is-settled'); fig.style.setProperty('--vp', '1'); };
-    const video = fig.querySelector('video');
+    const video = fig && fig.querySelector('video');
 
-    fig.classList.add('is-linked');
+    if (fig) fig.classList.add('is-linked');
     root.classList.add('is-scroll-linked');
     onHash(true);
     update();
@@ -125,8 +126,7 @@ export default function useScrollMotion(rootRef, heroRef, slotRef, frameRef) {
     window.addEventListener('hashchange', onHash);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(onScroll).catch(() => {});
     if (video) video.addEventListener('loadedmetadata', onScroll);
-    fig.addEventListener('focusin', settle);
-    fig.addEventListener('play', settle, true);
+    if (fig) { fig.addEventListener('focusin', settle); fig.addEventListener('play', settle, true); }
     root.addEventListener('focusin', onFocus);
     return () => {
       cancelAnimationFrame(raf);
@@ -136,8 +136,7 @@ export default function useScrollMotion(rootRef, heroRef, slotRef, frameRef) {
       window.removeEventListener('load', onScroll);
       window.removeEventListener('hashchange', onHash);
       if (video) video.removeEventListener('loadedmetadata', onScroll);
-      fig.removeEventListener('focusin', settle);
-      fig.removeEventListener('play', settle, true);
+      if (fig) { fig.removeEventListener('focusin', settle); fig.removeEventListener('play', settle, true); }
       root.removeEventListener('focusin', onFocus);
       root.classList.remove('is-scroll-linked');
       cards.forEach(el => el.classList.remove('is-armed', 'is-in', 'is-instant'));

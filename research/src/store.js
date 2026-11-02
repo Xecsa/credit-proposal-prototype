@@ -22,7 +22,8 @@ export function clearSession(id) {
 
 export function statusOf(data) {
   if (data && data.completedAt) return 'completed';
-  if (data && data.consent && data.consent.at) return 'in-progress';
+  // In progress once the participant has moved past Welcome (older records: once consent was given).
+  if (data && ((data.consent && data.consent.at) || (data.stage && data.stage !== 'welcome'))) return 'in-progress';
   return 'not-started';
 }
 

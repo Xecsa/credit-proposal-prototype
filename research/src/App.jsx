@@ -3,18 +3,18 @@ import { brand, welcome, participants, sessionsSection } from './config.js';
 import useReveal from './useReveal.js';
 import useScrollMotion from './useScrollMotion.js';
 import Header from './components/Header.jsx';
-import WelcomeVideo from './components/WelcomeVideo.jsx';
 import ParticipantCard from './components/ParticipantCard.jsx';
 import SessionPreviewDialog from './components/SessionPreviewDialog.jsx';
 import Footer from './components/Footer.jsx';
 import ParticipantSession from './components/ParticipantSession.jsx';
 import FacilitatorView, { FacilitatorOverview } from './components/FacilitatorView.jsx';
 import useRoute from './useRoute.js';
+import HeatmapAnalysis from './components/HeatmapAnalysis.jsx';
 import { useStatuses, markFacilitatorTab, isFacilitatorTab } from './store.js';
 
 export default function App() {
   const route = useRoute();
-  useEffect(() => { if (route.view === 'facilitator' || route.view === 'overview') markFacilitatorTab(); }, [route.view]);
+  useEffect(() => { if (route.view === 'facilitator' || route.view === 'overview' || route.view === 'analysis') markFacilitatorTab(); }, [route.view]);
   return (
     <div className="r-page" style={brand.tokens}>
       <a className="r-skip" href="#main">Skip to content</a>
@@ -23,6 +23,7 @@ export default function App() {
       {route.view === 'participant' && <ParticipantSession id={route.id} />}
       {route.view === 'facilitator' && <FacilitatorView id={route.id} />}
       {route.view === 'overview' && <FacilitatorOverview />}
+      {route.view === 'analysis' && <HeatmapAnalysis />}
       <Footer view={route.view} />
     </div>
   );
@@ -53,7 +54,7 @@ function Home() {
   return (
     <>
       <main id="main" ref={mainRef}>
-        {/* ENBD identity → introduction → video → participant sessions */}
+        {/* ENBD identity → introduction → participant sessions (the walkthrough video is not shown on the testing site) */}
         <section ref={heroRef} id="overview" className="r-hero" aria-labelledby="welcome-title">
           {/* Decorative layers: navy base, royal-blue glow (scroll parallax), fine texture. Text sits above them. */}
           <div className="r-hero-layers" aria-hidden="true">
@@ -71,10 +72,6 @@ function Home() {
                   {welcome.intro.map((line, i) => <span key={i} className="r-lead-line">{line}</span>)}
                 </p>
               </div>
-            </div>
-            {/* The slot keeps the video's final layout space; only the frame inside it is transformed. */}
-            <div id="video" ref={videoSlotRef} className="r-video-slot">
-              <WelcomeVideo figRef={videoRef} />
             </div>
           </div>
         </section>

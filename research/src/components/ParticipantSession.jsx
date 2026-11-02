@@ -1,26 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { participants, project } from '../config.js';
-import { consentItems, consentRecordings, roleQuestions, roleIntro, journeysByRole, journeyOverview, closingQuestion, participantNote } from '../script.js';
+import { roleQuestions, roleIntro, journeysByRole, journeyOverview, closingQuestion, participantNote } from '../script.js';
 import { infoSheet } from '../infoSheet.js';
 import { useSession } from '../store.js';
-import SignaturePad from './SignaturePad.jsx';
 import InfoSheet from './InfoSheet.jsx';
 import TaskJourney, { Panel, PanelHead, FeedbackArt } from './TaskJourney.jsx';
 import { discardCapture, resetParticipantMedia } from '../recorder.js';
 
-// Participant space: welcome → information sheet → consent → about your work → one task at a time → closing.
+// Participant space: welcome → information sheet → about your work → one task at a time → closing.
+// There is no consent step; recording is offered, and can be declined, before the first task.
 // Calm and stable: no entrance or scroll motion here. Task text is goal-based; no clicks or answers shown.
 const STEPS = [
   { id: 'welcome', label: 'Welcome' },
   { id: 'info', label: 'Information' },
-  { id: 'consent', label: 'Consent' },
   { id: 'about', label: 'About your work' },
   { id: 'tasks', label: 'Tasks' },
   { id: 'closing', label: 'Closing' }
 ];
 // Sessions saved before the information sheet existed used numeric steps (0 welcome+consent, 1 about, 2 tasks, 3 closing).
 const LEGACY = ['welcome', 'about', 'tasks', 'closing'];
-const stageOf = d => d.stage || LEGACY[d.step || 0] || 'welcome';
+// Records saved while the session had a Consent step continue at About your work.
+const stageOf = d => d.stage === 'consent' ? 'about' : d.stage || LEGACY[d.step || 0] || 'welcome';
 
 export default function ParticipantSession({ id }) {
   const p = participants.find(x => x.id === id);
@@ -61,14 +61,10 @@ export default function ParticipantSession({ id }) {
         {stage === 'welcome' && <Welcome headRef={headRef} onNext={() => go({ stage: 'info' })} />}
         {stage === 'closing' && <Closing data={data} update={update} headRef={headRef} onBack={() => go({ stage: 'tasks', taskIndex: role.journeys.length - 1 })} />}
         {stage !== 'tasks' && stage !== 'closing' && stage !== 'welcome' && <div className={`r-session-card${stage === 'info' ? ' is-reading' : stage === 'about' ? ' is-about' : ''}`}>
-          {stage === 'info' && <InfoSheet ctx={ctx} headRef={headRef} onBack={() => go({ stage: 'welcome' })} onNext={() => go({ stage: 'consent' })} />}
-          {stage === 'about' && <RoleQuestions p={p} headRef={headRef} data={data} update={update} onBack={() => go({ stage: 'consent' })} onNext={() => go({ stage: 'tasks', taskIndex: 0 })} />}
-          {stage !== 'info' && stage !== 'about' && <h1 ref={headRef} tabIndex={-1} className="r-session-h">
-                {stage === 'consent' && 'Consent form'}
-              </h1>}
-          {stage === 'consent' && <Consent data={data} update={update} onInfo={() => go({ stage: 'info' })} onNext={() => go({ stage: 'about' })} />}
+          {stage === 'info' && <InfoSheet ctx={ctx} headRef={headRef} onBack={() => go({ stage: 'welcome' })} onNext={() => go({ stage: 'about', startedAt: data.startedAt || new Date().toISOString() })} />}
+          {stage === 'about' && <RoleQuestions p={p} headRef={headRef} data={data} update={update} onBack={() => go({ stage: 'info' })} onNext={() => go({ stage: 'tasks', taskIndex: 0 })} />}
         </div>}
-        {(stage === 'info' || stage === 'consent' || stage === 'about') && <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>}
+        {(stage === 'info' || stage === 'about') && <p className="r-session-foot">You can pause, skip a task or stop at any time. Session length: about {project.sessionMinutes} minutes.</p>}
       </div>
     </main>
   );
@@ -165,61 +161,6 @@ function WelcomeArt() {
   );
 }
 
-function Consent({ data, update, onInfo, onNext }) {
-  const c = data.consent || {};
-  const set = patch => update(d => ({ ...d, consent: { ...(d.consent || {}), ...patch } }));
-  const items = c.items || [];
-  const ready = consentItems.every((_, i) => items[i]) && (c.name || '').trim() && c.signature;
-  const agree = () => {
-    // The information-sheet version the participant was shown is saved with the consent record.
-    update(d => ({ ...d, startedAt: d.startedAt || new Date().toISOString(), consent: { ...(d.consent || {}), infoSheetVersion: d.consent && d.consent.at && d.consent.infoSheetVersion ? d.consent.infoSheetVersion : `${infoSheet.version}${infoSheet.status === 'final' ? '' : '-draft'}`, at: d.consent && d.consent.at ? d.consent.at : new Date().toISOString() } }));
-    onNext();
-  };
-  return (
-    <>
-      <p className="r-session-lead">Please read each statement. Tick the ones you agree with, then add your name and signature.</p>
-      <fieldset className="r-fieldset">
-        <legend>Consent</legend>
-        {consentItems.map((t, i) => (
-          <label key={i} className="r-check">
-            <input type="checkbox" checked={!!items[i]} onChange={e => { const next = consentItems.map((_, k) => k === i ? e.target.checked : !!items[k]); set({ items: next }); }} />
-            <span>{t}</span>
-          </label>
-        ))}
-      </fieldset>
-      <fieldset className="r-fieldset">
-        <legend>Recording (optional)</legend>
-        {consentRecordings.map(r => (
-          <label key={r.key} className="r-check is-optional">
-            <input type="checkbox" checked={!!c[r.key]} onChange={e => set({ [r.key]: e.target.checked })} />
-            <span>{r.label}</span>
-          </label>
-        ))}
-      </fieldset>
-      <div className="r-field">
-        <label htmlFor="c-name">Your name</label>
-        <input id="c-name" className="r-input r-field-soft" type="text" autoComplete="off" value={c.name || ''} onChange={e => set({ name: e.target.value })} />
-      </div>
-      <div className="r-field">
-        <span className="r-label" id="sig-label">Signature</span>
-        {c.signature === 'typed'
-          ? <p className="r-typed-sig">Signed with typed name: <strong>{c.name}</strong> <button type="button" className="r-link-btn" onClick={() => set({ signature: '' })}>Draw instead</button></p>
-          : <>
-              <SignaturePad labelledBy="sig-label" value={c.signature || ''} onChange={sig => set({ signature: sig })} />
-              <button type="button" className="r-link-btn" disabled={!(c.name || '').trim()} onClick={() => set({ signature: 'typed' })}>Use my typed name as my signature</button>
-            </>}
-      </div>
-      <div className="r-actions">
-        <button type="button" className="r-btn r-btn-secondary" onClick={onInfo}>Back</button>
-        <button type="button" className="r-btn" disabled={!ready} onClick={agree}>I agree, continue</button>
-      </div>
-      {!ready && <p className="r-hint">Tick each statement, add your name and sign to continue.</p>}
-    </>
-  );
-}
-
-// "About your work": a short conversation, not a questionnaire. Two optional questions (the facilitator may capture
-// spoken answers instead), a collapsed optional note, and a save status that reflects the actual localStorage write.
 function RoleQuestions({ p, headRef, data, update, onBack, onNext }) {
   const r = data.role || {};
   const [noteOpen, setNoteOpen] = useState(!!data.participantNote);

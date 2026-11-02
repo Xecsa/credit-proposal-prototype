@@ -107,8 +107,8 @@ Upload</button>
 <path d="M21.5 12.5C21.5 14.5 16.5 18.5 12 18.5C7.5 18.5 2.5 14.5 2.5 12.5C2.5 10.5 7 5.5 12 5.5C17 5.5 21.5 10.5 21.5 12.5Z" stroke="#182f7c"></path></svg>
 View</button>
 {' '}
-<button role="menuitem" onClick={dr.del} style={{ font: "inherit", textAlign: "left", width: "100%", height: "48px", padding: "12px 16px", border: "0", background: "#ffffff", cursor: "pointer", display: "flex", alignItems: "center", gap: "16px", borderTop: "1px solid #e8eaef", color: "#b00000" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18.5 8.5V17.5C18.5 19.70 16.70 21.5 14.5 21.5H9.5C7.29 21.5 5.5 19.70 5.5 17.5V8.5M18.5 8.5H19C19.82 8.5 20.5 7.82 20.5 7C20.5 6.17 19.82 5.5 19 5.5H16.5M18.5 8.5H5.5M5.5 8.5H5C4.17 8.5 3.5 7.82 3.5 7C3.5 6.17 4.17 5.5 5 5.5H7.5M7.5 5.5H16.5M7.5 5.5C7.5 3.84 8.84 2.5 10.5 2.5H13.5C15.15 2.5 16.5 3.84 16.5 5.5M8.5 11.5V17.5M12 11.5V17.5M15.5 11.5V17.5" stroke="#9d0000" strokeLinecap="round"></path></svg>
-Delete</button>
+{(dr.canDelete) ? (<><button role="menuitem" onClick={dr.del} style={{ font: "inherit", textAlign: "left", width: "100%", height: "48px", padding: "12px 16px", border: "0", background: "#ffffff", cursor: "pointer", display: "flex", alignItems: "center", gap: "16px", borderTop: "1px solid #e8eaef", color: "#b00000" }}><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18.5 8.5V17.5C18.5 19.70 16.70 21.5 14.5 21.5H9.5C7.29 21.5 5.5 19.70 5.5 17.5V8.5M18.5 8.5H19C19.82 8.5 20.5 7.82 20.5 7C20.5 6.17 19.82 5.5 19 5.5H16.5M18.5 8.5H5.5M5.5 8.5H5C4.17 8.5 3.5 7.82 3.5 7C3.5 6.17 4.17 5.5 5 5.5H7.5M7.5 5.5H16.5M7.5 5.5C7.5 3.84 8.84 2.5 10.5 2.5H13.5C15.15 2.5 16.5 3.84 16.5 5.5M8.5 11.5V17.5M12 11.5V17.5M15.5 11.5V17.5" stroke="#9d0000" strokeLinecap="round"></path></svg>
+Delete</button></>) : null}
 {' '}</div>
 {' '}</>) : null}
 {' '}
