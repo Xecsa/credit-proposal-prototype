@@ -15,7 +15,7 @@ facSeq: 2, facMenu: 0, facDelete: 0, facEdit: 0, fType: '', fProduct: '', fLimit
 facLoading: false, docsUp: { tl: true, moa: true }, docsAuto: { tl: true, moa: true }, docCatOpen: false, docCatDrop: false, docCatType: '', docCatDone: false, docStage: '', docMenu: '', docDelete: '',
 tlOpen: '', tlDrop: '', tlSaved: null, tlForm: null, tlCtMobile: '', tlCtSaved: '',
 ownDone: false, shStep: 'docs', shDocs: '', shMenu: '', shDrop: '', shEdit: '',
-shF: { title: '', first: 'Ahmed', last: 'Al-Hassan', role: '', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
+shF: { title: '', first: 'Ahmed', last: 'Al-Hassan', pct: '50', role: '', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
 shT: { uae: true, ruling: false, sign: false, borrow: false },
 mf: { eidNo: '784-1990-1234567-1', eidIssue: '29/06/2026', eidExpiry: '30/06/2028', ppNo: 'AB1234567', ppDob: '15/05/1978', ppExpiry: '30/06/2028', ppIssue: '29/06/2026' },
 consent: '', cob: {}, bankSel: {}, bankAdded: false, bankToast: false, bankExt: { m: [], c: [] }, bankTarget: 'm', bankSeq: 0,
@@ -31,7 +31,7 @@ dFinLocked: false, ejFiles: [], ejSeq: 0, ejBatches: 0, ejTab: 'all', ejQ: '', e
 ecF: { longName: '', type: '', bp: '', cp: '', risk: 'United Arab Emirates', alias: '', cif: '', edoc: '', rel: '', inc: '', prov: 'United Arab Emirates' }, ecDd: '', ecRows: [{ id: 1, code: '', pct: '' }], ecSeq: 1, ecOpenRow: 0, ecQ: '', ecExp: { F: true, F41: true, F42: true, G: true, G46: true }, ecErr: false,
 kmList: [], kmSeq: 0, kmMenu: 0, kmEdit: 0, kmDel: 0, kmDrop: '', kmSel: {}, kmNarr: '',
 kmF: { title: 'Ms', first: 'Maryam', last: 'Al-Mansoor', role: '', years: '', qual: '', summary: '', nat: 'United Arab Emirates', email: '', mobile: '' },
-addF: { title: '', first: 'Abdullah', last: 'Rahim', role: 'Director', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
+addF: { title: '', first: 'Abdullah', last: 'Rahim', pct: '50', role: 'Director', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' },
 addT: { uae: true, ruling: false, sign: false, borrow: false }
 };
 
@@ -337,6 +337,8 @@ const shF = s[fKey]; const shTState = s[tKey]; const shDocState = s[dKey];
 const put = (key, val, extra) => { const o = Object.assign({}, extra || {}); o[key] = val; set(o); };
 const shSet = {};
 ['first', 'last', 'email', 'mobile'].forEach((k) => { shSet[k] = (e) => { const o = Object.assign({}, shF); o[k] = e.target.value; put(fKey, o); }; });
+// Shareholding: numbers only, at most 100
+shSet.pct = (e) => { let v = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); if (parseFloat(v) > 100) v = '100'; const o = Object.assign({}, shF); o.pct = v; put(fKey, o); };
 const shSelect = (key, options, placeholder) => {
 const open = s.shDrop === key;
 return {
@@ -496,7 +498,7 @@ ownDone: s.ownDone, ownTodo: !s.ownDone, ownBg: btnBg(s.ownDone || s.ownGone), o
 ownDelShow: s.ownDel && s.phase === 'selfOwn', ownDelOpen: () => set({ ownDel: true }), ownDelCancel: () => set({ ownDel: false }), ownDelYes: () => set({ ownDel: false, ownGone: true }),
 ownOpen: () => set({ phase: 'selfSh', shMode: '', shStep: 'docs', shMenu: '', shDrop: '', shEdit: '' }),
 ownAdd: () => set({ phase: 'selfSh', shMode: 'add', shStep: 'docs', shMenu: '', shDrop: '', shEdit: '', addType: '', addDocs: '',
-addF: Object.assign({ title: '', role: 'Director', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' }, [{ first: 'Abdullah', last: 'Rahim' }, { first: 'Sara', last: 'Al-Nuaimi', gender: 'Female' }, { first: 'Omar', last: 'Khalifa' }, { first: 'Layla', last: 'Haddad', gender: 'Female' }, { first: 'Yousef', last: 'Al-Marri' }][s.ownExtra.length % 5]),
+addF: Object.assign({ title: '', pct: '50', role: 'Director', nat: 'United Arab Emirates', email: '', mobile: '', gender: 'Male' }, [{ first: 'Abdullah', last: 'Rahim' }, { first: 'Sara', last: 'Al-Nuaimi', gender: 'Female' }, { first: 'Omar', last: 'Khalifa' }, { first: 'Layla', last: 'Haddad', gender: 'Female' }, { first: 'Yousef', last: 'Al-Marri' }][s.ownExtra.length % 5]),
 addT: { uae: true, ruling: false, sign: false, borrow: false } }),
 ownExtra: s.ownExtra,
 shWho: !adding ? 'Ahmed Al-Hassan' : s.addType === 'sh' ? 'Add new shareholder' : 'Add new stakeholder',
@@ -513,7 +515,7 @@ shLater: () => set({ shStep: 'details', shMenu: '' }),
 ownContinue: () => { if (s.ownDone || s.ownGone) goSelf('selfConsent')(); },
 shIsDocs: s.shStep === 'docs', shIsDetails: s.shStep === 'details', shIsReview: s.shStep === 'review',
 shBack: () => { if (s.shStep === 'docs') goSelf('selfOwn')(); else set({ shStep: s.shStep === 'review' ? 'details' : 'docs', shDrop: '', shMenu: '' }); },
-shF: shF, shSet: shSet, shS: shS, shT: shT, shMenus: shMenus, shMenuClose: () => set({ shMenu: '' }),
+shF: shF, shSet: shSet, shPctLabel: (shF.pct || '0') + '%', shAPct: (s.shF.pct || '0') + '%', shS: shS, shT: shT, shMenus: shMenus, shMenuClose: () => set({ shMenu: '' }),
 shUploaded: shDocState === 'done', shUploading: shDocState === 'uploading',
 shUpload: () => { if (shDocState === 'uploading') return; put(dKey, 'uploading', { shMenu: '' }); this.later(2200, () => { if (this.state[dKey] === 'uploading') { const o = {}; o[dKey] = 'done'; this.setState(o); } }); },
 shDocsBlocked: !shDocsOk, shDocsBg: btnBg(shDocsOk), shDocsCursor: btnCur(shDocsOk),
@@ -529,13 +531,13 @@ shSave: () => {
 if (!adding) { set({ phase: 'selfOwn', ownDone: true, shEdit: '', shDrop: '' }); return; }
 const nm = (shF.first + ' ' + shF.last).trim();
 const ini = ((shF.first.trim()[0] || '') + (shF.last.trim()[0] || '')).toUpperCase();
-set({ phase: 'selfOwn', shMode: '', shEdit: '', shDrop: '', ownEditId: 0, ownExtra: ((rec) => s.ownEditId ? s.ownExtra.map((x) => x.id === s.ownEditId ? Object.assign(rec, { id: x.id }) : x) : s.ownExtra.concat([rec]))({ id: Date.now(), initials: ini, name: nm, poa: isPoa, email: shF.email.trim() || 'email@email.com', body: isPoa ? 'Power of Attorney (POA)' : '50%  Shareholder - Individual', f: Object.assign({}, shF), type: s.addType, docs: shDocState }) });
+set({ phase: 'selfOwn', shMode: '', shEdit: '', shDrop: '', ownEditId: 0, ownExtra: ((rec) => s.ownEditId ? s.ownExtra.map((x) => x.id === s.ownEditId ? Object.assign(rec, { id: x.id }) : x) : s.ownExtra.concat([rec]))({ id: Date.now(), initials: ini, name: nm, poa: isPoa, email: shF.email.trim() || 'email@email.com', body: isPoa ? 'Power of Attorney (POA)' : (shF.pct || '0') + '%  Shareholder - Individual', f: Object.assign({}, shF), type: s.addType, docs: shDocState }) });
 },
 cons: cons, cob: cob, bank: bank,
 cobPicked: s.ownExtra.filter((x) => s.cob['x' + x.id]),
-consExtra: s.ownExtra.map((x) => { const k = 'x' + x.id; const on = s.consent === k; return { initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder - Authorized signatory', on: on ? 'true' : 'false', ring: on ? '#182f7c' : '#575757', dot: on ? '#182f7c' : 'transparent', pick: () => set({ consent: k }) }; }),
-cobExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as co-borrower' }, box(s.cob['x' + x.id], flipIn('cob', 'x' + x.id)))),
-kmExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as key management' }, box(s.kmSel['x' + x.id], flipIn('kmSel', 'x' + x.id)))),
+consExtra: s.ownExtra.map((x) => { const k = 'x' + x.id; const on = s.consent === k; return { initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : ((x.f && x.f.pct) || '50') + '%  Shareholder - Authorized signatory', on: on ? 'true' : 'false', ring: on ? '#182f7c' : '#575757', dot: on ? '#182f7c' : 'transparent', pick: () => set({ consent: k }) }; }),
+cobExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : ((x.f && x.f.pct) || '50') + '%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as co-borrower' }, box(s.cob['x' + x.id], flipIn('cob', 'x' + x.id)))),
+kmExtra: s.ownExtra.map((x) => Object.assign({ initials: x.initials, name: x.name, body: x.poa ? 'Power of Attorney (POA)' : ((x.f && x.f.pct) || '50') + '%  Shareholder of Orient Insurance - Individual', label: 'Select ' + x.name + ' as key management' }, box(s.kmSel['x' + x.id], flipIn('kmSel', 'x' + x.id)))),
 goSelfCp: goSelf('selfCp'), showSelfCp: s.phase === 'selfCp' || s.phase === 'selfCpForm', showSelfCpForm: s.phase === 'selfCpForm',
 shAShow: !s.ownGone, shFShow: !s.entGone, shFName: s.entName, shFPct: s.entPct, shFIni: s.entName.trim().split(/ +/).filter(Boolean).map((w, i, a) => (i === 0 || i === a.length - 1) ? w[0] : '').join('').toUpperCase(),
 cpHas: s.cpList.length > 0, cpSug: cpSug, cpF: cpF, cpSet: cpSet,
@@ -867,7 +869,9 @@ const P = {
 };
 const per = (o, extra) => Object.assign({ initials: ini2(o.name), ind: true, ent: false, hasSub: true }, o, extra || {});
 const ent = (name, sub) => ({ name: name, sub: sub, ind: false, ent: true, hasSub: true, initials: '' });
-const rvOwn = (s.ownGone ? [] : [per(P.ah, { sub: '50%  Shareholder - Individual' })]).concat(s.entGone ? [] : [per({ name: s.entName }, { sub: s.entPct + '%  Shareholder - Individual' })])
+const ahPct = (s.shF.pct || '0') + '%';
+const xPct = (x) => ((x.f && x.f.pct) || '50') + '%';
+const rvOwn = (s.ownGone ? [] : [per(P.ah, { sub: ahPct + '  Shareholder - Individual' })]).concat(s.entGone ? [] : [per({ name: s.entName }, { sub: s.entPct + '%  Shareholder - Individual' })])
   .concat(s.ownExtra.map((x) => per({ name: x.name, initials: x.initials }, { sub: x.body })));
 const P_fa = Object.assign({}, P.fa, { name: s.entName });
 const shGone = { ah: !!s.ownGone, fa: !!s.entGone };
@@ -878,19 +882,19 @@ const rvConsent = cPick ? [{ name: cPick.name, email: cPick.email, bt: '0' }] : 
 const cobMap = { a: P.ah, b: P_fa, c: P.mh };
 const rvCob = ['a', 'b', 'c'].filter((k) => s.cob[k] && cobMap[k] && !(k === 'a' && shGone.ah) && !(k === 'b' && shGone.fa)).map((k) => per(cobMap[k], { sub: cobMap[k].email }))
   .concat(s.ownExtra.filter((x) => s.cob['x' + x.id]).map((x) => per({ name: x.name, initials: x.initials }, { sub: x.email })));
-const kmSugs = { a: per(P.ah, { sub: '50%  Shareholder of ' + co + ' - Individual' }), b: ent('Al Noor Holdings LLC', 'Parent company of ' + co + ' - Company'),
+const kmSugs = { a: per(P.ah, { sub: ahPct + '  Shareholder of ' + co + ' - Individual' }), b: ent('Al Noor Holdings LLC', 'Parent company of ' + co + ' - Company'),
   c: per(P_fa, { sub: s.entPct + '%  Shareholder of ' + co + ' - Individual' }), d: ent('Gulf Crest Investments', 'Affiliate of ' + co + ' - Company'),
   e: per(P.mh, { sub: 'Authorized borrower of ' + co + ' - Individual' }), f: ent('Desert Rose Trading LLC', 'Subsidiary of ' + co + ' - Company') };
 const rvKm = s.kmList.map((r) => per({ name: ((r.title ? r.title + ' ' : '') + r.first + ' ' + r.last).trim(), initials: ((r.first.trim()[0] || '') + (r.last.trim()[0] || '')).toUpperCase() }, { sub: r.role || '-' }))
   .concat(['a', 'c', 'e'].filter((k) => s.kmSel[k] && !(k === 'a' && shGone.ah) && !(k === 'c' && shGone.fa)).map((k) => kmSugs[k]))
-  .concat(s.ownExtra.filter((x) => s.kmSel['x' + x.id]).map((x) => per({ name: x.name, initials: x.initials }, { sub: x.poa ? 'Power of Attorney (POA)' : '50%  Shareholder of ' + co + ' - Individual' })));
+  .concat(s.ownExtra.filter((x) => s.kmSel['x' + x.id]).map((x) => per({ name: x.name, initials: x.initials }, { sub: x.poa ? 'Power of Attorney (POA)' : xPct(x) + '  Shareholder of ' + co + ' - Individual' })));
 const enbd = { 1: '1044560850002', 2: '1024560850002' };
 const banks = (w) => [1, 2].filter((n) => s.bankSel[w + n]).map((n) => ({ name: 'Emirates NBD', num: enbd[n], kind: 'Current Account', hasKind: true, enbd: true, ext: false }))
   .concat(s.bankExt[w].map((r) => ({ name: r.name, num: r.iban, kind: '', hasKind: false, enbd: false, ext: true })));
 const cobFirst = rvCob[0];
 const cpSugs = { a: P.ah, b: P_fa, c: P.mh };
 const rvCp = s.cpList.map((r) => per({ name: r.name.trim(), initials: ini2(r.name) }, { sub: r.rel, mobile: r.mobile.trim() ? '+971 ' + r.mobile.trim() : '-', email: r.email.trim() || '-' }))
-  .concat(['a', 'b', 'c'].filter((k) => s.cpSel[k] && !(k === 'a' && shGone.ah) && !(k === 'b' && shGone.fa)).map((k) => per(cpSugs[k], { sub: k === 'c' ? 'Authorized borrower of ' + co + ' - Individual' : (k === 'b' ? s.entPct : '50') + '%  Shareholder of ' + co + ' - Individual' })));
+  .concat(['a', 'b', 'c'].filter((k) => s.cpSel[k] && !(k === 'a' && shGone.ah) && !(k === 'b' && shGone.fa)).map((k) => per(cpSugs[k], { sub: k === 'c' ? 'Authorized borrower of ' + co + ' - Individual' : (k === 'b' ? s.entPct + '%' : ahPct) + '  Shareholder of ' + co + ' - Individual' })));
 Object.assign(__v, {
   rvOwn: rvOwn, rvNoOwn: rvOwn.length === 0,
   rvConsent: rvConsent, rvNoConsent: rvConsent.length === 0,
@@ -1193,7 +1197,7 @@ Object.assign(__v, {
 const owBase = (key, extra) => { const open = s.ownMenu === key; return Object.assign({ key: key, menu: open, expanded: open ? 'true' : 'false', toggle: () => this.setState({ ownMenu: open ? '' : key }), menuLabel: 'Actions for ' + extra.name, del: () => this.setState({ ownMenu: '', ownDel: key }) }, extra); };
 const owOpenAh = () => set({ phase: 'selfSh', shMode: '', shStep: s.ownDone ? 'details' : 'docs', shMenu: '', shDrop: '', shEdit: '', ownMenu: '' });
 const ownList = [];
-if (!s.ownGone) ownList.push(owBase('ah', { name: 'Ahmed Al-Hassan', initials: 'AA', person: true, entity: false, body: '50%  Shareholder - Individual', todo: !s.ownDone, bg: !s.ownDone ? '#f4f7fe' : 'transparent', cursor: !s.ownDone ? 'pointer' : 'default', aria: !s.ownDone ? 'Ahmed Al-Hassan, additional information required. Add stakeholder information' : 'Ahmed Al-Hassan', open: !s.ownDone ? owOpenAh : () => {}, edit: owOpenAh }));
+if (!s.ownGone) ownList.push(owBase('ah', { name: 'Ahmed Al-Hassan', initials: 'AA', person: true, entity: false, body: (s.shF.pct || '0') + '%  Shareholder - Individual', todo: !s.ownDone, bg: !s.ownDone ? '#f4f7fe' : 'transparent', cursor: !s.ownDone ? 'pointer' : 'default', aria: !s.ownDone ? 'Ahmed Al-Hassan, additional information required. Add stakeholder information' : 'Ahmed Al-Hassan', open: !s.ownDone ? owOpenAh : () => {}, edit: owOpenAh }));
 if (!s.entGone) ownList.push(owBase('ent', { name: s.entName, initials: s.entName.trim().split(/ +/).filter(Boolean).map((w, i, a) => (i === 0 || i === a.length - 1) ? w[0] : '').join('').toUpperCase(), person: true, entity: false, body: s.entPct + '%  Shareholder - Individual', todo: false, bg: 'transparent', cursor: 'default', aria: s.entName, open: () => {}, edit: () => this.setState({ ownMenu: '', entEdit: true, entDraftName: s.entName, entDraftPct: s.entPct }) }));
 s.ownExtra.forEach((x) => ownList.push(owBase('x' + x.id, { name: x.name, initials: x.initials, person: true, entity: false, body: x.body, todo: false, bg: 'transparent', cursor: 'default', aria: x.name, open: () => {},
   edit: () => set({ phase: 'selfSh', shMode: 'add', shStep: 'details', addF: Object.assign({}, x.f || {}), addType: x.type || (x.poa ? 'poa' : 'sh'), addDocs: x.docs || 'done', ownEditId: x.id, shMenu: '', shDrop: '', shEdit: '', ownMenu: '' }) })));
