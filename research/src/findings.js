@@ -104,7 +104,8 @@ export const themes = [
       { src: 'RM 01 · Documents 13:47', note: 'Thought the Documents and References tile was disabled.' },
       { src: 'RM 01 · Documents 14:29', quote: 'Actually this [Back] we have to remove, because we have Back to hub here also.', note: '(team)' },
       { src: 'RM 01 · Review 02:52', quote: 'Where can I see it?' },
-      { src: 'RM 01 · Documents 36:00', quote: 'Actually we should disable this for RM.', note: '(team, Financial Analysis tile)' }
+      { src: 'RM 01 · Documents 36:00', quote: 'Actually we should disable this for RM.', note: '(team, Financial Analysis tile)' },
+      { src: 'RM 01 · clicks', note: 'Pressed Back on the hub and left the application; 32 clicks in Leads to get back in.' }
     ],
     screens: ['Hub', 'Documents and References']
   },
@@ -124,6 +125,7 @@ export const themes = [
     summary: 'The resident toggle wasn’t read as yes or no. Placeholder examples looked like real data. Large amounts need counting zeros, and the IBAN had to be validated before Continue was enabled, with no hint why it was disabled.',
     evidence: [
       { src: 'RM 01 · Client Information 19:05', quote: 'Why don’t you put yes or no instead of a toggle?' },
+      { src: 'RM 01 · clicks', note: 'Clicked the resident toggle 8 times in about 90 seconds.' },
       { src: 'RM 01 · Client Information 43:04', note: 'Thought the contact point example was prefilled.' },
       { src: 'RM 02 · Client Information 12:57', note: 'Wanted to type 25M rather than count zeros.' },
       { src: 'RM 01 · Client Information 39:37', note: 'Asked why Continue was disabled; the IBAN wasn’t validated.' }
@@ -549,14 +551,33 @@ export const stepTimes = [
 ];
 
 export const heatmap = {
-  status: 'No click data has been added to this report yet. The heatmaps are stored only in the browser that ran the sessions, so they can’t be read from here. Download the CSV from Click heatmaps on that laptop and add it, and this section can be completed.',
+  status: 'The click export holds 257 clicks, all from RM 01, across the three RM journeys. No clicks were captured for RM 02, ARM 01 or ARM 02, so this section covers only RM 01.',
+  stats: [
+    { label: 'Clicks (RM 01)', value: '257', note: 'Client Information 154, Documents 62, Review 41' },
+    { label: 'Clicks outside the application', value: '44', note: 'In Leads and the call report, while trying to get back' },
+    { label: 'Clicks on nothing clickable', value: '23', note: '9% of all clicks, mostly on labels' },
+    { label: 'Back or Back to hub', value: '14', note: 'One, on the hub, led out of the application' }
+  ],
+  journeys: [
+    { journey: 'Client Information', clicks: 154, minutes: 42, off: 10, outside: 0, top: 'Add stakeholder information (41), Add facility (15), Documents (12)' },
+    { journey: 'Documents & References', clicks: 62, minutes: 27, off: 11, outside: 32, top: 'Leads and the call report (32), Facility Application hub (9), Ejari (8)' },
+    { journey: 'Financial Analysis review', clicks: 41, minutes: 14, off: 2, outside: 12, top: 'Hub (11), Financial spreading (9), Leads and the call report (12)' }
+  ],
+  insights: [
+    { title: 'Leaving the hub means starting again from Leads', theme: 'hub', text: 'In Documents, RM 01 went from the hub to KYC documents and “Back to Hub” three times in a minute, then pressed Back on the hub and left the application. It took 32 clicks in Leads and a new call report to get back in. The same happened in the Review, from the logo on the CreditLens screen (12 clicks). Over half of the Documents clicks were spent outside the application.' },
+    { title: 'The resident toggle was clicked 8 times', theme: 'controls', text: '“Are you a UAE resident?” was clicked 8 times in about 90 seconds, with no other action in between. This matches the confusion heard in the recording about which position means resident.' },
+    { title: 'The shareholding percentage fought back', theme: 'edit', text: 'On the shareholding field there were 10 clicks in 8 seconds, 3 of them on the “%” suffix and the empty space next to the input. RM 01 couldn’t place the cursor to change the value, and later deleted the shareholder instead of editing it.' },
+    { title: 'Consent: five selections before choosing', theme: 'consent', text: 'RM 01 made five selections (Fatima, Abdullah, Omar, Fatima, Omar) and stayed on the screen for about four and a half minutes. A click on the screen background came first, while they were still reading.' },
+    { title: 'Back and forth through the later steps', theme: 'edit', text: 'From Key management, RM 01 pressed Back three times to reach Ownership & shareholders, then Continue three times to return. From the Review & submit summary, they went back to Contact points to add one. There’s no way to jump to a step, so every fix is a walk through the stepper.' },
+    { title: 'Bank account: toggle first, validate later', theme: 'controls', text: 'The UAEFTS toggle was clicked 3 times in 3 seconds, and “Validate IBAN” only 85 seconds later, after the facilitator explained why Save was disabled.' },
+    { title: 'Hesitation at hand-offs', theme: 'end', text: 'RM 01 opened Submit to ARM and spent four and a half minutes in the dialog before submitting. In the Review they opened Return to ARM, cancelled it, and then confirmed the application.' },
+    { title: 'Entity selection was chosen three times', theme: 'entity', text: 'RM 01 picked “Orient Insurance LLC” three times, going back to the hub in between. All three clicks were on the entity name, not the arrow.' },
+    { title: 'Editing spreading metadata was found', theme: 'edit', text: 'In the Review, RM 01 did find and use the inline edit on the spreading summary (Method, Accountant and Analyst for 2023). Editing works once it is found; the problem is noticing it.' },
+    { title: 'Long pages, buttons far down', theme: null, text: 'Continue and Submit were clicked 1,500 to 2,700 pixels down the page (Review & submit at 2,689, Financial documents at 2,086) on a 723-pixel-high window, so the main action sits two to four screens below the top.' }
+  ],
   checks: [
-    'Hub: whether RMs clicked the Financial Analysis tile before it was their turn, and where they clicked to find the ARM’s work.',
-    'Financial spreading: whether the ARM clicked values before finding the edit control, and clicks on totals looking for a breakdown.',
-    'Entity selection: clicks on the arrows versus the entity names.',
-    'Stakeholder details: repeated clicks on the resident toggle (RM 02 said it didn’t respond).',
-    'Bank accounts: clicks on the disabled Continue button before the IBAN was validated.',
-    'Review & submit: clicks on the summary looking for a way to edit.'
+    'Run the next round with the sessions in one browser, and export the click CSV after each participant, so RM 02 and both ARMs are captured too.',
+    'Then compare: hub clicks on the Financial Analysis tile before it is the RM’s turn, ARM clicks on spreading values before finding the edit control, and clicks on totals looking for a breakdown.'
   ]
 };
 
@@ -582,7 +603,7 @@ export const method = [
   'Step times come from reading the screen every 10 seconds, so each value is accurate to about 10 seconds. The time on the “How was this task?” screen is left out.',
   'Sessions were heavily facilitated: the facilitator and BA often explained a screen before the participant tried it. Treat findings as “what people didn’t understand without help”, and don’t read the timings as unaided task times.',
   'RM 02’s Review (27 seconds) and ARM 02’s session (5 minutes) were only partly recorded, so those journeys have thin evidence.',
-  'Click heatmaps are not included yet (see Clicks and heatmaps).'
+  'Clicks come from the research site’s click export (RM 01 only). “Outside the application” counts clicks on the Leads and call report screens that a participant reached after leaving the hub.'
 ];
 
 round.stats[2].value = String(byParticipant.reduce((n, p) => n + p.problems.length, 0));

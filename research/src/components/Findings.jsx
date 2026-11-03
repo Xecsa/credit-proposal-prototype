@@ -154,10 +154,40 @@ export default function Findings() {
         <section id="fd-heat" aria-labelledby="fd-heat-h" className="r-fd-sec">
           <div className="r-fd-sec-head">
             <h2 id="fd-heat-h" className="r-fd-h2">Clicks and heatmaps</h2>
+            <p className="r-ov-note">{heatmap.status}</p>
           </div>
+          <dl className="r-heat-stats r-fd-stats">
+            {heatmap.stats.map(s => <div key={s.label}><dt>{s.label}</dt><dd>{s.value}</dd>{s.note && <p className="r-fd-statnote">{s.note}</p>}</div>)}
+          </dl>
+          <div className="r-fd-card r-fd-tablewrap">
+            <table className="r-fd-table">
+              <thead><tr><th scope="col">Journey (RM 01)</th><th scope="col" className="is-num">Clicks</th><th scope="col" className="is-num">First to last click</th><th scope="col" className="is-num">On nothing clickable</th><th scope="col" className="is-num">Outside the application</th><th scope="col">Most clicked screens</th></tr></thead>
+              <tbody>
+                {heatmap.journeys.map(j => (
+                  <tr key={j.journey}>
+                    <th scope="row">{j.journey}</th>
+                    <td className="is-num">{j.clicks}</td>
+                    <td className="is-num">{j.minutes} min</td>
+                    <td className="is-num">{j.off}</td>
+                    <td className="is-num">{j.outside}</td>
+                    <td>{j.top}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <h3 className="r-fd-h3">What the clicks show</h3>
+          <ol className="r-fd-themes">
+            {heatmap.insights.map(h => (
+              <li key={h.title} className="r-fd-theme">
+                {h.theme && <div className="r-fd-theme-top"><span className="r-fd-for">{themes.find(t => t.id === h.theme).short}</span></div>}
+                <h3>{h.title}</h3>
+                <p>{h.text}</p>
+              </li>
+            ))}
+          </ol>
           <div className="r-fd-card">
-            <p className="r-fd-caveat">{heatmap.status}</p>
-            <h3 className="r-fd-h3">What to look for when the click data is added</h3>
+            <h3 className="r-fd-h3">For the next round</h3>
             <ul className="r-fd-list">{heatmap.checks.map((c, i) => <li key={i}>{c}</li>)}</ul>
             <p><a className="r-btn r-btn-secondary" href="#/f/analysis">Open click heatmaps</a></p>
           </div>
