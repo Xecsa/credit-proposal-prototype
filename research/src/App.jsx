@@ -10,6 +10,7 @@ import ParticipantSession from './components/ParticipantSession.jsx';
 import FacilitatorView, { FacilitatorOverview } from './components/FacilitatorView.jsx';
 import useRoute from './useRoute.js';
 import HeatmapAnalysis from './components/HeatmapAnalysis.jsx';
+import Findings from './components/Findings.jsx';
 import { useStatuses, markFacilitatorTab, isFacilitatorTab } from './store.js';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
       {route.view === 'facilitator' && <FacilitatorView id={route.id} />}
       {route.view === 'overview' && <FacilitatorOverview />}
       {route.view === 'analysis' && <HeatmapAnalysis />}
+      {route.view === 'findings' && <Findings />}
       <Footer view={route.view} />
     </div>
   );
