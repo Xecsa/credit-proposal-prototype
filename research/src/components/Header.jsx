@@ -34,7 +34,7 @@ export default function Header({ view = 'home' }) {
   }, [view]);
 
   return (
-    <header className={`r-header${scrolled ? ' is-scrolled' : ''}${view === 'overview' || view === 'analysis' ? ' is-wide' : ''}`}>
+    <header className={`r-header${scrolled ? ' is-scrolled' : ''}${view === 'overview' || view === 'analysis' || view === 'findings' ? ' is-wide' : ''}`}>
       <div className="r-header-in">
         <div className="r-header-brand">
           <img className="r-logo" src={brand.logo} alt={brand.logoAlt} />
@@ -45,9 +45,11 @@ export default function Header({ view = 'home' }) {
         {view === 'home'
           ? <nav className="r-nav" aria-label="Page sections">
               {nav.map(n => <a key={n.id} href={`#${n.id}`} className={active === n.id ? 'is-active' : undefined} aria-current={active === n.id ? 'location' : undefined}>{n.label}</a>)}
+              <a href="#/findings">Findings</a>
             </nav>
           : <nav className="r-nav" aria-label="Research site">
-              {(view === 'facilitator' || view === 'analysis') && <a href="#/f">All sessions</a>}
+              {(view === 'facilitator' || view === 'analysis' || view === 'findings') && <a href="#/f">All sessions</a>}
+              {view !== 'participant' && view !== 'findings' && <a href="#/findings">Findings</a>}
               <a href="#/">Research home</a>
             </nav>}
       </div>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
 // Hash routes for the session views: #/s/<id> participant, #/f/<id> facilitator, #/f facilitator overview,
-// #/f/analysis click heatmaps across sessions.
+// #/f/analysis click heatmaps across sessions, #/findings the usability findings report.
 // Plain anchors on the home page (#overview, #sessions) are not routes and leave the home page in place.
 function parse() {
   const h = window.location.hash || '';
   if (!h.startsWith('#/')) return { view: 'home' };
   const [, kind, id] = h.slice(1).split('/');
+  if (kind === 'findings') return { view: 'findings' };
   if (kind === 's' && id) return { view: 'participant', id };
   if (kind === 'f' && id === 'analysis') return { view: 'analysis' };
   if (kind === 'f' && id) return { view: 'facilitator', id };

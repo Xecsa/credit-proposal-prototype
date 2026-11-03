@@ -24,6 +24,7 @@ It lives in `research/` and is built as a second page next to the prototype, so 
   with the agenda, neutral prompts, and for every task: Outcome, Observation, Quote, Screen or step, Assistance,
   Impact, Classification, Follow-up, plus the questions to ask and what to observe. Export JSON or CSV, or use **Reset test session** (one participant) or **Reset all test sessions** (the facilitator overview) before a dry run. A reset works in the browser where you click it: it returns the participant to Not started, deletes their answers, consent, signature, progress, notes and recordings stored in that browser, and makes an open participant tab in the same browser stop recording without saving and release the screen and microphone. The pre-session checklist and other browser data are kept.
 - **All sessions** (`#/f`): links to every session, export all, and the before-the-first-session checklist.
+- **Findings** (`#/findings`): the round 1 usability report: common problems, problems by participant, time per journey and step, heatmap status and recommended actions. All content is in `src/findings.js`; the page is `src/components/Findings.jsx`. It is linked from the header on every page except the participant space.
 
 ### Information sheet (draft)
 
